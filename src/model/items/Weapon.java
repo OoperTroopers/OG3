@@ -1,7 +1,7 @@
 package model.items;
 
-import equipmentmanagers.EquipmentManager;
-import statistics.EquippableStatistics;
+import model.equipmentmanagers.EquipmentManager;
+import model.statistics.EquippableStatistics;
 
 public abstract class Weapon extends TakeableItem implements Equippable{
 	private EquippableStatistics equipStats;

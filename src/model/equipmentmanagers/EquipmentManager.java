@@ -1,6 +1,6 @@
 package model.equipmentmanagers;
 
-import items.*;
+import model.items.*;
 
 public abstract class EquipmentManager {
 	private Helmet helmet;

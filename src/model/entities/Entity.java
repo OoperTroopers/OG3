@@ -1,10 +1,10 @@
 package model.entities;
 
-import inventory.Inventory;
-import equipmentmanagers.*;
-import occupations.*;
-import statistics.*;
-import items.Item;
+import model.inventory.Inventory;
+import model.equipmentmanagers.*;
+import model.occupations.*;
+import model.statistics.*;
+import model.items.Item;
 
 import java.util.ArrayList;
 

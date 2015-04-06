@@ -1,6 +1,6 @@
 package model.items;
 
-import entities.Entity;
+import model.entities.Entity;
 
 public abstract class TakeableItem extends Item {
 	private String name;

@@ -1,6 +1,6 @@
-package models.items;
+package model.items;
 
-import statistics.Statistics;
+import model.statistics.Statistics;
 
 public class Potion extends TakeableItem implements Usable{
 	public void use(Statistics stats){

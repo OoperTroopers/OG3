@@ -4,7 +4,7 @@ import model.inventory.Inventory;
 import model.equipmentmanagers.*;
 import model.occupations.*;
 import model.statistics.*;
-import model.items.Item;
+import model.items.TakeableItem;
 
 import java.util.ArrayList;
 
@@ -49,26 +49,28 @@ public abstract class Entity {
 		//modify location
 	}
 	
-	public void addItemToInventory(Item item) {
-		//add Item to inventory
+	public void addItemToInventory(TakeableItem item) {
+		inventory.addToInventory(item);
 	}
 	
-	public void dropItem(Item item) {
-		//put item from inventory on location
+	public void dropItem(TakeableItem item) {
+		inventory.dropFromInventory(item);
 	}
 	
-	public void removeItem(Item item) {
-		//delete item from Inventory
+	public void removeItem(TakeableItem item) {
+		inventory.removeFromInventory(item);
 	}
 	
-	public ArrayList<Item> getAllItems() {
-		//get items from inventory
-		return null;
+	public ArrayList<TakeableItem> getAllItems() {
+		return inventory.getInventory();
 	}
 
-	public Item getItemFromInvnetory(Item item) {
-		//get single item from inventory
-		return null;
+	public TakeableItem getItemFromInvnetory(TakeableItem item) {
+		if(inventory.itemInInventory(item)) {
+			return item;
+		} else {
+			return null;
+		}
 	}
 
 	public void dialogue() {

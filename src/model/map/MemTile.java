@@ -5,10 +5,33 @@
  */
 package model.map;
 
+import java.util.List;
+
 /**
- *
- * @author Owner
+ * The MemTile will be what the view uses to print things to the screen.
+ * Essentially, each MemTile is a copy of the Tile it represents at the moment
+ * the avatar saw it
+ * @author Jason Owens
  */
-class MemTile {
+public class MemTile {
     
+    private Tile myTile;
+    private Location location;
+    private Terrain terrain;
+    private List<Tileable> tileables;
+    
+    
+    public MemTile(Tile clonedTile, Location l, Terrain t, List<Tileable> tileables){
+        this.myTile = clonedTile;
+        this.location = l;
+        this.terrain = t;
+        this.tileables = tileables;
+    }
+    
+    /**
+     * TODO
+     */
+    public void update(){
+        
+    }
 }

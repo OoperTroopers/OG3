@@ -6,9 +6,15 @@
 package model.map;
 
 /**
- *
- * @author Owner
+ * 
+ * @author Jason Owens
  */
 class Terrain {
     
+    public boolean canMove(Moveable m){
+        
+    }
+    public boolean canMove(Entity e){
+        
+    }
 }

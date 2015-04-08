@@ -9,7 +9,7 @@ import model.items.TakeableItem;
 import java.util.ArrayList;
 import model.map.Tileable;
 
-public abstract class Entity implements Tileable{
+public abstract class Entity implements Tileable implements Moveable{
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
 	private Occupation occupation;

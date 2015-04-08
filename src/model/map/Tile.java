@@ -26,8 +26,12 @@ private Tile south;
 private Tile southEast;
 private Tile southWest;
 
-    public void affectAllTileables(Effect e){
 
+    
+    public void affectAllTileables(Effect e){
+        for(Tileable t: tileables){
+            t.accept(e);
+        }
     }
     public MemTile clone(){
         

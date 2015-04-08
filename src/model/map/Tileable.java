@@ -8,6 +8,13 @@ public interface Tileable {
     
     
     /**
+     * All tileables will need to accept an effect object. The effect
+     * object will know what to do.
+     * @param e Effect object that is trying to affect the Tileable 
+     */
+    public void acceptEffect(Effect e);
+    
+    /**
      * Using Tile's public interface, remove the Tileable from the tile. Use
      * this often for moving, as well as for deleting objects on use. 
      */

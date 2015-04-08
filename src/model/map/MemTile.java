@@ -15,10 +15,19 @@ import java.util.List;
  */
 public class MemTile {
     
+    private boolean hasBeenSeen;
+    
     private Tile myTile;
     private Location location;
     private Terrain terrain;
     private List<Tileable> tileables;
+    
+    private MemTile north;
+    private MemTile northeast;
+    private MemTile northwest;
+    private MemTile south;
+    private MemTile southeast;
+    private MemTile southwest;
     
     
     public MemTile(Tile clonedTile, Location l, Terrain t, List<Tileable> tileables){
@@ -32,6 +41,168 @@ public class MemTile {
      * TODO
      */
     public void update(){
-        
+        this.location = myTile.getLocation();
+        this.terrain = myTile.getTerrain();
+        this.tileables = tileables;
     }
+    
+    /**
+     * 
+     * @author Jason Owens
+     * @return whether or not the avatar has seen this tile
+     */
+    public boolean hasBeenSeen(){
+        return hasBeenSeen;
+    }
+    
+    /**
+     * 
+     * @author Jason Owens
+     * @return the whtehter the MemTile north of this one has been seen and exists
+     */
+    public boolean hasNorth(){
+        if(north == null){
+            return false;
+        }
+        else if(north.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile northeast of this one
+     */
+    public boolean hasNortheast(){
+        if(northeast == null){
+            return false;
+        }
+        else if(northeast.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile northwest of this one
+     */
+    public boolean hasNorthwest(){
+        if(northwest == null){
+            return false;
+        }
+        else if(northwest.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile south of this one
+     */
+    public boolean hasSouth(){
+        if(south == null){
+            return false;
+        }
+        else if(south.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile southwest of this one
+     */
+    public boolean hasSouthwest(){
+        if(southwest == null){
+            return false;
+        }
+        else if(southwest.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile southwest of this one
+     */
+    public boolean hasSoutheast(){
+        if(southeast == null){
+            return false;
+        }
+        else if(southeast.hasBeenSeen()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    
+    
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile north of this one
+     */
+    public MemTile getNorth(){
+        
+        return north;
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile northeast of this one
+     */
+    public MemTile getNortheast(){
+        return northeast;
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile northwest of this one
+     */
+    public MemTile getNorthwest(){
+        return northeast;
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile south of this one
+     */
+    public MemTile getSouth(){
+        return south;
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile southwest of this one
+     */
+    public MemTile getSouthwest(){
+        return southwest;
+    }
+    /**
+     * 
+     * @author Jason Owens
+     * @return the MemTile southwest of this one
+     */
+    public MemTile getSoutheast(){
+        return southeast;
+    }
+       
+    
 }

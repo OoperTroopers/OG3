@@ -14,17 +14,17 @@ import java.util.List;
  */
 class Tile {
     
-private Location location;
-private Terrain terrain;
-private ArrayList<Tileable> tileables;
+    private Location location;
+    private Terrain terrain;
+    private ArrayList<Tileable> tileables;
 
 
-private Tile north;
-private Tile northEast;
-private Tile northWest;
-private Tile south;
-private Tile southEast;
-private Tile southWest;
+    private Tile north;
+    private Tile northEast;
+    private Tile northWest;
+    private Tile south;
+    private Tile southEast;
+    private Tile southWest;
 
 
     
@@ -33,21 +33,39 @@ private Tile southWest;
             t.accept(e);
         }
     }
-    public MemTile clone(){
+    public MemTile getMemTile(){
         
-        List<Tileable> copyOfList = new ArrayList<>();
-        for(Tileable t: tileables){
-            copyOfList.add(t.clone());
-        }
+        List<Tileable> copyOfList = cloneTileables();
         Terrain tCopy = new Terrain();
         
         return new MemTile(this, location, tCopy, copyOfList);
     }
+    
+    public List<Tileable> cloneTileables(){
+        List<Tileable> copyOfList = new ArrayList<>();
+        for(Tileable t: tileables){
+            copyOfList.add(t.clone());
+        }
+        return copyOfList;
+    }
+    
     public void removeTileable(Tileable t){
         tileables.remove(t);
     }
     public void addTileable(Tileable t){
         tileables.add(t);
+    }
+
+    public final Location getLocation() {
+        return this.location;
+    }
+
+    /**
+     * @author Jason Owens
+     * @return the terrain
+     */
+    public final Terrain getTerrain() {
+        return this.terrain;
     }
 }
 

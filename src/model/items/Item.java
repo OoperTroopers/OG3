@@ -1,6 +1,8 @@
 package model.items;
 
-public abstract class Item {	
+import model.map.Tileable;
+
+public abstract class Item implements Tileable{	
 	private String name;
 	private String description;
 	private String id;

@@ -7,8 +7,9 @@ import model.statistics.*;
 import model.items.TakeableItem;
 
 import java.util.ArrayList;
+import model.map.Tileable;
 
-public abstract class Entity {
+public abstract class Entity implements Tileable{
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
 	private Occupation occupation;

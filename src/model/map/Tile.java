@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Tile represents the smallest discrete location an object can 
+ * have in our game. Each tile has a reference to all of the tiles
+ * near it. 
  * @author Jason Owens
  */
 class Tile {
@@ -20,11 +22,11 @@ class Tile {
 
 
     private Tile north;
-    private Tile northEast;
-    private Tile northWest;
+    private Tile northeast;
+    private Tile northwest;
     private Tile south;
-    private Tile southEast;
-    private Tile southWest;
+    private Tile southeast;
+    private Tile southwest;
 
 
     
@@ -56,16 +58,40 @@ class Tile {
         tileables.add(t);
     }
 
-    public final Location getLocation() {
+    
+    
+    public Tile getNorth(){
+        return north;
+    }
+    public Tile getNortheast(){
+        return northeast;
+    }
+    public Tile getNorthwest(){
+        return northwest;
+    }
+    public Tile getSouth(){
+        return south;
+    }
+    public Tile getSoutheast(){
+        return southeast;
+    }
+    public Tile getSouthwest(){
+        return southwest;
+    }
+    
+    
+    
+    /*
+        These functions expose internals. Don't uncomment them or make them again.
+    
+    public Location getLocation() {
         return this.location;
     }
 
-    /**
-     * @author Jason Owens
-     * @return the terrain
-     */
-    public final Terrain getTerrain() {
+    
+    public Terrain getTerrain() {
         return this.terrain;
     }
+    */
 }
 

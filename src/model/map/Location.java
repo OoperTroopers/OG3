@@ -34,4 +34,8 @@ public class Location {
     public void setR(int r){
         this.r = r;
     }
+    
+    public Location clone(){
+        return new Location(q,r);
+    }
 }

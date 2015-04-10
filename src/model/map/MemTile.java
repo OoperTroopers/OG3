@@ -41,8 +41,8 @@ public class MemTile {
      * TODO
      */
     public void update(){
-        this.location = myTile.getLocation();
-        this.terrain = myTile.getTerrain();
+        this.location = myTile.getLocationClone();
+        this.terrain = myTile.getTerrainClone();
         this.tileables = tileables;
     }
     

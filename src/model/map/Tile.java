@@ -38,12 +38,13 @@ class Tile {
     public MemTile getMemTile(){
         
         List<Tileable> copyOfList = cloneTileables();
-        Terrain tCopy = new Terrain();
+        Terrain tCopy = getTerrainClone();
+        Location lCopy = getLocationClone();
         
         return new MemTile(this, location, tCopy, copyOfList);
     }
     
-    public List<Tileable> cloneTileables(){
+    private List<Tileable> cloneTileables(){
         List<Tileable> copyOfList = new ArrayList<>();
         for(Tileable t: tileables){
             copyOfList.add(t.clone());
@@ -51,14 +52,26 @@ class Tile {
         return copyOfList;
     }
     
+ 
     public void removeTileable(Tileable t){
         tileables.remove(t);
     }
+    
+    /**
+     * Adds a Tileable to the tile
+     * @param t the tileable to be added
+     */   
     public void addTileable(Tileable t){
         tileables.add(t);
     }
 
     
+    
+    /*
+     * These functions are for getting references to nearby tiles. Be careful
+     * of LoD violations.
+     * @author Jason Owens
+     */
     
     public Tile getNorth(){
         return north;
@@ -80,18 +93,15 @@ class Tile {
     }
     
     
-    
-    /*
-        These functions expose internals. Don't uncomment them or make them again.
-    
-    public Location getLocation() {
-        return this.location;
+      
+    public Location getLocationClone() {
+        return this.location.clone();
     }
 
     
-    public Terrain getTerrain() {
-        return this.terrain;
+    public Terrain getTerrainClone() {
+        return this.terrain.clone();
     }
-    */
+    
 }
 

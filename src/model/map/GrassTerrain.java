@@ -6,21 +6,18 @@
 package model.map;
 
 /**
- * 
+ *
  * @author Jason Owens
  */
-public abstract class Terrain {
-    
-    
-    
-    public abstract Terrain clone();
-    
-    /*
-    public boolean canMove(Moveable m){
+public class GrassTerrain extends Terrain{
+
+    public GrassTerrain(){
         
     }
-    public boolean canMove(Entity e){
-        
+    
+    @Override
+    public Terrain clone() {
+        return new GrassTerrain();
     }
-    */
+    
 }

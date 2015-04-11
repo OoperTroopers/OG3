@@ -1,7 +1,7 @@
 package model.map;
 
 /**
- * The tileable interface defines all of the requirements an object must meet in
+ * The Tileable interface defines all of the requirements an object must meet in
  * order to properly be put into a Tile in our game. If an object will be put on a 
  * Tile, it will implement Tileable.
  * @author Jason Owens
@@ -23,11 +23,13 @@ public interface Tileable {
     public void removeFromTile();
     
     
-    /**
+   /**
      * Each tileable must have a reference to its containing tile.
      * @return the Tile that the tileable is on
+     *
      */
     public Tile getContainingTile();
+    
     
     /**
      * 
@@ -36,8 +38,10 @@ public interface Tileable {
     public Tileable clone();          
     
     /**
-     * @param Tileable t
-     * @return true if an only if t can share a tile with this Tileable
+     * For now, Entities and Obstacles will be the only things that return false.
+     * @return true if and only if this Tileable allows other Tileables to move into
+     * it
      */
-    public boolean canTraverse(Tileable t); // will return true iff t can share a tile with this Tileable
+    public boolean isTraversable();
+    
 }

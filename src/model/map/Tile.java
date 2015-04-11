@@ -35,6 +35,13 @@ class Tile {
             t.accept(e);
         }
     }
+    
+    /**
+     * TODO
+     * Should this be moved to MemTile?
+     * @return MemTile version of this Tile
+     * @author Jason Owens
+     */
     public MemTile getMemTile(){
         
         List<Tileable> copyOfList = cloneTileables();
@@ -51,6 +58,8 @@ class Tile {
         }
         return copyOfList;
     }
+    
+    
     
  
     public void removeTileable(Tileable t){
@@ -93,6 +102,9 @@ class Tile {
     }
     
     
+    /*
+    * Returning clones here so as to not expose internals
+    */
       
     public Location getLocationClone() {
         return this.location.clone();

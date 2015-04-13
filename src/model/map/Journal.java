@@ -5,19 +5,26 @@
  */
 package model.map;
 
+import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * The purpose of journal is store the Avatar's memory of the Tiles that it has seen.
  * 
  * @author Jason Owens
  */
-public class Journal{
-    private MemTile currentTile;
+public class Journal extends Observable{
+    private LinkedList<MemTile> memory;
     
     
+    public void addMemTile(MemTile m){
+        memory.add(m);
+    }
     /**
      * Moves the view north
      * @return whether or not the tile north of this one has been seen
-     */
+     *
     public boolean thinkNorth(){
         if(currentTile.hasNorth()){
             currentTile = currentTile.getNorth();
@@ -60,4 +67,5 @@ public class Journal{
         }
         return false;
     }
+    */
 }

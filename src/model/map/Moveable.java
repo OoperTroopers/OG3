@@ -12,10 +12,10 @@ package model.map;
  * @author Jason Owens
  */
 public interface Moveable {
-    public boolean moveNorth();
-    public boolean moveSouth();
-    public boolean moveNorthwest();
-    public boolean moveNortheast();
-    public boolean moveSoutheast();
-    public boolean moveSouthwest();
+    public void moveNorth();
+    public void moveSouth();
+    public void moveNorthwest();
+    public void moveNortheast();
+    public void moveSoutheast();
+    public void moveSouthwest();
 }

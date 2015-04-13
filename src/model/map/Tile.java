@@ -6,7 +6,9 @@
 package model.map;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import model.entities.Entity;
 
 /**
  * Tile represents the smallest discrete location an object can 
@@ -14,12 +16,13 @@ import java.util.List;
  * near it. 
  * @author Jason Owens
  */
-class Tile {
+public class Tile {
     
     private Location location;
     private Terrain terrain;
     private ArrayList<Tileable> tileables;
 
+    LinkedList<Entity> observers;
 
     private Tile north;
     private Tile northeast;
@@ -59,9 +62,6 @@ class Tile {
         return copyOfList;
     }
     
-    
-    
- 
     public void removeTileable(Tileable t){
         tileables.remove(t);
     }
@@ -114,6 +114,83 @@ class Tile {
     public Terrain getTerrainClone() {
         return this.terrain.clone();
     }
+    
+    /**
+     * 
+     * @author Jason Owens
+     */
+    public void addOvserver(Entity e){
+        
+    }
+    
+    
+    /**
+     * notifies all of the Entities that can see this Tile. Use this method whenever
+     * something visible about the tile changes.
+     * @author Jason Owens
+     */
+    public void notifyObservers(){
+        
+        for(Entity e: observers){
+            e.notify(this);
+        }
+    }
+
+    
+    /**
+     * moves a Tileable north
+     * @param aThis 
+     */
+    public void moveNorth(Entity aThis) {
+        this.removeTileable(aThis);
+        north.addTileable(aThis);
+    }
+
+    /**
+     * moves a Tileable south
+     * @param aThis 
+     */
+    public void moveSouth(Entity aThis) {
+        this.removeTileable(aThis);
+        south.addTileable(aThis);
+    }
+
+    /**
+     * moves a Tileable northwest
+     * @param aThis 
+     */
+    public void moveNorthwest(Entity aThis) {
+        this.removeTileable(aThis);
+        northwest.addTileable(aThis);
+    }
+
+    /**
+     * moves a Tileable northeast
+     * @param aThis 
+     */
+    public void moveNortheast(Entity aThis) {
+        this.removeTileable(aThis);
+        northeast.addTileable(aThis);
+    }
+
+    /**
+     * moves a Tileable southeast
+     * @param aThis 
+     */
+    public void moveSoutheast(Entity aThis) {
+        this.removeTileable(aThis);
+        southeast.addTileable(aThis);
+    }
+
+    /**
+     * moves a Tileable southwest
+     * @param aThis 
+     */
+    public void moveSouthwest(Entity aThis) {
+        this.removeTileable(aThis);
+        southwest.addTileable(aThis);
+    }
+    
     
 }
 

@@ -7,9 +7,13 @@ import model.statistics.*;
 import model.items.TakeableItem;
 
 import java.util.ArrayList;
+import model.map.Moveable;
 import model.map.Tileable;
+import model.map.Tile;
 
-public abstract class Entity implements Tileable implements Moveable{
+public abstract class Entity implements Tileable, Moveable{
+        private Tile myTile;
+    
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
 	private Occupation occupation;
@@ -37,6 +41,14 @@ public abstract class Entity implements Tileable implements Moveable{
 		//this.location = new Location();
 	}
 	
+        /**
+         * TODO make this copy the Entity
+         * @return a copy of the Entity
+         */
+        public abstract Entity clone();
+       
+        
+        
 	public void receiveDamage(int amount) {
 		//send damage to stats to modify health
 	}
@@ -117,5 +129,33 @@ public abstract class Entity implements Tileable implements Moveable{
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
+        
+        /*
+        * Map Interaction
+        */
+        
+        
+        /* These are the move commands for entity. Logic for whether or not these 
+            get called should be done before you call these. i.e. the controller should
+            know whether or not it's legal to move the Entity.
+        */
+        public void moveNorth(){
+            myTile.moveNorth(this);
+        }
+        public void moveSouth(){
+            myTile.moveSouth(this);
+        }
+        public void moveNorthwest(){
+            myTile.moveNorthwest(this);
+        }
+        public void moveNortheast(){
+            myTile.moveNortheast(this);
+        }
+        public void moveSoutheast(){
+            myTile.moveSoutheast(this);
+        }
+        public void moveSouthwest(){
+            myTile.moveSouthwest(this);
+        }
 	
 }

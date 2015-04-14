@@ -33,7 +33,7 @@ public class SummonerStatistics extends Statistics {
 				primaryStats.setHardiness(primaryStats.getHardiness() + 1);
 			}
 			primaryStats.setAgility(primaryStats.getAgility() + 1);
-			primaryStats.setIntellect(primaryStats.getIntellect() + 1);
+			primaryStats.setIntellect(primaryStats.getIntellect() + 2);
 		
 			getDerivedStats().updateAfterLevelUp(primaryStats);
 			setCurrentHealth(getDerivedStats().getMaxHealth());

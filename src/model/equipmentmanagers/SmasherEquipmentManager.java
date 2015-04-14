@@ -1,6 +1,5 @@
 package model.equipmentmanagers;
 
-import model.inventory.Inventory;
 import model.items.Arms;
 import model.items.Chest;
 import model.items.Helmet;
@@ -64,23 +63,19 @@ public class SmasherEquipmentManager extends EquipmentManager {
 		this.bareHandedWeapon = bareHandedWeapon;
 	}
 	
-	public void unequipShield(Inventory inventory) {
-		inventory.addToInventory(shield);
+	public void unequipShield() {
 		shield = null;
 	}
 	
-	public void unequipequipTwoHandedWeapon(Inventory inventory) {
-		inventory.addToInventory(twoHandedWeapon);
+	public void unequipTwoHandedWeapon() {
 		twoHandedWeapon = null;
 	}
 	
-	public void unequipOneHandedWeapon(Inventory inventory) {
-		inventory.addToInventory(oneHandedWeapon);
+	public void unequipOneHandedWeapon() {
 		oneHandedWeapon = null;
 	}
 	
-	public void unequipBareHandedWeapon(Inventory inventory) {
-		inventory.addToInventory(bareHandedWeapon);
+	public void unequipBareHandedWeapon() {
 		bareHandedWeapon = null;
 	}
 	

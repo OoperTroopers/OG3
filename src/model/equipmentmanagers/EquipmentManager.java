@@ -1,7 +1,6 @@
 package model.equipmentmanagers;
 
 import model.items.*;
-import model.inventory.Inventory;
 
 public abstract class EquipmentManager {
 	private Helmet helmet;
@@ -39,23 +38,19 @@ public abstract class EquipmentManager {
 		this.legs = legs;
 	}
 	
-	public void unequipHelmet(Inventory inventory) {
-		inventory.addToInventory(helmet);
+	public void unequipHelmet() {
 		helmet = null;
 	}
 	
-	public void unequipChest(Inventory inventory) {
-		inventory.addToInventory(chest);
+	public void unequipChest() {
 		chest = null;
 	}
 	
-	public void unequipArms(Inventory inventory) {
-		inventory.addToInventory(arms);
+	public void unequipArms() {
 		arms = null;
 	}
 	
-	public void unequipLegs(Inventory inventory) {
-		inventory.addToInventory(legs);
+	public void unequipLegs() {
 		legs = null;
 	}
 	

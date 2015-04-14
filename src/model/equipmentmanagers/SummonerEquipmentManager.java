@@ -5,7 +5,6 @@ import model.items.Chest;
 import model.items.Helmet;
 import model.items.Legs;
 import model.items.Staff;
-import model.inventory.Inventory;
 
 public class SummonerEquipmentManager extends EquipmentManager {
 	private Staff staff;
@@ -24,8 +23,7 @@ public class SummonerEquipmentManager extends EquipmentManager {
 		this.staff = staff;
 	}
 	
-	public void unequipStaff(Inventory inventory) {
-		inventory.addToInventory(staff);
+	public void unequipStaff() {
 		staff= null;
 	}
 	

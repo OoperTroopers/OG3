@@ -33,6 +33,10 @@ public abstract class Statistics {
 	public void incrementLevel() {
 		++currentLevel;
 	}
+	public void fullRestore() {
+		currentHealth = derivedStats.getMaxHealth();
+		currentMana = derivedStats.getMaxMana();
+	}
 	
 	public PrimaryStatistics getPrimaryStats() {
 		return primaryStats;

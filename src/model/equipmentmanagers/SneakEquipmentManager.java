@@ -1,6 +1,5 @@
 package model.equipmentmanagers;
 
-import model.inventory.Inventory;
 import model.items.Arms;
 import model.items.Chest;
 import model.items.Helmet;
@@ -24,8 +23,7 @@ public class SneakEquipmentManager extends EquipmentManager {
 		this.rangedWeapon = rangedWeapon;
 	}
 	
-	public void unequipRangedWeapon(Inventory inventory) {
-		inventory.addToInventory(rangedWeapon);
+	public void unequipRangedWeapon() {
 		rangedWeapon = null;
 	}
 	

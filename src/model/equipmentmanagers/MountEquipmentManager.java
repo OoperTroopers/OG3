@@ -5,7 +5,6 @@ import model.items.Chest;
 import model.items.Helmet;
 import model.items.Legs;
 import model.items.Saddle;
-import model.inventory.Inventory;
 
 public class MountEquipmentManager extends EquipmentManager {
 	private Saddle saddle;
@@ -24,8 +23,7 @@ public class MountEquipmentManager extends EquipmentManager {
 		this.saddle = saddle;
 	}
 	
-	public void unequipSaddle(Inventory inventory) {
-		inventory.addToInventory(saddle);
+	public void unequipSaddle() {
 		saddle = null;
 	}
 	

@@ -1,5 +1,7 @@
 package model.map;
 
+import model.effects.Effect;
+
 /**
  * The Tileable interface defines all of the requirements an object must meet in
  * order to properly be put into a Tile in our game. If an object will be put on a 

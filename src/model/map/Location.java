@@ -8,34 +8,40 @@ package model.map;
 /**
  * The purpose of Location is to store (and allow for changing of) 
  * the position of a map object.
- * @author Jason Owens
+ * @author Jason Owens, Cormac McCarthy
  */
 public class Location {
-    private int q;
-    private int r;
-    public Location(){
-        q=0;
-        r=0;
-    }
-    public Location(int q, int r){
-        this.q=q;
-        this.r=r;
+    private int x;
+    private int y;
+    private int z;
+    
+    public Location(int x, int y, int z) {
+    	this.x = x;
+    	this.y = y;
+    	this.z = z;
     }
     
-    public int getQ(){
-        return q;
+    public int getX() {
+    	return this.x;
     }
-    public int getR(){
-        return r;
+    
+    public int getY() {
+    	return this.y;
     }
-    public void setQ(int q){
-        this.q = q;
+    
+    public int getZ() {
+    	return this.z;
     }
-    public void setR(int r){
-        this.r = r;
+    
+    public String toString() {
+    	return "{" + this.x + ", " + this.y + ", " + this.z + "}";
+    }
+    
+    public int hashCode() {
+    	return 92821 * x + 7243 * y + 11317 * z;
     }
     
     public Location clone(){
-        return new Location(q,r);
+        return new Location(this.x, this.y, this.z);
     }
 }

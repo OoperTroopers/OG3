@@ -11,8 +11,7 @@ package model.map;
  */
 public abstract class Terrain {
     
-    
-    
+    public TerrainView terrainView;
     public abstract Terrain clone();
     
     /*

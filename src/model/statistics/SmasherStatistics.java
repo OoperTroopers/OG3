@@ -23,16 +23,16 @@ public class SmasherStatistics extends Statistics {
 	}
 	public void levelUp() {
 		while(getCurrentExperience() > (getCurrentLevel() * 10 + 90)) { 
-			setCurrentExperience(getCurrentExperience() - (getCurrentLevel() * 10 + 90));
+			decreaseExperience(getCurrentLevel() * 10 + 90);
 			incrementLevel();
 			
 			PrimaryStatistics primaryStats = getPrimaryStats();
-			primaryStats.setStrength(primaryStats.getStrength() + 2);
-			primaryStats.setHardiness(primaryStats.getHardiness() + 2);
-			primaryStats.setAgility(primaryStats.getAgility() + 1);
-			primaryStats.setIntellect(primaryStats.getIntellect() + 1);
+			primaryStats.increaseStrength(2);
+			primaryStats.increaseHardiness(2);
+			primaryStats.increaseAgility(1);
+			primaryStats.increaseIntellect(1);
 		
-			getDerivedStats().updateAfterLevelUp(primaryStats);
+			getDerivedStats().updateAfterLevelUp(primaryStats, getCurrentLevel());
 			setCurrentHealth(getDerivedStats().getMaxHealth());
 			setCurrentMana(getDerivedStats().getMaxMana());
 		}

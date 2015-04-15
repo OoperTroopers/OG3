@@ -72,4 +72,17 @@ public class PrimaryStatistics {
 	public void gainNewLife() {
 		++livesLeft;
 	}
+	
+	public void increaseStrength(int increase ) {
+		strength += increase;
+	}
+	public void increaseHardiness(int increase ) {
+		hardiness += increase;
+	}
+	public void increaseAgility(int increase ) {
+		agility += increase;
+	}
+	public void increaseIntellect(int increase ) {
+		intellect += increase;
+	}
 }

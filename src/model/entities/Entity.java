@@ -55,6 +55,7 @@ public abstract class Entity implements Tileable, Moveable{
         
 	public void receiveDamage(int damage) {
 		damage -= stats.getDefensiveRating();
+		damage = Math.max(0, damage);
 		stats.wound(damage);
 	}
 

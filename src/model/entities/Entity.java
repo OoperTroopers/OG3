@@ -5,6 +5,7 @@ import model.equipmentmanagers.*;
 import model.occupations.*;
 import model.statistics.*;
 import model.items.TakeableItem;
+import utilities.TileAlgorithm.Direction;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -12,7 +13,7 @@ import model.map.Tileable;
 import model.map.Tile;
 
 public abstract class Entity implements Tileable, Moveable{
-        private Tile myTile;
+    private Tile myTile;
     
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
@@ -47,10 +48,12 @@ public abstract class Entity implements Tileable, Moveable{
          */
         public abstract Entity clone();
        
-        
+    public void heal(int amount) {
+    	this.stats.heal(amount);
+    }
         
 	public void receiveDamage(int amount) {
-		//send damage to stats to modify health
+		this.stats.damage(amount);
 	}
 
 	public int sendDamage() {
@@ -140,22 +143,22 @@ public abstract class Entity implements Tileable, Moveable{
             know whether or not it's legal to move the Entity.
         */
         public void moveNorth(){
-            myTile.moveNorth(this);
+            myTile.move(this, Direction.NORTH);
         }
         public void moveSouth(){
-            myTile.moveSouth(this);
+            myTile.move(this, Direction.SOUTH);
         }
         public void moveNorthwest(){
-            myTile.moveNorthwest(this);
+            myTile.move(this, Direction.NORTHWEST);
         }
         public void moveNortheast(){
-            myTile.moveNortheast(this);
+            myTile.move(this, Direction.NORTHEAST);
         }
         public void moveSoutheast(){
-            myTile.moveSoutheast(this);
+            myTile.move(this, Direction.SOUTHEAST);
         }
         public void moveSouthwest(){
-            myTile.moveSouthwest(this);
+            myTile.move(this, Direction.SOUTHWEST);
         }
 	
 }

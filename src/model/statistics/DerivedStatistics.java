@@ -8,11 +8,12 @@ public class DerivedStatistics {
 	private int maxHealth;
 	private int maxMana;
 	
-	public DerivedStatistics() {	
+	public DerivedStatistics() {
 	}
 	
 	public DerivedStatistics(PrimaryStatistics primaryStats) {
 		this.primaryStats = primaryStats;
+		this.maxHealth = 10;
 	}
 
 	public void updateAfterLevelUp(PrimaryStatistics primaryStats) {

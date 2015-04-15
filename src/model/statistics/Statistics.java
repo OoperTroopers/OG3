@@ -38,6 +38,15 @@ public abstract class Statistics {
 		currentMana = derivedStats.getMaxMana();
 	}
 	
+	public void heal(int amount) {
+		int maxHealth = this.derivedStats.getMaxHealth();
+		this.currentHealth = Math.min(this.currentHealth + amount, maxHealth);
+	}
+	
+	public void damage(int amount) {
+		this.currentHealth = Math.max(0, this.currentHealth - amount);
+	}
+	
 	public PrimaryStatistics getPrimaryStats() {
 		return primaryStats;
 	}

@@ -1,17 +1,19 @@
-package model.entities;
+package model.items;
 
 import model.effects.Effect;
-import model.map.Journal;
+import model.effects.HealEffect;
+import model.entities.Entity;
 import model.map.Tile;
 
+public class HealingOneShotItem extends OneShotItem {
 
-public class Avatar extends Entity {
-    private Journal myJournal;
-
+	public HealingOneShotItem() {
+		super(new HealEffect());
+	}
+	
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);		
 	}
 
 	@Override
@@ -33,9 +35,15 @@ public class Avatar extends Entity {
 	}
 
 	@Override
-	public Entity clone() {
+	public boolean isPassable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Item clone() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-    
+	
 }

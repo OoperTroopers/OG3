@@ -5,7 +5,6 @@ package model.effects;
  * be constant damage over time, or setting an Item on fire, etc.
  * @author Cormac McCarthy
  */
-
 public abstract class BurnEffect extends Effect {
 	
 }

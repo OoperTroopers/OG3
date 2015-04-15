@@ -24,6 +24,9 @@ public abstract class Statistics {
 		currentExperience += experience;
 		levelUp();
 	}
+	public void decreaseExperience(int experience) {
+		currentExperience -= experience;
+	}
 	public void recieveGold(int gold) {
 		currentGold += gold;
 	}
@@ -38,13 +41,26 @@ public abstract class Statistics {
 		currentMana = derivedStats.getMaxMana();
 	}
 	
-	public void heal(int amount) {
-		int maxHealth = this.derivedStats.getMaxHealth();
-		this.currentHealth = Math.min(this.currentHealth + amount, maxHealth);
+	public int getOffensiveRating() {
+		return derivedStats.getOffensiveRating();
 	}
 	
-	public void damage(int amount) {
-		this.currentHealth = Math.max(0, this.currentHealth - amount);
+	public int getDefensiveRating() {
+		return derivedStats.getDefensiveRating();
+	}
+	
+	public void heal(int health) {
+		currentHealth += health;
+		if(currentHealth > derivedStats.getMaxHealth()) {
+			currentHealth = derivedStats.getMaxHealth();
+		}
+	}
+	
+	public void wound(int damage) {
+		currentHealth -= damage;
+		if(currentHealth <= 0) {
+			//respawn
+		}
 	}
 	
 	public PrimaryStatistics getPrimaryStats() {

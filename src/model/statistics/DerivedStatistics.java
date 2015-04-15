@@ -9,17 +9,36 @@ public class DerivedStatistics {
 	private int maxMana;
 	
 	public DerivedStatistics() {
+		offensiveRating = 10;
+		defensiveRating = 10;
+		armorRating = 10;
+		maxHealth = 10;
+		maxMana = 10;
 	}
 	
 	public DerivedStatistics(PrimaryStatistics primaryStats) {
 		this.primaryStats = primaryStats;
-		this.maxHealth = 10;
+		offensiveRating = primaryStats.getStrength() + 2;
+		defensiveRating = primaryStats.getAgility() + 2;
+		armorRating = primaryStats.getHardiness() + 2;
+		maxHealth = primaryStats.getHardiness() + 5;
+		maxMana = primaryStats.getIntellect() + 5;
 	}
 
-	public void updateAfterLevelUp(PrimaryStatistics primaryStats) {
-		//subtract old primary stats calculation
-		//add new primary stats calculation
-		//so as to not influence the equippable stats boosts
+	public void updateAfterLevelUp(PrimaryStatistics primaryStats, int level) {
+		offensiveRating -= this.primaryStats.getStrength() + 2 * level;
+		defensiveRating -= this.primaryStats.getAgility() + 2 * level;
+		armorRating -= this.primaryStats.getHardiness() + 2 * level;
+		maxHealth -= this.primaryStats.getHardiness() + 5 * level;
+		maxMana -= this.primaryStats.getIntellect() + 5 * level;
+		
+		offensiveRating += primaryStats.getStrength() + 2 * level;
+		defensiveRating += primaryStats.getAgility() + 2 * level;
+		armorRating += primaryStats.getHardiness() + 2 * level;
+		maxHealth += primaryStats.getHardiness() + 5 * level;
+		maxMana += primaryStats.getIntellect() + 5 * level;
+		
+		this.primaryStats = primaryStats;
 	}
 	
 	public void addEquippable(EquippableStatistics equippableStats){

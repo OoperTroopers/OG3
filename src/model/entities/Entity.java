@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import model.map.Moveable;
 import model.map.Tileable;
 import model.map.Tile;
+import model.map.Location;
 
 public abstract class Entity implements Tileable, Moveable{
     private Tile myTile;
@@ -20,7 +21,7 @@ public abstract class Entity implements Tileable, Moveable{
 	private Occupation occupation;
 	private Statistics stats;
 	private int direction;
-	//private Location location;
+	private Location location;
 	
 	// generic constructor creates Smasher as base class
 	public Entity() {
@@ -29,7 +30,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.occupation = new SmasherOccupation();
 		this.stats = new SmasherStatistics();
 		this.direction = 8;
-		//this.location = new Location();
+		this.location = new Location();
 	}
 	
 	// constructor for Entity with specific occupation
@@ -39,7 +40,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.occupation = o;
 		this.stats = s;
 		this.direction = 8;
-		//this.location = new Location();
+		this.location = new Location();
 	}
 	
         /**
@@ -52,17 +53,22 @@ public abstract class Entity implements Tileable, Moveable{
     	this.stats.heal(amount);
     }
         
-	public void receiveDamage(int amount) {
-		this.stats.damage(amount);
+	public void receiveDamage(int damage) {
+		damage -= stats.getDefensiveRating();
+		stats.wound(damage);
 	}
 
 	public int sendDamage() {
-		//send offensive damage to location
-		return 0;
+		int damage = stats.getOffensiveRating();
+		return damage;
 	}
 	
-	public void changeLocation(int x, int y) {
-		//modify location
+	public void changeLocation(int x, int y, int z) {
+		location = new Location(x, y, z);
+	}
+	
+	public Location getLocation() {
+		return location;
 	}
 	
 	public void addItemToInventory(TakeableItem item) {
@@ -132,7 +138,7 @@ public abstract class Entity implements Tileable, Moveable{
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-        
+	
         /*
         * Map Interaction
         */

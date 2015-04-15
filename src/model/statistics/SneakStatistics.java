@@ -24,16 +24,16 @@ public class SneakStatistics extends Statistics {
 	
 	public void levelUp() {
 		while(getCurrentExperience() > (getCurrentLevel() * 10 + 90)) { 
-			setCurrentExperience(getCurrentExperience() - (getCurrentLevel() * 10 + 90));
+			decreaseExperience(getCurrentLevel() * 10 + 90);
 			incrementLevel();
 			
 			PrimaryStatistics primaryStats = getPrimaryStats();
-			primaryStats.setStrength(primaryStats.getStrength() + 1);
-			primaryStats.setHardiness(primaryStats.getHardiness() + 1);
-			primaryStats.setAgility(primaryStats.getAgility() + 2);
-			primaryStats.setIntellect(primaryStats.getIntellect() + 1);
+			primaryStats.increaseStrength(1);
+			primaryStats.increaseHardiness(1);
+			primaryStats.increaseAgility(2);
+			primaryStats.increaseIntellect(1);
 		
-			getDerivedStats().updateAfterLevelUp(primaryStats);
+			getDerivedStats().updateAfterLevelUp(primaryStats, getCurrentLevel());
 			setCurrentHealth(getDerivedStats().getMaxHealth());
 			setCurrentMana(getDerivedStats().getMaxMana());
 		}

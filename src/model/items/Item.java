@@ -46,7 +46,6 @@ public abstract class Item implements Tileable{
 
 	public abstract boolean isPassable();
 	
-	public abstract void touch();
 	public abstract void touch(Entity entity);
 	
 	public abstract Tileable clone();

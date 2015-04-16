@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package model.map;
-<<<<<<< HEAD
 
 import view.modelview.tileable.terrain.GrassTerrainView;
 import view.modelview.tileable.terrain.TerrainView;

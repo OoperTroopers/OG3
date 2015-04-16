@@ -1,5 +1,6 @@
 package model.items;
 import model.effects.Effect;
+import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
@@ -40,5 +41,10 @@ public class Arms extends Armor {
 	public boolean isTraversable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public void touch(Entity entity) {
+		// TODO Auto-generated method stub
+		
 	}
 }

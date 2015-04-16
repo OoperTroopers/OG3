@@ -1,6 +1,7 @@
 package model.items;
 
 import model.effects.Effect;
+import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
 import model.statistics.Statistics;
@@ -38,5 +39,11 @@ public class Potion extends TakeableItem implements Usable{
 	public boolean isTraversable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void touch(Entity entity) {
+		// TODO Auto-generated method stub
+		
 	}
 }

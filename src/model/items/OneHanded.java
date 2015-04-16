@@ -1,6 +1,7 @@
 package model.items;
 
 import model.effects.Effect;
+import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
@@ -51,6 +52,11 @@ public class OneHanded extends Weapon {
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory i) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void touch(Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

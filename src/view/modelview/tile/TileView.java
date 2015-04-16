@@ -1,9 +1,9 @@
-package modelview;
+package view.modelview.tile;
 
-public class GrassTerrainView {
+public class TileView {
 	
 	// unimplemented right now
 
-	public GrassTerrainView() {}
+	public TileView() {}
 	public void draw() {}
 }

@@ -59,7 +59,7 @@ public class Tile {
         Terrain tCopy = getTerrainClone();
         Location lCopy = getLocationClone();
         
-        return new MemTile(this, location, tCopy, copyOfList);
+        return null;//new MemTile(this, location, tCopy, copyOfList);
     }
     
     private ArrayList<Tileable> cloneTileables(){

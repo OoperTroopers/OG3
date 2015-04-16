@@ -50,6 +50,6 @@ public class Avatar extends Entity {
         updateMemTile(t);
     }
     private void updateMemTile(Tile t){
-        myJournal.updateMemTile(t);
+        //myJournal.updateMemTile(t);
     }
 }

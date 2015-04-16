@@ -17,11 +17,11 @@ import model.map.Location;
 
 public abstract class Entity implements Tileable, Moveable{
         private Tile myTile;
-        private MovementCapabilities myMovement;
+        //private MovementCapabilities myMovement;
         
         
 	private Inventory inventory;
-	private EquipmentManager equipmentMangaer;
+	private EquipmentManager equipmentManager;
 	private Occupation occupation;
 	private Statistics stats;
 	private int direction;
@@ -30,17 +30,18 @@ public abstract class Entity implements Tileable, Moveable{
 	// generic constructor creates Smasher as base class
 	public Entity() {
 		this.inventory = new Inventory();
-		this.equipmentMangaer = new SmasherEquipmentManager();
-		this.occupation = new SmasherOccupation();
 		this.stats = new SmasherStatistics();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
+		this.occupation = new SmasherOccupation();
 		this.direction = 8;
 		this.location = new Location(0,0,0);
 	}
 	
-	// constructor for Entity with specific occupation
+	// constructor for Entity with specific occupation. 
+	//needs refactor to account for equipment manager needing derived stats
 	public Entity(Occupation o, EquipmentManager em, Statistics s) {
 		this.inventory = new Inventory();
-		this.equipmentMangaer = em;
+		this.equipmentManager = em;
 		this.occupation = o;
 		this.stats = s;
 		this.direction = 8;
@@ -121,12 +122,12 @@ public abstract class Entity implements Tileable, Moveable{
 		this.inventory = inventory;
 	}
 
-	public EquipmentManager getEquipmentMangaer() {
-		return equipmentMangaer;
+	public EquipmentManager getEquipmentManager() {
+		return equipmentManager;
 	}
 
-	public void setEquipmentMangaer(EquipmentManager equipmentMangaer) {
-		this.equipmentMangaer = equipmentMangaer;
+	public void setEquipmentManager(EquipmentManager equipmentManager) {
+		this.equipmentManager = equipmentManager;
 	}
 
 	public Occupation getOccupation() {

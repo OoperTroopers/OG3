@@ -38,13 +38,14 @@ public class Journal extends Observable{
     }
     
     public void printAll(){
-        for(MemTile m : memory){
-         m.print();   
+        for(Location l : memory.keySet()){
+        	MemTile m = memory.get(l);
+        	m.print();   
         }
     }
     
     public void pushToView(){
-     notifyView();   
+     // notifyView();   
     }
     /**
      * Moves the view north

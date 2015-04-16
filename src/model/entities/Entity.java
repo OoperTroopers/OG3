@@ -9,8 +9,10 @@ import utilities.TileAlgorithm.Direction;
 
 import java.util.ArrayList;
 import java.util.Observer;
+
 import model.map.Journal;
 import model.map.Moveable;
+import model.map.MovementCapabilities;
 import model.map.Tileable;
 import model.map.Tile;
 import model.map.Location;

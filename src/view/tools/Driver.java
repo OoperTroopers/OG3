@@ -3,6 +3,12 @@
 
 package view.tools;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -40,8 +46,20 @@ public class Driver {
 		JPanel newPanel = new View();
 		jf.add(newPanel);
 		
-		Terrain gt = new GrassTerrain();
+		try {
+			BufferedImage img = ImageIO.read(new File("res/img/grass_terrain.png"));
+			Graphics2D g2 = img.createGraphics();
+			
+			
+		} catch (IOException e) {
+			System.out.println("trouble finding object");
+			e.printStackTrace();
+		}
+
+		
+		/*Terrain gt = new GrassTerrain();
 		Tile t = new Tile();
-		t.drawView();
+		t.drawView();*/
+		
 	}
 }

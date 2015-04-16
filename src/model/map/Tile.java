@@ -11,6 +11,7 @@ import model.effects.Effect;
 import model.entities.Entity;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
+import view.modelview.tile.TileView;
 
 /**
  * Tile represents the smallest discrete location an object can 
@@ -25,6 +26,7 @@ public class Tile {
     private HashMap<Direction, Tile> neighbors;
     private ArrayList<Tileable> tileables;
 
+    private TileView tileView;
     LinkedList<Entity> observers;
     
     public Tile() {
@@ -59,7 +61,8 @@ public class Tile {
         Terrain tCopy = getTerrainClone();
         Location lCopy = getLocationClone();
         
-        return new MemTile(this, location, tCopy, copyOfList);
+        return new MemTile(this);
+        // return new MemTile(this, location, tCopy, copyOfList);
     }
     
     private ArrayList<Tileable> cloneTileables(){
@@ -229,6 +232,6 @@ public class Tile {
 
 	public void drawView() {
 		// TODO Auto-generated method stub
-		
+		tileView.draw();
 	}
 }

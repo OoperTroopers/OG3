@@ -6,6 +6,8 @@ import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.equipmentmanagers.SmasherEquipmentManager;
+import model.inventory.Inventory;
 
 public class TwoHanded extends Weapon {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
@@ -16,6 +18,7 @@ public class TwoHanded extends Weapon {
 		em.unequipTwoHandedWeapon();
 		inventory.addToInventory(this);
 	}
+
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub

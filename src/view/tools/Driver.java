@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import view.view.View;
+
 import model.map.GrassTerrain;
 import model.map.Terrain;
 import model.map.Tile;
@@ -27,6 +28,6 @@ public class Driver {
 		
 		Terrain gt = new GrassTerrain();
 		Tile t = new Tile();
-		t.drawView();
+		// t.drawView();
 	}
 }

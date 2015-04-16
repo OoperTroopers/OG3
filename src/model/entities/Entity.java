@@ -5,6 +5,7 @@ import model.equipmentmanagers.*;
 import model.occupations.*;
 import model.statistics.*;
 import model.items.TakeableItem;
+import utilities.TileAlgorithm.Direction;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -13,7 +14,7 @@ import model.map.Tile;
 import model.map.Location;
 
 public abstract class Entity implements Tileable, Moveable{
-        private Tile myTile;
+    private Tile myTile;
     
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
@@ -49,9 +50,13 @@ public abstract class Entity implements Tileable, Moveable{
         public abstract Entity clone();
        
         
+    public void heal(int amount) {
+    	this.stats.heal(amount);
+    }
         
 	public void receiveDamage(int damage) {
 		damage -= stats.getDefensiveRating();
+		damage = Math.max(0, damage);
 		stats.wound(damage);
 	}
 
@@ -65,6 +70,9 @@ public abstract class Entity implements Tileable, Moveable{
 		location.setR(r);
 	}*/
 	// right now, setQ and setR are unimplemented
+	public void changeLocation(int x, int y, int z) {
+		location = new Location(x, y, z);
+	}
 	
 	public Location getLocation() {
 		return location;
@@ -165,5 +173,5 @@ public abstract class Entity implements Tileable, Moveable{
         public void moveSouthwest(){
             myTile.moveSouthwest(this);
         }
-	
+
 }

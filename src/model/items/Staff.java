@@ -6,6 +6,8 @@ import model.equipmentmanagers.SummonerEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.equipmentmanagers.SummonerEquipmentManager;
+import model.inventory.Inventory;
 
 public class Staff extends Weapon {
 	public void equip(SummonerEquipmentManager em, Inventory inventory) {
@@ -16,6 +18,7 @@ public class Staff extends Weapon {
 		em.unequipStaff();
 		inventory.addToInventory(this);
 	}
+
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub

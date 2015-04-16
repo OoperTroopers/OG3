@@ -1,5 +1,6 @@
 package model.items;
 
+import model.entities.Entity;
 import model.map.Tileable;
 
 public abstract class Item implements Tileable{	
@@ -46,4 +47,7 @@ public abstract class Item implements Tileable{
 	public abstract boolean isPassable();
 	
 	public abstract void touch();
+	public abstract void touch(Entity entity);
+	
+	public abstract Item clone();
 }

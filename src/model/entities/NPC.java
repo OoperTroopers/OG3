@@ -7,6 +7,9 @@ import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
+import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SmasherEquipmentManager;
+import model.inventory.Inventory;
 import model.occupations.Occupation;
 import model.occupations.SmasherOccupation;
 import model.statistics.SmasherStatistics;
@@ -76,4 +79,5 @@ public class NPC extends Entity {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

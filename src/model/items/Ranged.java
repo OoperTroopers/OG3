@@ -6,6 +6,8 @@ import model.equipmentmanagers.SneakEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.equipmentmanagers.SneakEquipmentManager;
+import model.inventory.Inventory;
 
 public class Ranged extends Weapon {
 	public void equip(SneakEquipmentManager em, Inventory inventory) {
@@ -16,6 +18,7 @@ public class Ranged extends Weapon {
 		em.unequipRangedWeapon();
 		inventory.addToInventory(this);
 	}
+
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub

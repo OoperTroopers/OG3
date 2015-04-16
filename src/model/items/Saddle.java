@@ -6,6 +6,8 @@ import model.equipmentmanagers.MountEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.equipmentmanagers.MountEquipmentManager;
+import model.inventory.Inventory;
 
 public class Saddle extends Armor {
 	public void equip(MountEquipmentManager em, Inventory inventory) {
@@ -16,6 +18,7 @@ public class Saddle extends Armor {
 		em.unequipSaddle();
 		inventory.addToInventory(this);
 	}
+
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub

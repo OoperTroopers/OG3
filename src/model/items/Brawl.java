@@ -6,6 +6,8 @@ import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.equipmentmanagers.SmasherEquipmentManager;
+import model.inventory.Inventory;
 
 public class Brawl extends Weapon {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
@@ -51,4 +53,5 @@ public class Brawl extends Weapon {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

@@ -44,4 +44,15 @@ public class NPC extends Entity {
 	public void trackAvatar() {
 		//do stuff
 	}
+	
+	@Override
+	public void receiveDamage(int damage) {
+		damage -= getStats().getDefensiveRating();
+		damage = Math.max(0, damage);
+		getStats().wound(damage);
+		if(getStats().getCurrentHealth() <= 0) {
+			//die. if lives left respawn as well
+		}
+		hostile = true;
+	}
 }

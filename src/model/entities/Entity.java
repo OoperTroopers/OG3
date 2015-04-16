@@ -57,6 +57,9 @@ public abstract class Entity implements Tileable, Moveable{
 		damage -= stats.getDefensiveRating();
 		damage = Math.max(0, damage);
 		stats.wound(damage);
+		if(stats.getCurrentHealth() <= 0) {
+			//die. if lives left respawn as well
+		}
 	}
 
 	public int sendDamage() {

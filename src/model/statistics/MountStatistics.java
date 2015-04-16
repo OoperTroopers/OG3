@@ -23,17 +23,22 @@ public class MountStatistics extends Statistics {
 	}
 	
 	public void levelUp() {
-		while(getCurrentExperience() > (getCurrentLevel() * 10 + 90)) { 
+		while(getCurrentExperience() >= (getCurrentLevel() * 10 + 90)) { 
 			decreaseExperience(getCurrentLevel() * 10 + 90);
 			incrementLevel();
-			
-			PrimaryStatistics primaryStats = getPrimaryStats();			
+
+			PrimaryStatistics oldStats = new PrimaryStatistics();
+			PrimaryStatistics primaryStats = getPrimaryStats();	
+			oldStats.setAgility(primaryStats.getAgility());
+			oldStats.setStrength(primaryStats.getStrength());
+			oldStats.setHardiness(primaryStats.getHardiness());
+			oldStats.setIntellect(primaryStats.getIntellect());		
 			primaryStats.increaseStrength(1);
 			primaryStats.increaseHardiness(1);
 			primaryStats.increaseAgility(1);
 			primaryStats.increaseIntellect(1);
 		
-			getDerivedStats().updateAfterLevelUp(primaryStats, getCurrentLevel());
+			getDerivedStats().updateAfterLevelUp(oldStats, primaryStats, getCurrentLevel());
 			setCurrentHealth(getDerivedStats().getMaxHealth());
 			setCurrentMana(getDerivedStats().getMaxMana());
 		}

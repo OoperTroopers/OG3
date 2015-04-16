@@ -7,7 +7,7 @@ import model.map.Tile;
 
 public class Avatar extends Entity {
     private Journal myJournal;
-
+    
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub
@@ -36,6 +36,13 @@ public class Avatar extends Entity {
 	public Entity clone() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public Journal getMyJournal() {
+		return myJournal;
+	}
+	public void setMyJournal(Journal myJournal) {
+		this.myJournal = myJournal;
 	}
     
 }

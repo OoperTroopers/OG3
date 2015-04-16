@@ -1,7 +1,6 @@
 package model.statistics;
 
 public class DerivedStatistics {
-	private PrimaryStatistics primaryStats;
 	private int offensiveRating;
 	private int defensiveRating;
 	private int armorRating;
@@ -17,28 +16,25 @@ public class DerivedStatistics {
 	}
 	
 	public DerivedStatistics(PrimaryStatistics primaryStats) {
-		this.primaryStats = primaryStats;
 		offensiveRating = primaryStats.getStrength() + 2;
 		defensiveRating = primaryStats.getAgility() + 2;
 		armorRating = primaryStats.getHardiness() + 2;
 		maxHealth = primaryStats.getHardiness() + 5;
-		maxMana = primaryStats.getIntellect() + 5;
+		maxMana = primaryStats.getIntellect()+ 5;
 	}
 
-	public void updateAfterLevelUp(PrimaryStatistics primaryStats, int level) {
-		offensiveRating -= this.primaryStats.getStrength() + 2 * level;
-		defensiveRating -= this.primaryStats.getAgility() + 2 * level;
-		armorRating -= this.primaryStats.getHardiness() + 2 * level;
-		maxHealth -= this.primaryStats.getHardiness() + 5 * level;
-		maxMana -= this.primaryStats.getIntellect() + 5 * level;
+	public void updateAfterLevelUp(PrimaryStatistics oldStats, PrimaryStatistics primaryStats, int level) {
+		offensiveRating -= oldStats.getStrength() + 2 * (level - 1);
+		defensiveRating -= oldStats.getAgility() + 2 * (level - 1);
+		armorRating -= oldStats.getHardiness() + 2 * (level - 1);
+		maxHealth -= oldStats.getHardiness() + 5 * (level - 1);
+		maxMana -= oldStats.getIntellect() + 5 * (level - 1);
 		
 		offensiveRating += primaryStats.getStrength() + 2 * level;
-		defensiveRating += primaryStats.getAgility() + 2 * level;
+		defensiveRating +=  primaryStats.getAgility() + 2 * level;
 		armorRating += primaryStats.getHardiness() + 2 * level;
 		maxHealth += primaryStats.getHardiness() + 5 * level;
 		maxMana += primaryStats.getIntellect() + 5 * level;
-		
-		this.primaryStats = primaryStats;
 	}
 	
 	public void addEquippable(EquippableStatistics equippableStats){

@@ -22,19 +22,24 @@ public class Shopkeeper extends NPC {
 	public void openShop(Avatar avatar) {
 		Inventory avatarInventory = avatar.getInventory();
 		Inventory shopkeeperInventory = this.getInventory();
+		//int bargainingLevel = avatar.getSkillLevel(bargaining)
 		//send to view to display everything
 	}
 	
 	//adjusted buy price means lower than base. Shopkeeper's perspective
 	private int adjustedBuyPrice(TakeableItem item) {
+		int price = item.getValue();
 		//do calculation based on bargaining skill level
-		return item.getValue();
+		//price = Math.max((price * (bargainingSkill / 100)), 1)
+		return price;
 	}
 	
 	//adjusted sell price means higher than base. Shopkeeper's perspective.
 	private int adjustedSellPrice(TakeableItem item) {
+		int price = item.getValue();
 		//do calculation based on bargaining skill level
-		return item.getValue();
+		//price = price + (price * (1 - bargainingSkill / 100))
+		return price;
 	}
 	
 	//buying is from shopkeepers perspective. The player is selling.

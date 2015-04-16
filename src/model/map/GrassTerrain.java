@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package model.map;
-import modelview.TerrainView;
-import modelview.GrassTerrainView;
+
+import view.modelview.tileable.terrain.GrassTerrainView;
+import view.modelview.tileable.terrain.TerrainView;
+
 /**
  *
  * @author Jason Owens
@@ -13,7 +15,7 @@ import modelview.GrassTerrainView;
 public class GrassTerrain extends Terrain{
 	
     public GrassTerrain() {
-    	terrainView = new GrassTerrainView();
+    	// terrainView = new GrassTerrainView();
     }
     
     @Override
@@ -21,9 +23,9 @@ public class GrassTerrain extends Terrain{
         return new GrassTerrain();
     }
     
-    @Override
-    public void draw() {
-    	terrainView.draw();
-    }
+    //@Override
+    //public void draw() {
+    //	TerrainView.draw();
+    //}
     
 }

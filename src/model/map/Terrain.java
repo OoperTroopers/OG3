@@ -5,6 +5,9 @@
  */
 package model.map;
 
+import view.modelview.tileable.terrain.TerrainView;
+
+
 /**
  * 
  * @author Jason Owens

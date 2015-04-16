@@ -62,8 +62,8 @@ public class Tile {
         return new MemTile(this, location, tCopy, copyOfList);
     }
     
-    private List<Tileable> cloneTileables(){
-        List<Tileable> copyOfList = new ArrayList<>();
+    private ArrayList<Tileable> cloneTileables(){
+        ArrayList<Tileable> copyOfList = new ArrayList<>();
         for(Tileable t: tileables){
             copyOfList.add(t.clone());
         }
@@ -111,12 +111,17 @@ public class Tile {
         return this.terrain.clone();
     }
     
+    public ArrayList<Tileable> getTileablesClone(){
+        return cloneTileables();        
+    }
+    
+    
     /**
      * 
      * @author Jason Owens
      */
-    public void addObserver(Entity e){
-        
+    public void addOvserver(Entity e){
+        observers.add(e);
     }
     
     
@@ -125,10 +130,11 @@ public class Tile {
      * something visible about the tile changes.
      * @author Jason Owens
      */
-    public void notifyObservers(){
-        
+    public void notifyObservers(){        
         for(Entity e: observers){
-            e.notify(this);
+            // e.notify(this);	
+        	
+        	// this throws an error
         }
     }
     
@@ -195,4 +201,34 @@ public class Tile {
     public int hashCode() {
     	return this.location.hashCode();
     }
+
+	public void moveNorth(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void moveSouth(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void moveNorthwest(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void moveSoutheast(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void moveSouthwest(Entity entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void drawView() {
+		// TODO Auto-generated method stub
+		
+	}
 }

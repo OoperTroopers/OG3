@@ -7,6 +7,7 @@ import model.entities.Entity;
  * fixed amount of time.
  * @author Cormac McCarthy
  */
+
 public class Fireball extends BurnEffect {
 
 	@Override

@@ -1,9 +1,5 @@
 package model.effects;
 
-import model.map.*;
-import model.entities.*;
-import model.items.*;
-
 /**
  * Effect represents an effect that an object can have on Tileable objects. Effect utilizes
  * the visitor pattern by defining all of the possible Tileable objects an Effect can visit,
@@ -11,13 +7,18 @@ import model.items.*;
  * specific visit method.
  * @author Cormac McCarthy
  */
+
+import model.map.*;
+import model.entities.*;
+import model.items.*;
+
 public abstract class Effect {
-	
 	public void visit(Entity entity) { }
 	public void visit(Avatar avatar) { }
 	public void visit(NPC npc) { }
 	public void visit(Item item) { }
-	public void visit(Trap trap) { }
-	public void visit(AreaEffect areaEffect) { }
-		
+	// public void visit(Trap trap) { }
+	// public void visit(AreaEffect areaEffect) { }
+	
+	// these shoot errors		
 }

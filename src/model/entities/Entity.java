@@ -8,14 +8,18 @@ import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
 
 import java.util.ArrayList;
+import java.util.Observer;
+import model.map.Journal;
 import model.map.Moveable;
 import model.map.Tileable;
 import model.map.Tile;
 import model.map.Location;
 
 public abstract class Entity implements Tileable, Moveable{
-    private Tile myTile;
-    
+        private Tile myTile;
+        private MovementCapabilities myMovement;
+        
+        
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
 	private Occupation occupation;
@@ -30,7 +34,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.occupation = new SmasherOccupation();
 		this.stats = new SmasherStatistics();
 		this.direction = 8;
-		this.location = new Location();
+		this.location = new Location(0,0,0);
 	}
 	
 	// constructor for Entity with specific occupation
@@ -40,7 +44,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.occupation = o;
 		this.stats = s;
 		this.direction = 8;
-		this.location = new Location();
+		this.location = new Location(0,0,0);
 	}
 	
         /**
@@ -49,6 +53,7 @@ public abstract class Entity implements Tileable, Moveable{
          */
         public abstract Entity clone();
        
+        
     public void heal(int amount) {
     	this.stats.heal(amount);
     }
@@ -67,6 +72,11 @@ public abstract class Entity implements Tileable, Moveable{
 		return damage;
 	}
 	
+	/*public void changeLocation(int q, int r) {
+		location.setQ(q);
+		location.setR(r);
+	}*/
+	// right now, setQ and setR are unimplemented
 	public void changeLocation(int x, int y, int z) {
 		location = new Location(x, y, z);
 	}
@@ -153,22 +163,24 @@ public abstract class Entity implements Tileable, Moveable{
             know whether or not it's legal to move the Entity.
         */
         public void moveNorth(){
-            myTile.move(this, Direction.NORTH);
+            myTile.moveNorth(this);
         }
         public void moveSouth(){
-            myTile.move(this, Direction.SOUTH);
+            myTile.moveSouth(this);
         }
         public void moveNorthwest(){
-            myTile.move(this, Direction.NORTHWEST);
+            myTile.moveNorthwest(this);
         }
         public void moveNortheast(){
-            myTile.move(this, Direction.NORTHEAST);
+            myTile.moveNorthwest(this);
         }
         public void moveSoutheast(){
-            myTile.move(this, Direction.SOUTHEAST);
+            myTile.moveSoutheast(this);
         }
         public void moveSouthwest(){
-            myTile.move(this, Direction.SOUTHWEST);
+            myTile.moveSouthwest(this);
         }
 	
+        
+        
 }

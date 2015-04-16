@@ -45,4 +45,11 @@ public class Avatar extends Entity {
 		this.myJournal = myJournal;
 	}
     
+    
+    public void notifyOfTileChange(Tile t){
+        updateMemTile(t);
+    }
+    private void updateMemTile(Tile t){
+        myJournal.updateMemTile(t);
+    }
 }

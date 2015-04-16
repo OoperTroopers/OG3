@@ -30,11 +30,14 @@ public class MemTile {
     private MemTile southwest;
     
     
-    public MemTile(Tile clonedTile, Location l, Terrain t, List<Tileable> tileables){
+    public MemTile(Tile clonedTile){
         this.myTile = clonedTile;
-        this.location = l;
-        this.terrain = t;
-        this.tileables = tileables;
+        this.location = clonedTile.getLocationClone();
+        this.terrain = clonedTile.getTerrainClone();
+        this.tileables = clonedTile.getTileablesClone();
+        //this.location = l;
+       // this.terrain = t;
+        //this.tileables = tileables;
     }
     
     /**
@@ -202,6 +205,18 @@ public class MemTile {
      */
     public MemTile getSoutheast(){
         return southeast;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+    
+    /**
+     * TODO tie this with an actual view object
+     * 
+     */
+    public void print(){
+        myView.print(this);
     }
        
     

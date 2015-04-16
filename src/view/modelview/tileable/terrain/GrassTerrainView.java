@@ -1,4 +1,4 @@
-package modelview;
+package view.modelview.tileable.terrain;
 
 public class GrassTerrainView {
 	public GrassTerrainView() {}

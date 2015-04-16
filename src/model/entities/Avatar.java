@@ -1,5 +1,6 @@
 package model.entities;
 
+import model.effects.Effect;
 import model.map.Journal;
 import model.map.Tile;
 

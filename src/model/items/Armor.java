@@ -2,6 +2,7 @@ package model.items;
 
 import model.statistics.EquippableStatistics;
 import model.equipmentmanagers.EquipmentManager;
+import model.inventory.Inventory;
 
 public abstract class Armor extends TakeableItem implements Equippable {
 	private EquippableStatistics equipStats;
@@ -15,13 +16,8 @@ public abstract class Armor extends TakeableItem implements Equippable {
 		super(name, description, id, value);
 		this.equipStats = es;	
 	}
-	public void equip(EquipmentManager em) {
-		//not sure how to implement here
-	}
-	
-	public void unequip(EquipmentManager em) {
-		//not sure how to implement here
-	}
+	public abstract void equip(EquipmentManager em, Inventory i);
+	public abstract void unequip(EquipmentManager em, Inventory i);
 	
 	public EquippableStatistics getEquipStats() { 
 		return equipStats;

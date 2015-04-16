@@ -5,19 +5,27 @@
  */
 package model.map;
 
+import view.modelview.tileable.terrain.GrassTerrainView;
+import view.modelview.tileable.terrain.TerrainView;
+
 /**
  *
  * @author Jason Owens
  */
 public class GrassTerrain extends Terrain{
-
-    public GrassTerrain(){
-        
+	
+    public GrassTerrain() {
+    	// terrainView = new GrassTerrainView();
     }
     
     @Override
     public Terrain clone() {
         return new GrassTerrain();
     }
+    
+    //@Override
+    //public void draw() {
+    //	TerrainView.draw();
+    //}
     
 }

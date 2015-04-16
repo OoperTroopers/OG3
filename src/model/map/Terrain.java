@@ -5,14 +5,16 @@
  */
 package model.map;
 
+import view.modelview.tileable.terrain.TerrainView;
+
+
 /**
  * 
  * @author Jason Owens
  */
 public abstract class Terrain {
     
-    
-    
+    public TerrainView terrainView;
     public abstract Terrain clone();
     
     /*

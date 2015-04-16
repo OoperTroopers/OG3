@@ -1,6 +1,7 @@
 package model.items;
 
 import model.equipmentmanagers.EquipmentManager;
+import model.inventory.Inventory;
 import model.statistics.EquippableStatistics;
 
 public abstract class Weapon extends TakeableItem implements Equippable{
@@ -16,13 +17,9 @@ public abstract class Weapon extends TakeableItem implements Equippable{
 		this.equipStats = es;	
 	}
 	
-	public void equip(EquipmentManager em) {
-		//not sure how to implement here
-	}
+	public abstract void equip(EquipmentManager em, Inventory i);
 	
-	public void unequip(EquipmentManager em) {
-		//not sure how to implement here
-	}
+	public abstract void unequip(EquipmentManager em, Inventory i);
 	
 	public EquippableStatistics getEquipStats() { 
 		return equipStats;

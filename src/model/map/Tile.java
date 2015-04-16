@@ -54,8 +54,8 @@ public class Tile {
         return new MemTile(this, location, tCopy, copyOfList);
     }
     
-    private List<Tileable> cloneTileables(){
-        List<Tileable> copyOfList = new ArrayList<>();
+    private ArrayList<Tileable> cloneTileables(){
+        ArrayList<Tileable> copyOfList = new ArrayList<>();
         for(Tileable t: tileables){
             copyOfList.add(t.clone());
         }
@@ -115,12 +115,17 @@ public class Tile {
         return this.terrain.clone();
     }
     
+    public ArrayList<Tileable> getTileablesClone(){
+        return cloneTileables();        
+    }
+    
+    
     /**
      * 
      * @author Jason Owens
      */
     public void addOvserver(Entity e){
-        
+        observers.add(e);
     }
     
     
@@ -129,8 +134,7 @@ public class Tile {
      * something visible about the tile changes.
      * @author Jason Owens
      */
-    public void notifyObservers(){
-        
+    public void notifyObservers(){        
         for(Entity e: observers){
             e.notify(this);
         }

@@ -7,13 +7,17 @@ import model.statistics.*;
 import model.items.TakeableItem;
 
 import java.util.ArrayList;
+import java.util.Observer;
+import model.map.Journal;
 import model.map.Moveable;
 import model.map.Tileable;
 import model.map.Tile;
 
 public abstract class Entity implements Tileable, Moveable{
         private Tile myTile;
-    
+        private MovementCapabilities myMovement;
+        
+        
 	private Inventory inventory;
 	private EquipmentManager equipmentMangaer;
 	private Occupation occupation;
@@ -158,4 +162,6 @@ public abstract class Entity implements Tileable, Moveable{
             myTile.moveSouthwest(this);
         }
 	
+        
+        
 }

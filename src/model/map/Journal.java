@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
@@ -15,11 +16,35 @@ import java.util.Observer;
  * @author Jason Owens
  */
 public class Journal extends Observable{
-    private LinkedList<MemTile> memory;
+    private HashMap<Location, MemTile> memory;
     
+    /**
+     * Creates a MemTile copy of a Tile and adds it to the journal
+     * @param t 
+     */
+    public void addMemTile(Tile t){
+        MemTile m = new MemTile(t);
+        memory.put(m.getLocation(), m);
+    }
     
-    public void addMemTile(MemTile m){
-        memory.add(m);
+    /**
+     * updates the MemTile associated with the given Tile
+     * @author Jason Owens
+     * @param t the tile that the Entity has just seen, and needs to be updated
+     */
+    public void updateTileMemory(Tile t){
+        MemTile m = memory.get(t.getLocationClone());
+        m.update();
+    }
+    
+    public void printAll(){
+        for(MemTile m : memory){
+         m.print();   
+        }
+    }
+    
+    public void pushToView(){
+     notifyView();   
     }
     /**
      * Moves the view north

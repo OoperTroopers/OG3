@@ -94,7 +94,6 @@ public class Tile {
     public void addTileable(Tileable t){
     	// should add the location too
         tileables.add(t);
-        t.sendViewThisLocation(location);
     }    
     
     /**

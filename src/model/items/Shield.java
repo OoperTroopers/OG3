@@ -12,6 +12,7 @@ import model.inventory.Inventory;
 
 public class Shield extends Armor {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
+		em.unequipShield();
 		em.equipShield(this);
 		inventory.removeFromInventory(this);
 	}

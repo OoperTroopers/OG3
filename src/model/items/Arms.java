@@ -10,6 +10,7 @@ import model.inventory.Inventory;
 
 public class Arms extends Armor {
 	public void equip(EquipmentManager em, Inventory inventory) {
+		em.unequipArms();
 		em.equipArms(this);
 		inventory.removeFromInventory(this);
 	}

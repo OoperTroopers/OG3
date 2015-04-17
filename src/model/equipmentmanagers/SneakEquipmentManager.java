@@ -32,7 +32,9 @@ public class SneakEquipmentManager extends EquipmentManager {
 	}
 	
 	public void unequipRangedWeapon() {
-		getDerivedStats().removeEquippable(rangedWeapon.getEquipStats());
+		if(rangedWeapon != null) {
+			getDerivedStats().removeEquippable(rangedWeapon.getEquipStats());
+		}
 		rangedWeapon = null;
 	}
 	

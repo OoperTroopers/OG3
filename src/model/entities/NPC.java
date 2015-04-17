@@ -9,11 +9,8 @@ import model.inventory.Inventory;
 import model.map.MovementCapabilities;
 import model.map.Tile;
 import model.equipmentmanagers.EquipmentManager;
-import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.occupations.Occupation;
-import model.occupations.SmasherOccupation;
-import model.statistics.SmasherStatistics;
 import model.statistics.Statistics;
 
 public class NPC extends Entity {
@@ -21,23 +18,14 @@ public class NPC extends Entity {
 	private ArrayList<Entity> aggroList;
 	
 	public NPC() {
-		setInventory(new Inventory());
-		setEquipmentManager(new SmasherEquipmentManager());
-		setOccupation(new SmasherOccupation());
-		setStats(new SmasherStatistics());
-		setDirection(8);
-		//this.location = new Location();
+		super();
 		this.hostile = true;
 		this.aggroList = new ArrayList<Entity>();
 	}
 	
 	// constructor for Entity with specific occupation
 	public NPC(Occupation o, EquipmentManager em, Statistics s, boolean h) {
-		setInventory(new Inventory());
-		setEquipmentManager(em);
-		setOccupation(o);
-		setStats(s);
-		setDirection(8);
+		super(o, em, s);
 		//this.location = new Location();
 		this.hostile = h;
 		this.aggroList = new ArrayList<Entity>();

@@ -12,6 +12,7 @@ import model.inventory.Inventory;
 
 public class Brawl extends Weapon {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
+		em.unequipBareHandedWeapon();
 		em.equipBareHandedWeapon(this);
 		inventory.removeFromInventory(this);
 	}

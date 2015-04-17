@@ -80,22 +80,30 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	}
 	
 	public void unequipShield() {
-		getDerivedStats().removeEquippable(shield.getEquipStats());
+		if(shield != null) {
+			getDerivedStats().removeEquippable(shield.getEquipStats());
+		}
 		shield = null;
 	}
 	
 	public void unequipTwoHandedWeapon() {
-		getDerivedStats().removeEquippable(twoHandedWeapon.getEquipStats());
+		if(twoHandedWeapon != null) {
+			getDerivedStats().removeEquippable(twoHandedWeapon.getEquipStats());
+		}
 		twoHandedWeapon = null;
 	}
 	
 	public void unequipOneHandedWeapon() {
-		getDerivedStats().removeEquippable(oneHandedWeapon.getEquipStats());
+		if(oneHandedWeapon != null) {
+			getDerivedStats().removeEquippable(oneHandedWeapon.getEquipStats());
+		}
 		oneHandedWeapon = null;
 	}
 	
 	public void unequipBareHandedWeapon() {
-		getDerivedStats().removeEquippable(bareHandedWeapon.getEquipStats());
+		if(bareHandedWeapon != null) {
+			getDerivedStats().removeEquippable(bareHandedWeapon.getEquipStats());
+		}
 		bareHandedWeapon = null;
 	}
 	

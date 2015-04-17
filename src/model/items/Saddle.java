@@ -12,6 +12,7 @@ import model.inventory.Inventory;
 
 public class Saddle extends Armor {
 	public void equip(MountEquipmentManager em, Inventory inventory) {
+		em.unequipSaddle();
 		em.equipSaddle(this);
 		inventory.removeFromInventory(this);
 	}

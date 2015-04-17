@@ -11,6 +11,7 @@ import model.inventory.Inventory;
 
 public class Legs extends Armor {
 	public void equip(EquipmentManager em, Inventory inventory) {
+		em.unequipLegs();
 		em.equipLegs(this);
 		inventory.removeFromInventory(this);
 	}

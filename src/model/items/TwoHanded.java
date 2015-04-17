@@ -12,6 +12,7 @@ import model.inventory.Inventory;
 
 public class TwoHanded extends Weapon {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
+		em.unequipTwoHandedWeapon();
 		em.equipTwoHandedWeapon(this);
 		inventory.removeFromInventory(this);
 	}

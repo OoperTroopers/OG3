@@ -12,6 +12,7 @@ import model.inventory.Inventory;
 
 public class Ranged extends Weapon {
 	public void equip(SneakEquipmentManager em, Inventory inventory) {
+		em.unequipRangedWeapon();
 		em.equipRangedWeapon(this);
 		inventory.removeFromInventory(this);
 	}

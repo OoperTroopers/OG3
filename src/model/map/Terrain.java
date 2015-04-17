@@ -14,7 +14,6 @@ import view.modelview.tileable.terrain.TerrainView;
  */
 public abstract class Terrain {
     
-    public TerrainView terrainView;
     public abstract Terrain clone();
     
     /*

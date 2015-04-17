@@ -6,6 +6,7 @@ import model.occupations.*;
 import model.statistics.*;
 import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
+import view.modelview.tileable.TileableView;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -20,6 +21,8 @@ import model.map.Location;
 public abstract class Entity implements Tileable, Moveable{
         private Tile myTile;
         private MovementCapabilities myMovement;
+        
+        private TileableView tileableView;
         
         
 	private Inventory inventory;
@@ -181,6 +184,10 @@ public abstract class Entity implements Tileable, Moveable{
         }
         public void moveSouthwest(){
             myTile.moveSouthwest(this);
+        }
+        
+        public void draw() {
+        	tileableView.draw();
         }
 	
         

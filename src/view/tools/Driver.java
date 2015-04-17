@@ -9,18 +9,22 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import utilities.TileAlgorithm.Direction;
 import view.view.View;
+import view.view.ViewFrame;
 import model.map.GrassTerrain;
 import model.map.Terrain;
 import model.map.Tile;
 
 public class Driver {
 	
-	static JFrame jf;
+	static ViewFrame vf;
 	
 	public static void main(String[] args) {
 		// @SuppressWarnings("unused")
@@ -36,30 +40,31 @@ public class Driver {
 	}
 	
 	public static void createAndShowGui() {
-
-		// initialize everything
-		jf = new JFrame();
-		jf.setSize(600,800);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
+		vf = new ViewFrame();
 		
-		JPanel newPanel = new View();
-		jf.add(newPanel);
+		Tile center_tile = new Tile();
+		center_tile.setTerrain(new GrassTerrain());
+		center_tile.setLocation(1,1,1);
+		center_tile.drawView();
 		
-		try {
-			BufferedImage img = ImageIO.read(new File("res/img/grass_terrain.png"));
-			Graphics2D g2 = img.createGraphics();
+		for (Direction d : Direction.values()) {
+			// make it
+			Tile tempTile = new Tile();
 			
+			// customize it
+			tempTile.setTerrain(center_tile.getTerrainClone());
+			center_tile.addNeighbor(tempTile, d);
 			
-		} catch (IOException e) {
-			System.out.println("trouble finding object");
-			e.printStackTrace();
+			Direction oppositeDirection = d.leftTurn().leftTurn().leftTurn(); // opposite direction
+			tempTile.addNeighbor(center_tile, oppositeDirection);
+			
+			tempTile.drawView();
+			
 		}
+			
+		// JLabel jl = new JLabel(new ImageIcon("res/img/grass_terrain.png"));
+		// vf.add(jl);
 
-		
-		/*Terrain gt = new GrassTerrain();
-		Tile t = new Tile();
-		t.drawView();*/
 		
 	}
 }

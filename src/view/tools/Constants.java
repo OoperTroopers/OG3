@@ -8,8 +8,8 @@ public class Constants {
 	
 	// ---------------
 	// tiles
-	public static final int TILE_WIDTH = 500;
-	public static final int TILE_HEIGHT = 500;
+	public static final int TILE_WIDTH = 50;
+	public static final int TILE_HEIGHT = 50;
 	public static final int MAP_X_ORIGIN = 10;
 	public static final int MAP_Y_ORIGIN = 10;
 	

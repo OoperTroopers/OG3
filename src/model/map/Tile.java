@@ -33,18 +33,22 @@ public class Tile {
     public Tile() {
     	this.location = new Location(-200, -200, -200);
     	this.neighbors = new HashMap<Direction, Tile>();
+    	this.terrain = new GrassTerrain();
     	tileables = new ArrayList<Tileable>();
     }
     
     public Tile(int x, int y, int z) {
-    	this.location = new Location(x, y, z);
     	this.neighbors = new HashMap<Direction, Tile>();
+    	this.terrain = new GrassTerrain();
+    	this.setLocation(x, y, z);
     	tileables = new ArrayList<Tileable>();
     }
     
-    public Tile(Location location) {
-    	this.location = location;
+    public Tile(int x, int y, int z, Terrain terrain) {
     	this.neighbors = new HashMap<Direction, Tile>();
+    	this.terrain = terrain;
+    	this.setLocation(x, y, z);
+    	tileables = new ArrayList<Tileable>();
     }
     
     public void affectAllTileables(Effect e){

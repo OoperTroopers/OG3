@@ -16,6 +16,10 @@ import view.modelview.tileable.terrain.TerrainView;
 public abstract class Terrain {
     
 	TileableView terrainView;
+	
+	public Terrain(TileableView terrainView) {
+		this.terrainView = terrainView;
+	}
     
     public abstract Terrain clone();
     public abstract void draw();

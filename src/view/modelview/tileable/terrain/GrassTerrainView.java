@@ -11,7 +11,7 @@ import view.view.ActiveGameViewport;
 import view.view.View;
 import view.view.Viewport;
 
-public class GrassTerrainView {
+public class GrassTerrainView extends TerrainView {
 	ImageIcon img;
 	ViewPosition viewPosition;
 	
@@ -34,5 +34,11 @@ public class GrassTerrainView {
 		
 	public ImageIcon getImage() {
 		return img;
+	}
+
+	@Override
+	public void setLocation(Location location) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -285,6 +285,27 @@ public class TileAlgorithm {
 		// return the list of Tiles
 		return tiles;
 	}
+	
+	public static int getNumberOfTiles(Tile start) {
+		Queue<Tile> queue = new LinkedList<Tile>();
+		HashSet<Tile> visited = new HashSet<Tile>();
+		
+		queue.add(start);
+		visited.add(start);
+		
+		while (!queue.isEmpty()) {
+			Tile current = queue.remove();
+			for (Direction direction : Direction.values()) {
+				Tile neighbor = current.getNeighbor(direction);
+				if (neighbor != null && !visited.contains(neighbor)) {
+					visited.add(neighbor);
+					queue.add(neighbor);
+				}
+			}
+		}
+		
+		return visited.size();
+	}
 
 	/**
 	 * DistanceTile is used for graph traversal by mapping a Tile to the distance it is

@@ -32,7 +32,9 @@ public class SummonerEquipmentManager extends EquipmentManager {
 	}
 	
 	public void unequipStaff() {
-		getDerivedStats().removeEquippable(staff.getEquipStats());
+		if(staff != null) {
+			getDerivedStats().removeEquippable(staff.getEquipStats());
+		}
 		staff= null;
 	}
 	

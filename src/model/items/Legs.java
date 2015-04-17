@@ -6,11 +6,10 @@ import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
-import model.equipmentmanagers.EquipmentManager;
-import model.inventory.Inventory;
 
 public class Legs extends Armor {
 	public void equip(EquipmentManager em, Inventory inventory) {
+		em.unequipLegs();
 		em.equipLegs(this);
 		inventory.removeFromInventory(this);
 	}

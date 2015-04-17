@@ -3,10 +3,12 @@ package model.entities;
 import controller.ControllerAvatar;
 import model.abilities.Ability;
 import model.effects.Effect;
+import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
-import model.map.Location;
 import model.map.MovementCapabilities;
 import model.map.Tile;
+import model.occupations.Occupation;
+import model.statistics.Statistics;
 
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -18,10 +20,20 @@ public class Avatar extends Entity {
 	private ArrayList<Ability> abilities;
 
 	public Avatar(){
-		controlAvatar = new ControllerAvatar(this);
-		abilities = new ArrayList<>();
+		super();
+		this.controlAvatar = new ControllerAvatar(this);
+		this.abilities = new ArrayList<>();
+		this.myJournal = new Journal();
 	}
-
+	
+	public Avatar(Occupation o, EquipmentManager em, Statistics s, boolean h) {
+		super(o, em, s);
+		//this.location = new Location();
+		this.controlAvatar = new ControllerAvatar(this);
+		this.abilities = new ArrayList<>();
+		this.myJournal = new Journal();
+	}
+	
 	public void addAbility(Ability ability){
 		abilities.add(ability);
 		ability.attachToController(controlAvatar);

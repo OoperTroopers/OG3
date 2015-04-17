@@ -16,8 +16,6 @@ import model.map.Moveable;
 import model.map.MovementCapabilities;
 import model.map.Tileable;
 import model.map.Tile;
-import model.map.Location;
-
 public abstract class Entity implements Tileable, Moveable{
         private Tile myTile;
         private MovementCapabilities myMovement;
@@ -30,9 +28,6 @@ public abstract class Entity implements Tileable, Moveable{
 	private Occupation occupation;
 	private Statistics stats;
 	private int direction;
-	private Location location;
-	// I don't think entities should know where they are. Discuss?
-	// - danny
 	
 	// generic constructor creates Smasher as base class
 	public Entity() {
@@ -41,7 +36,6 @@ public abstract class Entity implements Tileable, Moveable{
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
 		this.direction = 8;
-		this.location = new Location(0,0,0);
 	}
 	
 	// constructor for Entity with specific occupation. 
@@ -52,7 +46,6 @@ public abstract class Entity implements Tileable, Moveable{
 		this.occupation = o;
 		this.stats = s;
 		this.direction = 8;
-		this.location = new Location(0,0,0);
 	}
 	
         /**
@@ -85,14 +78,7 @@ public abstract class Entity implements Tileable, Moveable{
 		location.setR(r);
 	}*/
 	// right now, setQ and setR are unimplemented
-	public void changeLocation(int x, int y, int z) {
-		location = new Location(x, y, z);
-	}
-	
-	public Location getLocation() {
-		return location;
-	}
-	
+
 	public void addItemToInventory(TakeableItem item) {
 		inventory.addToInventory(item);
 	}
@@ -188,4 +174,4 @@ public abstract class Entity implements Tileable, Moveable{
         public void moveSouthwest(){
             myTile.moveSouthwest(this);
         }
- }
+}

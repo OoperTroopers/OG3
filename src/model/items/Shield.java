@@ -7,11 +7,10 @@ import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
-import model.equipmentmanagers.SmasherEquipmentManager;
-import model.inventory.Inventory;
 
 public class Shield extends Armor {
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
+		em.unequipShield();
 		em.equipShield(this);
 		inventory.removeFromInventory(this);
 	}

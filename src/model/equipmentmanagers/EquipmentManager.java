@@ -59,22 +59,30 @@ public abstract class EquipmentManager {
 	}
 	
 	public void unequipHelmet() {
-		derivedStats.removeEquippable(helmet.getEquipStats());
-		helmet = null;
+		if(helmet != null) {
+			derivedStats.removeEquippable(helmet.getEquipStats());
+		}
+			helmet = null; 
 	}
 	
 	public void unequipChest() {
-		derivedStats.removeEquippable(chest.getEquipStats());
+		if(chest != null) {
+			derivedStats.removeEquippable(chest.getEquipStats());
+		}
 		chest = null;
 	}
 	
 	public void unequipArms() {
-		derivedStats.removeEquippable(arms.getEquipStats());
+		if(arms != null) {
+			derivedStats.removeEquippable(arms.getEquipStats());
+		}
 		arms = null;
 	}
 	
 	public void unequipLegs() {
-		derivedStats.removeEquippable(legs.getEquipStats());
+		if(legs != null) {
+			derivedStats.removeEquippable(legs.getEquipStats());
+		}
 		legs = null;
 	}
 	

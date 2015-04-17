@@ -45,9 +45,4 @@ public interface Tileable {
      * it
      */
     public boolean isTraversable();
-    
-    /**
-     * Every Tileable has a view. And if it doesn't, this just won't do anything.
-     * Got it?
-     */
 }

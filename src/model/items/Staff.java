@@ -7,11 +7,10 @@ import model.equipmentmanagers.SummonerEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
-import model.equipmentmanagers.SummonerEquipmentManager;
-import model.inventory.Inventory;
 
 public class Staff extends Weapon {
 	public void equip(SummonerEquipmentManager em, Inventory inventory) {
+		em.unequipStaff();
 		em.equipStaff(this);
 		inventory.removeFromInventory(this);
 	}

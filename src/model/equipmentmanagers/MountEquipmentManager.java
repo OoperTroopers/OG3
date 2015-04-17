@@ -32,7 +32,9 @@ public class MountEquipmentManager extends EquipmentManager {
 	}
 	
 	public void unequipSaddle() {
-		getDerivedStats().removeEquippable(saddle.getEquipStats());
+		if(saddle != null) {
+			getDerivedStats().removeEquippable(saddle.getEquipStats());
+		}
 		saddle = null;
 	}
 	

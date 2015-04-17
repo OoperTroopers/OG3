@@ -1,6 +1,5 @@
 **/*.class
 MODEL_FILE*.txt
-LoadSave/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

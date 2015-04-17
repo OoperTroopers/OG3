@@ -32,11 +32,13 @@ public class Tile {
     
     public Tile() {
     	this.neighbors = new HashMap<Direction, Tile>();
+    	tileables = new ArrayList<Tileable>();
     }
     
     public Tile(int x, int y, int z) {
     	this.location = new Location(x, y, z);
     	this.neighbors = new HashMap<Direction, Tile>();
+    	tileables = new ArrayList<Tileable>();
     }
     
     public Tile(Location location) {
@@ -84,7 +86,9 @@ public class Tile {
      * @param t the tileable to be added
      */   
     public void addTileable(Tileable t){
+    	// should add the location too
         tileables.add(t);
+        t.sendViewThisLocation(location);
     }    
     
     /**
@@ -163,6 +167,7 @@ public class Tile {
      */
     public void setLocation(int x, int y, int z) {
     	this.location = new Location(x, y, z);
+    	terrain.setLocation(this.location);
     }
     
     public void setTerrain(Terrain terrain) {
@@ -236,9 +241,11 @@ public class Tile {
 		
 	}
 
-	public void drawView() {
-		// TODO Auto-generated method stub
-		for (Tileable t : tileables)
-			t.draw();
+	public void draw() {
+		System.out.println("center tile draws");
+		if (terrain != null) terrain.draw();
+		if (!tileables.isEmpty())
+				for (Tileable t : tileables)
+					t.draw();
 	}
 }

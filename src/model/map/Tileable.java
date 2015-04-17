@@ -51,5 +51,10 @@ public interface Tileable {
      * Got it?
      */
     public void draw();
+
+    /*
+     * This should take in a location and turn it into a pixel value
+     */
     
+    public void sendViewThisLocation(Location location);
 }

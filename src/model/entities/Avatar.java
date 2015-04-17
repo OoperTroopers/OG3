@@ -2,6 +2,7 @@ package model.entities;
 
 import model.effects.Effect;
 import model.map.Journal;
+import model.map.Location;
 import model.map.MovementCapabilities;
 import model.map.Tile;
 

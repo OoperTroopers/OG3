@@ -31,6 +31,8 @@ public abstract class Entity implements Tileable, Moveable{
 	private Statistics stats;
 	private int direction;
 	private Location location;
+	// I don't think entities should know where they are. Discuss?
+	// - danny
 	
 	// generic constructor creates Smasher as base class
 	public Entity() {
@@ -190,7 +192,8 @@ public abstract class Entity implements Tileable, Moveable{
         public void draw() {
         	tileableView.draw();
         }
-	
-        
-        
+	        
+        public void sendViewThisLocation(Location location) {
+        	tileableView.setLocation(location);
+        }
 }

@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import view.modelview.tileable.TileableView;
 import view.modelview.tileable.terrain.TerrainView;
 
 
@@ -14,8 +15,10 @@ import view.modelview.tileable.terrain.TerrainView;
  */
 public abstract class Terrain {
     
-    public abstract Terrain clone();
+	TileableView terrainView;
     
+    public abstract Terrain clone();
+    public abstract void draw();
     /*
     public boolean canMove(Moveable m){
         
@@ -24,4 +27,7 @@ public abstract class Terrain {
         
     }
     */
+	public void setLocation(Location location) {
+		terrainView.setLocation(location);
+	}
 }

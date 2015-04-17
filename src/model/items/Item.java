@@ -1,6 +1,7 @@
 package model.items;
 
 import model.entities.Entity;
+import model.map.Location;
 import model.map.Tileable;
 import view.modelview.tileable.TileableView;
 
@@ -55,5 +56,9 @@ public abstract class Item implements Tileable{
 	
 	public void draw() {
 		tileableView.draw();
+	}
+	
+	public void sendViewThisLocation(Location location) {
+		tileableView.setLocation(location);
 	}
 }

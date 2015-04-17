@@ -7,6 +7,8 @@ package model.map;
 
 import view.modelview.tileable.terrain.GrassTerrainView;
 import view.modelview.tileable.terrain.TerrainView;
+import view.tools.LocationPositionConverter;
+import view.tools.ViewPosition;
 
 /**
  *
@@ -24,12 +26,13 @@ public class GrassTerrain extends Terrain{
         return new GrassTerrain();
     }
     
-    //@Override
-    //public void draw() {
-    //	TerrainView.draw();
-    //}
-    
-    public void drawView() {
+    public void draw() {
+    	System.out.println("Grass Terrain Draw called");
     	terrainView.draw();
+    }
+    
+    public void draw(Location location) {
+    	ViewPosition viewPosition = LocationPositionConverter.convert(location);
+    	// terrainView.draw(viewPosition);
     }
 }

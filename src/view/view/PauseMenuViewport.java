@@ -1,6 +1,8 @@
 package view.view;
 
 public class PauseMenuViewport extends Viewport {
+	public static Viewport pauseMenuViewport = new PauseMenuViewport();
+	
 	public PauseMenuViewport() {}
 
 	@Override

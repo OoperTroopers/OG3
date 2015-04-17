@@ -1,6 +1,7 @@
 package view.view;
 
 public class ViewportStack {
+	private static ViewportStack viewportStack = new ViewportStack();
 	private MainMenuViewport mainMenuViewport;
 	private ActiveGameViewport activeGameViewport;
 	private HeartsViewport heartsViewport;
@@ -9,6 +10,10 @@ public class ViewportStack {
 	
 	public ViewportStack() {
 		
+	}
+	
+	public static ViewportStack getInstance() {
+		return viewportStack;
 	}
 	
 	// public void add(Viewport v) {}

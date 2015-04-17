@@ -1,6 +1,10 @@
 package view.view;
 
-public abstract class Viewport {
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public abstract class Viewport extends JPanel {
 
 	abstract void visit(ViewportStack viewportStack);
+	// abstract static Viewport getInstance();
 }

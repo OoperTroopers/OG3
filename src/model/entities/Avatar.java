@@ -1,14 +1,35 @@
 package model.entities;
 
+import controller.ControllerAvatar;
+import model.abilities.Ability;
 import model.effects.Effect;
 import model.map.Journal;
 import model.map.Location;
 import model.map.MovementCapabilities;
 import model.map.Tile;
 
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
 
 public class Avatar extends Entity {
     private Journal myJournal;
+	private ControllerAvatar controlAvatar;
+	private ArrayList<Ability> abilities;
+
+	public Avatar(){
+		controlAvatar = new ControllerAvatar(this);
+		abilities = new ArrayList<>();
+	}
+
+	public void addAbility(Ability ability){
+		abilities.add(ability);
+		ability.attachToController(controlAvatar);
+	}
+
+	public ArrayList<KeyListener> getKeyBinding(){
+		return controlAvatar.getKbList();
+	}
     
 	@Override
 	public void acceptEffect(Effect e) {

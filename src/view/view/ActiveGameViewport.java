@@ -6,24 +6,48 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import model.loadsave.FilePaths;
+import model.loadsave.Load;
+import model.map.Tile;
+import utilities.TileAlgorithm;
+import utilities.TileAlgorithm.Direction;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 import view.tools.ViewPosition;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
+	Tile currentTile;
+	Load load = new Load();
+	
+	int[][] tiles = {
+			{5, 5},
+			{85,5},
+			{165,5},
+			{245,6}
+	};	// will be phased out. just to give you an idea of what's going on conceptually.
+	
 	private static ActiveGameViewport activeGameViewport = 
 			new ActiveGameViewport();
 
 	public ActiveGameViewport() {
 		this.setPreferredSize(new Dimension(300,400));
 		this.setBackground(Color.BLACK);
+		
+		// get beginning tile
+		try {load.read(FilePaths.DEFAULT);} 
+		catch (IOException e) {e.printStackTrace();}
+		currentTile = load.getBeginningTile();
 	}
 	
 	@Override
@@ -52,10 +76,29 @@ public class ActiveGameViewport extends Viewport {
 	}
 	
 	public void draw(Image i, int x, int y, int height, int width) {
-		Graphics g = View.getInstance().getGraphics();
+		Graphics g = this.getGraphics();
 		System.out.println("Draw 1");
-		g.drawImage(i, x, y, x+height, y+width, null);
+		boolean a = g.drawImage(i, x, y, x+height, y+width, null);
 		g.finalize();
-		System.out.println("Draw 2");
+		System.out.println("Draw 2, result is "+a);
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// paint this tile
+		Point p = TileAlgorithm.toPixel(currentTile);
+		g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
+				Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+		
+		// move to next
+		
+		for (Direction d : Direction.values()) {
+			Tile temp = currentTile.getNeighbor(d);
+			if (temp == null) continue;
+			p = TileAlgorithm.toPixel(temp);
+			System.out.println("("+p.x+", "+p.y+")");
+			g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
+					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+		}
 	}
 }

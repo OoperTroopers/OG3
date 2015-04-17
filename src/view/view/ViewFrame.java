@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import view.tools.ImagePaths;
 import view.tools.ViewPosition;
@@ -49,7 +50,7 @@ public class ViewFrame extends JFrame {
 		center_tile.draw();
 		 
 		*/
-		
+		/*
 		BufferedImage img = null;
 		try {
 		    img = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));
@@ -57,7 +58,7 @@ public class ViewFrame extends JFrame {
 			game.draw(img, 10,10,60,60);
 			System.out.println("Drew it");
 		} catch (IOException e) {
-		}
+		}*/
 		
 		
 		/*for (Direction d : Direction.values()) {

@@ -1,7 +1,11 @@
 package view.modelview.tileable.terrain;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import model.map.Location;
@@ -13,16 +17,20 @@ import view.view.Viewport;
 
 public class GrassTerrainView extends TerrainView {
 	ImageIcon img;
+	Image image;
 	ViewPosition viewPosition;
 	
 	public GrassTerrainView() {
-		img = new ImageIcon(ImagePaths.GRASS_TERRAIN);
+		try { image = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));} 
+		catch (IOException e) {}	
 	}
 	
 	public GrassTerrainView(ViewPosition viewPosition) {
 		this.viewPosition = viewPosition;
 		img = new ImageIcon(ImagePaths.GRASS_TERRAIN);
 	}
+	
+	public Image getImage() { return image; }
 	
 	public void setPosition(ViewPosition viewPosition) {
 		this.viewPosition = viewPosition;
@@ -39,11 +47,7 @@ public class GrassTerrainView extends TerrainView {
 			activeGameViewport.draw(img);
 		}
 	}
-		
-	public ImageIcon getImage() {
-		return img;
-	}
-
+	
 	@Override
 	public void setLocation(Location location) {
 		// TODO Auto-generated method stub

@@ -5,6 +5,8 @@
  */
 package model.map;
 
+import java.awt.Image;
+
 import view.modelview.tileable.terrain.GrassTerrainView;
 import view.modelview.tileable.terrain.TerrainView;
 import view.tools.LocationPositionConverter;
@@ -15,10 +17,10 @@ import view.tools.ViewPosition;
  * @author Jason Owens
  */
 public class GrassTerrain extends Terrain{
-	GrassTerrainView view;
+	static GrassTerrainView view = new GrassTerrainView();
 	
     public GrassTerrain() {
-    	super(new GrassTerrainView());
+    	super(view);
     }
     
     @Override
@@ -36,8 +38,9 @@ public class GrassTerrain extends Terrain{
     }
     
     public void setLocation(Location location) {
-    	view.setPosition(LocationPositionConverter.convert(location));
+    	//view.setPosition(LocationPositionConverter.convert(location));
     }
     
+    public Image getTerrainView() { return view.getImage(); }
     
 }

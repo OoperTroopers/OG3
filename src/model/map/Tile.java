@@ -13,6 +13,7 @@ import model.entities.Entity;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
+import view.modelview.tileable.TileableView;
 
 /**
  * Tile represents the smallest discrete location an object can 
@@ -96,6 +97,7 @@ public class Tile {
     public void addTileable(Tileable t){
     	// should add the location too
         tileables.add(t);
+        // tileView.add(t);
     }    
     
     /**
@@ -257,5 +259,13 @@ public class Tile {
 	
 	public Image getTerrainImage() {
 		return terrain.getTerrainView();
+	}
+	
+	public TileView getTileView() {
+		return tileView;
+	}
+
+	public List<TileableView> getTileableViews() {
+		return tileView.getList();
 	}
 }

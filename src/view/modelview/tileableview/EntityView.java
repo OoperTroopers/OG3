@@ -1,8 +1,10 @@
 package view.modelview.tileableview;
 
+import java.awt.Image;
+
 import view.modelview.tileable.TileableView;
 
-public class EntityView implements TileableView {
+public abstract class EntityView implements TileableView {
 
 	@Override
 	public int getPriority() {

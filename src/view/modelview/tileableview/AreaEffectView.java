@@ -1,9 +1,10 @@
 package view.modelview.tileableview;
 
-import view.modelview.tileable.TileableView;
-import model.map.Location;
+import java.awt.Image;
 
-public class AreaEffectView implements TileableView {
+import view.modelview.tileable.TileableView;
+
+public abstract class AreaEffectView implements TileableView {
 
 	@Override
 	public int getPriority() {

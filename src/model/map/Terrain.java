@@ -27,7 +27,5 @@ public abstract class Terrain {
         
     }
     */
-	public void setLocation(Location location) {
-		terrainView.setLocation(location);
-	}
+	public abstract void setLocation(Location location);
 }

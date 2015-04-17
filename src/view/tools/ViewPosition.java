@@ -4,7 +4,7 @@ public class ViewPosition {
 	private int x;
 	private int y;
 	
-	ViewPosition(int x, int y) {
+	public ViewPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}

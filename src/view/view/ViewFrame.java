@@ -1,9 +1,20 @@
 package view.view;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
+import view.tools.ImagePaths;
+import view.tools.ViewPosition;
 import model.map.GrassTerrain;
 import model.map.Tile;
 
@@ -30,18 +41,24 @@ public class ViewFrame extends JFrame {
 	
 	public void initialize() {
 		ActiveGameViewport game = ActiveGameViewport.getInstance();
-		game.setBackground(Color.black);
 		addViewport(game);
 		
-		Tile center_tile = new Tile();
+		/*Tile center_tile = new Tile();
 		center_tile.setTerrain(new GrassTerrain());
 		center_tile.setLocation(1,1,1);
 		center_tile.draw();
+		 
+		*/
 		
-		Tile another_tile = new Tile();
-		another_tile.setTerrain(center_tile.getTerrainClone());
-		another_tile.setLocation(0, 0, 0);
-		another_tile.draw();
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));
+		    System.out.println("Drawing image");
+			game.draw(img, 10,10,60,60);
+			System.out.println("Drew it");
+		} catch (IOException e) {
+		}
+		
 		
 		/*for (Direction d : Direction.values()) {
 			// make it
@@ -57,5 +74,10 @@ public class ViewFrame extends JFrame {
 			tempTile.drawView();
 			
 		}*/
+	}
+
+	public static Component getInstance() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

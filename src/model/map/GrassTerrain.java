@@ -15,10 +15,10 @@ import view.tools.ViewPosition;
  * @author Jason Owens
  */
 public class GrassTerrain extends Terrain{
-	GrassTerrainView terrainView;
+	GrassTerrainView view;
 	
     public GrassTerrain() {
-    	terrainView = new GrassTerrainView();
+    	view = new GrassTerrainView();
     }
     
     @Override
@@ -28,11 +28,16 @@ public class GrassTerrain extends Terrain{
     
     public void draw() {
     	System.out.println("Grass Terrain Draw called");
-    	terrainView.draw();
+    	view.draw();
     }
     
     public void draw(Location location) {
-    	ViewPosition viewPosition = LocationPositionConverter.convert(location);
-    	// terrainView.draw(viewPosition);
+    	
     }
+    
+    public void setLocation(Location location) {
+    	view.setPosition(LocationPositionConverter.convert(location));
+    }
+    
+    
 }

@@ -24,12 +24,20 @@ public class GrassTerrainView {
 		img = new ImageIcon(ImagePaths.GRASS_TERRAIN);
 	}
 	
+	public void setPosition(ViewPosition viewPosition) {
+		this.viewPosition = viewPosition;
+	}
+	
 	public void draw() {
 		ActiveGameViewport activeGameViewport = ActiveGameViewport.getInstance();
-		if (viewPosition != null)
+		if (viewPosition != null) {
+			System.out.println("Draw with position");
 			activeGameViewport.draw(img, viewPosition);
-		else
+		}
+		else {
+			System.out.println("Draw without position");
 			activeGameViewport.draw(img);
+		}
 	}
 		
 	public ImageIcon getImage() {

@@ -154,7 +154,7 @@ public class TileAlgorithm {
 			for (Direction direction : Direction.values()) {
 				Tile neighbor = current.getTile().getNeighbor(direction);
 				// if the Tile is on the map and we haven't visited it already
-				if (neighbor != null && visited.contains(neighbor)) {
+				if (neighbor != null && !visited.contains(neighbor)) {
 					// add the neighbor to the list of tiles, mark it as visited, and
 					// add it to the queue to be checked
 					tiles.add(neighbor);

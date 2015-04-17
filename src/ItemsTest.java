@@ -9,14 +9,20 @@ public class ItemsTest {
 		Entity entity = new Avatar();
 		System.out.println("Health: " + entity.getStats().getCurrentHealth());
 		System.out.println("Max health: " + entity.getStats().getDerivedStats().getMaxHealth());
+		
 		entity.receiveDamage(18);
 		System.out.println("Health: " + entity.getStats().getCurrentHealth());
 		System.out.println("Max health: " + entity.getStats().getDerivedStats().getMaxHealth());
-		Item item = new HealingOneShotItem();
-		item.touch(entity);
+		
+		Item healItem = new HealingOneShotItem();
+		healItem.touch(entity);
 		System.out.println("Health: " + entity.getStats().getCurrentHealth());
 		System.out.println("Max health: " + entity.getStats().getDerivedStats().getMaxHealth());
-	
+		
+		Item damageItem = new DamagingOneShotItem();
+		damageItem.touch(entity);
+		System.out.println("Health: " + entity.getStats().getCurrentHealth());
+		System.out.println("Max health: " + entity.getStats().getDerivedStats().getMaxHealth());
 	}
 	
 }

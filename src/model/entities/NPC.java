@@ -22,7 +22,7 @@ public class NPC extends Entity {
 	
 	public NPC() {
 		setInventory(new Inventory());
-		setEquipmentMangaer(new SmasherEquipmentManager());
+		setEquipmentManager(new SmasherEquipmentManager());
 		setOccupation(new SmasherOccupation());
 		setStats(new SmasherStatistics());
 		setDirection(8);
@@ -34,7 +34,7 @@ public class NPC extends Entity {
 	// constructor for Entity with specific occupation
 	public NPC(Occupation o, EquipmentManager em, Statistics s, boolean h) {
 		setInventory(new Inventory());
-		setEquipmentMangaer(em);
+		setEquipmentManager(em);
 		setOccupation(o);
 		setStats(s);
 		setDirection(8);

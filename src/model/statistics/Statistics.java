@@ -49,6 +49,10 @@ public abstract class Statistics {
 		return derivedStats.getDefensiveRating();
 	}
 	
+	public int getArmorRating() {
+		return derivedStats.getArmorRating();
+	}
+	
 	public void heal(int health) {
 		currentHealth += health;
 		currentHealth = Math.min(currentHealth, derivedStats.getMaxHealth());

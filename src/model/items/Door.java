@@ -4,17 +4,12 @@ import model.effects.Effect;
 import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
-import model.statistics.Statistics;
 
-public class Potion extends TakeableItem implements Usable{
-	public void use(Statistics stats){
-		stats.fullRestore();
-	}
+public class Door extends InteractiveItem {
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
 
 	@Override
@@ -30,20 +25,29 @@ public class Potion extends TakeableItem implements Usable{
 	}
 
 	@Override
-	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
-		
+	public void interact(Entity entity) {
+		// open door / remove door from map
 	}
+
+	@Override
+	public boolean isInteractive(Entity entity) {
+		// if Entity has a key, return true
+		return true;
+	}
+
+	@Override
+	public boolean isPassable() {
+		return false;
+	}
+
+	@Override
+	public Tileable clone() {
+		return new Door();
+	}
+
 }

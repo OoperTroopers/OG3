@@ -12,7 +12,7 @@ package model.map;
  * @author Jason Owens
  */
 public interface Moveable {
-    public MovementCapabilities getMovementCapabilities();
+	public MovementCapabilities getMovementCapabilities();
     
     public void moveNorth();
     public void moveSouth();
@@ -20,7 +20,7 @@ public interface Moveable {
     public void moveNortheast();
     public void moveSoutheast();
     public void moveSouthwest();
-    
+   
     public boolean canMoveNorth();
     public boolean canMoveNortheast();
     public boolean canMoveNorthwest();

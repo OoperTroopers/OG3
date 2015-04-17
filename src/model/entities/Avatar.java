@@ -51,7 +51,7 @@ public class Avatar extends Entity {
         updateMemTile(t);
     }
     private void updateMemTile(Tile t){
-        myJournal.addMemTile(t);
+        //myJournal.addMemTile(t);
     }
 
 	@Override

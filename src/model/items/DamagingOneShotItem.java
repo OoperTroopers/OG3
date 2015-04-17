@@ -1,14 +1,13 @@
 package model.items;
 
+import model.effects.DamageEffect;
 import model.effects.Effect;
-import model.effects.HealEffect;
-import model.entities.Entity;
 import model.map.Tile;
 
-public class HealingOneShotItem extends OneShotItem {
+public class DamagingOneShotItem extends OneShotItem {
 
-	public HealingOneShotItem() {
-		super(new HealEffect());
+	public DamagingOneShotItem() {
+		super(new DamageEffect());
 	}
 	
 	@Override
@@ -30,6 +29,6 @@ public class HealingOneShotItem extends OneShotItem {
 
 	@Override
 	public Item clone() {
-		return new HealingOneShotItem();
+		return new DamagingOneShotItem();
 	}	
 }

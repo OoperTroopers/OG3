@@ -64,6 +64,7 @@ public class Tile {
         
         return new MemTile(this);
         // return new MemTile(this, location, tCopy, copyOfList);
+        // return null;//new MemTile(this, location, tCopy, copyOfList);
     }
     
     private ArrayList<Tileable> cloneTileables(){

@@ -6,9 +6,6 @@ import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
-import model.statistics.EquippableStatistics;
-import model.equipmentmanagers.EquipmentManager;
-import model.inventory.Inventory;
 
 public class Helmet extends Armor {
 	public void equip(EquipmentManager em, Inventory inventory) {

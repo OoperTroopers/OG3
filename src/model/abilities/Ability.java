@@ -1,7 +1,8 @@
 package model.abilities;
 
-/**
- * Created by Adam on 4/17/2015.
- */
-public class Ability {
+import controller.ControllerAvatar;
+
+public interface Ability {
+    void perform();
+    void attachToController(ControllerAvatar controlAvatar);
 }

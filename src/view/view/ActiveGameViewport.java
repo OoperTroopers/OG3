@@ -61,44 +61,13 @@ public class ActiveGameViewport extends Viewport {
 	public static ActiveGameViewport getInstance() {
 		return activeGameViewport;
 	}
-	
-	public void draw(ImageIcon i) {
-		System.out.println("drawing image");
-		this.add(new JLabel(i));
-	}
-	
-	public void draw(ImageIcon i, ViewPosition viewPosition) {
-		System.out.println("drawing image W ViewPosition");
-		JLabel toDraw = new JLabel(i);
-		System.out.println("\nBounds are ("+viewPosition.getX()+", "+viewPosition.getY()+")\n");
-		toDraw.setBounds(viewPosition.getX(), viewPosition.getY(), 
-				Constants.TILE_WIDTH, Constants.TILE_HEIGHT);
-		this.setAlignmentX(0);
-		System.out.println("Container bounds are ("+this.getAlignmentX()+", "+this.getAlignmentY()+")");
-		this.add(toDraw);
-	}
-	
-	public void draw(Image i, int x, int y, int height, int width) {
-		Graphics g = this.getGraphics();
-		System.out.println("Draw 1");
-		boolean a = g.drawImage(i, x, y, x+height, y+width, null);
-		g.finalize();
-		System.out.println("Draw 2, result is "+a);
-	}
-	
+
 	@Override
 	public void paint(Graphics g) {
-		// paint this tile
-		/*Point p = TileAlgorithm.toPixel(currentTile);
-		g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
-				Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);*/
-		
-		// move to next
 		Point p;
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
-			System.out.println("("+p.x+", "+p.y+")");
 			g.drawImage(t.getTerrainImage(), p.x, p.y, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}

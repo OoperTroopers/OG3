@@ -7,8 +7,8 @@ package model.map;
 
 import java.awt.Image;
 
-import view.modelview.tileable.terrain.GrassTerrainView;
-import view.modelview.tileable.terrain.TerrainView;
+import view.modelview.tileableview.GrassTerrainView;
+import view.modelview.tileableview.TerrainView;
 import view.tools.LocationPositionConverter;
 import view.tools.ViewPosition;
 
@@ -26,11 +26,6 @@ public class GrassTerrain extends Terrain{
     @Override
     public Terrain clone() {
         return new GrassTerrain();
-    }
-    
-    public void draw() {
-    	System.out.println("Grass Terrain Draw called");
-    	view.draw();
     }
     
     public void draw(Location location) {

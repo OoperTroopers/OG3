@@ -53,12 +53,4 @@ public abstract class Item implements Tileable{
 	public abstract void touch(Entity entity);
 	
 	public abstract Tileable clone();
-	
-	public void draw() {
-		tileableView.draw();
-	}
-	
-	public void sendViewThisLocation(Location location) {
-		tileableView.setLocation(location);
-	}
 }

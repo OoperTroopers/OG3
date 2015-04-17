@@ -12,6 +12,7 @@ import model.effects.Effect;
 import model.entities.Entity;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
+import view.modelview.tile.TileView;
 
 /**
  * Tile represents the smallest discrete location an object can 
@@ -28,7 +29,8 @@ public class Tile {
     
     private HashMap<Direction, Tile> neighbors;
     private ArrayList<Tileable> tileables;
-   
+    private TileView tileView;
+    
     LinkedList<Entity> observers;
     
     public Tile() {
@@ -94,7 +96,6 @@ public class Tile {
     public void addTileable(Tileable t){
     	// should add the location too
         tileables.add(t);
-        t.sendViewThisLocation(location);
     }    
     
     /**
@@ -252,14 +253,6 @@ public class Tile {
 	public void moveSouthwest(Entity entity) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public void draw() {
-		System.out.println("center tile draws");
-		if (terrain != null) terrain.draw();
-		if (!tileables.isEmpty())
-				for (Tileable t : tileables)
-					t.draw();
 	}
 	
 	public Image getTerrainImage() {

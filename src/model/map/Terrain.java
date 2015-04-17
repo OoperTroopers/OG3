@@ -8,7 +8,7 @@ package model.map;
 import java.awt.Image;
 
 import view.modelview.tileable.TileableView;
-import view.modelview.tileable.terrain.TerrainView;
+import view.modelview.tileableview.TerrainView;
 
 
 /**
@@ -24,7 +24,6 @@ public abstract class Terrain {
 	}
     
     public abstract Terrain clone();
-    public abstract void draw();
     /*
     public boolean canMove(Moveable m){
         

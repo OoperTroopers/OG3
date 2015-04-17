@@ -31,6 +31,7 @@ public class Tile {
     LinkedList<Entity> observers;
     
     public Tile() {
+    	this.location = new Location(-200, -200, -200);
     	this.neighbors = new HashMap<Direction, Tile>();
     	tileables = new ArrayList<Tileable>();
     }
@@ -214,6 +215,13 @@ public class Tile {
      */
     public int hashCode() {
     	return this.location.hashCode();
+    }
+    
+    /**
+     * Overridden toString method that prints out Tile's location
+     */
+    public String toString() {
+    	return "Tile at " + this.location;
     }
 
 	public void moveNorth(Entity entity) {

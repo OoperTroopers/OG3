@@ -31,6 +31,6 @@ public class View extends JPanel {
 	}
 
 	public void stylize() {
-		//this.setBackground(Color.CYAN);
+		this.setBackground(Color.CYAN);
 	}
 }

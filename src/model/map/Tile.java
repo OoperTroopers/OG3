@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import java.awt.Image;
 import java.util.*;
 
 import model.effects.Effect;
@@ -259,5 +260,9 @@ public class Tile {
 		if (!tileables.isEmpty())
 				for (Tileable t : tileables)
 					t.draw();
+	}
+	
+	public Image getTerrainImage() {
+		return terrain.getTerrainView();
 	}
 }

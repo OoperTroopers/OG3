@@ -9,6 +9,7 @@ import java.util.*;
 import java.awt.Point;
 import java.io.*;
 
+import view.tools.Constants;
 import model.map.Tile;
 
 /**
@@ -308,9 +309,11 @@ public class TileAlgorithm {
 		return visited.size();
 	}
 	
-	public static Point toPixel(Tile tile, int size) {
-		int x = size * 3 / 2 * tile.getX();
-		int y = (int) (size * Math.sqrt(3) * (tile.getZ() + tile.getX() / 2));
+	public static Point toPixel(Tile tile) {
+		double size = Constants.TILE_SIZE;
+		int x = (int) (size * 3.0 / 2.0 * tile.getX());
+		int y = (int) (size * Math.sqrt(3) * (tile.getZ() + tile.getX() / 2.0));
+		
 		return new Point(x, y);
 	}
 

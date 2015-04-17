@@ -5,6 +5,8 @@
  */
 package model.map;
 
+import java.awt.Image;
+
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.terrain.TerrainView;
 
@@ -32,4 +34,5 @@ public abstract class Terrain {
     }
     */
 	public abstract void setLocation(Location location);
+	public abstract Image getTerrainView();
 }

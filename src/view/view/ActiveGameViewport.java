@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,12 +16,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import model.loadsave.FilePaths;
+import model.loadsave.Load;
+import model.map.Tile;
+import utilities.TileAlgorithm;
+import utilities.TileAlgorithm.Direction;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 import view.tools.ViewPosition;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
+	Tile currentTile;
+	Load load = new Load();
+	
 	int[][] tiles = {
 			{5, 5},
 			{85,5},
@@ -34,6 +43,11 @@ public class ActiveGameViewport extends Viewport {
 	public ActiveGameViewport() {
 		this.setPreferredSize(new Dimension(300,400));
 		this.setBackground(Color.BLACK);
+		
+		// get beginning tile
+		try {load.read(FilePaths.DEFAULT);} 
+		catch (IOException e) {e.printStackTrace();}
+		currentTile = load.getBeginningTile();
 	}
 	
 	@Override
@@ -71,14 +85,20 @@ public class ActiveGameViewport extends Viewport {
 	
 	@Override
 	public void paint(Graphics g) {
-		for (int i = 0; i < tiles.length; i++) {
-			BufferedImage img = null;
-			try {
-			    img = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));
-			    System.out.print("ta");
-				g.drawImage(img, tiles[i][0],tiles[i][1],Constants.TILE_HEIGHT,Constants.TILE_WIDTH, null);
-				System.out.println("da");
-			} catch (IOException e) {}	
+		// paint this tile
+		Point p = TileAlgorithm.toPixel(currentTile);
+		g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
+				Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+		
+		// move to next
+		
+		for (Direction d : Direction.values()) {
+			Tile temp = currentTile.getNeighbor(d);
+			if (temp == null) continue;
+			p = TileAlgorithm.toPixel(temp);
+			System.out.println("("+p.x+", "+p.y+")");
+			g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
+					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}
 }

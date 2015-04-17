@@ -18,7 +18,7 @@ public class GrassTerrain extends Terrain{
 	GrassTerrainView view;
 	
     public GrassTerrain() {
-    	view = new GrassTerrainView();
+    	super(new GrassTerrainView());
     }
     
     @Override

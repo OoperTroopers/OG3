@@ -10,6 +10,8 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -41,7 +43,8 @@ public class ActiveGameViewport extends Viewport {
 			new ActiveGameViewport();
 
 	public ActiveGameViewport() {
-		this.setPreferredSize(new Dimension(300,400));
+		this.setPreferredSize(new Dimension(400,400));
+		
 		this.setBackground(Color.BLACK);
 		
 		// get beginning tile
@@ -86,18 +89,17 @@ public class ActiveGameViewport extends Viewport {
 	@Override
 	public void paint(Graphics g) {
 		// paint this tile
-		Point p = TileAlgorithm.toPixel(currentTile);
+		/*Point p = TileAlgorithm.toPixel(currentTile);
 		g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
-				Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+				Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);*/
 		
 		// move to next
-		
-		for (Direction d : Direction.values()) {
-			Tile temp = currentTile.getNeighbor(d);
-			if (temp == null) continue;
-			p = TileAlgorithm.toPixel(temp);
+		Point p;
+		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
+		for (Tile t : tiles) {
+			p = TileAlgorithm.toPixel(t);
 			System.out.println("("+p.x+", "+p.y+")");
-			g.drawImage(currentTile.getTerrainImage(), p.x, p.y, 
+			g.drawImage(t.getTerrainImage(), p.x, p.y, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}

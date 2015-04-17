@@ -100,6 +100,35 @@ public class TileAlgorithm {
 		}
 	}
 	
+	/**
+	 * Finds all of the Tiles in the map and returns them in a list
+	 * @param start Tile that we are starting from
+	 * @return      List of all Tiles in the map
+	 */
+	public static List<Tile> getAllTiles(Tile start) {
+		List<Tile> tiles = new ArrayList<Tile>();
+		HashSet<Tile> visited = new HashSet<Tile>();
+		Queue<Tile> queue = new LinkedList<Tile>();
+		
+		tiles.add(start);
+		queue.add(start);
+		visited.add(start);
+		
+		while (!queue.isEmpty()) {
+			Tile current = queue.remove();
+			for (Direction direction : Direction.values()) {
+				Tile neighbor = current.getNeighbor(direction);
+				if (neighbor != null && !visited.contains(neighbor)) {
+					tiles.add(neighbor);
+					visited.add(neighbor);
+					queue.add(neighbor);
+				}
+			}
+		}
+		
+		return tiles;
+	}
+	
 	
 	/**
 	 * Finds the maximum difference between the x, y, and z coodinates of two Tiles
@@ -308,6 +337,12 @@ public class TileAlgorithm {
 		return visited.size();
 	}
 	
+	/**
+	 * Converts the 
+	 * @param tile
+	 * @param size
+	 * @return
+	 */
 	public static Point toPixel(Tile tile, int size) {
 		int x = size * 3 / 2 * tile.getX();
 		int y = (int) (size * Math.sqrt(3) * (tile.getZ() + tile.getX() / 2));

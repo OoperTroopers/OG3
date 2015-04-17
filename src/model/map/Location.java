@@ -14,17 +14,11 @@ public class Location {
     private int x;
     private int y;
     private int z;
-    
-    private int q;
-    private int r;
         
     public Location(int x, int y, int z) {
     	this.x = x;
     	this.y = y;
     	this.z = z;
-    	
-    	this.q = x;
-    	this.r = z;
     }
     
     public int getX() {
@@ -37,14 +31,6 @@ public class Location {
     
     public int getZ() {
     	return this.z;
-    }
-    
-    public int getQ() {
-    	return this.q;
-    }
-    
-    public int getR() {
-    	return this.r;
     }
     
     public String toString() {

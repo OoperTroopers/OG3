@@ -6,6 +6,7 @@ package utilities;
  */
 
 import java.util.*;
+import java.awt.Point;
 import java.io.*;
 
 import model.map.Tile;
@@ -305,6 +306,12 @@ public class TileAlgorithm {
 		}
 		
 		return visited.size();
+	}
+	
+	public static Point toPixel(Tile tile, int size) {
+		int x = size * 3 / 2 * tile.getX();
+		int y = (int) (size * Math.sqrt(3) * (tile.getZ() + tile.getX() / 2));
+		return new Point(x, y);
 	}
 
 	/**

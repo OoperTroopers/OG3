@@ -63,6 +63,10 @@ public class TileAlgorithm {
 			this.dy = dy;
 			this.dz = dz;
 		}
+		
+		public int getDX() { return dx; }
+		public int getDY() { return dy; }
+		public int getDZ() { return dz; }
 
 		public Direction leftTurn() { return this.left; }
 		public Direction rightTurn() { return this.right; }

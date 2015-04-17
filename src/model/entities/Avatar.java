@@ -2,6 +2,7 @@ package model.entities;
 
 import model.effects.Effect;
 import model.map.Journal;
+import model.map.MovementCapabilities;
 import model.map.Tile;
 
 
@@ -50,6 +51,48 @@ public class Avatar extends Entity {
         updateMemTile(t);
     }
     private void updateMemTile(Tile t){
-        //myJournal.updateMemTile(t);
+        //myJournal.addMemTile(t);
     }
+
+	@Override
+	public MovementCapabilities getMovementCapabilities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canMoveNorth() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveNortheast() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveNorthwest() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSouth() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSoutheast() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSouthwest() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

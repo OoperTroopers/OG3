@@ -216,7 +216,7 @@ public class MemTile {
      * 
      */
     public void print(){
-        //myView.print(this);
+        // myView.print(this);
     }
        
     

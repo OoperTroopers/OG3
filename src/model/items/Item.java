@@ -2,11 +2,14 @@ package model.items;
 
 import model.entities.Entity;
 import model.map.Tileable;
+import view.modelview.tileable.TileableView;
+
 
 public abstract class Item implements Tileable{	
 	private String name;
 	private String description;
 	private String id;
+	private TileableView tileableView;
 
 	public Item() {
 		this.name = "Test";
@@ -49,4 +52,8 @@ public abstract class Item implements Tileable{
 	public abstract void touch(Entity entity);
 	
 	public abstract Tileable clone();
+	
+	public void draw() {
+		tileableView.draw();
+	}
 }

@@ -13,9 +13,10 @@ import view.modelview.tileable.terrain.TerrainView;
  * @author Jason Owens
  */
 public class GrassTerrain extends Terrain{
+	GrassTerrainView terrainView;
 	
     public GrassTerrain() {
-    	// terrainView = new GrassTerrainView();
+    	terrainView = new GrassTerrainView();
     }
     
     @Override
@@ -28,4 +29,7 @@ public class GrassTerrain extends Terrain{
     //	TerrainView.draw();
     //}
     
+    public void drawView() {
+    	terrainView.draw();
+    }
 }

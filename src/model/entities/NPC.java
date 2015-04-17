@@ -6,6 +6,7 @@ import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
+import model.map.MovementCapabilities;
 import model.map.Tile;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
@@ -89,5 +90,47 @@ public class NPC extends Entity {
 	public Entity clone() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public MovementCapabilities getMovementCapabilities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canMoveNorth() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveNortheast() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveNorthwest() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSouth() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSoutheast() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMoveSouthwest() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

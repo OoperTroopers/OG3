@@ -42,13 +42,15 @@ public class Load {
 			this.initializeNeighbors(tileNumber, neighbors);
 		}
 		
-		// TODO: READ THE AVATAR'S LOCATION
-		
 		// initialize all locations with Tile 1 having coordinates {0, 0, 0}
 		this.initializeLocations(this.allTiles[1]);
 		
-		// set the reference to the beginning Tile
-		this.setBeginningTile(1);	
+		// get the Tile that the Avatar is on
+		String avatarLocation = in.next();
+		Tile avatarTile = this.getAvatarTile(avatarLocation);
+		
+		// set the reference to the beginning Tile (Avatar's Tile)
+		this.setBeginningTile(avatarTile);	
 	}
 	
 	/**
@@ -165,10 +167,21 @@ public class Load {
 	}
 	
 	/**
+	 * Get the Tile that the Avatar is located on based on the String
+	 * @param avatarLocation String with the Avatar's location
+	 * @return				 number of the Tile that the Avatar is on
+	 */
+	private Tile getAvatarTile(String avatarLocation) {
+		avatarLocation = avatarLocation.substring(avatarLocation.indexOf("=") + 1);
+		int tileNumber = Integer.parseInt(avatarLocation);
+		return this.allTiles[tileNumber];
+	}
+	
+	/**
 	 * Set the beginning Tile to the first Tile
 	 */
-	private void setBeginningTile(int index) {
-		this.beginningTile = this.allTiles[index];
+	private void setBeginningTile(Tile beginningTile) {
+		this.beginningTile = beginningTile;
 	}
 	
 	/**

@@ -29,6 +29,9 @@ public class Save {
 		// write all of the Tiles to the file
 		this.writeTiles(avatarTile);
 		
+		// write the Avatar's location
+		this.writeAvatarLocation(avatarTile);
+		
 		out.close();
 	}
 	
@@ -112,5 +115,10 @@ public class Save {
 	private int setTileNumber(Tile tile) {
 		this.tileNumbering.put(tile, ++this.tileNumber);
 		return this.tileNumber;
+	}
+	
+	private void writeAvatarLocation(Tile avatarTile) {
+		int tileIndex = this.getTileNumber(avatarTile);
+		out.print("AvatarLocation=" + tileIndex);
 	}
 }

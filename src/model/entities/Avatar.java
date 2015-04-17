@@ -26,7 +26,7 @@ public class Avatar extends Entity {
 		this.myJournal = new Journal();
 	}
 	
-	public Avatar(Occupation o, EquipmentManager em, Statistics s, boolean h) {
+	public Avatar(Occupation o, EquipmentManager em, Statistics s) {
 		super(o, em, s);
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);

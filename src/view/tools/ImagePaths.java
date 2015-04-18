@@ -22,4 +22,10 @@ public class ImagePaths {
     public static final String TREASURE_CHEST = IMG_DIR + "treasure_chest.png";
     //TakeableItem sprites
     public static final String POTION = IMG_DIR + "potion.png";
+    //Weapon sprites
+    public static final String TWO_HANDED = IMG_DIR + "two_handed.jpg";
+    public static final String ONE_HANDED = IMG_DIR + "one_handed.jpg";
+    public static final String BOW = IMG_DIR + "bow.png";
+    public static final String STAFF = IMG_DIR + "staff.png";
+    public static final String BRAWL = IMG_DIR + "boxing_gloves.png";
 }

@@ -3,6 +3,7 @@ package model.items;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SmasherEquipmentManager;
 import model.equipmentmanagers.SneakEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
@@ -15,16 +16,6 @@ public class Ranged extends Weapon {
 	public Ranged(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
-	public void equip(SneakEquipmentManager em, Inventory inventory) {
-		em.unequipRangedWeapon();
-		em.equipRangedWeapon(this);
-		inventory.removeFromInventory(this);
-	}
-	public void unequip(SneakEquipmentManager em, Inventory inventory) {
-		em.unequipRangedWeapon();
-		inventory.addToInventory(this);
-	}
-
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub
@@ -41,14 +32,16 @@ public class Ranged extends Weapon {
 		return false;
 	}
 	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void equip(EquipmentManager em, Inventory inventory) {
+		((SneakEquipmentManager)em).unequipRangedWeapon();
+		((SneakEquipmentManager)em).equipRangedWeapon(this);
+		inventory.removeFromInventory(this);
 		
 	}
 	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
+	public void unequip(EquipmentManager em, Inventory inventory) {
+		((SneakEquipmentManager)em).unequipRangedWeapon();
+		inventory.addToInventory(this);
 	}
 	@Override
 	public void touch(Entity entity) {

@@ -3,6 +3,7 @@ package model.items;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SmasherEquipmentManager;
 import model.equipmentmanagers.SummonerEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
@@ -15,15 +16,6 @@ public class Staff extends Weapon {
 	}
 	public Staff(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
-	}
-	public void equip(SummonerEquipmentManager em, Inventory inventory) {
-		em.unequipStaff();
-		em.equipStaff(this);
-		inventory.removeFromInventory(this);
-	}
-	public void unequip(SummonerEquipmentManager em, Inventory inventory) {
-		em.unequipStaff();
-		inventory.addToInventory(this);
 	}
 
 	@Override
@@ -42,14 +34,16 @@ public class Staff extends Weapon {
 		return false;
 	}
 	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void equip(EquipmentManager em, Inventory inventory) {
+		((SummonerEquipmentManager)em).unequipStaff();
+		((SummonerEquipmentManager)em).equipStaff(this);
+		inventory.removeFromInventory(this);
 		
 	}
 	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
+	public void unequip(EquipmentManager em, Inventory inventory) {
+		((SummonerEquipmentManager)em).unequipStaff();
+		inventory.addToInventory(this);
 	}
 	@Override
 	public void touch(Entity entity) {

@@ -16,15 +16,6 @@ public class Brawl extends Weapon {
 		super(name, description, id, value, es);
 	}
 	
-	public void equip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipBareHandedWeapon();
-		em.equipBareHandedWeapon(this);
-		inventory.removeFromInventory(this);
-	}
-	public void unequip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipBareHandedWeapon();
-		inventory.addToInventory(this);
-	}
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub
@@ -41,14 +32,16 @@ public class Brawl extends Weapon {
 		return false;
 	}
 	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void equip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
+		((SmasherEquipmentManager)em).equipBareHandedWeapon(this);
+		inventory.removeFromInventory(this);
 		
 	}
 	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
+	public void unequip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
+		inventory.addToInventory(this);
 	}
 	@Override
 	public void touch(Entity entity) {

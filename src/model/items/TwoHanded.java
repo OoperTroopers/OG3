@@ -16,15 +16,6 @@ public class TwoHanded extends Weapon {
 	public TwoHanded(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
-	public void equip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipTwoHandedWeapon();
-		em.equipTwoHandedWeapon(this);
-		inventory.removeFromInventory(this);
-	}
-	public void unequip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipTwoHandedWeapon();
-		inventory.addToInventory(this);
-	}
 
 	@Override
 	public void acceptEffect(Effect e) {
@@ -42,13 +33,16 @@ public class TwoHanded extends Weapon {
 		return false;
 	}
 	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void equip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipTwoHandedWeapon();
+		((SmasherEquipmentManager)em).equipTwoHandedWeapon(this);
+		inventory.removeFromInventory(this);
 		
 	}
 	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void unequip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipTwoHandedWeapon();
+		inventory.addToInventory(this);
 		
 	}
 	@Override

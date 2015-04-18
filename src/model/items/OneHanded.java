@@ -7,17 +7,15 @@ import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.statistics.EquippableStatistics;
 public class OneHanded extends Weapon {
-	public void equip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipOneHandedWeapon();
-		em.equipOneHandedWeapon(this);
-		inventory.removeFromInventory(this);
+	public OneHanded() {
+		super();
 	}
-	public void unequip(SmasherEquipmentManager em, Inventory inventory) {
-		em.unequipOneHandedWeapon();
-		inventory.addToInventory(this);
+	public OneHanded(String name, String description, String id, int value, EquippableStatistics es) {
+		super(name, description, id, value, es);
 	}
-
+	
 	@Override
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub
@@ -34,14 +32,16 @@ public class OneHanded extends Weapon {
 		return false;
 	}
 	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
+	public void equip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipOneHandedWeapon();
+		((SmasherEquipmentManager)em).equipOneHandedWeapon(this);
+		inventory.removeFromInventory(this);
 		
 	}
 	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
+	public void unequip(EquipmentManager em, Inventory inventory) {
+		((SmasherEquipmentManager)em).unequipOneHandedWeapon();
+		inventory.addToInventory(this);
 	}
 	@Override
 	public void touch(Entity entity) {

@@ -34,13 +34,22 @@ public abstract class Entity implements Tileable, Moveable{
 	public Entity() {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
-		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 	}
 	
-	// constructor for Entity with specific occupation. 
-	//needs refactor to account for equipment manager needing derived stats
+	public Entity(Tile tile, TileableView entityView) {
+		this.inventory = new Inventory();
+		this.stats = new SmasherStatistics();
+		this.occupation = new SmasherOccupation();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
+		this.direction = 8;
+		this.myTile = tile;
+		this.entityView = entityView;
+		this.myTile.addTileable(this);
+	}
+	
 	public Entity(Occupation o, EquipmentManager em, Statistics s) {
 		this.inventory = new Inventory();
 		this.equipmentManager = em;
@@ -124,6 +133,15 @@ public abstract class Entity implements Tileable, Moveable{
 	public void setGold(int gold) {
 		stats.setCurrentGold(gold);
 	}
+	public int getBargainingSkillLevel() {
+		return occupation.getBargainingSkillLevel();
+	}
+	public int getBindWoundsLevel() {
+		return occupation.getBindWoundsSkillLevel();
+	}
+	public int getObservationSkillLevel() {
+		return occupation.getObservationSkillLevel();
+	}
 	
 	public Inventory getInventory() {
 		return inventory;
@@ -175,10 +193,14 @@ public abstract class Entity implements Tileable, Moveable{
             know whether or not it's legal to move the Entity.
         */
         public void moveNorth(){
-            myTile.moveNorth(this);
+        	if (myTile.move(this, Direction.NORTH)) {
+            	myTile = myTile.getNeighbor(Direction.NORTH);
+            }
         }
         public void moveSouth(){
-            myTile.moveSouth(this);
+            if (myTile.move(this, Direction.SOUTH)) {
+            	myTile = myTile.getNeighbor(Direction.SOUTH);
+            }
         }
         public void moveNorthwest(){
             myTile.moveNorthwest(this);
@@ -195,5 +217,9 @@ public abstract class Entity implements Tileable, Moveable{
         
     	public void sendToView(TileView tileView) {
     		tileView.accept(entityView);
+    	}
+    	
+    	public void removeFromView(TileView tileView) {
+    		tileView.remove(entityView);
     	}
 }

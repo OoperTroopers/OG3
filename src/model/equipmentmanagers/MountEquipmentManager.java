@@ -5,6 +5,7 @@ import model.items.Chest;
 import model.items.Helmet;
 import model.items.Legs;
 import model.items.Saddle;
+import model.occupations.Occupation;
 import model.statistics.DerivedStatistics;
 
 public class MountEquipmentManager extends EquipmentManager {
@@ -15,14 +16,14 @@ public class MountEquipmentManager extends EquipmentManager {
 		this.saddle = null;
 	}
 	
-	public MountEquipmentManager(DerivedStatistics derivedStats) {
-		super(derivedStats);
+	public MountEquipmentManager(DerivedStatistics derivedStats, Occupation occupation) {
+		super(derivedStats, occupation);
 		this.saddle = null;
 	}
 	
 	public MountEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs, Saddle saddle,
-			DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.saddle = saddle;
 	}
 	

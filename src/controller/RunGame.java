@@ -1,25 +1,33 @@
 package controller;
 
-import model.abilities.AttackAbility;
-import model.abilities.SneakAbility;
 import model.entities.Avatar;
+import model.entities.Entity;
 
 import javax.swing.*;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class RunGame extends JPanel {
+	
     public RunGame(){
         Avatar avatar = new Avatar();
-        avatar.addAbility(new SneakAbility(avatar, 's'));
-        avatar.addAbility(new AttackAbility(avatar, 'a'));
         addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
     }
+    
+    public RunGame(Avatar avatar){
+        addAvatarKeyBinding(avatar.getKeyBinding());
+        setFocusable(true);
+        start();
+    }
+    
     public static void main(String args[]){
-        JFrame frame = new JFrame("Controller Example");
-        RunGame runGame = new RunGame();
-        frame.add(runGame);
+        
+    }
+    
+    public void start() {
+    	JFrame frame = new JFrame("Controller Example");
+        frame.add(this);
         frame.setSize(200, 200);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

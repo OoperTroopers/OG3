@@ -1,20 +1,16 @@
 package model.occupations;
 
 public class SummonerOccupation extends Occupation {
-	//private SummonerSkillManager skillManager;
-	private String occupationName;
-		
 	public SummonerOccupation() {
-		//this.skillManager = new SummonerSkillManager();
-		this.occupationName = "Summoner";
+		super();
+		setAbilities();
+		setOccupationName("Summoner");
 	}
 		
-	public void setOccupationName(String name) {
-		this.occupationName = name;
-	}
-		
-	public String getOccupationName() {
-		return occupationName;
+	private void setAbilities() {
+		//abilityList.add(new BindWounds());
+		//abilityList.add(new Bargain());
+		//abilityList.add(new Observation());
 	}
 	/*
 	public void setSkillManager(SummonerSkillManager skillManager) {

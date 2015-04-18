@@ -1,20 +1,10 @@
 package model.occupations;
 
 public class MountOccupation extends Occupation {
-	//private MountSkillManager skillManager;
-	private String occupationName;
 	
 	public MountOccupation() {
-		//this.skillManager = new MountSkillManager();
-		this.occupationName = "Mount";
-	}
-	
-	public void setOccupationName(String name) {
-		this.occupationName = name;
-	}
-	
-	public String getOccupationName() {
-		return occupationName;
+		super();
+		setOccupationName("Mount");
 	}
 	/*
 	public void setSkillManager(MountSkillManager skillManager) {

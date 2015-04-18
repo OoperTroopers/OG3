@@ -5,6 +5,7 @@ import model.items.Chest;
 import model.items.Helmet;
 import model.items.Legs;
 import model.items.Ranged;
+import model.occupations.Occupation;
 import model.statistics.DerivedStatistics;
 
 public class SneakEquipmentManager extends EquipmentManager {
@@ -15,14 +16,14 @@ public class SneakEquipmentManager extends EquipmentManager {
 		this.rangedWeapon = null;
 	}
 	
-	public SneakEquipmentManager(DerivedStatistics derivedStats) {
-		super(derivedStats);
+	public SneakEquipmentManager(DerivedStatistics derivedStats, Occupation occupation) {
+		super(derivedStats, occupation);
 		this.rangedWeapon = null;
 	}
 	
 	public SneakEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs, Ranged rangedWeapon,
-			DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.rangedWeapon = rangedWeapon;
 	}
 	

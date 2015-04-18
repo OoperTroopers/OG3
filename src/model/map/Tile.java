@@ -14,6 +14,7 @@ import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
+import view.view.ActiveGameViewport;
 
 /**
  * Tile represents the smallest discrete location an object can 
@@ -95,6 +96,7 @@ public class Tile {
     
     public void removeTileable(Tileable t){
         tileables.remove(t);
+        t.removeFromView(tileView);
     }
     
     /**
@@ -167,11 +169,13 @@ public class Tile {
      * @param entity    the Entity that we want to move
      * @param direction the Direction we want to move the Entity
      */
-    public void move(Entity entity, Direction direction) {
+    public boolean move(Entity entity, Direction direction) {
     	Tile neighborTile = this.neighbors.get(direction);
-    	if (neighborTile == null) return;
+    	if (neighborTile == null) return false;
     	this.removeTileable(entity);
     	neighborTile.addTileable(entity);
+    	ActiveGameViewport.getInstance().repaint();
+    	return true;
     }    
     
     /**
@@ -232,31 +236,6 @@ public class Tile {
     public String toString() {
     	return "Tile at " + this.location;
     }
-
-	public void moveNorth(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void moveSouth(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void moveNorthwest(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void moveSoutheast(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void moveSouthwest(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public TileView getTileView() {
 		return tileView;

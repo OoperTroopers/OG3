@@ -2,19 +2,15 @@ package model.occupations;
 
 public class SmasherOccupation extends Occupation {
 	//private SmasherSkillManager skillManager;
-	private String occupationName;
 	
 	public SmasherOccupation() {
-		//this.skillManager = new SmasherSkillManager();
-		this.occupationName = "Smasher";
+		super();
+		setAbilities();
+		setOccupationName("Smasher");
 	}
-	
-	public void setOccupationName(String name) {
-		this.occupationName = name;
-	}
-	
-	public String getOccupationName() {
-		return occupationName;
+
+	private void setAbilities() {
+		//abilityList.add(new OneHanded());
 	}
 	/*
 	public void setSkillManager(SmasherSkillManager skillManager) {

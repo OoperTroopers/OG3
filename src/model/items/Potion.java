@@ -1,14 +1,26 @@
 package model.items;
 
 import model.effects.Effect;
+import model.effects.HealEffect;
 import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
-import model.statistics.Statistics;
 
 public class Potion extends TakeableItem implements Usable{
-	public void use(Statistics stats){
-		stats.fullRestore();
+	private HealEffect healEffect;
+	
+	public Potion() {
+		super();
+		healEffect = new HealEffect();
+	}
+	public Potion(String name, String description, String id, int value) {
+		super(name, description, id, value);
+		healEffect = new HealEffect();
+	}
+	
+	public void use(Entity entity){
+		healEffect.visit(entity);
+		entity.removeItem(this);
 	}
 
 	@Override

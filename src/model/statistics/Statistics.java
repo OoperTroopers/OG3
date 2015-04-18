@@ -36,10 +36,6 @@ public abstract class Statistics {
 	public void incrementLevel() {
 		++currentLevel;
 	}
-	public void fullRestore() {
-		currentHealth = derivedStats.getMaxHealth();
-		currentMana = derivedStats.getMaxMana();
-	}
 	
 	public int getOffensiveRating() {
 		return derivedStats.getOffensiveRating();
@@ -60,6 +56,16 @@ public abstract class Statistics {
 	
 	public void wound(int damage) {
 		currentHealth -= damage;
+	}
+	
+	public void loseLife() {
+		primaryStats.loseLife();
+	}
+	public void gainNewLife() {
+		primaryStats.gainNewLife();
+	}
+	public int getLivesLeft() {
+		return primaryStats.getLivesLeft();
 	}
 	
 	public PrimaryStatistics getPrimaryStats() {

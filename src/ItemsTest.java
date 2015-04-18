@@ -23,6 +23,13 @@ public class ItemsTest {
 		damageItem.touch(entity);
 		System.out.println("Health: " + entity.getStats().getCurrentHealth());
 		System.out.println("Max health: " + entity.getStats().getDerivedStats().getMaxHealth());
+		
+		Potion potion = new Potion();
+		entity.addItemToInventory(potion);
+		System.out.println(entity.getInventory().itemInInventory(potion));
+		potion.use(entity);
+		System.out.println("Health: " + entity.getStats().getCurrentHealth());
+		System.out.println(entity.getInventory().itemInInventory(potion));
 	}
 	
 }

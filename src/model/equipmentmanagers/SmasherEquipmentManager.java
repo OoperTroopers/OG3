@@ -72,6 +72,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	
 	public void equipOneHandedWeapon(OneHanded oneHandedWeapon) {
 		this.oneHandedWeapon = oneHandedWeapon;
+		//int statBoost = oneHandedWeapon.getEquipStats() + getOccupation().getOneHandedAbilityLevel();
 		getDerivedStats().addEquippable(oneHandedWeapon.getEquipStats());
 	}
 	

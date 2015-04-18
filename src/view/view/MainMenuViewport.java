@@ -40,11 +40,8 @@ public class MainMenuViewport extends Viewport {
 		// black background
 		g.setColor(Color.black);
 		g.fillRect(0,0,Constants.VIEW_WIDTH,Constants.VIEW_HEIGHT);
-		
+	
 		// banner
-		// g.setColor(Color.GREEN);
-		// g.fillRect(100, 50, 400, 70);
-		
 		g.setFont( new Font("DialogInput", Font.BOLD, 35) );
 		g.setColor(Color.WHITE);
 		g.drawString(Text.mainMenuBanner, 80, 30);

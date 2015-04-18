@@ -20,7 +20,11 @@ import view.tools.Constants;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
+	
 	Tile currentTile;
+	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
+	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
+	
 	Load load = new Load();
 	
 	private static ActiveGameViewport activeGameViewport = 
@@ -28,8 +32,11 @@ public class ActiveGameViewport extends Viewport {
 
 	public ActiveGameViewport() {
 		this.setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT,Constants.GAME_VIEW_WIDTH));
-		
 		this.setBackground(Color.BLACK);
+		
+		// add other viewports
+		// this.add(heartsViewport);
+		// this.add(simpleStatsViewport);
 		
 		// get beginning tile
 		try {load.read(FilePaths.DEFAULT);} 

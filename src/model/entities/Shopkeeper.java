@@ -1,5 +1,6 @@
 package model.entities;
 
+import model.inventory.Shop;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.occupations.Occupation;
@@ -23,11 +24,13 @@ public class Shopkeeper extends NPC {
 	public void openShop(Avatar avatar) {
 		Inventory avatarInventory = avatar.getInventory();
 		Inventory shopkeeperInventory = this.getInventory();
-		//int bargainingSkillLevel = avatar.getSkillLevel(bargaining)
+		int bargainingSkillLevel = avatar.getBargainingSkillLevel();
 		int avatarGold = avatar.getCurrentGold();
-		//Shop handles all of the transaction stuff
-		//Shop shop = new Shop(avatarInventory, shopkeeperInventory, bargainingSkillLevel, avatarGold);
-		//int change = shop.open();
-		//avatar.setGold(change);
+		
+		Shop shop = new Shop(avatarInventory, shopkeeperInventory, bargainingSkillLevel, avatarGold);
+		
+		//runs infinitely until told to close. Returns the new value of the players gold.
+		int change = shop.open();
+		avatar.setGold(change);
 	}	
 }

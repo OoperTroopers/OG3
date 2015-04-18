@@ -5,6 +5,7 @@ import model.items.Chest;
 import model.items.Helmet;
 import model.items.Legs;
 import model.items.Staff;
+import model.occupations.Occupation;
 import model.statistics.DerivedStatistics;
 
 public class SummonerEquipmentManager extends EquipmentManager {
@@ -15,14 +16,14 @@ public class SummonerEquipmentManager extends EquipmentManager {
 		this.staff = null;
 	}
 	
-	public SummonerEquipmentManager(DerivedStatistics derivedStats) {
-		super(derivedStats);
+	public SummonerEquipmentManager(DerivedStatistics derivedStats, Occupation occupation) {
+		super(derivedStats, occupation);
 		this.staff = null;
 	}
 	
 	public SummonerEquipmentManager(Helmet helmet, Chest chest, Arms arms, 
-			Legs legs, Staff staff, DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			Legs legs, Staff staff, DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.staff = staff;
 	}
 	

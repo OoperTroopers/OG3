@@ -42,6 +42,7 @@ public class ViewFrame extends JFrame {
 	}
 	
 	public void initialize() {
+		addViewport(SimpleStatsViewport.getInstance());
 		addViewport(ActiveGameViewport.getInstance());
 		// addViewport(MainMenuViewport.getInstance());
 		

@@ -14,8 +14,8 @@ public abstract class Occupation {
 	}
 
 	private void setAbilities() {
+		abilityList.add(new Bargain());
 		//abilityList.add(new BindWounds());
-		//abilityList.add(new Bargain());
 		//abilityList.add(new Observation());
 	}
 	
@@ -27,17 +27,13 @@ public abstract class Occupation {
 		return occupationName;
 	}
 	
-	/*
-	public void setSkillManager(SkillManager skillManager) {
-		this.skillManager = skillManager;
+	public int getBargainingSkillLevel() {
+		return abilityList.get(0).getSkillLevel();
 	}
-	
-	public String getOccupationName() {
-		return skillManager;
+	public int getBindWoundsSkillLevel() {
+		return abilityList.get(1).getSkillLevel();
 	}
-	
-	public void useAbility(Skill skill) {
-		//call skill manager->call skill->call use effect
+	public int getObservationSkillLevel() {
+		return abilityList.get(2).getSkillLevel();
 	}
-	*/
 }

@@ -18,8 +18,6 @@ public class RunGame extends JPanel {
     }
     
     public RunGame(Avatar avatar){
-        avatar.addAbility(new SneakAbility(avatar, 's'));
-        avatar.addAbility(new AttackAbility(avatar, 'a'));
         addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
         start();

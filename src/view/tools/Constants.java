@@ -8,7 +8,10 @@ public class Constants {
 	
 	public static final int GAME_VIEW_HEIGHT = 400;
 	public static final int GAME_VIEW_WIDTH = 400;
-		
+
+	public static final int HEART_VIEW_WIDTH = 200;
+	public static final int HEART_VIEW_HEIGHT = 100;
+
 	// ---------------
 	// tiles
 	public static final double TILE_SIZE = 26.1;

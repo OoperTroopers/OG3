@@ -3,6 +3,7 @@ package model.areaeffect;
 import model.effects.Effect;
 import model.map.Tile;
 import view.modelview.areaeffect.InstantDeathEffectView;
+import view.modelview.tile.TileView;
 
 public class InstantDeathEffect extends AreaEffect{
 
@@ -23,6 +24,11 @@ public class InstantDeathEffect extends AreaEffect{
 	public boolean isTraversable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void removeFromView(TileView tileView) {
+
 	}
 
 }

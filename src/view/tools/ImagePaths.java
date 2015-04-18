@@ -34,6 +34,9 @@ public class ImagePaths {
     public static final String STAFF = IMG_DIR + "staff.png";
     public static final String BRAWL = IMG_DIR + "boxing_gloves.png";
     
+    //Armor sprites
+    public static final String HELMET = IMG_DIR + "helmet.png";
+    
     // misc
     public static final String MAGIC_CAT = IMG_DIR + "MagicCat.jpg";
 }

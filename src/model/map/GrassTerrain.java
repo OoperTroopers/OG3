@@ -6,6 +6,7 @@
 package model.map;
 
 import model.effects.Effect;
+import view.modelview.tile.TileView;
 import view.modelview.tileable.terrain.GrassTerrainView;
 
 /**
@@ -44,4 +45,10 @@ public class GrassTerrain extends Terrain {
     public boolean isTraversable() {
         return false;
     }
+
+	@Override
+	public void removeFromView(TileView tileView) {
+		tileView.remove(view);
+		
+	}
 }

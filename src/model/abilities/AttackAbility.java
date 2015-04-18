@@ -4,7 +4,7 @@ import controller.ControllerAvatar;
 import controller.KeyBinding;
 import model.entities.Avatar;
 
-public class AttackAbility implements Ability {
+public class AttackAbility extends ExplicitAbility {
     private Avatar avatar;
     private KeyBinding keyBinding;
 

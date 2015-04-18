@@ -4,7 +4,7 @@ import controller.ControllerAvatar;
 import controller.KeyBinding;
 import model.entities.Avatar;
 
-public class SneakAbility implements Ability {
+public class SneakAbility extends ExplicitAbility {
     private Avatar avatar;
     private KeyBinding keyBinding;
     private boolean isActivated;

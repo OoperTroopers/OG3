@@ -15,4 +15,7 @@ public class ImagePaths {
     public static final String MOUNT = IMG_DIR + "car.png";
     public static final String DAMAGING_ONE_SHOT_ITEM = IMG_DIR + "redX.png";
     public static final String HEALING_ONE_SHOT_ITEM = IMG_DIR + "green_plus.png";
+    
+    // misc
+    public static final String MAGIC_CAT = IMG_DIR + "MagicCat.jpg";
 }

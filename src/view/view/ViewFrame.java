@@ -36,13 +36,15 @@ public class ViewFrame extends JFrame {
 	}
 	
 	public void addViewport(Viewport viewport) {
-		System.out.println("Viewport added");
 		view.addViewport(viewport);
 	}
 	
 	public void initialize() {
-		ActiveGameViewport game = ActiveGameViewport.getInstance();
-		addViewport(game);
+		addViewport(ActiveGameViewport.getInstance());
+		// addViewport(MainMenuViewport.getInstance());
+		
+		ViewportStack.getInstance().whichViewports();
+		
 	}
 
 	public static Component getInstance() {

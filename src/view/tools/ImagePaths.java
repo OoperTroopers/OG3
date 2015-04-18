@@ -42,6 +42,11 @@ public class ImagePaths {
     public static final String SHIELD = IMG_DIR + "shield.png";
     public static final String SADDLE = IMG_DIR + "saddle.png";;
 
+    //Area Affect sprites
+    public static final String HEART = IMG_DIR + "heart.png";
+    public static final String SKULL = IMG_DIR + "skull.png";
+    public static final String LEVEL_UP = IMG_DIR + "level_up.png";
+    public static final String TAKE_DAMAGE = IMG_DIR + "take_damage.png";
     
     // misc
     public static final String MAGIC_CAT = IMG_DIR + "MagicCat.jpg";

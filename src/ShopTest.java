@@ -26,7 +26,7 @@ public class ShopTest {
 		shop.buyItem(arm);
 		shop.sellItem(helm);
 		
-		avatar.setGold(shop.open());
+		avatar.setGold(shop.openShop());
 		System.out.println("Avatar end gold: " + avatar.getCurrentGold());
 	}
 }

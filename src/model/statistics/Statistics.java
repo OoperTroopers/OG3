@@ -8,6 +8,7 @@ public abstract class Statistics {
 	private int currentMana;
 	private int currentExperience;
 	private int currentLevel;
+	private int assignableAbilityPoints;
 	
 	public Statistics() {
 		this.primaryStats = new PrimaryStatistics();
@@ -17,6 +18,7 @@ public abstract class Statistics {
 		this.currentMana = derivedStats.getMaxMana();
 		this.currentExperience = 0;
 		this.currentLevel = 1;
+		this.assignableAbilityPoints = 0;
 	}
 	
 	public abstract void levelUp();
@@ -35,6 +37,9 @@ public abstract class Statistics {
 	}
 	public void incrementLevel() {
 		++currentLevel;
+	}
+	public void increaseAssignableAbilityPoints(int points) {
+		assignableAbilityPoints += points;
 	}
 	
 	public int getOffensiveRating() {
@@ -109,5 +114,11 @@ public abstract class Statistics {
 	}
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
+	}
+	public int getAssignableAbilityPoints() {
+		return assignableAbilityPoints;
+	}
+	public void setAssignableAbilityPoints(int assignableAbilityPoints) {
+		this.assignableAbilityPoints = assignableAbilityPoints;
 	}
 }

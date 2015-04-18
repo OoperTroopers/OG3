@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.modelview.tileableview;
+package view.modelview.tileable.terrain;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,11 +15,11 @@ import view.tools.ImagePaths;
  *
  * @author Doherty
  */
-public class MountainTerrainView extends TerrainView {
+public class WaterTerrainView extends TerrainView {
     BufferedImage image;
 	
-    public MountainTerrainView() {
-        try { image = ImageIO.read(new File(ImagePaths.MOUNTAIN_TERRAIN));} 
+    public WaterTerrainView() {
+        try { image = ImageIO.read(new File(ImagePaths.WATER_TERRAIN));} 
         catch (IOException e) {}	
     }
 

@@ -1,8 +1,9 @@
 package model.map;
 
 import java.awt.Image;
+
 import model.effects.Effect;
-import view.modelview.tileableview.WaterTerrainView;
+import view.modelview.tileable.terrain.WaterTerrainView;
 
 /**
  *

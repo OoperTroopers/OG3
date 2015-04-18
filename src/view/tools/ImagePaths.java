@@ -13,4 +13,6 @@ public class ImagePaths {
     public static final String NPC = IMG_DIR + "NPC_Cat.png";
     public static final String SHOPKEEPER = IMG_DIR + "shopkeeper_cat.jpg";
     public static final String MOUNT = IMG_DIR + "car.png";
+    public static final String DAMAGING_ONE_SHOT_ITEM = IMG_DIR + "redX.png";
+    public static final String HEALING_ONE_SHOT_ITEM = IMG_DIR + "green_plus.png";
 }

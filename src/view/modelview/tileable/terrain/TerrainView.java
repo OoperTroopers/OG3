@@ -1,4 +1,4 @@
-package view.modelview.tileableview;
+package view.modelview.tileable.terrain;
 
 import view.modelview.tileable.TileableView;
 

@@ -1,4 +1,4 @@
-package view.modelview.tileableview;
+package view.modelview.tileable.terrain;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

@@ -19,7 +19,7 @@ public abstract class TakeableItem extends Item {
 		return value;
 	}
 	
-	public void setalue(int value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 

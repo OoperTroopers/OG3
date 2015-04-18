@@ -32,16 +32,6 @@ public class TwoHanded extends Weapon {
 		
 	}
 	@Override
-	public void removeFromTile() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public Tile getContainingTile() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public Tileable clone() {
 		// TODO Auto-generated method stub
 		return null;

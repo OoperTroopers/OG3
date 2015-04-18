@@ -1,7 +1,6 @@
 package model.areaeffect;
 
 import model.effects.Effect;
-import model.map.Tile;
 import view.modelview.areaeffect.TakeDamageEffectView;
 
 public class TakeDamageEffect extends AreaEffect {
@@ -17,18 +16,6 @@ public class TakeDamageEffect extends AreaEffect {
 	public void acceptEffect(Effect e) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void removeFromTile() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Tile getContainingTile() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

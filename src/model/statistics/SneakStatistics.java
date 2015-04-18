@@ -26,6 +26,7 @@ public class SneakStatistics extends Statistics {
 		while(getCurrentExperience() >= (getCurrentLevel() * 10 + 90)) { 
 			decreaseExperience(getCurrentLevel() * 10 + 90);
 			incrementLevel();
+			increaseAssignableAbilityPoints(15);
 
 			PrimaryStatistics oldStats = new PrimaryStatistics();
 			PrimaryStatistics primaryStats = getPrimaryStats();

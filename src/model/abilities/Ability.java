@@ -14,6 +14,7 @@ public abstract class Ability {
     void attachToController(ControllerAvatar controlAvatar);*/
 
     public abstract void perform();
+    
 	public void levelSkillUp() {
 		++abilityLevel;
 	}

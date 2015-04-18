@@ -4,5 +4,6 @@ import view.modelview.tileable.TileableView;
 
 
 public abstract class TerrainView implements TileableView {
-	public int getPriority() { return 1; }
+    @Override
+    public int getPriority() { return 1; }
 }

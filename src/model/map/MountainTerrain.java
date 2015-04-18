@@ -8,6 +8,7 @@ package model.map;
 import java.awt.Image;
 
 import model.effects.Effect;
+import view.modelview.tile.TileView;
 import view.modelview.tileable.terrain.MountainTerrainView;
 
 /**
@@ -44,4 +45,5 @@ public class MountainTerrain extends Terrain {
     public boolean isTraversable() {
         return false;
     }
+
 }

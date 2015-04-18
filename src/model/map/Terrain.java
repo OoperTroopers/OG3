@@ -36,4 +36,6 @@ public abstract class Terrain implements Tileable {
 	public void sendToView(TileView tileView) {
 		tileView.accept(terrainView);
 	}
+	
+	public void removeFromView(TileView tileView) {}
 }

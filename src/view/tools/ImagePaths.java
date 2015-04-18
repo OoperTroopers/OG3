@@ -10,4 +10,5 @@ public class ImagePaths {
     public static final String MOUNTAIN_TERRAIN = IMG_DIR + "mountain_terrain.png";
     public static final String RIVER_TERRAIN = IMG_DIR + "river_terrain.gif";
     public static final String AVATAR = IMG_DIR + "Sprite-can.png";
+    public static final String NPC = IMG_DIR + "NPC_Cat.png";
 }

@@ -18,6 +18,6 @@ public class AvatarView extends EntityView {
 
 	@Override
 	public BufferedImage getImage() {
-		return null;
+		return image;
 	}
 }

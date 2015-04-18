@@ -16,6 +16,7 @@ public class AttackAbility implements Ability {
     @Override
     public void perform() {
         System.out.println("I AM ATTACKING YOU!");
+        avatar.moveNorth();
     }
 
     @Override

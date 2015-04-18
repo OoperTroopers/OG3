@@ -11,15 +11,15 @@ public class TileView {
 		tileableViews = new ArrayList<TileableView>();
 	}
 	
-	public void remove(TileableView tileableView) {
-		
-	}
-	
 	public List<TileableView> getList() {
 		return tileableViews;
 	}
 
 	public void accept(TileableView tileableView) {
 		tileableViews.add(tileableView);
+	}
+	
+	public void remove(TileableView tileableView) {
+		tileableViews.remove(tileableView);
 	}
 }

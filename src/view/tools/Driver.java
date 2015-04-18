@@ -3,26 +3,8 @@
 
 package view.tools;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import utilities.TileAlgorithm.Direction;
-import view.view.ActiveGameViewport;
-import view.view.View;
 import view.view.ViewFrame;
-import model.map.GrassTerrain;
-import model.map.Terrain;
-import model.map.Tile;
 
 public class Driver {
 	

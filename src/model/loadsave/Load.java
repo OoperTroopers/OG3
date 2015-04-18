@@ -3,7 +3,12 @@ package model.loadsave;
 import java.io.*;
 import java.util.*;
 
+import model.map.GrassTerrain;
+import model.map.MountainTerrain;
+import model.map.RiverTerrain;
+import model.map.Terrain;
 import model.map.Tile;
+import model.map.WaterTerrain;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
 
@@ -38,7 +43,9 @@ public class Load {
 		// iterate through all Tiles and add their neighbors
 		for (int z = 0; z < tiles; z++) {
 			String tileNumber = in.next();
+			String terrain = in.next();
 			String neighbors = in.next();
+			this.initializeTerrain(tileNumber, terrain);
 			this.initializeNeighbors(tileNumber, neighbors);
 		}
 		
@@ -72,6 +79,14 @@ public class Load {
 		for (int i = 0; i <= numberOfTiles; i++) {
 			this.allTiles[i] = new Tile();
 		}
+	}
+	
+	private void initializeTerrain(String tileNumber, String tileTerrain) {
+		int index = this.parseTileNumber(tileNumber);
+		Tile tile = this.getTile(index);
+		
+		Terrain terrain = this.parseTerrain(tileTerrain);
+		tile.addTileable(terrain);
 	}
 	
 	/**
@@ -110,6 +125,14 @@ public class Load {
 	 */
 	private Tile getTile(int index) {
 		return this.allTiles[index];
+	}
+	
+	private Terrain parseTerrain(String terrain) {
+		terrain = terrain.substring(terrain.indexOf("=") + 1);
+		char t = terrain.charAt(0);
+		if (t == 'M') return new MountainTerrain();
+		if (t == 'G') return new GrassTerrain();
+		return null;
 	}
 	
 	/**

@@ -19,7 +19,7 @@ public class MountainTerrainView extends TerrainView {
     BufferedImage image;
 	
     public MountainTerrainView() {
-        try { image = ImageIO.read(new File(ImagePaths.RIVER_TERRAIN));} 
+        try { image = ImageIO.read(new File(ImagePaths.MOUNTAIN_TERRAIN));} 
         catch (IOException e) {}	
     }
 

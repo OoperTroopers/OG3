@@ -1,7 +1,9 @@
 package controller;
 
+
+import model.abilities.movement.*;
+
 import model.entities.Avatar;
-import model.entities.Entity;
 
 import javax.swing.*;
 import java.awt.event.KeyListener;
@@ -16,6 +18,12 @@ public class RunGame extends JPanel {
     }
     
     public RunGame(Avatar avatar){
+        avatar.addAbility(new MoveNorthAbility(avatar, 'w'));
+        avatar.addAbility(new MoveNorthwestAbility(avatar, 'q'));
+        avatar.addAbility(new MoveNortheastAbility(avatar, 'e'));
+        avatar.addAbility(new MoveSouthAbility(avatar, 's'));
+        avatar.addAbility(new MoveSouthwestAbility(avatar, 'a'));
+        avatar.addAbility(new MoveSoutheastAbility(avatar, 'd'));
         addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
         start();

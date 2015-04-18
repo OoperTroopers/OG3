@@ -5,18 +5,18 @@
  */
 package model.map;
 
+import java.awt.Image;
 import model.effects.Effect;
-import view.modelview.tileableview.GrassTerrainView;
+import view.modelview.tileableview.RiverTerrainView;
 
 /**
  *
- * @author Jason Owens
+ * @author Doherty
  */
-public class GrassTerrain extends Terrain {
-    
-    static GrassTerrainView view = new GrassTerrainView();
+public class RiverTerrain extends Terrain {
+    static RiverTerrainView view = new RiverTerrainView();
 
-    public GrassTerrain() {
+    public RiverTerrain() {
     	super(view);
     }
     
@@ -36,25 +36,22 @@ public class GrassTerrain extends Terrain {
 
     @Override
     public void acceptEffect(Effect e) {
-            // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void removeFromTile() {
-            // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Tile getContainingTile() {
-            // TODO Auto-generated method stub
-            return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean isTraversable() {
-            // TODO Auto-generated method stub
-            return false;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

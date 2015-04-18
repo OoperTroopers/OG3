@@ -11,7 +11,6 @@ import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
 import utilities.TileAlgorithm;
-import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 

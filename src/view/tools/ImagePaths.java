@@ -20,4 +20,6 @@ public class ImagePaths {
     //InteractiveItem sprites
     public static final String DOOR = IMG_DIR + "door.png";
     public static final String TREASURE_CHEST = IMG_DIR + "treasure_chest.png";
+    //TakeableItem sprites
+    public static final String POTION = IMG_DIR + "potion.png";
 }

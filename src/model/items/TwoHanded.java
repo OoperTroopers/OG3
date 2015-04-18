@@ -7,8 +7,15 @@ import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.statistics.EquippableStatistics;
 
 public class TwoHanded extends Weapon {
+	public TwoHanded() {
+		super();
+	}
+	public TwoHanded(String name, String description, String id, int value, EquippableStatistics es) {
+		super(name, description, id, value, es);
+	}
 	public void equip(SmasherEquipmentManager em, Inventory inventory) {
 		em.unequipTwoHandedWeapon();
 		em.equipTwoHandedWeapon(this);

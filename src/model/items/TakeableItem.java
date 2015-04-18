@@ -7,7 +7,7 @@ public abstract class TakeableItem extends Item {
 
 	public TakeableItem() {
 		super();
-		this.value = 0;
+		this.value = 20;
 	}
 	
 	public TakeableItem(String name, String description, String id, int value) {

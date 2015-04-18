@@ -7,8 +7,15 @@ import model.equipmentmanagers.SummonerEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.statistics.EquippableStatistics;
 
 public class Staff extends Weapon {
+	public Staff() {
+		super();
+	}
+	public Staff(String name, String description, String id, int value, EquippableStatistics es) {
+		super(name, description, id, value, es);
+	}
 	public void equip(SummonerEquipmentManager em, Inventory inventory) {
 		em.unequipStaff();
 		em.equipStaff(this);

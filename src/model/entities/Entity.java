@@ -107,6 +107,14 @@ public abstract class Entity implements Tileable, Moveable{
 		//do dialogue
 	}
 	
+	public int getCurrentGold() {
+		return stats.getCurrentGold();
+	}
+	
+	public void setGold(int gold) {
+		stats.setCurrentGold(gold);
+	}
+	
 	public Inventory getInventory() {
 		return inventory;
 	}

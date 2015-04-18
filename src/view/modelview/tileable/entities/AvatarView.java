@@ -12,7 +12,7 @@ public class AvatarView extends EntityView {
 	BufferedImage image;
 	
 	public AvatarView() {
-		try { image = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));} 
+		try { image = ImageIO.read(new File(ImagePaths.AVATAR));} 
 		catch (IOException e) {}	
 	}
 

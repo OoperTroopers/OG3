@@ -36,7 +36,9 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			Brawl bhw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
-		setCurrentSkill("Brawl Ability");
+		if(bhw != null) {
+			setCurrentSkill("Brawl Ability");
+		}
 		this.bareHandedWeapon = bhw;
 		this.shield = null;
 		this.twoHandedWeapon = null;
@@ -46,7 +48,9 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			TwoHanded thw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
-		setCurrentSkill("Two Handed Weapon Ability");
+		if(thw != null) {
+			setCurrentSkill("Two Handed Weapon Ability");
+		}
 		this.twoHandedWeapon = thw;
 		this.shield = null;
 		this.oneHandedWeapon = null;
@@ -56,7 +60,9 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			Shield s, OneHanded ohw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
-		setCurrentSkill("One Handed Weapon Ability");
+		if(ohw != null) {
+			setCurrentSkill("One Handed Weapon Ability");
+		}
 		this.shield = s;
 		this.oneHandedWeapon = ohw;
 		this.twoHandedWeapon = null;

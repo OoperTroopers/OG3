@@ -5,7 +5,7 @@ import model.items.*;
 public class AbilityLevelTest {
 	public static void main(String[] args) {
 		Avatar smash = new Avatar();
-		TwoHanded oh = new TwoHanded();
+		OneHanded oh = new OneHanded();
 		smash.addItemToInventory(oh);
 		smash.getStats().increaseExperience(140);
 		

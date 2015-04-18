@@ -26,7 +26,9 @@ public class SummonerEquipmentManager extends EquipmentManager {
 			Legs legs, Staff staff, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.staff = staff;
-		setCurrentSkill("Staff Ability");
+		if(staff != null) {
+			setCurrentSkill("Staff Ability");
+		}
 	}
 	
 	public void equipStaff(Staff staff) {

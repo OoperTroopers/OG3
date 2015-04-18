@@ -26,7 +26,9 @@ public class SneakEquipmentManager extends EquipmentManager {
 			DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.rangedWeapon = rangedWeapon;
-		setCurrentSkill("Ranged Ability");
+		if(rangedWeapon != null) {
+			setCurrentSkill("Ranged Ability");
+		}
 	}
 	
 	public void equipRangedWeapon(Ranged rangedWeapon) {

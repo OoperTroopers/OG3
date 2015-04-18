@@ -1,20 +1,18 @@
 package model.occupations;
 
 public class SneakOccupation extends Occupation {
-	//private SneakSkillManager skillManager;
-	private String occupationName;
 	
 	public SneakOccupation() {
-		//this.skillManager = new SneakSkillManager();
-		this.occupationName = "Sneak";
+		super();
+		setAbilities();
+		setOccupationName("Sneak");
 	}
 	
-	public void setOccupationName(String name) {
-		this.occupationName = name;
-	}
-	
-	public String getOccupationName() {
-		return occupationName;
+
+	private void setAbilities() {
+		//abilityList.add(new BindWounds());
+		//abilityList.add(new Bargain());
+		//abilityList.add(new Observation());
 	}
 	/*
 	public void setSkillManager(SneakSkillManager skillManager) {

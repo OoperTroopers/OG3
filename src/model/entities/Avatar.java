@@ -36,7 +36,6 @@ public class Avatar extends Entity {
 	
 	public void addAbility(Ability ability){
 		abilities.add(ability);
-		ability.attachToController(controlAvatar);
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){

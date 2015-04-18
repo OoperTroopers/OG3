@@ -1,7 +1,5 @@
 package controller;
 
-import model.abilities.AttackAbility;
-import model.abilities.SneakAbility;
 import model.entities.Avatar;
 
 import javax.swing.*;
@@ -11,8 +9,6 @@ import java.util.ArrayList;
 public class RunGame extends JPanel {
     public RunGame(){
         Avatar avatar = new Avatar();
-        avatar.addAbility(new SneakAbility(avatar, 's'));
-        avatar.addAbility(new AttackAbility(avatar, 'a'));
         addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
     }

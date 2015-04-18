@@ -101,6 +101,7 @@ public class Tile {
     public void removeTileable(Tileable t){
         tileables.remove(t);
         t.removeFromView(tileView);
+        if (ActiveGameViewport.getInstance() != null) ActiveGameViewport.getInstance().repaint();
     }
     
     /**
@@ -110,6 +111,7 @@ public class Tile {
     public void addTileable(Tileable t){
         tileables.add(t);
         t.sendToView(tileView);
+        if (ActiveGameViewport.getInstance() != null) ActiveGameViewport.getInstance().repaint();
     }    
     
     /**

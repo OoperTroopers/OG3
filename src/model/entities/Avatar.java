@@ -96,7 +96,7 @@ public class Avatar extends Entity {
 	@Override
 	public void update(Entity entity, Tile tile) {
 		controlAvatar.update(this, tile);
-		ActiveGameViewport.getInstance().repaint();		
+		ActiveGameViewport.getInstance().setAvatarTile(tile);	
 	}
 
 }

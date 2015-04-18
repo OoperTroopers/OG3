@@ -17,6 +17,7 @@ import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
 import utilities.TileAlgorithm;
+import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 
@@ -46,10 +47,11 @@ public class ActiveGameViewport extends Viewport {
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
+		System.out.println("currentTile = " + currentTile);
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
 		this.setFocusable(true);
-		//RunGame rg = new RunGame((Avatar) avatar);
+		
 		
 	}
 	
@@ -65,13 +67,20 @@ public class ActiveGameViewport extends Viewport {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		System.out.println("PAINTED");
 		Point p;
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
+		
+		Tile start = this.currentTile;
+		Point pixels = TileAlgorithm.toPixel(start);
+		int dx = this.getWidth() / 2 - pixels.x;
+		int dy = this.getHeight() / 2 - pixels.y;
+		
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
-			
-			for (TileableView tv : t.getTileableViews())
-				g.drawImage(tv.getImage(), p.x, p.y, 
+			TileView tileView = t.getTileView();
+			for (TileableView tv : tileView.getList())
+				g.drawImage(tv.getImage(), p.x + dx, p.y + dy, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}
@@ -81,4 +90,12 @@ public class ActiveGameViewport extends Viewport {
             addKeyListener(kbList.get(i));
         }
     }
+	
+	public void setAvatarTile(Tile tile) {
+		this.currentTile = tile;
+	}
+	
+	public Tile getAvatarTile() {
+		return this.currentTile;
+	}
 }

@@ -201,8 +201,8 @@ public abstract class Entity implements Tileable, Moveable{
 	private void move(Direction direction) {
 		myTile.removeTileable(this);
 		myTile = myTile.getNeighbor(direction);
-		myTile.addTileable(this);
 		update(this, myTile);
+		myTile.addTileable(this);
 	}
 	
 	public abstract void update(Entity entity, Tile tile);

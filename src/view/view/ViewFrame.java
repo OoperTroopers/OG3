@@ -43,38 +43,6 @@ public class ViewFrame extends JFrame {
 	public void initialize() {
 		ActiveGameViewport game = ActiveGameViewport.getInstance();
 		addViewport(game);
-		
-		/*Tile center_tile = new Tile();
-		center_tile.setTerrain(new GrassTerrain());
-		center_tile.setLocation(1,1,1);
-		center_tile.draw();
-		 
-		*/
-		/*
-		BufferedImage img = null;
-		try {
-		    img = ImageIO.read(new File(ImagePaths.GRASS_TERRAIN));
-		    System.out.println("Drawing image");
-			game.draw(img, 10,10,60,60);
-			System.out.println("Drew it");
-		} catch (IOException e) {
-		}*/
-		
-		
-		/*for (Direction d : Direction.values()) {
-			// make it
-			Tile tempTile = new Tile();
-			
-			// customize it
-			tempTile.setTerrain(center_tile.getTerrainClone());
-			center_tile.addNeighbor(tempTile, d);
-			
-			Direction oppositeDirection = d.leftTurn().leftTurn().leftTurn(); // opposite direction
-			tempTile.addNeighbor(center_tile, oppositeDirection);
-			
-			tempTile.drawView();
-			
-		}*/
 	}
 
 	public static Component getInstance() {

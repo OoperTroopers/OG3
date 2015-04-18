@@ -1,5 +1,6 @@
 package model.map;
 
+import view.modelview.tile.TileView;
 import model.effects.Effect;
 
 /**
@@ -45,4 +46,6 @@ public interface Tileable {
      * it
      */
     public boolean isTraversable();
+
+	public void sendToView(TileView tileView);
 }

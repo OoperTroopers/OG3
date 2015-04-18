@@ -18,4 +18,8 @@ public class TileView {
 	public List<TileableView> getList() {
 		return tileableViews;
 	}
+
+	public void accept(TileableView tileableView) {
+		tileableViews.add(tileableView);
+	}
 }

@@ -19,7 +19,7 @@ public class MemTile {
     
     private Tile myTile;
     private Location location;
-    private Terrain terrain;
+    // private Terrain terrain;
     private List<Tileable> tileables;
     
     private MemTile north;
@@ -33,7 +33,7 @@ public class MemTile {
     public MemTile(Tile clonedTile){
         this.myTile = clonedTile;
         this.location = clonedTile.getLocationClone();
-        this.terrain = clonedTile.getTerrainClone();
+        // this.terrain = clonedTile.getTerrainClone();
         this.tileables = clonedTile.getTileablesClone();
         //this.location = l;
        // this.terrain = t;
@@ -45,7 +45,7 @@ public class MemTile {
      */
     public void update(){
         this.location = myTile.getLocationClone();
-        this.terrain = myTile.getTerrainClone();
+        // this.terrain = myTile.getTerrainClone();
         this.tileables = tileables;
     }
     

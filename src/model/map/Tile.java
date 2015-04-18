@@ -24,9 +24,13 @@ import view.modelview.tileable.TileableView;
 public class Tile {
     
     private Location location;
-    private Terrain terrain;
+    // private Terrain terrain;
     	// jason, shouldn't this be inside of tileables?
     	// - danny
+    
+    	// update: we're doing it. sorry jason.
+    	// also, suck it.
+    	// - big d
     
     private HashMap<Direction, Tile> neighbors;
     private ArrayList<Tileable> tileables;
@@ -37,22 +41,25 @@ public class Tile {
     public Tile() {
     	this.location = new Location(-200, -200, -200);
     	this.neighbors = new HashMap<Direction, Tile>();
-    	this.terrain = new GrassTerrain();
+    	tileView = new TileView();
     	tileables = new ArrayList<Tileable>();
+    	this.addTileable(new GrassTerrain());
     }
     
     public Tile(int x, int y, int z) {
     	this.neighbors = new HashMap<Direction, Tile>();
-    	this.terrain = new GrassTerrain();
     	this.setLocation(x, y, z);
+    	tileView = new TileView();
     	tileables = new ArrayList<Tileable>();
+    	this.addTileable(new GrassTerrain());
     }
     
     public Tile(int x, int y, int z, Terrain terrain) {
     	this.neighbors = new HashMap<Direction, Tile>();
-    	this.terrain = terrain;
     	this.setLocation(x, y, z);
     	tileables = new ArrayList<Tileable>();
+    	tileView = new TileView();
+    	this.addTileable(terrain);
     }
     
     public void affectAllTileables(Effect e){
@@ -70,7 +77,7 @@ public class Tile {
     public MemTile getMemTile(){
         
         List<Tileable> copyOfList = cloneTileables();
-        Terrain tCopy = getTerrainClone();
+        // Terrain tCopy = getTerrainClone();
         Location lCopy = getLocationClone();
         
         return new MemTile(this);
@@ -95,9 +102,8 @@ public class Tile {
      * @param t the tileable to be added
      */   
     public void addTileable(Tileable t){
-    	// should add the location too
         tileables.add(t);
-        // tileView.add(t);
+        t.sendToView(tileView);
     }    
     
     /**
@@ -125,9 +131,9 @@ public class Tile {
         return this.location.clone();
     }
     
-    public Terrain getTerrainClone() {
+    /*public Terrain getTerrainClone() {
         return this.terrain.clone();
-    }
+    }*/
     
     public ArrayList<Tileable> getTileablesClone(){
         return cloneTileables();        
@@ -176,11 +182,6 @@ public class Tile {
      */
     public void setLocation(int x, int y, int z) {
     	this.location = new Location(x, y, z);
-    	terrain.setLocation(this.location);
-    }
-    
-    public void setTerrain(Terrain terrain) {
-    	this.terrain = terrain;
     }
     
     /**
@@ -256,11 +257,7 @@ public class Tile {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public Image getTerrainImage() {
-		return terrain.getTerrainView();
-	}
-	
+
 	public TileView getTileView() {
 		return tileView;
 	}

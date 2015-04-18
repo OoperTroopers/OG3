@@ -7,6 +7,7 @@ package model.map;
 
 import java.awt.Image;
 
+import model.effects.Effect;
 import view.modelview.tileableview.GrassTerrainView;
 import view.modelview.tileableview.TerrainView;
 import view.tools.LocationPositionConverter;
@@ -36,6 +37,28 @@ public class GrassTerrain extends Terrain{
     	//view.setPosition(LocationPositionConverter.convert(location));
     }
     
-    public Image getTerrainView() { return view.getImage(); }
+	@Override
+	public void acceptEffect(Effect e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeFromTile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Tile getContainingTile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isTraversable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 }

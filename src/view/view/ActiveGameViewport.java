@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import controller.RunGame;
@@ -38,12 +40,17 @@ public class ActiveGameViewport extends Viewport {
 		// this.add(heartsViewport);
 		// this.add(simpleStatsViewport);
 		
+                
+                
 		// get beginning tile
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
 		Entity avatar = new Avatar(currentTile);
-		RunGame rg = new RunGame((Avatar) avatar);
+		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
+		this.setFocusable(true);
+		//RunGame rg = new RunGame((Avatar) avatar);
+		
 	}
 	
 	@Override
@@ -68,4 +75,10 @@ public class ActiveGameViewport extends Viewport {
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}
+	
+	public void addAvatarKeyBinding(ArrayList<KeyListener> kbList){
+        for(int i = 0; i < kbList.size(); i++){
+            addKeyListener(kbList.get(i));
+        }
+    }
 }

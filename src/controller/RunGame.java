@@ -13,18 +13,12 @@ public class RunGame extends JPanel {
 	
     public RunGame(){
         Avatar avatar = new Avatar();
-        addAvatarKeyBinding(avatar.getKeyBinding());
+       // addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
     }
     
     public RunGame(Avatar avatar){
-        avatar.addAbility(new MoveNorthAbility(avatar, 'w'));
-        avatar.addAbility(new MoveNorthwestAbility(avatar, 'q'));
-        avatar.addAbility(new MoveNortheastAbility(avatar, 'e'));
-        avatar.addAbility(new MoveSouthAbility(avatar, 's'));
-        avatar.addAbility(new MoveSouthwestAbility(avatar, 'a'));
-        avatar.addAbility(new MoveSoutheastAbility(avatar, 'd'));
-        addAvatarKeyBinding(avatar.getKeyBinding());
+       // addAvatarKeyBinding(avatar.getKeyBinding());
         setFocusable(true);
         start();
     }
@@ -41,9 +35,5 @@ public class RunGame extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void addAvatarKeyBinding(ArrayList<KeyListener> kbList){
-        for(int i = 0; i < kbList.size(); i++){
-            addKeyListener(kbList.get(i));
-        }
-    }
+    
 }

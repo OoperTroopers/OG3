@@ -6,6 +6,7 @@ import model.items.Helmet;
 import model.items.Legs;
 import model.items.Staff;
 import model.occupations.Occupation;
+import model.occupations.SummonerOccupation;
 import model.statistics.DerivedStatistics;
 
 public class SummonerEquipmentManager extends EquipmentManager {
@@ -30,11 +31,13 @@ public class SummonerEquipmentManager extends EquipmentManager {
 	public void equipStaff(Staff staff) {
 		this.staff = staff;
 		getDerivedStats().addEquippable(staff.getEquipStats());
+		getDerivedStats().addAbilityLevel(((SummonerOccupation)getOccupation()).getStaffAbilityLevel());
 	}
 	
 	public void unequipStaff() {
 		if(staff != null) {
 			getDerivedStats().removeEquippable(staff.getEquipStats());
+			getDerivedStats().removeAbilityLevel(((SummonerOccupation)getOccupation()).getStaffAbilityLevel());
 		}
 		staff= null;
 	}

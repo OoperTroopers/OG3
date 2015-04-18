@@ -16,7 +16,9 @@ public class MoveSoutheastAbility extends ExplicitAbility {
     }
     @Override
     public void perform() {
-        entity.moveSoutheast();
+        if (this.isActivated()) {
+        	entity.moveSoutheast();
+        }
     }
 
     @Override

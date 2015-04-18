@@ -6,6 +6,13 @@ public class EquipmentManagerTest {
 		Avatar smash = new Avatar();
 		Helmet helmet = new Helmet();
 		smash.addItemToInventory(helmet);
+		
+		TwoHanded thw = new TwoHanded();
+		smash.addItemToInventory(thw);
+		System.out.println(smash.getItemFromInvnetory(thw).getName());
+		System.out.println("offense: " + smash.getStats().getOffensiveRating());
+		thw.equip(smash.getEquipmentManager(), smash.getInventory());
+		System.out.println("offense: " + smash.getStats().getOffensiveRating());
 
 		System.out.println(smash.getItemFromInvnetory(helmet).getName());
 		System.out.println("Defense: " + smash.getStats().getArmorRating());

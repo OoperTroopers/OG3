@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.effects.Effect;
 import model.map.MovementCapabilities;
+import model.map.Tile;
 import model.equipmentmanagers.EquipmentManager;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
@@ -70,38 +71,5 @@ public class NPC extends Entity {
 	}
 
 	@Override
-	public boolean canMoveNorth() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveNortheast() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveNorthwest() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSouth() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSoutheast() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSouthwest() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void update(Entity entity, Tile tile) {}
 }

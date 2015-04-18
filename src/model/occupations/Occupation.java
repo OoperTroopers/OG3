@@ -15,8 +15,8 @@ public abstract class Occupation {
 
 	private void setAbilities() {
 		abilityList.add(new Bargain());
-		//abilityList.add(new BindWounds());
-		//abilityList.add(new Observation());
+		abilityList.add(new BindWounds());
+		abilityList.add(new Observation());
 	}
 	
 	public void setOccupationName(String name) {
@@ -39,5 +39,9 @@ public abstract class Occupation {
 	}
 	public int getObservationAbilityLevel() {
 		return abilityList.get(2).getAbilityLevel();
+	}
+	
+	public void addAbility(Ability ability) {
+		this.abilityList.add(ability);
 	}
 }

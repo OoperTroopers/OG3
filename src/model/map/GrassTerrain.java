@@ -43,7 +43,7 @@ public class GrassTerrain extends Terrain {
 
     @Override
     public boolean isTraversable() {
-        return false;
+        return true;
     }
 
 	@Override

@@ -16,8 +16,10 @@ public class MoveNorthwestAbility extends ExplicitAbility {
     }
     @Override
     public void perform() {
-        entity.moveNorthwest();
-        System.out.println("I AM MOVING NORTHWEST");
+        if (this.isActivated()) {
+        	entity.moveNorthwest();
+            System.out.println("I AM MOVING NORTHWEST");
+        }
     }
 
     @Override

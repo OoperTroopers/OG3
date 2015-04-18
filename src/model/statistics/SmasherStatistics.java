@@ -25,6 +25,7 @@ public class SmasherStatistics extends Statistics {
 		while(getCurrentExperience() >= (getCurrentLevel() * 10 + 90)) { 
 			decreaseExperience(getCurrentLevel() * 10 + 90);
 			incrementLevel();
+			increaseAssignableAbilityPoints(15);
 			
 			//old stats
 			PrimaryStatistics oldStats = new PrimaryStatistics();

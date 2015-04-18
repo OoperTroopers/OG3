@@ -1,6 +1,9 @@
 package model.entities;
 
 import model.inventory.Inventory;
+import model.abilities.Ability;
+import model.abilities.ExplicitAbility;
+import model.abilities.ImplicitAbility;
 import model.equipmentmanagers.*;
 import model.occupations.*;
 import model.statistics.*;
@@ -19,11 +22,11 @@ import model.map.MovementCapabilities;
 import model.map.Tileable;
 import model.map.Tile;
 public abstract class Entity implements Tileable, Moveable{
+	
 	private Tile myTile;
 	private MovementCapabilities myMovement;
-
+	
 	private TileableView entityView;
-
 
 	private Inventory inventory;
 	private EquipmentManager equipmentManager;
@@ -199,8 +202,10 @@ public abstract class Entity implements Tileable, Moveable{
 		myTile.removeTileable(this);
 		myTile = myTile.getNeighbor(direction);
 		myTile.addTileable(this);
-		ActiveGameViewport.getInstance().repaint();
+		update(this, myTile);
 	}
+	
+	public abstract void update(Entity entity, Tile tile);
 
 
 	public void moveNorth(){
@@ -233,5 +238,13 @@ public abstract class Entity implements Tileable, Moveable{
 
 	public void removeFromView(TileView tileView) {
 		tileView.remove(entityView);
+	}
+	
+	public void addAbility(ImplicitAbility ability){
+		occupation.addAbility(ability);
+	}
+	
+	public void addAbility(ExplicitAbility ability) {
+		occupation.addAbility(ability);
 	}
 }

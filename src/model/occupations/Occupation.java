@@ -27,13 +27,17 @@ public abstract class Occupation {
 		return occupationName;
 	}
 	
-	public int getBargainingSkillLevel() {
-		return abilityList.get(0).getSkillLevel();
+	public ArrayList<Ability> getAbilityList() {
+		return abilityList;
 	}
-	public int getBindWoundsSkillLevel() {
-		return abilityList.get(1).getSkillLevel();
+	
+	public int getBargainingAbilityLevel() {
+		return abilityList.get(0).getAbilityLevel();
 	}
-	public int getObservationSkillLevel() {
-		return abilityList.get(2).getSkillLevel();
+	public int getBindWoundsAbilityLevel() {
+		return abilityList.get(1).getAbilityLevel();
+	}
+	public int getObservationAbilityLevel() {
+		return abilityList.get(2).getAbilityLevel();
 	}
 }

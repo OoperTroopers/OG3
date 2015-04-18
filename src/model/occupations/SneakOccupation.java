@@ -1,5 +1,7 @@
 package model.occupations;
 
+import model.abilities.*;
+
 public class SneakOccupation extends Occupation {
 	
 	public SneakOccupation() {
@@ -10,21 +12,22 @@ public class SneakOccupation extends Occupation {
 	
 
 	private void setAbilities() {
-		//abilityList.add(new BindWounds());
-		//abilityList.add(new Bargain());
-		//abilityList.add(new Observation());
-	}
-	/*
-	public void setSkillManager(SneakSkillManager skillManager) {
-		this.skillManager = skillManager;
+		getAbilityList().add(new Creep());
+		getAbilityList().add(new Pickpocket());
+		getAbilityList().add(new TrapAwareness());
+		getAbilityList().add(new RangedAbility());
 	}
 	
-	public String getOccupationName() {
-		return skillManager;
+	public int getCreepLevel() {
+		return getAbilityList().get(3).getAbilityLevel();
 	}
-	
-	public void useAbility(Skill skill) {
-		//call skill manager->call skill->call use effect
+	public int getPickpocketLevel() {
+		return getAbilityList().get(4).getAbilityLevel();
 	}
-	*/
+	public int getTrapAwarenessLevel() {
+		return getAbilityList().get(5).getAbilityLevel();
+	}
+	public int getRangedAbilityLevel() {
+		return getAbilityList().get(6).getAbilityLevel();
+	}
 }

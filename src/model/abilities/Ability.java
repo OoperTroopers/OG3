@@ -3,11 +3,11 @@ package model.abilities;
 //import controller.ControllerAvatar;
 
 public abstract class Ability {
-	private int skillLevel;
+	private int abilityLevel;
 	private String name;
 	
 	public Ability() {
-		this.skillLevel = 1;
+		this.abilityLevel = 1;
 		this.name = "Ability";
 	}
 	 /*
@@ -15,13 +15,13 @@ public abstract class Ability {
 
     public abstract void perform();
 	public void levelSkillUp() {
-		++skillLevel;
+		++abilityLevel;
 	}
-	public int getSkillLevel() {
-		return skillLevel;
+	public int getAbilityLevel() {
+		return abilityLevel;
 	}
-	public void setSkillLevel(int skillLevel) {
-		this.skillLevel = skillLevel;
+	public void setAbilityLevel(int abilityLevel) {
+		this.abilityLevel = abilityLevel;
 	}
 	public String getName() {
 		return name;

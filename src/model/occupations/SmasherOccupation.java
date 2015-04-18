@@ -1,5 +1,7 @@
 package model.occupations;
 
+import model.abilities.*;
+
 public class SmasherOccupation extends Occupation {
 	//private SmasherSkillManager skillManager;
 	
@@ -10,19 +12,18 @@ public class SmasherOccupation extends Occupation {
 	}
 
 	private void setAbilities() {
-		//abilityList.add(new OneHanded());
-	}
-	/*
-	public void setSkillManager(SmasherSkillManager skillManager) {
-		this.skillManager = skillManager;
+		getAbilityList().add(new OneHandedWeaponAbility());
+		getAbilityList().add(new TwoHandedWeaponAbility());
+		getAbilityList().add(new BrawlAbility());
 	}
 	
-	public String getOccupationName() {
-		return skillManager;
+	public int getOneHandedAbilityLevel() {
+		return getAbilityList().get(3).getAbilityLevel();
 	}
-	
-	public void useAbility(Skill skill) {
-		//call skill manager->call skill->call use effect
+	public int getTwoHandedAbilityLevel() {
+		return getAbilityList().get(4).getAbilityLevel();
 	}
-	*/
+	public int getBrawlAbilityLevel() {
+		return getAbilityList().get(5).getAbilityLevel();
+	}
 }

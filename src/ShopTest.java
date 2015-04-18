@@ -15,7 +15,7 @@ public class ShopTest {
 		
 		System.out.println("Avatar start gold: " + avatar.getCurrentGold());
 		
-		Shop shop = new Shop(avatar.getInventory(), shopkeep.getInventory(),50, avatar.getCurrentGold());
+		Shop shop = new Shop(avatar.getInventory(), shopkeep.getInventory(),avatar.getBargainingSkillLevel(), avatar.getCurrentGold());
 		
 		System.out.println("Helmet price: " + helm.getValue());
 		System.out.println("Adjusted Sell price: " + shop.adjustedSellPrice(helm));

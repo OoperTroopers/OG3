@@ -1,5 +1,7 @@
 package model.occupations;
 
+import model.abilities.*;
+
 public class SummonerOccupation extends Occupation {
 	public SummonerOccupation() {
 		super();
@@ -8,21 +10,22 @@ public class SummonerOccupation extends Occupation {
 	}
 		
 	private void setAbilities() {
-		//abilityList.add(new BindWounds());
-		//abilityList.add(new Bargain());
-		//abilityList.add(new Observation());
-	}
-	/*
-	public void setSkillManager(SummonerSkillManager skillManager) {
-		this.skillManager = skillManager;
+		getAbilityList().add(new Bane());
+		getAbilityList().add(new Boon());
+		getAbilityList().add(new Enchantment());
+		getAbilityList().add(new StaffAbility());
 	}
 	
-	public String getOccupationName() {
-		return skillManager;
+	public int getBaneLevel() {
+		return getAbilityList().get(3).getAbilityLevel();
 	}
-		
-	public void useAbility(Skill skill) {
-		//call skill manager->call skill->call use effect
+	public int getBoonLevel() {
+		return getAbilityList().get(4).getAbilityLevel();
 	}
-	*/
+	public int getEnchantmentLevel() {
+		return getAbilityList().get(5).getAbilityLevel();
+	}
+	public int getStaffAbilityLevel() {
+		return getAbilityList().get(6).getAbilityLevel();
+	}
 }

@@ -2,6 +2,8 @@ package model.entities;
 
 import controller.ControllerAvatar;
 import model.abilities.Ability;
+import model.abilities.ExplicitAbility;
+import model.abilities.ImplicitAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
@@ -39,12 +41,17 @@ public class Avatar extends Entity {
 	public Avatar(Tile tile) {
 		super(tile, new AvatarView());
 		this.controlAvatar = new ControllerAvatar(this);
-		this.abilities = new ArrayList<Ability>();
+		this.abilities = new ArrayList<>();
 		this.myJournal = new Journal();
 	}
 	
-	public void addAbility(Ability ability){
+	public void addAbility(ImplicitAbility ability){
 		abilities.add(ability);
+	}
+	
+	public void addAbility(ExplicitAbility ability) {
+		abilities.add(ability);
+		ability.attachToController(controlAvatar);
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){

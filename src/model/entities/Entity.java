@@ -34,22 +34,24 @@ public abstract class Entity implements Tileable, Moveable{
 	public Entity() {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
-		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 	}
 	
 	public Entity(Tile tile, TileableView entityView) {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
-		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 		this.myTile = tile;
 		this.entityView = entityView;
 		this.myTile.addTileable(this);
 	}
 	
+	// constructor for Entity with specific occupation. 
+	//needs refactor to account for equipment manager needing derived stats
 	public Entity(Occupation o, EquipmentManager em, Statistics s) {
 		this.inventory = new Inventory();
 		this.equipmentManager = em;
@@ -133,15 +135,6 @@ public abstract class Entity implements Tileable, Moveable{
 	public void setGold(int gold) {
 		stats.setCurrentGold(gold);
 	}
-	public int getBargainingSkillLevel() {
-		return occupation.getBargainingSkillLevel();
-	}
-	public int getBindWoundsLevel() {
-		return occupation.getBindWoundsSkillLevel();
-	}
-	public int getObservationSkillLevel() {
-		return occupation.getObservationSkillLevel();
-	}
 	
 	public Inventory getInventory() {
 		return inventory;
@@ -203,16 +196,24 @@ public abstract class Entity implements Tileable, Moveable{
             }
         }
         public void moveNorthwest(){
-           // myTile.moveNorthwest(this);
+        	if (myTile.move(this, Direction.NORTHWEST)) {
+            	myTile = myTile.getNeighbor(Direction.NORTHWEST);
+            }
         }
         public void moveNortheast(){
-            //myTile.moveNorthwest(this);
+        	if (myTile.move(this, Direction.NORTHEAST)) {
+            	myTile = myTile.getNeighbor(Direction.NORTHEAST);
+            }
         }
         public void moveSoutheast(){
-            //myTile.moveSoutheast(this);
+        	if (myTile.move(this, Direction.SOUTHEAST)) {
+            	myTile = myTile.getNeighbor(Direction.SOUTHEAST);
+            }
         }
         public void moveSouthwest(){
-            //myTile.moveSouthwest(this);
+        	if (myTile.move(this, Direction.SOUTHWEST)) {
+            	myTile = myTile.getNeighbor(Direction.SOUTHWEST);
+            }
         }
         
     	public void sendToView(TileView tileView) {

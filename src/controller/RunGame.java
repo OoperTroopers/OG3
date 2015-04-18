@@ -1,5 +1,7 @@
 package controller;
 
+import model.abilities.AttackAbility;
+import model.abilities.SneakAbility;
 import model.entities.Avatar;
 import model.entities.Entity;
 
@@ -22,7 +24,7 @@ public class RunGame extends JPanel {
     }
     
     public static void main(String args[]){
-        
+    	
     }
     
     public void start() {

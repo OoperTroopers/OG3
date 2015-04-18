@@ -46,4 +46,9 @@ public class GrassTerrain extends Terrain {
         return false;
     }
 
+	@Override
+	public void removeFromView(TileView tileView) {
+		tileView.remove(view);
+		
+	}
 }

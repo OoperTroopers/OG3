@@ -58,4 +58,8 @@ public abstract class Item implements Tileable{
 	public void sendToView(TileView tileView) {
 		tileView.accept(itemView);
 	}
+	
+	public void removeFromView(TileView tileView) {
+		
+	}
 }

@@ -1,31 +1,18 @@
 package view.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Point;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
 import utilities.TileAlgorithm;
-import utilities.TileAlgorithm.Direction;
+import view.modelview.tileable.TileableView;
 import view.tools.Constants;
-import view.tools.ImagePaths;
-import view.tools.ViewPosition;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
@@ -68,7 +55,9 @@ public class ActiveGameViewport extends Viewport {
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
-			g.drawImage(t.getTerrainImage(), p.x, p.y, 
+			
+			for (TileableView tv : t.getTileableViews())
+				g.drawImage(tv.getImage(), p.x, p.y, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}

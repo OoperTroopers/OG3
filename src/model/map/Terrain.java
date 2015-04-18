@@ -7,15 +7,15 @@ package model.map;
 
 import java.awt.Image;
 
+import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
-import view.modelview.tileableview.TerrainView;
 
 
 /**
  * 
  * @author Jason Owens
  */
-public abstract class Terrain {
+public abstract class Terrain implements Tileable {
     
 	TileableView terrainView;
 	
@@ -33,5 +33,7 @@ public abstract class Terrain {
     }
     */
 	public abstract void setLocation(Location location);
-	public abstract Image getTerrainView();
+	public void sendToView(TileView tileView) {
+		tileView.accept(terrainView);
+	}
 }

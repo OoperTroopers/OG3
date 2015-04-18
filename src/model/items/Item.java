@@ -3,6 +3,7 @@ package model.items;
 import model.entities.Entity;
 import model.map.Location;
 import model.map.Tileable;
+import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 
 
@@ -10,7 +11,7 @@ public abstract class Item implements Tileable{
 	private String name;
 	private String description;
 	private String id;
-	private TileableView tileableView;
+	private TileableView itemView;
 
 	public Item() {
 		this.name = "Test";
@@ -53,4 +54,8 @@ public abstract class Item implements Tileable{
 	public abstract void touch(Entity entity);
 	
 	public abstract Tileable clone();
+	
+	public void sendToView(TileView tileView) {
+		tileView.accept(itemView);
+	}
 }

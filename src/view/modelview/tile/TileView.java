@@ -1,24 +1,25 @@
 package view.modelview.tile;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import view.modelview.tileable.TileableView;
 
 public class TileView {
-	private ArrayList<TileableView> tileableViews;
+	private List<TileableView> tileableViews;
 	public TileView() {
 		tileableViews = new ArrayList<TileableView>();
-	}
-	
-	public void add(TileableView tileableView) {
-		
 	}
 	
 	public void remove(TileableView tileableView) {
 		
 	}
 	
-	public void iterate() {
-		
+	public List<TileableView> getList() {
+		return tileableViews;
+	}
+
+	public void accept(TileableView tileableView) {
+		tileableViews.add(tileableView);
 	}
 }

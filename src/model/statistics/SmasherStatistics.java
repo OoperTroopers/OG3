@@ -3,7 +3,7 @@ package model.statistics;
 public class SmasherStatistics extends Statistics {
 	//generic Smasher
 	public SmasherStatistics() {
-		setPrimaryStats(new PrimaryStatistics(10, 7, 5, 5, 3));
+		setPrimaryStats(new PrimaryStatistics(10, 7, 5, 5, 3, 2));
 		setDerivedStats(new DerivedStatistics(getPrimaryStats()));
 		setCurrentGold(0);
 		setCurrentHealth(getDerivedStats().getMaxHealth());

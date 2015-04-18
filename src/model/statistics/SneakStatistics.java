@@ -3,7 +3,7 @@ package model.statistics;
 public class SneakStatistics extends Statistics {
 	//generic Sneak
 	public SneakStatistics() {
-		setPrimaryStats(new PrimaryStatistics(5, 7, 10, 5, 3));
+		setPrimaryStats(new PrimaryStatistics(5, 7, 10, 5, 3, 4));
 		setDerivedStats(new DerivedStatistics(getPrimaryStats()));
 		setCurrentGold(0);
 		setCurrentHealth(getDerivedStats().getMaxHealth());

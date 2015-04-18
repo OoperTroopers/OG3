@@ -3,7 +3,7 @@ package model.statistics;
 public class MountStatistics extends Statistics {
 	//generic Mount
 	public MountStatistics() {
-		setPrimaryStats(new PrimaryStatistics());
+		setPrimaryStats(new PrimaryStatistics(5, 5, 5, 5, 1, 10));
 		setDerivedStats(new DerivedStatistics(getPrimaryStats()));
 		setCurrentGold(0);
 		setCurrentHealth(getDerivedStats().getMaxHealth());

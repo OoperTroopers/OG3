@@ -47,6 +47,14 @@ public class DerivedStatistics {
 		this.armorRating -= equippableStats.getArmorValue();
 	}
 	
+	public void addAbilityLevel(int abilityLevel) {
+		offensiveRating += abilityLevel;
+	}
+	
+	public void removeAbilityLevel(int abilityLevel) {
+		offensiveRating -= abilityLevel;
+	}
+	
 	public int getOffensiveRating() {
 		return offensiveRating;
 	}

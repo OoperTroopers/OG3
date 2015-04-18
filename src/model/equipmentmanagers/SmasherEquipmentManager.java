@@ -9,7 +9,7 @@ import model.items.OneHanded;
 import model.items.TwoHanded;
 import model.items.Brawl;
 import model.statistics.DerivedStatistics;
-import model.occupations.Occupation;
+import model.occupations.*;
 
 public class SmasherEquipmentManager extends EquipmentManager {
 	private Shield shield;
@@ -68,17 +68,19 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public void equipTwoHandedWeapon(TwoHanded twoHandedWeapon) {
 		this.twoHandedWeapon = twoHandedWeapon;
 		getDerivedStats().addEquippable(twoHandedWeapon.getEquipStats());
+		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getTwoHandedAbilityLevel());
 	}
 	
 	public void equipOneHandedWeapon(OneHanded oneHandedWeapon) {
 		this.oneHandedWeapon = oneHandedWeapon;
-		//int statBoost = oneHandedWeapon.getEquipStats() + getOccupation().getOneHandedAbilityLevel();
 		getDerivedStats().addEquippable(oneHandedWeapon.getEquipStats());
+		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getOneHandedAbilityLevel());
 	}
 	
 	public void equipBareHandedWeapon(Brawl bareHandedWeapon) {
 		this.bareHandedWeapon = bareHandedWeapon;
 		getDerivedStats().addEquippable(bareHandedWeapon.getEquipStats());
+		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getBrawlAbilityLevel());
 	}
 	
 	public void unequipShield() {
@@ -91,6 +93,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public void unequipTwoHandedWeapon() {
 		if(twoHandedWeapon != null) {
 			getDerivedStats().removeEquippable(twoHandedWeapon.getEquipStats());
+			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getTwoHandedAbilityLevel());
 		}
 		twoHandedWeapon = null;
 	}
@@ -98,6 +101,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public void unequipOneHandedWeapon() {
 		if(oneHandedWeapon != null) {
 			getDerivedStats().removeEquippable(oneHandedWeapon.getEquipStats());
+			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getOneHandedAbilityLevel());
 		}
 		oneHandedWeapon = null;
 	}
@@ -105,6 +109,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public void unequipBareHandedWeapon() {
 		if(bareHandedWeapon != null) {
 			getDerivedStats().removeEquippable(bareHandedWeapon.getEquipStats());
+			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getBrawlAbilityLevel());
 		}
 		bareHandedWeapon = null;
 	}

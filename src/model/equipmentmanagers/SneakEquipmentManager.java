@@ -6,6 +6,7 @@ import model.items.Helmet;
 import model.items.Legs;
 import model.items.Ranged;
 import model.occupations.Occupation;
+import model.occupations.SneakOccupation;
 import model.statistics.DerivedStatistics;
 
 public class SneakEquipmentManager extends EquipmentManager {
@@ -30,11 +31,13 @@ public class SneakEquipmentManager extends EquipmentManager {
 	public void equipRangedWeapon(Ranged rangedWeapon) {
 		this.rangedWeapon = rangedWeapon;
 		getDerivedStats().addEquippable(rangedWeapon.getEquipStats());
+		getDerivedStats().addAbilityLevel(((SneakOccupation)getOccupation()).getRangedAbilityLevel());
 	}
 	
 	public void unequipRangedWeapon() {
 		if(rangedWeapon != null) {
 			getDerivedStats().removeEquippable(rangedWeapon.getEquipStats());
+			getDerivedStats().removeAbilityLevel(((SneakOccupation)getOccupation()).getRangedAbilityLevel());
 		}
 		rangedWeapon = null;
 	}

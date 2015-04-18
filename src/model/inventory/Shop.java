@@ -17,8 +17,8 @@ public class Shop {
 		this.storeOpen = true;
 	}
 
-	public int open() {
-		while(isOpen()) {
+	public int openShop() {
+		while(isOpenShop()) {
 			//run view stuff infinitely
 			//on close shop, method will be called to change storeOpen value to false
 			//handled by controller
@@ -27,7 +27,7 @@ public class Shop {
 		return avatarGold;
 	}
 	
-	private boolean isOpen() {
+	private boolean isOpenShop() {
 		return storeOpen;
 	}
 	

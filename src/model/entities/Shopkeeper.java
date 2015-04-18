@@ -30,7 +30,7 @@ public class Shopkeeper extends NPC {
 		Shop shop = new Shop(avatarInventory, shopkeeperInventory, bargainingSkillLevel, avatarGold);
 		
 		//runs infinitely until told to close. Returns the new value of the players gold.
-		int change = shop.open();
+		int change = shop.openShop();
 		avatar.setGold(change);
 	}	
 }

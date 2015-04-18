@@ -115,7 +115,7 @@ public abstract class Statistics {
 	public void setCurrentLevel(int currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	public int getAssignbableAbilityPoints() {
+	public int getAssignableAbilityPoints() {
 		return assignableAbilityPoints;
 	}
 	public void setAssignableAbilityPoints(int assignableAbilityPoints) {

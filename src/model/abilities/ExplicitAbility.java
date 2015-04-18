@@ -1,6 +1,5 @@
 package model.abilities;
 
-import model.statistics.Statistics;
 import controller.KeyBinding;
 import controller.ControllerAvatar;
 
@@ -9,11 +8,13 @@ public abstract class ExplicitAbility extends Ability {
 	
 	public ExplicitAbility() {
 		super();
+		setName("Explicit Ability");
 		this.keyBinding = null;
 	}
 	
-	public ExplicitAbility(Statistics avatarStats, int skillLevel, String name, char keyToBind) {
-		super(avatarStats, skillLevel, name);
+	public ExplicitAbility(char keyToBind) {
+		super();
+		setName("Explicit Ability");
 		this.keyBinding = new KeyBinding(keyToBind, this);
 	}
 	
@@ -24,4 +25,12 @@ public abstract class ExplicitAbility extends Ability {
 	public void attachToController(ControllerAvatar controlAvatar) {
 		controlAvatar.addToKLSet(keyBinding);
 	}
+	public KeyBinding getKeyBinding() {
+		return keyBinding;
+	}
+
+	public void setKeyBinding(KeyBinding keyBinding) {
+		this.keyBinding = keyBinding;
+	}
+
 }

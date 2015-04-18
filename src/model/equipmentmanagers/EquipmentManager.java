@@ -2,6 +2,7 @@ package model.equipmentmanagers;
 
 import model.items.*;
 import model.statistics.DerivedStatistics;
+import model.occupations.Occupation;
 
 public abstract class EquipmentManager {
 	private Helmet helmet;
@@ -9,6 +10,7 @@ public abstract class EquipmentManager {
 	private Arms arms;
 	private Legs legs;
 	private DerivedStatistics derivedStats;
+	private Occupation occupation;
 	
 	//generic Equipment Manager
 	public EquipmentManager() {
@@ -17,25 +19,28 @@ public abstract class EquipmentManager {
 		this.arms = null;
 		this.legs = null;
 		this.derivedStats = null;
+		this.occupation = null;
 	}
 	
 	//new empty Equipment Manager
-	public EquipmentManager(DerivedStatistics derivedStats) {
+	public EquipmentManager(DerivedStatistics derivedStats, Occupation occupation) {
 		this.helmet = null;
 		this.chest = null;
 		this.arms = null;
 		this.legs = null;
 		this.derivedStats = derivedStats;
+		this.occupation = occupation;
 	}
 	
 	//new filled equipment manager
 	public EquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
-			DerivedStatistics derivedStats) {
+			DerivedStatistics derivedStats, Occupation occupation) {
 		this.helmet = helmet;
 		this.chest = chest;
 		this.arms = arms;
 		this.legs = legs;
 		this.derivedStats = derivedStats;
+		this.occupation = occupation;
 	}
 	
 	public void equipHelmet(Helmet helmet) {
@@ -108,5 +113,12 @@ public abstract class EquipmentManager {
 	
 	public void setDerivedStats(DerivedStatistics derivedStats) {
 		this.derivedStats = derivedStats;
+	}
+	public Occupation getOccupation() {
+		return occupation;
+	}
+	
+	public void setOccupation(Occupation occupation) {
+		this.occupation= occupation;
 	}
 }

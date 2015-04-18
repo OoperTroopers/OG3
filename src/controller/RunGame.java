@@ -1,6 +1,8 @@
 package controller;
 
+
 import model.abilities.movement.*;
+
 import model.entities.Avatar;
 
 import javax.swing.*;

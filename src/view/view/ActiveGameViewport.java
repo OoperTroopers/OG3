@@ -38,6 +38,8 @@ public class ActiveGameViewport extends Viewport {
 		// this.add(heartsViewport);
 		// this.add(simpleStatsViewport);
 		
+                
+                
 		// get beginning tile
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}

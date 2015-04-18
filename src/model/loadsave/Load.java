@@ -130,7 +130,7 @@ public class Load {
 	private Terrain parseTerrain(String terrain) {
 		terrain = terrain.substring(terrain.indexOf("=") + 1);
 		char t = terrain.charAt(0);
-		if (t == 'M') return new MountainTerrain();
+		if (t == 'M') return new RiverTerrain();
 		if (t == 'G') return new GrassTerrain();
 		return null;
 	}

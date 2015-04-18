@@ -203,16 +203,16 @@ public abstract class Entity implements Tileable, Moveable{
             }
         }
         public void moveNorthwest(){
-            myTile.moveNorthwest(this);
+           // myTile.moveNorthwest(this);
         }
         public void moveNortheast(){
-            myTile.moveNorthwest(this);
+            //myTile.moveNorthwest(this);
         }
         public void moveSoutheast(){
-            myTile.moveSoutheast(this);
+            //myTile.moveSoutheast(this);
         }
         public void moveSouthwest(){
-            myTile.moveSouthwest(this);
+            //myTile.moveSouthwest(this);
         }
         
     	public void sendToView(TileView tileView) {

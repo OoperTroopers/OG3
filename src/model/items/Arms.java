@@ -29,16 +29,6 @@ public class Arms extends Armor {
 		
 	}
 	@Override
-	public void removeFromTile() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public Tile getContainingTile() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public Tileable clone() {
 		// TODO Auto-generated method stub
 		return null;

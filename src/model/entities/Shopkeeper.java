@@ -1,12 +1,9 @@
 package model.entities;
 
-import java.util.ArrayList;
-
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
-import model.items.TakeableItem;
 
 
 public class Shopkeeper extends NPC {

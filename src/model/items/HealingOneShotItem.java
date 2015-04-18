@@ -17,18 +17,6 @@ public class HealingOneShotItem extends OneShotItem {
 	}
 
 	@Override
-	public void removeFromTile() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Tile getContainingTile() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Item clone() {
 		return new HealingOneShotItem();
 	}	

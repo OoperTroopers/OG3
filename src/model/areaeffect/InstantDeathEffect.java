@@ -20,18 +20,6 @@ public class InstantDeathEffect extends AreaEffect{
 	}
 
 	@Override
-	public void removeFromTile() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Tile getContainingTile() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean isTraversable() {
 		// TODO Auto-generated method stub
 		return false;

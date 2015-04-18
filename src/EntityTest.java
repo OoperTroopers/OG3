@@ -7,7 +7,7 @@ public class EntityTest {
 	public static void main(String[] args) {
 		Occupation occ = new SmasherOccupation();
 		Statistics stat = new SmasherStatistics();
-		EquipmentManager sem = new SmasherEquipmentManager(stat.getDerivedStats());
+		EquipmentManager sem = new SmasherEquipmentManager(stat.getDerivedStats(), occ);
 		Avatar smasher = new Avatar(occ, sem, stat);
 		
 		System.out.println(smasher.getStats().getOffensiveRating());

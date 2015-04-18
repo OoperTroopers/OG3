@@ -33,4 +33,5 @@ public interface Tileable {
     public boolean isTraversable();
 
 	public void sendToView(TileView tileView);
+	public void removeFromView(TileView tileView);
 }

@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -36,13 +38,16 @@ public class ViewFrame extends JFrame {
 	}
 	
 	public void addViewport(Viewport viewport) {
-		System.out.println("Viewport added");
 		view.addViewport(viewport);
 	}
 	
 	public void initialize() {
-		ActiveGameViewport game = ActiveGameViewport.getInstance();
-		addViewport(game);
+		addViewport(SimpleStatsViewport.getInstance());
+		addViewport(ActiveGameViewport.getInstance());
+		// addViewport(MainMenuViewport.getInstance());
+		
+		ViewportStack.getInstance().whichViewports();
+		
 	}
 
 	public static Component getInstance() {

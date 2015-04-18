@@ -13,6 +13,8 @@ import model.statistics.Statistics;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+import view.modelview.tileable.entities.AvatarView;
+
 
 public class Avatar extends Entity {
     private Journal myJournal;
@@ -34,9 +36,15 @@ public class Avatar extends Entity {
 		this.myJournal = new Journal();
 	}
 	
+	public Avatar(Tile tile) {
+		super(tile, new AvatarView());
+		this.controlAvatar = new ControllerAvatar(this);
+		this.abilities = new ArrayList<Ability>();
+		this.myJournal = new Journal();
+	}
+	
 	public void addAbility(Ability ability){
 		abilities.add(ability);
-		ability.attachToController(controlAvatar);
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){

@@ -9,6 +9,7 @@ import model.items.OneHanded;
 import model.items.TwoHanded;
 import model.items.Brawl;
 import model.statistics.DerivedStatistics;
+import model.occupations.Occupation;
 
 public class SmasherEquipmentManager extends EquipmentManager {
 	private Shield shield;
@@ -24,8 +25,8 @@ public class SmasherEquipmentManager extends EquipmentManager {
 		this.bareHandedWeapon = null;
 	}
 	
-	public SmasherEquipmentManager(DerivedStatistics derivedStats) {
-		super(derivedStats);
+	public SmasherEquipmentManager(DerivedStatistics derivedStats, Occupation occupation) {
+		super(derivedStats, occupation);
 		this.shield = null;
 		this.twoHandedWeapon = null;
 		this.oneHandedWeapon = null;
@@ -33,8 +34,8 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	}
 	
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
-			Brawl bhw, DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			Brawl bhw, DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.bareHandedWeapon = bhw;
 		this.shield = null;
 		this.twoHandedWeapon = null;
@@ -42,8 +43,8 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	}
 	
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
-			TwoHanded thw, DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			TwoHanded thw, DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.twoHandedWeapon = thw;
 		this.shield = null;
 		this.oneHandedWeapon = null;
@@ -51,8 +52,8 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	}
 	
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
-			Shield s, OneHanded ohw, DerivedStatistics derivedStats) {
-		super(helmet, chest, arms, legs, derivedStats);
+			Shield s, OneHanded ohw, DerivedStatistics derivedStats, Occupation occupation) {
+		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.shield = s;
 		this.oneHandedWeapon = ohw;
 		this.twoHandedWeapon = null;

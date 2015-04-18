@@ -7,6 +7,10 @@ import java.awt.Point;
 import java.io.IOException;
 import java.util.List;
 
+import controller.RunGame;
+
+import model.entities.Avatar;
+import model.entities.Entity;
 import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
@@ -16,28 +20,31 @@ import view.tools.Constants;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
-	Tile currentTile;
-	Load load = new Load();
+// adfskl;dfsakl;dfsakl;adfskl;dsfkl;dsafkl;adsfkl;sdafkl;dfsajkl;sdfakl;sdafjkl;adsfkl;asdfjklsdafkl;sadfkl;adskl;dsfkl;fdskl;sdfkl;asdfkl;dskl;dsakl;dsfkl;dfskl;sdfkl;sdkl;dfsakl;dskl;dsfkl;fdskl;dfskl;fdskl;dfsjkldfsakl;fsdakl;fdsakl;sadfkl;fdsal;dfsajklfadsjkladfsljkfadsjklsdfakl;afsdkl;adfskl;fsadkl;dfskl;dfsakl;dsfkl;dfsakl;fdsakl;fdsajklfdskl;dfsdfkls;akl;asdfkl;dsafkl;dfsaljkdfsakl;fsdakl;sdfakl;dfsakl;adfsjkldfsajkldfsaj;adsfkl;dsal;dfsakl;sdfajklfdsakl;dfsakl;dsfkl;sdafkl;dfsakl;sdfkl;kl;dfsakl;adfskl;jkldfsakl;sdfajklk;fdsakl;afdsjklkl;sadfkl;adfsjkll;adfskl;dfsakjklsadfjkldsfjklkl;afdjklfsadjkljklfads;fdsajklkl;afsdfdsjklk;fdsajklfadskl;kl;adfsjklsdfjkljklsadl;fasdkljkladfsjkldfskl;kl;fdsl;dfskl;adfls;kl;adsfjklkl;fdsakl;adfskl;dfsjklfdsjkldafs;adfskl;asdfklasdfklsadfadfsjkldfksajklfdsajkldfsajkladslkjdsalfsadfjkfdsa;kl;fsadjkldsjklafdskl;fadsjkdfjklsadfsjkldfsjkldsfjklfsdakl;dsafjklasdfkl;sadfkladfskldfsajkljklkl;klklfdsajkllafsdkl;dfsakljklfadsklfsdjkll;fadsjklfdsjkljklfdasjklkljdfjkldfsajklsdjkljlsadfjkljklfadsjkljklfdsajklkkl;adfsjkl;afsdjklkl;asdkl;adfsjkll;asdfkl;asdf;kl;dfskl;adfsklkl;afdskl;fadslkl;adfskl;fadskl;dfsakl;dfsajklfdsjklafsdlljkadfsfsdaklsdfaj;sdfjdfsl;fdsl;fsdjkldfsa;fdsakl;dfsjdfsajklsadfjklasdfkl;dfsajkldfsakl;adfsjkdfsakldfsajklafsdjkldfsajkadfsjkldfsakljdfsakl;dfsadfsajkldfsakjfadsk;fdsakjldfskl;dfsajkdfsakl;sadfjklfdsakl;fdsaljkdfsajklfsadjklsdfajkadsfjklfsadjkfsdajklfadsjkldfsajklsadfjkldsfajklsadjklfsdajkldfsajkldfsajklfsadkl;sdfaljkfdsakl;dfsajkldfsajklafsdjkldsfajkldfasjklsdfajklsfadkl;afsdjkldsfaladfskl;fdsaadfsjklfdsajkldfsal;dfsal;fdsaj;dfsajkfdsakl;fdsaljksadfkl;dfsajlkd
 	
-	int[][] tiles = {
-			{5, 5},
-			{85,5},
-			{165,5},
-			{245,6}
-	};	// will be phased out. just to give you an idea of what's going on conceptually.
+	Tile currentTile;
+	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
+	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
+	
+	Load load = new Load();
 	
 	private static ActiveGameViewport activeGameViewport = 
 			new ActiveGameViewport();
 
 	public ActiveGameViewport() {
-		this.setPreferredSize(new Dimension(400,400));
-		
+		this.setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT,Constants.GAME_VIEW_WIDTH));
 		this.setBackground(Color.BLACK);
+		
+		// add other viewports
+		// this.add(heartsViewport);
+		// this.add(simpleStatsViewport);
 		
 		// get beginning tile
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
+		Entity avatar = new Avatar(currentTile);
+		RunGame rg = new RunGame((Avatar) avatar);
 	}
 	
 	@Override
@@ -51,6 +58,7 @@ public class ActiveGameViewport extends Viewport {
 
 	@Override
 	public void paint(Graphics g) {
+		super.paint(g);
 		Point p;
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
 		for (Tile t : tiles) {

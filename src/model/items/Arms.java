@@ -6,7 +6,14 @@ import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
+import model.statistics.EquippableStatistics;
 public class Arms extends Armor {
+	public Arms() {
+		super();
+	}
+	public Arms(String name, String description, String id, int value, EquippableStatistics es) {
+		super(name, description, id, value, es);
+	}
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipArms();
 		em.equipArms(this);

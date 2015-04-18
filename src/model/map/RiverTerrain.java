@@ -6,7 +6,7 @@
 package model.map;
 
 import model.effects.Effect;
-import view.modelview.tileableview.RiverTerrainView;
+import view.modelview.tileable.terrain.RiverTerrainView;
 
 /**
  *

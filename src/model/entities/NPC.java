@@ -40,7 +40,7 @@ public class NPC extends Entity {
 		damage = Math.max(0, damage);
 		getStats().wound(damage);
 		if(getStats().getCurrentHealth() <= 0) {
-			//die. if lives left respawn as well
+			respawn();
 		}
 		hostile = true;
 	}

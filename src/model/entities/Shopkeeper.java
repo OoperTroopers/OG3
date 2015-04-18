@@ -24,7 +24,7 @@ public class Shopkeeper extends NPC {
 		Inventory avatarInventory = avatar.getInventory();
 		Inventory shopkeeperInventory = this.getInventory();
 		//int bargainingSkillLevel = avatar.getSkillLevel(bargaining)
-		//int avatarGold = avatar.getCurrentGold();
+		int avatarGold = avatar.getCurrentGold();
 		//Shop handles all of the transaction stuff
 		//Shop shop = new Shop(avatarInventory, shopkeeperInventory, bargainingSkillLevel, avatarGold);
 		//int change = shop.open();

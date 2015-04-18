@@ -6,6 +6,7 @@ public class PrimaryStatistics {
 	private int agility;
 	private int intellect;
 	private int livesLeft;
+	private int movement;
 	
 	//generic constructor
 	public PrimaryStatistics() {
@@ -14,24 +15,27 @@ public class PrimaryStatistics {
 		this.agility = 5;
 		this.intellect = 5;
 		this.livesLeft = 1;
+		this.movement = 3;
 	}
 	
 	//custom stats for NPC constructor
-	public PrimaryStatistics(int s, int h, int a, int i) {
+	public PrimaryStatistics(int s, int h, int a, int i, int m) {
 		this.strength = s;
 		this.hardiness = h;
 		this.agility = a;
 		this.intellect = i;
 		this.livesLeft = 1;
+		this.movement = m;
 	}
 	
 	//custom stats for Avatar constructor
-	public PrimaryStatistics(int s, int h, int a, int i, int ll) {
+	public PrimaryStatistics(int s, int h, int a, int i, int ll, int m) {
 		this.strength = s;
 		this.hardiness = h;
 		this.agility = a;
 		this.intellect = i;
 		this.livesLeft = ll;
+		this.movement = m;
 	}
 	
 	public int getStrength() {
@@ -63,6 +67,12 @@ public class PrimaryStatistics {
 	}
 	public void setLivesLeft(int livesLeft) {
 		this.livesLeft = livesLeft;
+	}
+	public int getMovement() {
+		return movement;
+	}
+	public void setMovement(int movement) {
+		this.movement = movement;
 	}
 	
 	public void loseLife() {

@@ -12,12 +12,18 @@ public class ViewportStack {
 		
 	}
 	
+	public void whichViewports() {
+		if (mainMenuViewport != null)  		System.out.println("Main Menu Viewport");
+		if (activeGameViewport != null)  	System.out.println("Active Game Viewport");
+		if (heartsViewport != null)  		System.out.println("Hearts Viewport");
+		if (simpleStatsViewport != null)  	System.out.println("Simple Stats Viewport");
+		if (pauseMenuViewport != null)  	System.out.println("Main Menu Viewport");
+	}
+	
 	public static ViewportStack getInstance() {
 		return viewportStack;
 	}
-	
-	// public void add(Viewport v) {}
-	
+		
 	public void add(MainMenuViewport v) {		mainMenuViewport = v;		}
 	public void add(ActiveGameViewport v) {		activeGameViewport = v;	}
 	public void add(HeartsViewport v) {			heartsViewport = v;			}

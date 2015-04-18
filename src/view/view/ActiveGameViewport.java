@@ -23,18 +23,11 @@ public class ActiveGameViewport extends Viewport {
 	Tile currentTile;
 	Load load = new Load();
 	
-	int[][] tiles = {
-			{5, 5},
-			{85,5},
-			{165,5},
-			{245,6}
-	};	// will be phased out. just to give you an idea of what's going on conceptually.
-	
 	private static ActiveGameViewport activeGameViewport = 
 			new ActiveGameViewport();
 
 	public ActiveGameViewport() {
-		this.setPreferredSize(new Dimension(400,400));
+		this.setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT,Constants.GAME_VIEW_WIDTH));
 		
 		this.setBackground(Color.BLACK);
 		

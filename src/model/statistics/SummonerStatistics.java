@@ -3,7 +3,7 @@ package model.statistics;
 public class SummonerStatistics extends Statistics {
 	//generic Summoner
 	public SummonerStatistics() {
-		setPrimaryStats(new PrimaryStatistics(5, 5, 5, 10, 3));
+		setPrimaryStats(new PrimaryStatistics(5, 5, 5, 10, 3, 3));
 		setDerivedStats(new DerivedStatistics(getPrimaryStats()));
 		setCurrentGold(0);
 		setCurrentHealth(getDerivedStats().getMaxHealth());

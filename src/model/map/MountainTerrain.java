@@ -6,8 +6,9 @@
 package model.map;
 
 import java.awt.Image;
+
 import model.effects.Effect;
-import view.modelview.tileableview.MountainTerrainView;
+import view.modelview.tileable.terrain.MountainTerrainView;
 
 /**
  *

@@ -162,21 +162,7 @@ public class Tile {
         	
         	// this throws an error
         }
-    }
-    
-    /**
-     * Moves an Entity in a specific Direction.
-     * @param entity    the Entity that we want to move
-     * @param direction the Direction we want to move the Entity
-     */
-    public boolean move(Entity entity, Direction direction) {
-    	Tile neighborTile = this.neighbors.get(direction);
-    	if (neighborTile == null) return false;
-    	this.removeTileable(entity);
-    	neighborTile.addTileable(entity);
-    	ActiveGameViewport.getInstance().repaint();
-    	return true;
-    }    
+    } 
     
     /**
      * Sets the Location of a Tile.

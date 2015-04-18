@@ -8,6 +8,7 @@ import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
+import view.view.ActiveGameViewport;
 
 import java.util.ArrayList;
 import java.util.Observer;
@@ -18,18 +19,18 @@ import model.map.MovementCapabilities;
 import model.map.Tileable;
 import model.map.Tile;
 public abstract class Entity implements Tileable, Moveable{
-        private Tile myTile;
-        private MovementCapabilities myMovement;
-        
-        private TileableView entityView;
-        
-        
+	private Tile myTile;
+	private MovementCapabilities myMovement;
+
+	private TileableView entityView;
+
+
 	private Inventory inventory;
 	private EquipmentManager equipmentManager;
 	private Occupation occupation;
 	private Statistics stats;
 	private int direction;
-	
+
 	// generic constructor creates Smasher as base class
 	public Entity() {
 		this.inventory = new Inventory();
@@ -38,7 +39,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 	}
-	
+
 	public Entity(Tile tile, TileableView entityView) {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
@@ -49,7 +50,7 @@ public abstract class Entity implements Tileable, Moveable{
 		this.entityView = entityView;
 		this.myTile.addTileable(this);
 	}
-	
+
 	// constructor for Entity with specific occupation. 
 	//needs refactor to account for equipment manager needing derived stats
 	public Entity(Occupation o, EquipmentManager em, Statistics s) {
@@ -59,18 +60,18 @@ public abstract class Entity implements Tileable, Moveable{
 		this.stats = s;
 		this.direction = 8;
 	}
-	
-        /**
-         * TODO make this copy the Entity
-         * @return a copy of the Entity
-         */
-        public abstract Entity clone();
-       
-        
-    public void heal(int amount) {
-    	this.stats.heal(amount);
-    }
-        
+
+	/**
+	 * TODO make this copy the Entity
+	 * @return a copy of the Entity
+	 */
+	public abstract Entity clone();
+
+
+	public void heal(int amount) {
+		this.stats.heal(amount);
+	}
+
 	public void receiveDamage(int damage) {
 		damage -= stats.getDefensiveRating();
 		damage = Math.max(0, damage);
@@ -79,7 +80,7 @@ public abstract class Entity implements Tileable, Moveable{
 			respawn();
 		}
 	}
-	
+
 	protected void respawn() {
 		stats.loseLife();
 		if(stats.getLivesLeft() > 0) {
@@ -93,7 +94,7 @@ public abstract class Entity implements Tileable, Moveable{
 		int damage = stats.getOffensiveRating();
 		return damage;
 	}
-	
+
 	/*public void changeLocation(int q, int r) {
 		location.setQ(q);
 		location.setR(r);
@@ -103,15 +104,15 @@ public abstract class Entity implements Tileable, Moveable{
 	public void addItemToInventory(TakeableItem item) {
 		inventory.addToInventory(item);
 	}
-	
+
 	public void dropItem(TakeableItem item) {
 		inventory.dropFromInventory(item);
 	}
-	
+
 	public void removeItem(TakeableItem item) {
 		inventory.removeFromInventory(item);
 	}
-	
+
 	public ArrayList<TakeableItem> getAllItems() {
 		return inventory.getInventory();
 	}
@@ -127,11 +128,11 @@ public abstract class Entity implements Tileable, Moveable{
 	public void dialogue() {
 		//do dialogue
 	}
-	
+
 	public int getCurrentGold() {
 		return stats.getCurrentGold();
 	}
-	
+
 	public void setGold(int gold) {
 		stats.setCurrentGold(gold);
 	}
@@ -144,11 +145,11 @@ public abstract class Entity implements Tileable, Moveable{
 	public int getObservationAbilityLevel() {
 		return occupation.getObservationAbilityLevel();
 	}
-	
+
 	public Inventory getInventory() {
 		return inventory;
 	}
-	
+
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
@@ -184,52 +185,53 @@ public abstract class Entity implements Tileable, Moveable{
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
-	
-        /*
-        * Map Interaction
-        */
-        
-        
-        /* These are the move commands for entity. Logic for whether or not these 
+
+	/*
+	 * Map Interaction
+	 */
+
+
+	/* These are the move commands for entity. Logic for whether or not these 
             get called should be done before you call these. i.e. the controller should
             know whether or not it's legal to move the Entity.
-        */
-        public void moveNorth(){
-        	if (myTile.move(this, Direction.NORTH)) {
-            	myTile = myTile.getNeighbor(Direction.NORTH);
-            }
-        }
-        public void moveSouth(){
-            if (myTile.move(this, Direction.SOUTH)) {
-            	myTile = myTile.getNeighbor(Direction.SOUTH);
-            }
-        }
-        public void moveNorthwest(){
-        	if (myTile.move(this, Direction.NORTHWEST)) {
-            	myTile = myTile.getNeighbor(Direction.NORTHWEST);
-            }
-        }
-        public void moveNortheast(){
-        	if (myTile.move(this, Direction.NORTHEAST)) {
-            	myTile = myTile.getNeighbor(Direction.NORTHEAST);
-            }
-        }
-        public void moveSoutheast(){
-        	if (myTile.move(this, Direction.SOUTHEAST)) {
-            	myTile = myTile.getNeighbor(Direction.SOUTHEAST);
-            }
-        }
-        public void moveSouthwest(){
-        	if (myTile.move(this, Direction.SOUTHWEST)) {
-            	myTile = myTile.getNeighbor(Direction.SOUTHWEST);
-            }
-        }
-        
-    	public void sendToView(TileView tileView) {
-    		tileView.accept(entityView);
-    	}
-    	
-    	public void removeFromView(TileView tileView) {
-    		tileView.remove(entityView);
-    	}
+	 */
+	private void move(Direction direction) {
+		myTile.removeTileable(this);
+		myTile = myTile.getNeighbor(direction);
+		myTile.addTileable(this);
+		ActiveGameViewport.getInstance().repaint();
+	}
+
+
+	public void moveNorth(){
+		move(Direction.NORTH);
+	}
+
+	public void moveSouth(){
+		move(Direction.SOUTH);
+	}
+
+	public void moveNorthwest(){
+		move(Direction.NORTHWEST);
+	}
+
+	public void moveNortheast(){
+		move(Direction.NORTHEAST);
+	}
+
+	public void moveSoutheast(){
+		move(Direction.SOUTHEAST);
+	}
+
+	public void moveSouthwest(){
+		move(Direction.SOUTHWEST);
+	}
+
+	public void sendToView(TileView tileView) {
+		tileView.accept(entityView);
+	}
+
+	public void removeFromView(TileView tileView) {
+		tileView.remove(entityView);
+	}
 }

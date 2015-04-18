@@ -36,6 +36,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			Brawl bhw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
+		setCurrentSkill("Brawl Ability");
 		this.bareHandedWeapon = bhw;
 		this.shield = null;
 		this.twoHandedWeapon = null;
@@ -45,6 +46,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			TwoHanded thw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
+		setCurrentSkill("Two Handed Weapon Ability");
 		this.twoHandedWeapon = thw;
 		this.shield = null;
 		this.oneHandedWeapon = null;
@@ -54,6 +56,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	public SmasherEquipmentManager(Helmet helmet, Chest chest, Arms arms, Legs legs,
 			Shield s, OneHanded ohw, DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
+		setCurrentSkill("One Handed Weapon Ability");
 		this.shield = s;
 		this.oneHandedWeapon = ohw;
 		this.twoHandedWeapon = null;
@@ -67,18 +70,21 @@ public class SmasherEquipmentManager extends EquipmentManager {
 	
 	public void equipTwoHandedWeapon(TwoHanded twoHandedWeapon) {
 		this.twoHandedWeapon = twoHandedWeapon;
+		setCurrentSkill("Two Handed Weapon Ability");
 		getDerivedStats().addEquippable(twoHandedWeapon.getEquipStats());
 		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getTwoHandedAbilityLevel());
 	}
 	
 	public void equipOneHandedWeapon(OneHanded oneHandedWeapon) {
 		this.oneHandedWeapon = oneHandedWeapon;
+		setCurrentSkill("One Handed Weapon Ability");
 		getDerivedStats().addEquippable(oneHandedWeapon.getEquipStats());
 		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getOneHandedAbilityLevel());
 	}
 	
 	public void equipBareHandedWeapon(Brawl bareHandedWeapon) {
 		this.bareHandedWeapon = bareHandedWeapon;
+		setCurrentSkill("Brawl Ability");
 		getDerivedStats().addEquippable(bareHandedWeapon.getEquipStats());
 		getDerivedStats().addAbilityLevel(((SmasherOccupation)getOccupation()).getBrawlAbilityLevel());
 	}
@@ -96,6 +102,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getTwoHandedAbilityLevel());
 		}
 		twoHandedWeapon = null;
+		setCurrentSkill(null);
 	}
 	
 	public void unequipOneHandedWeapon() {
@@ -104,6 +111,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getOneHandedAbilityLevel());
 		}
 		oneHandedWeapon = null;
+		setCurrentSkill(null);
 	}
 	
 	public void unequipBareHandedWeapon() {
@@ -112,6 +120,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
 			getDerivedStats().removeAbilityLevel(((SmasherOccupation)getOccupation()).getBrawlAbilityLevel());
 		}
 		bareHandedWeapon = null;
+		setCurrentSkill(null);
 	}
 	
 	public Shield getShield() {

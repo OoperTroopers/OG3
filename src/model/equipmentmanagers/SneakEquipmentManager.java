@@ -26,10 +26,12 @@ public class SneakEquipmentManager extends EquipmentManager {
 			DerivedStatistics derivedStats, Occupation occupation) {
 		super(helmet, chest, arms, legs, derivedStats, occupation);
 		this.rangedWeapon = rangedWeapon;
+		setCurrentSkill("Ranged Ability");
 	}
 	
 	public void equipRangedWeapon(Ranged rangedWeapon) {
 		this.rangedWeapon = rangedWeapon;
+		setCurrentSkill("Ranged Ability");
 		getDerivedStats().addEquippable(rangedWeapon.getEquipStats());
 		getDerivedStats().addAbilityLevel(((SneakOccupation)getOccupation()).getRangedAbilityLevel());
 	}
@@ -40,6 +42,8 @@ public class SneakEquipmentManager extends EquipmentManager {
 			getDerivedStats().removeAbilityLevel(((SneakOccupation)getOccupation()).getRangedAbilityLevel());
 		}
 		rangedWeapon = null;
+
+		setCurrentSkill(null);
 	}
 	
 	public Ranged getRangedWeapon() {

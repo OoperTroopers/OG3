@@ -11,6 +11,7 @@ public abstract class EquipmentManager {
 	private Legs legs;
 	private DerivedStatistics derivedStats;
 	private Occupation occupation;
+	private String currentSkill;
 	
 	//generic Equipment Manager
 	public EquipmentManager() {
@@ -20,6 +21,7 @@ public abstract class EquipmentManager {
 		this.legs = null;
 		this.derivedStats = null;
 		this.occupation = null;
+		this.currentSkill = null;
 	}
 	
 	//new empty Equipment Manager
@@ -30,6 +32,7 @@ public abstract class EquipmentManager {
 		this.legs = null;
 		this.derivedStats = derivedStats;
 		this.occupation = occupation;
+		this.currentSkill = null;
 	}
 	
 	//new filled equipment manager
@@ -41,6 +44,7 @@ public abstract class EquipmentManager {
 		this.legs = legs;
 		this.derivedStats = derivedStats;
 		this.occupation = occupation;
+		this.currentSkill = null;
 	}
 	
 	public void equipHelmet(Helmet helmet) {
@@ -117,8 +121,13 @@ public abstract class EquipmentManager {
 	public Occupation getOccupation() {
 		return occupation;
 	}
-	
 	public void setOccupation(Occupation occupation) {
-		this.occupation= occupation;
+		this.occupation = occupation;
+	}
+	public String getCurrentSkill() {
+		return currentSkill;
+	}
+	public void setCurrentSkill(String currentSkill) {
+		this.currentSkill = currentSkill;
 	}
 }

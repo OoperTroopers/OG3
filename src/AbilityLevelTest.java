@@ -1,19 +1,16 @@
 import model.abilities.*;
-import model.occupations.*;
-import model.statistics.*;
-import model.equipmentmanagers.*;
 import model.entities.*;
 import model.items.*;
 
 public class AbilityLevelTest {
 	public static void main(String[] args) {
 		Avatar smash = new Avatar();
-		OneHanded oh = new OneHanded();
+		TwoHanded oh = new TwoHanded();
 		smash.addItemToInventory(oh);
 		smash.getStats().increaseExperience(140);
 		
-		AbilityMenu am = new AbilityMenu(smash.getOccupation().getAbilityList(), 
-				smash.getStats().getDerivedStats(), smash.getStats().getAssignableAbilityPoints());
+		AbilityMenu am = new AbilityMenu(smash.getOccupation().getAbilityList(), smash.getStats().getDerivedStats(), 
+				smash.getStats().getAssignableAbilityPoints(), smash.getEquipmentManager());
 
 		System.out.println(smash.getStats().getOffensiveRating());
 		oh.equip(smash.getEquipmentManager(), smash.getInventory());

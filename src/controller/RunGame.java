@@ -1,7 +1,5 @@
 package controller;
 
-import model.abilities.AttackAbility;
-import model.abilities.SneakAbility;
 import model.entities.Avatar;
 import model.entities.Entity;
 

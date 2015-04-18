@@ -34,16 +34,16 @@ public abstract class Entity implements Tileable, Moveable{
 	public Entity() {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
-		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 	}
 	
 	public Entity(Tile tile, TileableView entityView) {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
-		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats());
 		this.occupation = new SmasherOccupation();
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 		this.myTile = tile;
 		this.entityView = entityView;
@@ -134,6 +134,15 @@ public abstract class Entity implements Tileable, Moveable{
 	
 	public void setGold(int gold) {
 		stats.setCurrentGold(gold);
+	}
+	public int getBargainingAbilityLevel() {
+		return occupation.getBargainingAbilityLevel();
+	}
+	public int getBindWoundsAbilityLevel() {
+		return occupation.getBindWoundsAbilityLevel();
+	}
+	public int getObservationAbilityLevel() {
+		return occupation.getObservationAbilityLevel();
 	}
 	
 	public Inventory getInventory() {

@@ -16,17 +16,18 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import view.modelview.tileable.entities.AvatarView;
+import view.view.ActiveGameViewport;
 
 
 public class Avatar extends Entity {
+	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
-	private ArrayList<Ability> abilities;
 
 	public Avatar(){
 		super();
 		this.controlAvatar = new ControllerAvatar(this);
-		this.abilities = new ArrayList<>();
+		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 	}
 	
@@ -34,24 +35,14 @@ public class Avatar extends Entity {
 		super(o, em, s);
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);
-		this.abilities = new ArrayList<>();
 		this.myJournal = new Journal();
 	}
 	
 	public Avatar(Tile tile) {
 		super(tile, new AvatarView());
 		this.controlAvatar = new ControllerAvatar(this);
-		this.abilities = new ArrayList<>();
+		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
-	}
-	
-	public void addAbility(ImplicitAbility ability){
-		abilities.add(ability);
-	}
-	
-	public void addAbility(ExplicitAbility ability) {
-		abilities.add(ability);
-		ability.attachToController(controlAvatar);
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){
@@ -96,40 +87,16 @@ public class Avatar extends Entity {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public boolean canMoveNorth() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void addAbility(ExplicitAbility ability) {
+		this.getOccupation().addAbility(ability);
+		ability.attachToController(controlAvatar);
 	}
 
 	@Override
-	public boolean canMoveNortheast() {
-		// TODO Auto-generated method stub
-		return false;
+	public void update(Entity entity, Tile tile) {
+		controlAvatar.update(this, tile);
+		ActiveGameViewport.getInstance().repaint();		
 	}
 
-	@Override
-	public boolean canMoveNorthwest() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSouth() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSoutheast() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean canMoveSouthwest() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

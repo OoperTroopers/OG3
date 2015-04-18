@@ -86,6 +86,10 @@ public class Tile {
         // return null;//new MemTile(this, location, tCopy, copyOfList);
     }
     
+    public ArrayList<Tileable> getTileables() {
+    	return this.tileables;
+    }
+    
     private ArrayList<Tileable> cloneTileables(){
         ArrayList<Tileable> copyOfList = new ArrayList<>();
         for(Tileable t: tileables){

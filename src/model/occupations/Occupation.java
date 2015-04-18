@@ -40,4 +40,8 @@ public abstract class Occupation {
 	public int getObservationAbilityLevel() {
 		return abilityList.get(2).getAbilityLevel();
 	}
+	
+	public void addAbility(Ability ability) {
+		this.abilityList.add(ability);
+	}
 }

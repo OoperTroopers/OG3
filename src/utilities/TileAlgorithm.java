@@ -338,6 +338,49 @@ public class TileAlgorithm {
 		return visited.size();
 	}
 	
+	public static Direction getBestDirectionToAvatar(Tile npc, Tile avatar) {
+		Queue<DistanceTile> queue = new LinkedList<DistanceTile>();
+		HashSet<Tile> visited = new HashSet<Tile>();
+		
+		queue.add(new DistanceTile(npc, 0));
+		visited.add(npc);
+		
+		DistanceTile current = null;
+		
+		while (!queue.isEmpty()) {
+			current = queue.remove();
+			if (current.getTile().equals(avatar)) break;
+			for (Direction direction : Direction.values()) {
+				Tile neighbor = current.getTile().getNeighbor(direction);
+				if (neighbor != null && !visited.contains(neighbor)) {
+					visited.add(neighbor);
+					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, current.getPath());
+					neighborDT.addDirection(direction);
+				}
+			}
+		}
+		
+		HashMap<Direction, Integer> directionToNum = new HashMap<Direction, Integer>();
+		for (Direction direction : Direction.values()) directionToNum.put(direction, 0);
+		List<Direction> directions = current.getPath();
+		for (Direction direction : directions) {
+			directionToNum.put(direction, directionToNum.get(direction) + 1);
+		}
+		
+		Direction bestDirection = null;
+		int max = -1;
+		
+		for (Direction direction : Direction.values()) {
+			int num = directionToNum.get(direction);
+			if (num > max) {
+				max = num;
+				bestDirection = direction;
+			}
+		}
+		
+		return bestDirection;
+	}
+	
 
 	public static Point toPixel(Tile tile) {
 		double size = Constants.TILE_SIZE;
@@ -355,10 +398,18 @@ public class TileAlgorithm {
 	private static class DistanceTile {
 		private Tile tile;
 		private int distance;
+		private List<Direction> path;
 
 		public DistanceTile(Tile tile, int distance) {
 			this.tile = tile;
 			this.distance = distance;
+			this.path = new ArrayList<Direction>();
+		}
+		
+		public DistanceTile(Tile tile, int distance, List<Direction> path) {
+			this.tile = tile;
+			this.distance = distance;
+			this.path = path;
 		}
 
 		public int getDistance() {
@@ -367,6 +418,14 @@ public class TileAlgorithm {
 
 		public Tile getTile() {
 			return this.tile;
+		}
+		
+		public List<Direction> getPath() {
+			return this.path;
+		}
+		
+		public void addDirection(Direction direction) {
+			this.path.add(direction);
 		}
 	}
 }

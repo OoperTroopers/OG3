@@ -32,6 +32,6 @@ public class TeleportAreaEffect extends AreaEffect {
 	}
 	
 	public void activate(Entity entity) {
-		effect.visit(entity);
+		effect.visit(entity, null);
 	}
 }

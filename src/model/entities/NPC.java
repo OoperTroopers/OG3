@@ -70,6 +70,8 @@ public class NPC extends Entity {
 		return null;
 	}
 
-	@Override
+	//@Override
+	//public void update(Entity entity, Tile tile) {}
+
 	public void update(Tile tile) {}
 }

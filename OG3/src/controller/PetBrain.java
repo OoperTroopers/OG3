@@ -36,6 +36,7 @@ public class PetBrain extends Brain{
 
 	@Override
 	public void run() {
+            if(master != null){
 		boolean hasMoved = false;
 			for(Direction direction : Direction.values() ){
 				directionAbilities.get(direction).perform();
@@ -43,6 +44,7 @@ public class PetBrain extends Brain{
 			}
 			//updateMovements(pet.getTile());
 		System.out.println("pet!");
+            }
 	}
 	
         public void setOwner(Avatar a ){

@@ -14,8 +14,8 @@ public class Pet extends NPC {
 	private Avatar owner;
 	private PetBrain brain;
 	
-	public Pet(){
-		super(new PetView());
+	public Pet(Tile myTile){
+		super(new PetView(), myTile);
                 brain = new PetBrain(this);
 		owner = null;
                 System.out.println("THE DOG IS A PET");

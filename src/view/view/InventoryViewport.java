@@ -45,7 +45,7 @@ public class InventoryViewport extends Viewport {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
 
-        setPreferredSize(new Dimension(Constants.GAME_VIEW_WIDTH, Constants.GAME_VIEW_HEIGHT));
+        setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT, Constants.GAME_VIEW_WIDTH));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 2, 2, 4, new java.awt.Color(0, 0, 0)));
 

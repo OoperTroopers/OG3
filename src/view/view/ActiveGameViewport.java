@@ -118,9 +118,24 @@ public class ActiveGameViewport extends Viewport {
 					g.drawImage(tileView.getImage(), p.x + dx, p.y + dy, 
 						Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 					
+
 				//}
 			}
 			
+		}
+		
+		// g.setColor(Color.DARK_GRAY);
+		g.setColor(new Color(241,196,15,100));
+		int xStart = Constants.VIEW_WIDTH - (Constants.GAME_VIEW_WIDTH / 10) - 90;
+		g.fillRect(xStart, 0, Constants.GAME_VIEW_WIDTH / 10 + 90, Constants.GAME_VIEW_HEIGHT / 10 + 85);
+		for (Tile t : tiles) {
+			p = TileAlgorithm.toPixel(t);
+			TileView miniTileView = t.getTileView();
+			if(miniTileView.hasBeenSeen()){
+					if (!this.isScrolling()) miniTileView.incrementAge();
+					g.drawImage(miniTileView.getImage(), (p.x / 10) + xStart + 15, (p.y / 10) + 10, 
+						Constants.MINI_TILE_HEIGHT, Constants.MINI_TILE_WIDTH, null);
+			}
 		}
 	}
 	

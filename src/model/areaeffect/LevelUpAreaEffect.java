@@ -2,6 +2,7 @@ package model.areaeffect;
 
 import model.effects.Effect;
 import model.effects.LevelUpEffect;
+import model.entities.Entity;
 import model.map.Tile;
 import view.modelview.areaeffect.LevelUpAreaEffectView;
 import view.modelview.tile.TileView;
@@ -29,5 +30,8 @@ public class LevelUpAreaEffect extends AreaEffect {
 	public void removeFromView(TileView tileView) {
 		
 	}
-
+	
+	public void activate(Entity entity) {
+		effect.visit(entity);
+	}
 }

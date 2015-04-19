@@ -14,8 +14,8 @@ public class Pet extends NPC {
 	private Avatar owner;
 	private PetBrain brain = new PetBrain(this);
 	
-	public Pet(){
-		super(new PetView());
+	public Pet(Tile tile){
+		super(tile, new PetView());
 		owner = null;
 	}
 	

@@ -157,16 +157,16 @@ public class Load {
 		int index = this.parseTileNumber(tileNumber);
 		Tile tile = this.getTile(index);
 		entity = entity.substring(entity.indexOf("=") + 1);
-		Entity tileableEntity = this.parseEntity(entity);
+		Entity tileableEntity = this.parseEntity(entity, tile);
 		tile.addTileable(tileableEntity);
 		return true;
 	}
 	
-	private Entity parseEntity(String entity) {
-		if (entity.equals("Shopkeeper")) return new Shopkeeper();
-		if (entity.equals("NPC")) return new NPC();
-		if (entity.equals("Pet")) return new Pet();
-		if (entity.equals("Mount")) return new Mount();
+	private Entity parseEntity(String entity, Tile tile) {
+		if (entity.equals("Shopkeeper")) return new Shopkeeper(tile);
+		if (entity.equals("NPC")) return new NPC(tile);
+		if (entity.equals("Pet")) return new Pet(tile);
+		if (entity.equals("Mount")) return new Mount(tile);
 		return null;
 	}
 	

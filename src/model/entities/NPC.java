@@ -73,9 +73,5 @@ public class NPC extends Entity {
 	//@Override
 	//public void update(Entity entity, Tile tile) {}
 
-	@Override
-	public void update(Tile tile) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update(Tile tile) {}
 }

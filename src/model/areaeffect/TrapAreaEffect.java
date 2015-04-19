@@ -1,26 +1,27 @@
 package model.areaeffect;
 
 import model.effects.Effect;
+import model.effects.TrapEffect;
+import model.entities.Entity;
 import view.modelview.areaeffect.TrapAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class TrapAreaEffect extends AreaEffect {
 	private static TrapAreaEffectView trapAreaEffectView = new TrapAreaEffectView();
+	private Effect effect;
 	
 	public TrapAreaEffect() {
 		super(trapAreaEffectView);
-		// TODO Auto-generated constructor stub
+		this.effect = new TrapEffect();
 	}
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-
+		e.visit(this);
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -28,5 +29,8 @@ public class TrapAreaEffect extends AreaEffect {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	public void activate(Entity entity) {
+		effect.visit(entity);
+	}
 }

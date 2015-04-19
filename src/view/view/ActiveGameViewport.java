@@ -35,7 +35,7 @@ public class ActiveGameViewport extends Viewport {
 
 	public ActiveGameViewport() {
 		this.setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT,Constants.GAME_VIEW_WIDTH));
-		this.setBackground(Color.BLACK);
+		this.setBackground(Color.darkGray);
 		
 		// add other viewports
 		// this.add(heartsViewport);

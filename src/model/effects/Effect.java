@@ -11,14 +11,14 @@ package model.effects;
 import model.map.*;
 import model.entities.*;
 import model.items.*;
+import model.areaeffect.*;
 
 public abstract class Effect {
 	public void visit(Entity entity) { }
 	public void visit(Avatar avatar) { }
 	public void visit(NPC npc) { }
 	public void visit(Item item) { }
-	// public void visit(Trap trap) { }
-	// public void visit(AreaEffect areaEffect) { }
+	public void visit(AreaEffect areaEffect) { }
 	
 	// these shoot errors		
 }

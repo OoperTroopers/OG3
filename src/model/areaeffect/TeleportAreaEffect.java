@@ -1,27 +1,28 @@
 package model.areaeffect;
 
 import model.effects.Effect;
+import model.effects.TeleportEffect;
+import model.entities.Entity;
 import view.modelview.areaeffect.TeleportAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class TeleportAreaEffect extends AreaEffect {
 	private static TeleportAreaEffectView teleportAreaEffectView = new TeleportAreaEffectView();
+	private TeleportEffect effect;
 	
 	public TeleportAreaEffect() {
 		super(teleportAreaEffectView);
-		// TODO Auto-generated constructor stub
+		this.effect = new TeleportEffect();
 	}
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-
+		e.visit(this);
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -29,5 +30,8 @@ public class TeleportAreaEffect extends AreaEffect {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	public void activate(Entity entity) {
+		effect.visit(entity, null);
+	}
 }

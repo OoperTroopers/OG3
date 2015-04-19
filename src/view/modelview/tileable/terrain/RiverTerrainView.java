@@ -28,5 +28,4 @@ public class RiverTerrainView extends TerrainView {
 
     @Override
     public BufferedImage getImage() { return image; }
-    
 }

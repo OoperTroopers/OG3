@@ -19,5 +19,4 @@ public class GrassTerrainView extends TerrainView {
 
         @Override
 	public BufferedImage getImage() { return image; }
-	
 }

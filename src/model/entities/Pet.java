@@ -2,12 +2,18 @@ package model.entities;
 
 import view.modelview.tileable.entities.PetView;
 import model.equipmentmanagers.EquipmentManager;
-
+import model.map.Tile;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
+import utilities.TileAlgorithm;
+import utilities.TileAlgorithm.Direction;
+import view.view.ActiveGameViewport;
+import controller.PetBrain;
 
 public class Pet extends NPC {
+
 	private Avatar owner;
+	private PetBrain brain = new PetBrain(this);
 	
 	public Pet(){
 		super(new PetView());
@@ -22,6 +28,7 @@ public class Pet extends NPC {
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Avatar owner) {
 		super(o, em, s, h);
 		this.owner = owner;
+		this.brain.setDefaultAbilityKeys();
 	}
 	
 	public Avatar getOwner() {
@@ -36,11 +43,17 @@ public class Pet extends NPC {
 		owner = null;
 	}
 	
-	public void follow() {
-		//move to owner previous tile
+	public Direction follow(){
+		return TileAlgorithm.getBestDirectionToAvatar(getTile(), owner.getTile());
 	}
 	
-//	public Direction trackAvatar(){
-//		return TileAlgorithm.shortestPath(getTile(), avatar.getTile());
-//	}
+	public void move(Direction direction){
+		
+	}
+	
+	@Override
+	public void update(Tile tile) {
+		brain.updateMovements(tile);
+	//	ActiveGameViewport.getInstance().setAvatarTile(tile);	
+	}
 }

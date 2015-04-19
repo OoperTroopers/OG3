@@ -15,6 +15,11 @@ public class MoveSouthwestAbility extends ExplicitAbility {
         this.entity = entity;
         this.keyBinding = new KeyBinding(keyToBind, this);
     }
+    
+    public MoveSouthwestAbility(Entity entity){
+    	this.entity = entity;
+    }
+    
     @Override
     public void perform() {
         if (this.isActivated()) {

@@ -15,6 +15,11 @@ public class MoveNorthAbility extends ExplicitAbility {
         this.entity = entity;
         this.keyBinding = new KeyBinding(keyToBind, this);
     }
+    
+    public MoveNorthAbility(Entity entity){
+    	this.entity = entity;
+    }
+    
     @Override
     public void perform() {
         if (this.isActivated()) {

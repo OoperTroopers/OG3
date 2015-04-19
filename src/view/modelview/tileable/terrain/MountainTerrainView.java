@@ -28,5 +28,4 @@ public class MountainTerrainView extends TerrainView {
 
     @Override
     public BufferedImage getImage() { return image; }
-    
 }

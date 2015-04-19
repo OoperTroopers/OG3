@@ -42,6 +42,15 @@ public abstract class Entity implements Tileable, Moveable{
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
 		this.direction = 8;
 	}
+	
+	public Entity(TileableView entityView) {
+		this.inventory = new Inventory();
+		this.stats = new SmasherStatistics();
+		this.occupation = new SmasherOccupation();
+		this.entityView = entityView;
+		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
+		this.direction = 8;
+	}
 
 	public Entity(Tile tile, TileableView entityView) {
 		this.inventory = new Inventory();

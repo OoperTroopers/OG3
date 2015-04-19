@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,6 @@ import java.util.List;
 import javax.swing.BorderFactory;
 
 import controller.RunGame;
-
 import model.entities.Avatar;
 import model.entities.Entity;
 import model.loadsave.FilePaths;
@@ -85,9 +86,26 @@ public class ActiveGameViewport extends Viewport {
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
 			TileView tileView = t.getTileView();
-			for (TileableView tv : tileView.getList())
-				g.drawImage(tv.getImage(), p.x + dx, p.y + dy, 
-					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+			if(tileView.hasBeenSeen()){
+				//for (TileableView tv : tileView.getList()){
+					//BufferedImage image = tv.getImage();
+					//int age = tileView.getAge();
+					tileView.incrementAge();;
+					
+					/*float scaleFactor = 1.0f - (float)age/100.0f;
+					if(scaleFactor<0.5f){
+						scaleFactor = 0.5f;
+					}
+					*/
+					//scaleFactor = 1.0f;
+					//float scaleFactor = .9f;
+					//RescaleOp op = new RescaleOp(scaleFactor, 0, null);
+					//image = op.filter(image, image);
+					g.drawImage(tileView.getImage(), p.x + dx, p.y + dy, 
+						Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+					
+				//}
+			}
 		}
 	}
 	

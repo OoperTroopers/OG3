@@ -12,9 +12,11 @@ import model.map.Tile;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
 
+import java.awt.List;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+import utilities.TileAlgorithm;
 import view.modelview.tileable.entities.AvatarView;
 import view.view.ActiveGameViewport;
 
@@ -78,8 +80,18 @@ public class Avatar extends Entity {
     public void notifyOfTileChange(Tile t){
         updateMemTile(t);
     }
+    
+    @Override
+    public void onMove(){
+    	
+    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
+    	for(Tile t: tiles){
+    		t.updateTileView();
+    	}
+    }
+    
     private void updateMemTile(Tile t){
-        //myJournal.addMemTile(t);
+        myJournal.addMemTile(t);
     }
 
 	@Override

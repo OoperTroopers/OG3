@@ -210,7 +210,10 @@ public abstract class Entity implements Tileable, Moveable{
 		update(myTile);
 		ActiveGameViewport.getInstance().activateAvatarTile();
 		myTile.addTileable(this);
+		onMove();
 	}
+	
+	public abstract void onMove();
 	
 	public abstract void update(Tile tile);
 

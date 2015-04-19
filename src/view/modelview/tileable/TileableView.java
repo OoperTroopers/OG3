@@ -5,4 +5,6 @@ import java.awt.image.BufferedImage;
 public interface TileableView {
     public int getPriority();
     public BufferedImage getImage();
+    public void darken();
+    public void lighten();
 }

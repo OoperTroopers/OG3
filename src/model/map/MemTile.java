@@ -16,6 +16,7 @@ import java.util.List;
 public class MemTile {
     
     private boolean hasBeenSeen;
+    private int age; //how long since the tile has been seen fresh
     
     private Tile myTile;
     private Location location;
@@ -35,6 +36,7 @@ public class MemTile {
         this.location = clonedTile.getLocationClone();
         // this.terrain = clonedTile.getTerrainClone();
         this.tileables = clonedTile.getTileablesClone();
+        age = 0;
         //this.location = l;
        // this.terrain = t;
         //this.tileables = tileables;
@@ -215,9 +217,10 @@ public class MemTile {
      * TODO tie this with an actual view object
      * 
      */
+    /*
     public void print(){
-        // myView.print(this);
-    }
+        myView.print(this);
+    }*/
        
     
 }

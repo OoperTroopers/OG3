@@ -121,8 +121,8 @@ public class Load {
 		if (areaEffect.equals("Damage")) return new TakeDamageAreaEffect();
 		if (areaEffect.equals("Death")) return new InstantDeathAreaEffect();
 		if (areaEffect.equals("Level")) return new LevelUpAreaEffect();
-		if (areaEffect.indexOf("Teleport") >= 0) return this.createTeleport(areaEffect);
 		if (areaEffect.equals("Trap")) return new TrapAreaEffect();
+		if (areaEffect.indexOf("Teleport") >= 0) return this.createTeleport(areaEffect);
 		return null;
 	}
 	

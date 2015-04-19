@@ -28,11 +28,6 @@ public class Brawl extends Weapon {
 		return null;
 	}
 	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
 		((SmasherEquipmentManager)em).equipBareHandedWeapon(this);
@@ -44,10 +39,4 @@ public class Brawl extends Weapon {
 		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
 		inventory.addToInventory(this);
 	}
-	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

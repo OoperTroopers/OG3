@@ -28,11 +28,6 @@ public class TwoHanded extends Weapon {
 		return null;
 	}
 	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		((SmasherEquipmentManager)em).unequipTwoHandedWeapon();
 		((SmasherEquipmentManager)em).equipTwoHandedWeapon(this);
@@ -43,11 +38,6 @@ public class TwoHanded extends Weapon {
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		((SmasherEquipmentManager)em).unequipTwoHandedWeapon();
 		inventory.addToInventory(this);
-		
-	}
-	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
 		
 	}
 }

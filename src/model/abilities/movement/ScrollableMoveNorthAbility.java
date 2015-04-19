@@ -19,6 +19,7 @@ public class ScrollableMoveNorthAbility extends ExplicitAbility {
     public void perform() {
         if (this.isActivated()) {
         	Tile current = ActiveGameViewport.getInstance().getScrollableTile();
+        	if (current.getNeighbor(Direction.NORTH) == null) return;
         	current = current.getNeighbor(Direction.NORTH);
         	ActiveGameViewport.getInstance().setScrollableTile(current);
         	ActiveGameViewport.getInstance().activateScrollableTile();   

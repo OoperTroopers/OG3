@@ -1,6 +1,8 @@
 package view.view;
 
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 public class ViewFrame extends JFrame {

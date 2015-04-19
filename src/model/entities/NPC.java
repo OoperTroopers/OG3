@@ -70,6 +70,12 @@ public class NPC extends Entity {
 		return null;
 	}
 
+	//@Override
+	//public void update(Entity entity, Tile tile) {}
+
 	@Override
-	public void update(Entity entity, Tile tile) {}
+	public void update(Tile tile) {
+		// TODO Auto-generated method stub
+		
+	}
 }

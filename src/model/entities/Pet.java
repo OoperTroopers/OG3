@@ -1,6 +1,7 @@
 package model.entities;
 
 import model.equipmentmanagers.EquipmentManager;
+<<<<<<< HEAD
 import model.equipmentmanagers.SmasherEquipmentManager;
 import model.occupations.Occupation;
 import model.occupations.SmasherOccupation;
@@ -31,4 +32,37 @@ public class Pet extends NPC {
 //	public Direction trackAvatar(){
 //		return TileAlgorithm.shortestPath(getTile(), avatar.getTile());
 //	}
+=======
+import model.occupations.Occupation;
+import model.statistics.Statistics;
+
+public class Pet extends NPC {
+	private Avatar owner;
+	
+	public Pet(){
+		super();
+	}
+	
+	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {
+		super(o, em, s, h);
+		owner = null;
+	}
+	
+	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Avatar owner) {
+		super(o, em, s, h);
+		this.owner = owner;
+	}
+	
+	public void setOwner(Avatar owner){
+		this.owner = owner;
+	}
+	
+	public void abandoned() {
+		owner = null;
+	}
+	
+	public void follow() {
+		//move to owner previous tile
+	}
+>>>>>>> d6730d63b263c9bce57dd5ef9ef634101610b9d8
 }

@@ -37,12 +37,14 @@ public class PetBrain extends Brain{
 	@Override
 	public void run() {
             if(master != null){
-		boolean hasMoved = false;
-			for(Direction direction : Direction.values() ){
-				directionAbilities.get(direction).perform();
-                                break;
-			}
-			//updateMovements(pet.getTile());
+                if(pet.distanceToOwner() >3){
+                    directionAbilities.get(pet.follow()).perform();
+                }else{                    
+                    for(Direction direction : Direction.values() ){
+                            directionAbilities.get(direction).perform();
+                    }
+                }
+			updateMovements(pet.getTile());
 		System.out.println("pet!");
             }
 	}
@@ -50,7 +52,7 @@ public class PetBrain extends Brain{
         public void setOwner(Avatar a ){
             master = a;
             
-        }
+        }       
         
 	public void updateMovements(Tile tile) {
     	for (Direction direction : Direction.values()) {

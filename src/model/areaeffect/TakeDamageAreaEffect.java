@@ -1,28 +1,28 @@
 package model.areaeffect;
 
 import model.effects.Effect;
+import model.effects.DamageEffect;
 import view.modelview.areaeffect.TakeDamageAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class TakeDamageAreaEffect extends AreaEffect {
-
 	private static TakeDamageAreaEffectView takeDamageAreaEffectView = new TakeDamageAreaEffectView();
+	private Effect effect;
 	
 	public TakeDamageAreaEffect() {
 		super(takeDamageAreaEffectView);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
+		this.effect = new DamageEffect();
 		
 	}
 
 	@Override
+	public void acceptEffect(Effect e) {
+		e.visit(this);
+	}
+
+	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

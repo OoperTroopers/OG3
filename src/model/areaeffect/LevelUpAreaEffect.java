@@ -1,29 +1,28 @@
 package model.areaeffect;
 
 import model.effects.Effect;
+import model.effects.LevelUpEffect;
 import model.map.Tile;
 import view.modelview.areaeffect.LevelUpAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class LevelUpAreaEffect extends AreaEffect {
-
 	private static LevelUpAreaEffectView levelUpAreaEffectView = new LevelUpAreaEffectView();
+	private Effect effect;
 
 	public LevelUpAreaEffect() {
 		super(levelUpAreaEffectView);
-		// TODO Auto-generated constructor stub
+		this.effect = new LevelUpEffect();
 	}
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

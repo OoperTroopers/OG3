@@ -1,29 +1,28 @@
 package model.areaeffect;
 
 import model.effects.Effect;
+import model.effects.InstantDeathEffect;
 import model.map.Tile;
 import view.modelview.areaeffect.InstantDeathAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class InstantDeathAreaEffect extends AreaEffect{
-
 	private static InstantDeathAreaEffectView instantDeathAreaEffectView = new InstantDeathAreaEffectView();
+	private Effect effect;
 
 	public InstantDeathAreaEffect() {
 		super(instantDeathAreaEffectView);
-		// TODO Auto-generated constructor stub
+		this.effect = new InstantDeathEffect();
 	}
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

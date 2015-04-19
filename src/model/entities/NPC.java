@@ -10,6 +10,8 @@ import model.map.Tile;
 import model.equipmentmanagers.EquipmentManager;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
+//switch to NPC
+import view.modelview.tileable.entities.AvatarView;
 
 public class NPC extends Entity {
 	private boolean hostile;
@@ -28,9 +30,9 @@ public class NPC extends Entity {
 	}
 	
 	// constructor for Entity with specific occupation
-	public NPC(Occupation o, EquipmentManager em, Statistics s, boolean h) {
-		super(o, em, s);
-		//this.location = new Location();
+	public NPC(Occupation o, EquipmentManager em, Statistics s, boolean h, Tile tile) {
+		//switch to NPC view
+		super(o, em, s, tile, new AvatarView());
 		this.hostile = h;
 		this.aggroList = new ArrayList<Entity>();
 	}

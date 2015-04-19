@@ -1,9 +1,17 @@
 import model.entities.*;
 import model.items.*;
+import model.loadsave.FilePaths;
+import model.loadsave.Load;
+import model.map.Tile;
 
 public class EquipmentManagerTest {
 	public static void main(String[] args) {
-		Avatar smash = new Avatar();
+		Load lo = new Load();
+		try{
+		lo.read(FilePaths.DEFAULT);}
+		catch(Exception e) {}
+		Tile bTile = lo.getBeginningTile();
+		Avatar smash = new Avatar(bTile);
 		Helmet helmet = new Helmet();
 		smash.addItemToInventory(helmet);
 		

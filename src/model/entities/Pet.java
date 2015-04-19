@@ -19,13 +19,13 @@ public class Pet extends NPC {
 		owner = null;
 	}
 	
-	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {
-		super(o, em, s, h);
+	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Tile tile) {
+		super(o, em, s, h, tile);
 		owner = null;
 	}
 	
-	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Avatar owner) {
-		super(o, em, s, h);
+	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Tile tile, Avatar owner) {
+		super(o, em, s, h, tile);
 		this.owner = owner;
 		this.brain.setDefaultAbilityKeys();
 	}

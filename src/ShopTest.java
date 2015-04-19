@@ -1,12 +1,20 @@
+import model.loadsave.*;
 import model.entities.*;
 import model.items.*;
 import model.inventory.*;
+import model.map.Tile;
+import model.loadsave.Load;
 import model.statistics.EquippableStatistics;
 
 public class ShopTest {
 	public static void main(String[] args) {
+		Load lo = new Load();
+		try{
+		lo.read(FilePaths.DEFAULT);}
+		catch(Exception e) {}
+		Tile bTile = lo.getBeginningTile();
 		Shopkeeper shopkeep = new Shopkeeper();
-		Avatar avatar = new Avatar();
+		Avatar avatar = new Avatar(bTile);
 		avatar.setGold(100);
 		Helmet helm = new Helmet("Helm", "helm", "1234", 20, new EquippableStatistics());
 		Arms arm = new Arms("Helm", "helm", "1234", 10, new EquippableStatistics());

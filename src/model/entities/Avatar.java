@@ -33,8 +33,8 @@ public class Avatar extends Entity {
 		onMove();
 	}
 	
-	public Avatar(Occupation o, EquipmentManager em, Statistics s) {
-		super(o, em, s);
+	public Avatar(Occupation o, EquipmentManager em, Statistics s, Tile tile) {
+		super(o, em, s, tile, new AvatarView());
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.myJournal = new Journal();

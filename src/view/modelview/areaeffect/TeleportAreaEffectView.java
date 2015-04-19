@@ -12,8 +12,7 @@ public class TeleportAreaEffectView extends AreaEffectView {
 	BufferedImage image;
 	
 	public TeleportAreaEffectView() {
-		//change to teleport
-		try { image = ImageIO.read(new File(ImagePaths.TAKE_DAMAGE));} 
+		try { image = ImageIO.read(new File(ImagePaths.TELEPORT));} 
 		catch (IOException e) {}	
 	}
 	

@@ -48,6 +48,7 @@ public class ImagePaths {
     public static final String SKULL = IMG_DIR + "skull.png";
     public static final String LEVEL_UP = IMG_DIR + "level_up.png";
     public static final String TAKE_DAMAGE = IMG_DIR + "take_damage.png";
+    public static final String TELEPORT = IMG_DIR + "Warp_Pipe.png";
     
     // misc
     public static final String MAGIC_CAT = IMG_DIR + "MagicCat.jpg";

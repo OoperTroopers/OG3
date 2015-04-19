@@ -2,7 +2,7 @@ package view.tools;
 
 public class ImagePaths {
     //initial directory
-    public static final String IMG_DIR = "res/img/";
+    public static final String IMG_DIR = "../res/img/";
     
     //terrain sprites
     public static final String GRASS_TERRAIN = IMG_DIR + "grass_terrain.png";

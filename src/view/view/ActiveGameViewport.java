@@ -46,8 +46,7 @@ public class ActiveGameViewport extends Viewport {
 	Tile scrollableTile;
 	Tile avatarTile;
 	boolean scrolling = false;
-	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
-	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
+	int livesLeft = 3;
 	
 	Load load = new Load();
 	
@@ -90,6 +89,8 @@ public class ActiveGameViewport extends Viewport {
 		
 		drawMap(g, tiles);
 		drawMiniMap(g, tiles);
+		drawLivesLeft(g);
+		drawSimpleStats(g);
 	}
 	// ----------------
 	
@@ -126,7 +127,7 @@ public class ActiveGameViewport extends Viewport {
 			// LAW OF DEMETER :'(
 		
 		
-		g.fillRect(xStart, 0, Constants.GAME_VIEW_WIDTH / 10 + 90, Constants.GAME_VIEW_HEIGHT / 10 + 85);
+		g.fillRect(xStart, 10, Constants.GAME_VIEW_WIDTH / 10 + 90, Constants.GAME_VIEW_HEIGHT / 10 + 85);
 		
 		// draw map
 		for (Tile t : tiles) {
@@ -134,11 +135,37 @@ public class ActiveGameViewport extends Viewport {
 			TileView miniTileView = t.getTileView();
 			if(miniTileView.hasBeenSeen()){
 				if (!this.isScrolling()) miniTileView.incrementAge();
-				g.drawImage(miniTileView.getImage(), (p.x / 10) + xStart + 15, (p.y / 10) + 10, 
+				g.drawImage(miniTileView.getImage(), (p.x / 10) + xStart + 15, (p.y / 10) + 20, 
 					Constants.MINI_TILE_HEIGHT, Constants.MINI_TILE_WIDTH, null);
 			}
 		}
 	}
+	
+	public void drawLivesLeft(Graphics g) {
+		Color c = Color.pink;
+		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+		
+		int height = Constants.GAME_VIEW_HEIGHT / 15,
+			width  = Constants.GAME_VIEW_WIDTH / 10 + 30;
+		
+		g.fillRect(10, 10, width, height );
+		
+		// Image heart = new BufferedImage()
+		// g.drawImage(img, x, y, observer)
+		
+	}
+	
+	public void drawSimpleStats(Graphics g) {
+		Color c = Color.WHITE;
+		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+		
+		
+		g.fillRect(10, Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10  - 95, 2 * (Constants.GAME_VIEW_WIDTH / 10 + 90), Constants.GAME_VIEW_HEIGHT / 10 + 85);
+		
+	}
+	
+	
+	// -------------
 	
 	public void addAvatarKeyBinding(ArrayList<KeyListener> kbList){
         for(int i = 0; i < kbList.size(); i++){

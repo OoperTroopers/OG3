@@ -5,6 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import view.tools.Constants;
+
 public class ViewFrame extends JFrame {
 	static View view;
 	
@@ -19,12 +21,10 @@ public class ViewFrame extends JFrame {
             frame.setTitle("FINAL BOSS 2.0");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-            // System.out.println("Frame state is "+frame.getExtendedState());
             frame.setUndecorated(true);
             frame.setVisible(true);
-            this.setLayout(new BorderLayout());
-
-            //this.setSize(600,800);
+            Constants.setScreenDimensions(this.getSize());
+            
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setVisible(true);
 

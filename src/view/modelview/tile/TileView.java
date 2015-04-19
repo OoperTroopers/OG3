@@ -12,7 +12,9 @@ import view.tools.Constants;
 public class TileView {
 	private int age;
 	private boolean hasBeenSeen;
-	private List<TileableView> tileableViews;
+	private ArrayList<TileableView> tileableViews;
+	
+	
 	
 	BufferedImage myImage;
 	
@@ -27,7 +29,8 @@ public class TileView {
 	}
 
 	public void accept(TileableView tileableView) {
-		tileableViews.add(tileableView);
+		//tileableViews.add(tileableView);
+		addToList(tileableView);
 	}
 	
 	public void remove(TileableView tileableView) {
@@ -51,6 +54,7 @@ public class TileView {
 		for(TileableView tv: tileableViews){
 			g.drawImage(tv.getImage(), 0, 0, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
+			
 			//g.drawImage(tv.getImage(),0,0,null);
 		}
 
@@ -68,6 +72,19 @@ public class TileView {
 			
 		}
 		
+	}
+	
+	public void addToList(TileableView tv){
+		TileableView current = tv;
+		for(int i = 0; i< tileableViews.size(); ++i){
+			if(current.getPriority() < tileableViews.get(i).getPriority()){
+				TileableView tmp = tileableViews.get(i);
+				tileableViews.set(i, current);
+				current = tmp;
+			}
+				
+		}
+		tileableViews.add(current);
 	}
 	
 	public BufferedImage getImage(){

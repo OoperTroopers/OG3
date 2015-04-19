@@ -106,6 +106,16 @@ public class ActiveGameViewport extends Viewport {
 					
 				//}
 			}
+			List<TileableView> tileableViews = new ArrayList<TileableView>();
+			for (int i = 1; i < 6; i++) {
+				for (TileableView tv : tileView.getList()) {
+					if (tv.getPriority() == i) tileableViews.add(tv);
+				}
+			}
+			
+			for (TileableView tv : tileableViews)
+				g.drawImage(tv.getImage(), p.x + dx, p.y + dy, 
+					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 		}
 	}
 	

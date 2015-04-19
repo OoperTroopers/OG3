@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.SaddleView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -10,7 +11,7 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class Saddle extends Armor {
 	public Saddle() {
-		super();
+		super(new SaddleView());
 	}
 	public Saddle(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

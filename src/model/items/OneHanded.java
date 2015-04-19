@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.OneHandedView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -10,7 +11,7 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class OneHanded extends Weapon {
 	public OneHanded() {
-		super();
+		super(new OneHandedView());
 	}
 	public OneHanded(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

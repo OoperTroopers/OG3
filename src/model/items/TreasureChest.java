@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.TreasureChestView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.map.Tile;
@@ -11,6 +12,7 @@ public class TreasureChest extends InteractiveItem {
 	private boolean chestHasBeenOpened;
 	
 	public TreasureChest() {
+		super(new TreasureChestView());
 		this.chestHasBeenOpened = false;
 	}
 	

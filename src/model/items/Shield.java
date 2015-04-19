@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.ShieldView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -11,7 +12,7 @@ import model.statistics.EquippableStatistics;
 
 public class Shield extends Armor {
 	public Shield() {
-		super();
+		super(new ShieldView());
 	}
 	public Shield(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

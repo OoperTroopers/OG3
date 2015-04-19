@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.DamagingOneShotItemView;
 import model.effects.DamageEffect;
 import model.effects.Effect;
 import model.map.Tile;
@@ -7,7 +8,7 @@ import model.map.Tile;
 public class DamagingOneShotItem extends OneShotItem {
 
 	public DamagingOneShotItem() {
-		super(new DamageEffect());
+		super(new DamagingOneShotItemView());
 	}
 	
 	@Override

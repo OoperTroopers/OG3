@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.StaffView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -12,7 +13,7 @@ import model.statistics.EquippableStatistics;
 
 public class Staff extends Weapon {
 	public Staff() {
-		super();
+		super(new StaffView());
 	}
 	public Staff(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

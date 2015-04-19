@@ -1,11 +1,17 @@
 package model.items;
 
+import view.modelview.tileable.TileableView;
+import view.modelview.tileable.items.DoorView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
 
 public class Door extends InteractiveItem {
+
+	public Door() {
+		super(new DoorView());
+	}
 
 	@Override
 	public void acceptEffect(Effect e) {

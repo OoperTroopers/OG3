@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.TileableView;
 import model.statistics.EquippableStatistics;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
@@ -7,8 +8,8 @@ import model.inventory.Inventory;
 public abstract class Armor extends TakeableItem implements Equippable {
 	private EquippableStatistics equipStats;
 	
-	public Armor() {
-		super();
+	public Armor(TileableView tileableView) {
+		super(tileableView);
 		this.equipStats = new EquippableStatistics();
 	}
 	

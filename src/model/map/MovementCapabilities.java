@@ -10,5 +10,5 @@ package model.map;
  * @author Jason Owens
  */
 public class MovementCapabilities {
-    
+    	
 }

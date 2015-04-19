@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.TwoHandedView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -11,7 +12,7 @@ import model.statistics.EquippableStatistics;
 
 public class TwoHanded extends Weapon {
 	public TwoHanded() {
-		super();
+		super(new TwoHandedView());
 	}
 	public TwoHanded(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

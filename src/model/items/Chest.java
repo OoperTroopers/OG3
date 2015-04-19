@@ -1,5 +1,6 @@
 package model.items;
 
+import view.modelview.tileable.items.ChestView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
@@ -10,7 +11,7 @@ import model.statistics.EquippableStatistics;
 
 public class Chest extends Armor {
 	public Chest() {
-		super();
+		super(new ChestView());
 	}
 	public Chest(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);

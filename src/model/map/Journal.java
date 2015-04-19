@@ -40,7 +40,7 @@ public class Journal extends Observable{
     public void printAll(){
         for(Location l : memory.keySet()){
         	MemTile m = memory.get(l);
-        	m.print();   
+        	// m.print();   
         }
         /*for(MemTile m : memory){
          m.print();   

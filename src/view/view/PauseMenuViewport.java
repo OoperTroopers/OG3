@@ -9,7 +9,6 @@ import controller.ScreenNavigation;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import view.tools.Constants;
-import view.tools.Driver;
 import view.tools.ImagePaths;
 import view.tools.Text;
 

@@ -127,4 +127,11 @@ public class Avatar extends Entity {
 	}
 	
 	public void acceptAvatar(Avatar avatar) {}
+	
+	public ControllerAvatar getControlAvatar() {
+		return controlAvatar;
+	}
+	public void setcontrolAvatar(ControllerAvatar controlAvatar) {
+		this.controlAvatar = controlAvatar;
+	}
 }

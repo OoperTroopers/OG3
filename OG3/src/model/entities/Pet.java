@@ -58,6 +58,10 @@ public class Pet extends NPC {
 	public void move(Direction direction){
 		
 	}
+        
+        public int distanceToOwner(){
+            return TileAlgorithm.distance(this.getTile(), owner.getTile());
+        }
 	
 	@Override
 	public void update(Tile tile) {

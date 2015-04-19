@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
+
 import controller.RunGame;
 
 import model.entities.Avatar;
@@ -26,6 +28,7 @@ public class ActiveGameViewport extends Viewport {
 	
 	Tile currentTile;
 	Tile scrollableTile;
+	Tile avatarTile;
 	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
 	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
 	
@@ -48,6 +51,7 @@ public class ActiveGameViewport extends Viewport {
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
+		avatarTile = currentTile;
 		scrollableTile = currentTile;
 		
 		Entity avatar = new Avatar(currentTile);
@@ -69,11 +73,11 @@ public class ActiveGameViewport extends Viewport {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		System.out.println("PAINTED");
 		Point p;
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
 		
 		Tile start = this.currentTile;
+		
 		Point pixels = TileAlgorithm.toPixel(start);
 		int dx = this.getWidth() / 2 - pixels.x;
 		int dy = this.getHeight() / 2 - pixels.y;
@@ -93,13 +97,21 @@ public class ActiveGameViewport extends Viewport {
         }
     }
 	
+	public void activateAvatarTile() {
+		this.currentTile = avatarTile;
+	}
+	
+	public void activateScrollableTile() {
+		this.currentTile = scrollableTile;
+	}
+	
 	public void setAvatarTile(Tile tile) {
-		this.currentTile = tile;
+		this.avatarTile = tile;
 		setScrollableTile(tile);
 	}
 	
 	public Tile getAvatarTile() {
-		return this.currentTile;
+		return this.avatarTile;
 	}
 	
 	public void setScrollableTile(Tile tile) {

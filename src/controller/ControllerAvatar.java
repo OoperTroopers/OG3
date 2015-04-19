@@ -8,6 +8,12 @@ import model.abilities.movement.MoveNorthwestAbility;
 import model.abilities.movement.MoveSouthAbility;
 import model.abilities.movement.MoveSoutheastAbility;
 import model.abilities.movement.MoveSouthwestAbility;
+import model.abilities.movement.ScrollableMoveNorthAbility;
+import model.abilities.movement.ScrollableMoveNortheastAbility;
+import model.abilities.movement.ScrollableMoveNorthwestAbility;
+import model.abilities.movement.ScrollableMoveSouthAbility;
+import model.abilities.movement.ScrollableMoveSoutheastAbility;
+import model.abilities.movement.ScrollableMoveSouthwestAbility;
 import model.entities.Avatar;
 import model.entities.Entity;
 import model.map.Tile;
@@ -50,12 +56,26 @@ public class ControllerAvatar {
     	ExplicitAbility moveSouthwest = new MoveSouthwestAbility(avatar, 'a');
     	ExplicitAbility moveSoutheast = new MoveSoutheastAbility(avatar, 'd');
     	
+    	ExplicitAbility scrollableMoveNorth = new ScrollableMoveNorthAbility('i');
+    	ExplicitAbility scrollableMoveNortheast = new ScrollableMoveNortheastAbility('o');
+    	ExplicitAbility scrollableMoveNorthwest = new ScrollableMoveNorthwestAbility('u');
+    	ExplicitAbility scrollableMoveSouth = new ScrollableMoveSouthAbility('k');
+    	ExplicitAbility scrollableMoveSoutheast = new ScrollableMoveSoutheastAbility('l');
+    	ExplicitAbility scrollableMoveSouthwest = new ScrollableMoveSouthwestAbility('j');
+    	
     	avatar.addAbility(moveNorth);
     	avatar.addAbility(moveNorthwest);
     	avatar.addAbility(moveNortheast);
     	avatar.addAbility(moveSouth);
     	avatar.addAbility(moveSouthwest);
     	avatar.addAbility(moveSoutheast);
+    	
+    	avatar.addAbility(scrollableMoveNorth);
+    	avatar.addAbility(scrollableMoveNortheast);
+    	avatar.addAbility(scrollableMoveNorthwest);
+    	avatar.addAbility(scrollableMoveSouth);
+    	avatar.addAbility(scrollableMoveSoutheast);
+    	avatar.addAbility(scrollableMoveSouthwest);
     	
     	directionAbilities.put(Direction.NORTH, moveNorth); 
     	directionAbilities.put(Direction.NORTHWEST, moveNorthwest); 

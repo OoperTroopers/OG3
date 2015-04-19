@@ -10,6 +10,7 @@ public class Pet extends NPC {
 	
 	public Pet(){
 		super();
+		owner = null;
 	}
 	
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {
@@ -20,6 +21,10 @@ public class Pet extends NPC {
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h, Avatar owner) {
 		super(o, em, s, h);
 		this.owner = owner;
+	}
+	
+	public Avatar getOwner() {
+		return owner;
 	}
 	
 	public void setOwner(Avatar owner){

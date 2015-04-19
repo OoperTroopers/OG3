@@ -30,7 +30,18 @@ public class TrapAreaEffect extends AreaEffect {
 
 	}
 	
+	public void reveal() {
+		trapAreaEffectView.switchImage();
+	}
+	
+	public void reveal(int trapAwarenessLevel) {
+		if(trapAwarenessLevel > 2) {
+			trapAreaEffectView.switchImage();
+		}
+	}
+	
 	public void activate(Entity entity) {
 		effect.visit(entity);
+		reveal();
 	}
 }

@@ -1,15 +1,16 @@
 package model.areaeffect;
 
 import model.effects.Effect;
-import view.modelview.areaeffect.TakeDamageEffectView;
+import model.map.Tile;
+import view.modelview.areaeffect.InstantDeathAreaEffectView;
 import view.modelview.tile.TileView;
 
-public class TakeDamageEffect extends AreaEffect {
+public class InstantDeathAreaEffect extends AreaEffect{
 
-	private static TakeDamageEffectView takeDamageEffectView = new TakeDamageEffectView();
-	
-	public TakeDamageEffect() {
-		super(takeDamageEffectView);
+	private static InstantDeathAreaEffectView instantDeathAreaEffectView = new InstantDeathAreaEffectView();
+
+	public InstantDeathAreaEffect() {
+		super(instantDeathAreaEffectView);
 		// TODO Auto-generated constructor stub
 	}
 

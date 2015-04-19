@@ -1,16 +1,15 @@
 package model.areaeffect;
 
 import model.effects.Effect;
-import model.map.Tile;
-import view.modelview.areaeffect.LevelUpEffectView;
+import view.modelview.areaeffect.TakeDamageAreaEffectView;
 import view.modelview.tile.TileView;
 
-public class LevelUpEffect extends AreaEffect {
+public class TakeDamageAreaEffect extends AreaEffect {
 
-	private static LevelUpEffectView levelUpEffectView = new LevelUpEffectView();
-
-	public LevelUpEffect() {
-		super(levelUpEffectView);
+	private static TakeDamageAreaEffectView takeDamageAreaEffectView = new TakeDamageAreaEffectView();
+	
+	public TakeDamageAreaEffect() {
+		super(takeDamageAreaEffectView);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,7 +27,7 @@ public class LevelUpEffect extends AreaEffect {
 
 	@Override
 	public void removeFromView(TileView tileView) {
-		
+
 	}
 
 }

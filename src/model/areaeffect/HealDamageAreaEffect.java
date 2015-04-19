@@ -2,15 +2,14 @@ package model.areaeffect;
 
 import model.effects.Effect;
 import model.map.Tile;
-import view.modelview.areaeffect.InstantDeathEffectView;
+import view.modelview.areaeffect.HealDamageAreaEffectView;
 import view.modelview.tile.TileView;
 
-public class InstantDeathEffect extends AreaEffect{
+public class HealDamageAreaEffect extends AreaEffect {
 
-	private static InstantDeathEffectView instantDeathEffectView = new InstantDeathEffectView();
-
-	public InstantDeathEffect() {
-		super(instantDeathEffectView);
+	private static HealDamageAreaEffectView healDamageAreaEffectView = new HealDamageAreaEffectView();
+	public HealDamageAreaEffect() {
+		super(healDamageAreaEffectView);
 		// TODO Auto-generated constructor stub
 	}
 

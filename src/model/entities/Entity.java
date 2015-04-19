@@ -148,6 +148,12 @@ public abstract class Entity implements Tileable, Moveable{
 	public int getObservationAbilityLevel() {
 		return occupation.getObservationAbilityLevel();
 	}
+	public void increaseExperience(int experience) {
+		stats.increaseExperience(experience);
+	}
+	public int getCurrentLevel() {
+		return stats.getCurrentLevel();
+	}
 
 	public Inventory getInventory() {
 		return inventory;
@@ -246,5 +252,9 @@ public abstract class Entity implements Tileable, Moveable{
 	
 	public void addAbility(ExplicitAbility ability) {
 		occupation.addAbility(ability);
+	}
+	
+	public Tile getTile() {
+		return myTile;
 	}
 }

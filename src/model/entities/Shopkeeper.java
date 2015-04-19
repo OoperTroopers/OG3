@@ -1,7 +1,6 @@
 package model.entities;
 
 import model.inventory.Shop;
-import model.map.Tile;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.occupations.Occupation;
@@ -14,8 +13,8 @@ public class Shopkeeper extends NPC {
 		super();
 	}
 	
-	public Shopkeeper(Occupation o, EquipmentManager em, Statistics s, Tile tile) {
-		super(o, em, s, false, tile);
+	public Shopkeeper(Occupation o, EquipmentManager em, Statistics s) {
+		super(o, em, s, false);
 	}
 	
 	public void dialgue() {

@@ -58,6 +58,14 @@ public abstract class Entity implements Tileable, Moveable {
 		this.entityView = entityView;
 		this.myTile.addTileable(this);
 	}
+	
+	public Entity(Occupation o, EquipmentManager em, Statistics s) {
+		this.inventory = new Inventory();
+		this.equipmentManager = em;
+		this.occupation = o;
+		this.stats = s;
+		this.direction = 8;
+	}
 
 	// constructor for Entity with specific occupation. 
 	//needs refactor to account for equipment manager needing derived stats

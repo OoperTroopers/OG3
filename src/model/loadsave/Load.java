@@ -102,6 +102,25 @@ public class Load {
 		if (item.equals("DamageOS")) return new DamagingOneShotItem();
 		if (item.equals("TreasureChest")) return new TreasureChest();
 		if (item.equals("Door")) return new Door();
+		return this.parseArmor(item);
+	}
+	
+	private Item parseArmor(String item) {
+		if (item.equals("Arms")) return new Arms();		
+		if (item.equals("Chest")) return new Chest();
+		if (item.equals("Helmet")) return new Helmet();
+		if (item.equals("Legs")) return new Legs();		
+		if (item.equals("Saddle")) return new Saddle();
+		if (item.equals("Shield")) return new Shield();	
+		return this.parseWeapon(item);
+	}
+	
+	private Item parseWeapon(String item) {
+		if (item.equals("Brawl")) return new Brawl();
+		if (item.equals("OneHanded")) return new OneHanded();
+		if (item.equals("Ranged")) return new Ranged();
+		if (item.equals("Staff")) return new Staff();
+		if (item.equals("TwoHanded")) return new TwoHanded();
 		return null;
 	}
 	

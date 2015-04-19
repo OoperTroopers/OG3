@@ -68,8 +68,7 @@ public class TileView {
 	public void incrementAge(){
 		age++;
 		if(age % 5 == 0){
-			darken();
-			
+			darken();			
 		}
 		
 	}

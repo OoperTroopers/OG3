@@ -35,10 +35,4 @@ public class Potion extends TakeableItem implements Usable{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return true;
-	}
 }

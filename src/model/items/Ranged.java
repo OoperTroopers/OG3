@@ -28,11 +28,6 @@ public class Ranged extends Weapon {
 		return null;
 	}
 	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		((SneakEquipmentManager)em).unequipRangedWeapon();
 		((SneakEquipmentManager)em).equipRangedWeapon(this);
@@ -43,10 +38,5 @@ public class Ranged extends Weapon {
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		((SneakEquipmentManager)em).unequipRangedWeapon();
 		inventory.addToInventory(this);
-	}
-	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
-		
 	}
 }

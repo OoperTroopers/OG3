@@ -37,22 +37,12 @@ public class Saddle extends Armor {
 		return null;
 	}
 	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public void equip(EquipmentManager em, Inventory i) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void touch(Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -8,18 +8,19 @@ import javax.imageio.ImageIO;
 
 import view.tools.ImagePaths;
 
-public class HealDamageEffectView extends AreaEffectView {
+public class InstantDeathAreaEffectView extends AreaEffectView {
+
 	BufferedImage image;
 	
-	public HealDamageEffectView() {
-		try { image = ImageIO.read(new File(ImagePaths.HEART));} 
+	public InstantDeathAreaEffectView() {
+		try { image = ImageIO.read(new File(ImagePaths.SKULL));} 
 		catch (IOException e) {}	
 	}
 	
 	@Override
 	public BufferedImage getImage() {
 		// TODO Auto-generated method stub
-		return image;
+		return null;
 	}
 
 }

@@ -8,12 +8,11 @@ import javax.imageio.ImageIO;
 
 import view.tools.ImagePaths;
 
-public class LevelUpEffectView extends AreaEffectView {
-
+public class HealDamageAreaEffectView extends AreaEffectView {
 	BufferedImage image;
 	
-	public LevelUpEffectView() {
-		try { image = ImageIO.read(new File(ImagePaths.LEVEL_UP));} 
+	public HealDamageAreaEffectView() {
+		try { image = ImageIO.read(new File(ImagePaths.HEART));} 
 		catch (IOException e) {}	
 	}
 	

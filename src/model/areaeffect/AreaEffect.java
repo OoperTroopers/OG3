@@ -1,5 +1,6 @@
 package model.areaeffect;
 
+import model.entities.Entity;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import model.map.Tileable;
@@ -20,4 +21,6 @@ public abstract class AreaEffect implements Tileable {
 	public Tileable clone() {
 		return null;
 	}
+	
+	public abstract void activate(Entity entity);
 }

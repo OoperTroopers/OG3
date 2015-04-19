@@ -47,7 +47,7 @@ public class ActiveGameViewport extends Viewport {
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
-		System.out.println("currentTile = " + currentTile);
+		
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
 		this.setFocusable(true);

@@ -6,8 +6,8 @@ public class Constants {
 	public static final int VIEW_HEIGHT = 800;
 	public static final int VIEW_WIDTH = 600;
 	
-	public static final int GAME_VIEW_HEIGHT = 400;
-	public static final int GAME_VIEW_WIDTH = 400;
+	public static final int GAME_VIEW_HEIGHT = 800;
+	public static final int GAME_VIEW_WIDTH = 600;
 
 	public static final int HEART_VIEW_WIDTH = 200;
 	public static final int HEART_VIEW_HEIGHT = 100;

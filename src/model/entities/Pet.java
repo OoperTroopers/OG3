@@ -27,4 +27,8 @@ public class Pet extends NPC {
 	public void AddAvatar(Avatar avatar){
 		this.avatar = avatar;
 	}
+	
+//	public Direction trackAvatar(){
+//		return TileAlgorithm.shortestPath(getTile(), avatar.getTile());
+//	}
 }

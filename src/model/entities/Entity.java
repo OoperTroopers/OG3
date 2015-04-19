@@ -148,6 +148,12 @@ public abstract class Entity implements Tileable, Moveable{
 	public int getObservationAbilityLevel() {
 		return occupation.getObservationAbilityLevel();
 	}
+	public void increaseExperience(int experience) {
+		stats.increaseExperience(experience);
+	}
+	public int getCurrentLevel() {
+		return stats.getCurrentLevel();
+	}
 
 	public Inventory getInventory() {
 		return inventory;
@@ -201,11 +207,11 @@ public abstract class Entity implements Tileable, Moveable{
 	private void move(Direction direction) {
 		myTile.removeTileable(this);
 		myTile = myTile.getNeighbor(direction);
-		update(this, myTile);
+		update(myTile);
 		myTile.addTileable(this);
 	}
 	
-	public abstract void update(Entity entity, Tile tile);
+	public abstract void update(Tile tile);
 
 
 	public void moveNorth(){
@@ -246,5 +252,13 @@ public abstract class Entity implements Tileable, Moveable{
 	
 	public void addAbility(ExplicitAbility ability) {
 		occupation.addAbility(ability);
+	}
+	
+	public Tile getTile() {
+		return myTile;
+	}
+
+	public void removeFromTile() {
+		this.myTile.removeTileable(this);		
 	}
 }

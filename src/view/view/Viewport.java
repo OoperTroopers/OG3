@@ -1,6 +1,5 @@
 package view.view;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public abstract class Viewport extends JPanel {

@@ -71,5 +71,5 @@ public class NPC extends Entity {
 	}
 
 	@Override
-	public void update(Entity entity, Tile tile) {}
+	public void update(Tile tile) {}
 }

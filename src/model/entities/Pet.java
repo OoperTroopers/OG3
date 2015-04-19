@@ -1,5 +1,6 @@
 package model.entities;
 
+import view.modelview.tileable.entities.PetView;
 import model.equipmentmanagers.EquipmentManager;
 
 import model.occupations.Occupation;
@@ -9,7 +10,7 @@ public class Pet extends NPC {
 	private Avatar owner;
 	
 	public Pet(){
-		super();
+		super(new PetView());
 		owner = null;
 	}
 	

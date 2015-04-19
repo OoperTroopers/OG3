@@ -23,30 +23,51 @@ public class PetBrain extends Brain{
 
     private HiveMind hivemind;
     private Avatar master;
+    
+    private boolean isFollowing;
 	
 	public PetBrain(Pet pet){
 		this.pet = pet;
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
+        setDefaultAbilityKeys();
+        
         hivemind = HiveMind.getInstance();
         hivemind.addRunnable(this, 500);
+        isFollowing = true;
 	}
 	
-	
+	public void acceptMaster(Avatar a){
+		master = a;
+	}
 
 	@Override
 	public void run() {
-		while(true){
-			for(Direction direction : Direction.values() ){
-				directionAbilities.get(direction).perform();
+		if(master != null){
+			int distanceToOwner =pet.distanceToOwner();
+			if( distanceToOwner > 3){
+				isFollowing = true;
 			}
-			updateMovements(pet.getTile());
+			else if(distanceToOwner == 1){
+				isFollowing = true;
+			}
+			if(isFollowing){
+				System.out.println("PET:");//perform();
+				System.out.println("Desired Direction: " + pet.follow());
+				directionAbilities.get(pet.follow()).perform();//perform();
+			}
+			else{
+				for(Direction direction : Direction.values() ){
+					directionAbilities.get(direction).perform();
+				}
+				updateMovements(pet.getTile());
+			}
 		}
 	}
 	
 	public void updateMovements(Tile tile) {
     	for (Direction direction : Direction.values()) {
-    		boolean flag = false;
-    		if(direction == pet.follow()) flag = true;
+    		boolean flag = true;
+    		//if(direction == pet.follow()) flag = true;
     		if (flag) {
     			directionAbilities.get(direction).activate();
     		} else {

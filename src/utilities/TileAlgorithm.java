@@ -356,6 +356,7 @@ public class TileAlgorithm {
 					visited.add(neighbor);
 					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, current.getPath());
 					neighborDT.addDirection(direction);
+					queue.add(neighborDT);
 				}
 			}
 		}

@@ -14,8 +14,9 @@ public class Pet extends NPC {
 	private Avatar owner;
 	private PetBrain brain = new PetBrain(this);
 	
-	public Pet(){
+	public Pet(Tile myTile){
 		super(new PetView());
+		this.setTile(myTile);
 		owner = null;
 	}
 	
@@ -23,6 +24,12 @@ public class Pet extends NPC {
 	public void acceptAvatar(Avatar a){
 		owner = a;
 		//brain;
+		brain.acceptMaster(a);
+	}
+	
+	@Override
+	public boolean isTraversable(){
+		return true;
 	}
 	
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {
@@ -54,6 +61,10 @@ public class Pet extends NPC {
 	
 	public void move(Direction direction){
 		
+	}
+	
+	public int distanceToOwner(){
+		return TileAlgorithm.distance(owner.getTile(), this.getTile());
 	}
 	
 	@Override

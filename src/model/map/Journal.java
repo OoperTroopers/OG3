@@ -6,9 +6,7 @@
 package model.map;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * The purpose of journal is store the Avatar's memory of the Tiles that it has seen.
@@ -40,7 +38,6 @@ public class Journal extends Observable{
     public void printAll(){
         for(Location l : memory.keySet()){
         	MemTile m = memory.get(l);
-        	// m.print();   
         }
         /*for(MemTile m : memory){
          m.print();   

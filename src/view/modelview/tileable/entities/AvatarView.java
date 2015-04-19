@@ -21,7 +21,4 @@ public class AvatarView extends EntityView {
 	public BufferedImage getImage() {
 		return image;
 	}
-
-	
-
 }

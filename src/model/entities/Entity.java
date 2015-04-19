@@ -1,7 +1,6 @@
 package model.entities;
 
 import model.inventory.Inventory;
-import model.abilities.Ability;
 import model.abilities.ExplicitAbility;
 import model.abilities.ImplicitAbility;
 import model.equipmentmanagers.*;
@@ -11,17 +10,14 @@ import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
-import view.view.ActiveGameViewport;
 
 import java.util.ArrayList;
-import java.util.Observer;
-
-import model.map.Journal;
 import model.map.Moveable;
 import model.map.MovementCapabilities;
 import model.map.Tileable;
 import model.map.Tile;
-public abstract class Entity implements Tileable, Moveable{
+import view.view.ActiveGameViewport;
+public abstract class Entity implements Tileable, Moveable {
 	
 	private Tile myTile;
 	private MovementCapabilities myMovement;

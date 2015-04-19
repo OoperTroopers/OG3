@@ -1,9 +1,7 @@
 package model.entities;
 
 import controller.ControllerAvatar;
-import model.abilities.Ability;
 import model.abilities.ExplicitAbility;
-import model.abilities.ImplicitAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
@@ -19,6 +17,7 @@ import java.util.ArrayList;
 import utilities.TileAlgorithm;
 import view.modelview.tileable.entities.AvatarView;
 import view.view.ActiveGameViewport;
+import view.view.ExtendedStatsViewport;
 
 
 public class Avatar extends Entity {
@@ -113,5 +112,4 @@ public class Avatar extends Entity {
 		controlAvatar.update(this, tile);
 		ActiveGameViewport.getInstance().setAvatarTile(tile);	
 	}
-
 }

@@ -6,7 +6,6 @@
 package view.modelview.tileable.terrain;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 

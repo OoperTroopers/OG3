@@ -7,7 +7,6 @@ import model.occupations.Occupation;
 import model.statistics.Statistics;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
-import view.view.ActiveGameViewport;
 import controller.PetBrain;
 
 public class Pet extends NPC {

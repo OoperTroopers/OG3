@@ -21,6 +21,4 @@ public class NPCView extends EntityView {
 	public BufferedImage getImage() {
 		return image;
 	}
-	
-	
 }

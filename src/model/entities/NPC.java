@@ -7,6 +7,7 @@ import view.modelview.tileable.TileableView;
 import model.effects.Effect;
 import model.map.MovementCapabilities;
 import model.map.Tile;
+import model.map.Tileable;
 import model.equipmentmanagers.EquipmentManager;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
@@ -86,5 +87,11 @@ public class NPC extends Entity {
 	public void onMove() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void interact(Tileable tileable) {}
+	
+	public void acceptAvatar(Avatar avatar) {
+		System.out.println("Interact with Avatar");
 	}
 }

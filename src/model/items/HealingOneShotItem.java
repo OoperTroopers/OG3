@@ -9,7 +9,7 @@ import model.map.Tile;
 public class HealingOneShotItem extends OneShotItem {
 
 	public HealingOneShotItem() {
-		super(new HealingOneShotItemView());
+		super(new HealingOneShotItemView(), new HealEffect());
 	}
 	
 	@Override

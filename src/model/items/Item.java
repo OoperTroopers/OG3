@@ -13,10 +13,11 @@ public abstract class Item implements Tileable{
 	private String id;
 	private TileableView itemView;
 
-	public Item() {
+	public Item(TileableView itemView) {
 		this.name = "Test";
 		this.description = "Test Description";
 		this.id = "12345";
+		this.itemView = itemView;
 	}
 	
 	public Item(String name, String description, String id) {

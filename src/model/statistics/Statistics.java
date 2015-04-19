@@ -69,6 +69,13 @@ public abstract class Statistics {
 	public void gainNewLife() {
 		primaryStats.gainNewLife();
 	}
+	public void setCurrentHealthMax(){
+		currentHealth = derivedStats.getMaxHealth();
+	}
+	public void setCurrentManaMax() {
+		currentMana = derivedStats.getMaxMana();
+	}
+	
 	public int getLivesLeft() {
 		return primaryStats.getLivesLeft();
 	}

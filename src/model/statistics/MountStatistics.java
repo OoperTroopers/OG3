@@ -40,8 +40,8 @@ public class MountStatistics extends Statistics {
 			primaryStats.increaseIntellect(1);
 		
 			getDerivedStats().updateAfterLevelUp(oldStats, primaryStats, getCurrentLevel());
-			setCurrentHealth(getDerivedStats().getMaxHealth());
-			setCurrentMana(getDerivedStats().getMaxMana());
+			setCurrentHealthMax();
+			setCurrentManaMax();
 		}
 	}
 }

@@ -42,8 +42,8 @@ public class SummonerStatistics extends Statistics {
 			primaryStats.increaseIntellect(2);
 		
 			getDerivedStats().updateAfterLevelUp(oldStats, primaryStats, getCurrentLevel());
-			setCurrentHealth(getDerivedStats().getMaxHealth());
-			setCurrentMana(getDerivedStats().getMaxMana());
+			setCurrentHealthMax();
+			setCurrentManaMax();
 		}
 	}
 }

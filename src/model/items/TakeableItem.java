@@ -28,19 +28,7 @@ public abstract class TakeableItem extends Item {
 		return true;
 	}
 	
-	public void touch() {
-		//add to inventory
-	}
-	
-	public void addToInventory(Entity e) {
-		//add to inventory
-	}
-	
-	public void removeFromInventory(Entity e) {
-		//remove from inventory
-	}
-	
-	public void dropFromInventory(Entity e) {
-		//drop from inventory
+	public void touch(Entity entity) {
+		entity.addItemToInventory(this);
 	}
 }

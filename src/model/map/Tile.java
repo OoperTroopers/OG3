@@ -236,4 +236,9 @@ public class Tile {
 	public List<TileableView> getTileableViews() {
 		return tileView.getList();
 	}
+
+	public void updateTileView() {
+		tileView.onSight();
+		
+	}
 }

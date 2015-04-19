@@ -1,5 +1,6 @@
 package model.entities;
 
+import view.modelview.tileable.entities.PetView;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Tile;
 import model.occupations.Occupation;
@@ -15,7 +16,7 @@ public class Pet extends NPC {
 	private PetBrain brain = new PetBrain(this);
 	
 	public Pet(){
-		super();
+		super(new PetView());
 		owner = null;
 	}
 	

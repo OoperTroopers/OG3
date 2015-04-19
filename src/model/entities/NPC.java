@@ -2,6 +2,8 @@ package model.entities;
 
 import java.util.ArrayList;
 
+import view.modelview.tileable.TileableView;
+
 import model.effects.Effect;
 import model.map.MovementCapabilities;
 import model.map.Tile;
@@ -15,6 +17,12 @@ public class NPC extends Entity {
 	
 	public NPC() {
 		super();
+		this.hostile = true;
+		this.aggroList = new ArrayList<Entity>();
+	}
+	
+	public NPC(TileableView entityView) {
+		super(entityView);
 		this.hostile = true;
 		this.aggroList = new ArrayList<Entity>();
 	}

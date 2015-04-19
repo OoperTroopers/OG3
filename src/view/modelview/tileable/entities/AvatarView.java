@@ -1,6 +1,7 @@
 package view.modelview.tileable.entities;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 
@@ -20,4 +21,7 @@ public class AvatarView extends EntityView {
 	public BufferedImage getImage() {
 		return image;
 	}
+
+	
+
 }

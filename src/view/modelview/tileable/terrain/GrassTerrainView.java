@@ -1,9 +1,12 @@
 package view.modelview.tileable.terrain;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
+
 import view.tools.ImagePaths;
 
 public class GrassTerrainView extends TerrainView {
@@ -16,6 +19,4 @@ public class GrassTerrainView extends TerrainView {
 
         @Override
 	public BufferedImage getImage() { return image; }
-	
-	
 }

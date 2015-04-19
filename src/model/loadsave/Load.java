@@ -3,6 +3,20 @@ package model.loadsave;
 import java.io.*;
 import java.util.*;
 
+import model.areaeffect.AreaEffect;
+import model.areaeffect.HealDamageAreaEffect;
+import model.areaeffect.InstantDeathAreaEffect;
+import model.areaeffect.LevelUpAreaEffect;
+import model.areaeffect.TakeDamageAreaEffect;
+import model.areaeffect.TeleportAreaEffect;
+import model.areaeffect.TrapAreaEffect;
+import model.entities.Entity;
+import model.entities.Mount;
+import model.entities.NPC;
+import model.entities.Pet;
+import model.entities.Shopkeeper;
+import model.items.Item;
+import model.items.Potion;
 import model.map.GrassTerrain;
 import model.map.MountainTerrain;
 import model.map.RiverTerrain;
@@ -44,7 +58,13 @@ public class Load {
 		for (int z = 0; z < tiles; z++) {
 			String tileNumber = in.next();
 			String terrain = in.next();
-			String neighbors = in.next();
+			
+			String nextLine = in.next();
+			if (this.initializeItem(tileNumber, nextLine)) nextLine = in.next();
+			if (this.initializeAreaEffect(tileNumber, nextLine)) nextLine = in.next();
+			if (this.initializeEntity(tileNumber, nextLine)) nextLine = in.next();
+			
+			String neighbors = nextLine;
 			this.initializeTerrain(tileNumber, terrain);
 			this.initializeNeighbors(tileNumber, neighbors);
 		}
@@ -79,6 +99,62 @@ public class Load {
 		for (int i = 0; i <= numberOfTiles; i++) {
 			this.allTiles[i] = new Tile();
 		}
+	}
+	
+	private boolean initializeItem(String tileNumber, String item) {
+		String type = item.substring(0, item.indexOf("="));
+		if (!type.equals("Item")) return false;
+		int index = this.parseTileNumber(tileNumber);
+		Tile tile = this.getTile(index);
+		item = item.substring(item.indexOf("=") + 1);
+		Item tileableItem = this.parseItem(item);
+		tile.addTileable(tileableItem);
+		return true;
+	}
+	
+	private Item parseItem(String item) {
+		if (item.equals("Potion")) return new Potion();
+		return null;
+	}
+	
+	private boolean initializeAreaEffect(String tileNumber, String areaEffect) {
+		String type = areaEffect.substring(0, areaEffect.indexOf("="));
+		if (!type.equals("AreaEffect")) return false;
+		int index = this.parseTileNumber(tileNumber);
+		Tile tile = this.getTile(index);
+		areaEffect = areaEffect.substring(areaEffect.indexOf("=") + 1);
+		AreaEffect tileableAreaEffect = this.parseAreaEffect(areaEffect);
+		tile.addTileable(tileableAreaEffect);
+		return true;
+	}
+	
+	private AreaEffect parseAreaEffect(String areaEffect) {
+		if (areaEffect.equals("Heal")) return new HealDamageAreaEffect();
+		if (areaEffect.equals("Damage")) return new TakeDamageAreaEffect();
+		if (areaEffect.equals("Death")) return new InstantDeathAreaEffect();
+		if (areaEffect.equals("Level")) return new LevelUpAreaEffect();
+		if (areaEffect.equals("Teleport")) return new TeleportAreaEffect();
+		if (areaEffect.equals("Trap")) return new TrapAreaEffect();
+		return null;
+	}
+	
+	private boolean initializeEntity(String tileNumber, String entity) {
+		String type = entity.substring(0, entity.indexOf("="));
+		if (!type.equals("Entity")) return false;
+		int index = this.parseTileNumber(tileNumber);
+		Tile tile = this.getTile(index);
+		entity = entity.substring(entity.indexOf("=") + 1);
+		Entity tileableEntity = this.parseEntity(entity);
+		tile.addTileable(tileableEntity);
+		return true;
+	}
+	
+	private Entity parseEntity(String entity) {
+		if (entity.equals("Shopkeeper")) return new Shopkeeper();
+		if (entity.equals("NPC")) return new NPC();
+		if (entity.equals("Pet")) return new Pet();
+		if (entity.equals("Mount")) return new Mount();
+		return null;
 	}
 	
 	private void initializeTerrain(String tileNumber, String tileTerrain) {

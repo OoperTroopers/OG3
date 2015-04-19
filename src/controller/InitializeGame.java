@@ -15,7 +15,7 @@ public class InitializeGame {
 	}
 	
 	public static void createAndShowGui() {
-		ViewFrame vf = new ViewFrame();
+		ViewFrame vf = ViewFrame.getInstance();
 		vf.initialize();
 	}
 }

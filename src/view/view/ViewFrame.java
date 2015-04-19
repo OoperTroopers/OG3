@@ -1,6 +1,8 @@
 package view.view;
 
 import java.awt.Component;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 public class ViewFrame extends JFrame {
@@ -35,9 +37,9 @@ public class ViewFrame extends JFrame {
 	
 	public void initialize() {
 		// addViewport(SimpleStatsViewport.getInstance());
-		// addViewport(ActiveGameViewport.getInstance());
+		 addViewport(ActiveGameViewport.getInstance());
 		// addViewport(MainMenuViewport.getInstance());
-                 addViewport(PauseMenuViewport.getInstance());
+        // addViewport(PauseMenuViewport.getInstance());
 		
 		ViewportStack.getInstance().whichViewports();
 		

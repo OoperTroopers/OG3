@@ -257,4 +257,8 @@ public abstract class Entity implements Tileable, Moveable{
 	public Tile getTile() {
 		return myTile;
 	}
+
+	public void removeFromTile() {
+		this.myTile.removeTileable(this);		
+	}
 }

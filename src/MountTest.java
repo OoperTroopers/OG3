@@ -14,6 +14,8 @@ public class MountTest {
 		Tile bTile = lo.getBeginningTile();
 		Avatar smasher = new Avatar(bTile);
 		Mount mount = new Mount();
+		mount.setTile(smasher.getTile());
 		mount.mount(smasher);
+		smasher.moveSouth();
 	}
 }

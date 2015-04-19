@@ -103,9 +103,10 @@ public abstract class Entity implements Tileable, Moveable {
 	protected void respawn() {
 		stats.loseLife();
 		if(stats.getLivesLeft() > 0) {
-			//respawn logic
+			stats.setCurrentHealthMax();
+			stats.setCurrentManaMax();
 		} else {
-			//remove references to self to allow garbage collection
+			myTile.removeTileable(this);
 		}
 	}
 

@@ -121,9 +121,15 @@ public class Load {
 		if (areaEffect.equals("Damage")) return new TakeDamageAreaEffect();
 		if (areaEffect.equals("Death")) return new InstantDeathAreaEffect();
 		if (areaEffect.equals("Level")) return new LevelUpAreaEffect();
-		if (areaEffect.equals("Teleport")) return new TeleportAreaEffect(this.allTiles[550]);
+		if (areaEffect.indexOf("Teleport") >= 0) return this.createTeleport(areaEffect);
 		if (areaEffect.equals("Trap")) return new TrapAreaEffect();
 		return null;
+	}
+	
+	private AreaEffect createTeleport(String teleportAreaEffect) {
+		teleportAreaEffect = teleportAreaEffect.substring(teleportAreaEffect.indexOf("=") + 1);
+		int tileNumber = this.parseTileNumber(teleportAreaEffect);
+		return new TeleportAreaEffect(this.allTiles[tileNumber]);
 	}
 	
 	private boolean initializeEntity(String tileNumber, String entity) {

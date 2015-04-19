@@ -90,7 +90,7 @@ public class ActiveGameViewport extends Viewport {
 				//for (TileableView tv : tileView.getList()){
 					//BufferedImage image = tv.getImage();
 					//int age = tileView.getAge();
-					tileView.incrementAge();;
+					tileView.incrementAge();
 					
 					/*float scaleFactor = 1.0f - (float)age/100.0f;
 					if(scaleFactor<0.5f){

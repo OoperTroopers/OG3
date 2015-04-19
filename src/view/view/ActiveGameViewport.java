@@ -30,6 +30,7 @@ public class ActiveGameViewport extends Viewport {
 	Tile currentTile;
 	Tile scrollableTile;
 	Tile avatarTile;
+	boolean scrolling = false;
 	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
 	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
 	
@@ -90,7 +91,7 @@ public class ActiveGameViewport extends Viewport {
 				//for (TileableView tv : tileView.getList()){
 					//BufferedImage image = tv.getImage();
 					//int age = tileView.getAge();
-					tileView.incrementAge();
+					if (!this.isScrolling()) tileView.incrementAge();
 					
 					/*float scaleFactor = 1.0f - (float)age/100.0f;
 					if(scaleFactor<0.5f){
@@ -118,10 +119,12 @@ public class ActiveGameViewport extends Viewport {
 	
 	public void activateAvatarTile() {
 		this.currentTile = avatarTile;
+		this.scrolling = false;
 	}
 	
 	public void activateScrollableTile() {
 		this.currentTile = scrollableTile;
+		this.scrolling = true;
 	}
 	
 	public void setAvatarTile(Tile tile) {
@@ -139,6 +142,10 @@ public class ActiveGameViewport extends Viewport {
 	
 	public Tile getScrollableTile() {
 		return this.scrollableTile;
+	}
+	
+	public boolean isScrolling() {
+		return this.scrolling;
 	}
 	
 	

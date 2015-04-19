@@ -19,6 +19,7 @@ public class ScrollableMoveSouthwestAbility extends ExplicitAbility {
     public void perform() {
         if (this.isActivated()) {
         	Tile current = ActiveGameViewport.getInstance().getScrollableTile();
+        	if (current.getNeighbor(Direction.SOUTHWEST) == null) return;
         	current = current.getNeighbor(Direction.SOUTHWEST);
         	ActiveGameViewport.getInstance().setScrollableTile(current);
         	ActiveGameViewport.getInstance().activateScrollableTile();   

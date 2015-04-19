@@ -7,7 +7,7 @@ public abstract class Ability {
 	private String name;
 	
 	public Ability() {
-		this.abilityLevel = 1;
+		this.abilityLevel = 3;
 		this.name = "Ability";
 	}
 	 /*

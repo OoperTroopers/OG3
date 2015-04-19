@@ -27,11 +27,22 @@ import view.tools.Constants;
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
 	
+	// note for tomorrow (and adam)....
+	//
+	// the activeGameViewport has way too much logic in it! this should
+	// mainly be in controller. for instance, this one. absolutely this one.
+	// i think the best course of action might be to have corresponding
+	// "controller" classes for every view. each of these has a reference to its view.
+	//
+	// for example, "ActiveGameController" would have the functionality for
+	// creating the map and for instantiating an avatar. then it feeds both these things into 
+	// the constructor of "ActiveGameViewport." 
+	//
+	// - danny
+	
 	Tile currentTile;
 	Tile scrollableTile;
 	Tile avatarTile;
-	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
-	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
 	
 	Load load = new Load();
 	

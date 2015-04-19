@@ -31,6 +31,7 @@ public class Avatar extends Entity {
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		onMove();
 	}
 	
 	public Avatar(Occupation o, EquipmentManager em, Statistics s) {
@@ -38,6 +39,7 @@ public class Avatar extends Entity {
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.myJournal = new Journal();
+		onMove();
 	}
 	
 	public Avatar(Tile tile) {
@@ -45,6 +47,7 @@ public class Avatar extends Entity {
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		onMove();
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){

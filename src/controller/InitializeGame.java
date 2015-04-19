@@ -1,27 +1,21 @@
-// this is just a driver to run the view
-// until we have a controller to do that
-
-package view.tools;
+package controller;
 
 import javax.swing.SwingUtilities;
 import view.view.ViewFrame;
 
-public class Driver {
-	
-	static ViewFrame vf;
-	
+public class InitializeGame {
 	public static void main(String[] args) {
-		Driver game = new Driver();
+		InitializeGame game = new InitializeGame();
 	}
 	
-	public Driver() {
+	public InitializeGame() {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run(){ createAndShowGui(); }
 		});
 	}
 	
 	public static void createAndShowGui() {
-		vf = new ViewFrame();
+		ViewFrame vf = new ViewFrame();
 		vf.initialize();
 	}
 }

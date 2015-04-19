@@ -8,10 +8,12 @@ import java.awt.Point;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
@@ -25,6 +27,7 @@ import utilities.TileAlgorithm;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.tools.Constants;
+import view.tools.ImagePaths;
 
 @SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
@@ -73,7 +76,7 @@ public class ActiveGameViewport extends Viewport {
 	
 	@Override
 	public void visit(ViewportStack viewportStack) {
-		viewportStack.add(this);
+		ViewportStack.add(this);
 	}
 	
 	public static ActiveGameViewport getInstance() {
@@ -145,23 +148,48 @@ public class ActiveGameViewport extends Viewport {
 		Color c = Color.pink;
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
 		
-		int height = Constants.GAME_VIEW_HEIGHT / 15,
+		int height = Constants.GAME_VIEW_HEIGHT / 15 - 15,
 			width  = Constants.GAME_VIEW_WIDTH / 10 + 30;
 		
-		g.fillRect(10, 10, width, height );
+		g.fillRect(10, 10, width - 15, height );
 		
-		// Image heart = new BufferedImage()
-		// g.drawImage(img, x, y, observer)
+		// for text
+		g.setColor(Color.BLACK);
+		
+		try { 
+			BufferedImage heart = ImageIO.read(new File(ImagePaths.HEART));
+			g.drawImage(heart, 20, 20, width  / 4, height - 15, null);
+		} 
+		catch (IOException e) {
+			g.drawString("LIVES", 20, 35);
+		}
+		
+		g.drawString(" x " + livesLeft, 45, 35);
 		
 	}
 	
 	public void drawSimpleStats(Graphics g) {
 		Color c = Color.WHITE;
+		int x = 10;
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 10;
+		
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10), Constants.GAME_VIEW_HEIGHT / 15);
 		
+		x += 5;
+		y += 15;
 		
-		g.fillRect(10, Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10  - 95, 2 * (Constants.GAME_VIEW_WIDTH / 10 + 90), Constants.GAME_VIEW_HEIGHT / 10 + 85);
+		String[] stats = {
+			"HEALTH: 10",
+			"MANA:    5",
+			"LEVEL:    2"
+		};
 		
+		g.setColor(Color.BLACK);
+		for (String s : stats) {
+			g.drawString(s, x, y);
+			y += 15;
+		}
 	}
 	
 	

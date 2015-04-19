@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import sun.awt.image.ToolkitImage;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 import view.tools.Text;

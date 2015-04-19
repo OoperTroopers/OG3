@@ -2,6 +2,7 @@ package model.areaeffect;
 
 import model.effects.Effect;
 import model.effects.TeleportEffect;
+import model.entities.Entity;
 import view.modelview.areaeffect.TeleportAreaEffectView;
 import view.modelview.tile.TileView;
 
@@ -29,5 +30,8 @@ public class TeleportAreaEffect extends AreaEffect {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	public void activate(Entity entity) {
+		effect.visit(entity, null);
+	}
 }

@@ -2,6 +2,7 @@ package model.areaeffect;
 
 import model.effects.Effect;
 import model.effects.HealEffect;
+import model.entities.Entity;
 import model.map.Tile;
 import view.modelview.areaeffect.HealDamageAreaEffectView;
 import view.modelview.tile.TileView;
@@ -28,6 +29,10 @@ public class HealDamageAreaEffect extends AreaEffect {
 	@Override
 	public void removeFromView(TileView tileView) {
 
+	}
+	
+	public void activate(Entity entity) {
+		effect.visit(entity);
 	}
 
 }

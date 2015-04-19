@@ -1,12 +1,13 @@
 package model.items;
 
+import view.modelview.tileable.TileableView;
 import model.entities.Entity;
 
 public abstract class TakeableItem extends Item {
 	private int value;
 
-	public TakeableItem() {
-		super();
+	public TakeableItem(TileableView itemView) {
+		super(itemView);
 		this.value = 20;
 	}
 	

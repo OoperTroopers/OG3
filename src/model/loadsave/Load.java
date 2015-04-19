@@ -3,6 +3,8 @@ package model.loadsave;
 import java.io.*;
 import java.util.*;
 
+import model.items.Item;
+import model.items.Potion;
 import model.map.GrassTerrain;
 import model.map.MountainTerrain;
 import model.map.RiverTerrain;
@@ -44,7 +46,11 @@ public class Load {
 		for (int z = 0; z < tiles; z++) {
 			String tileNumber = in.next();
 			String terrain = in.next();
-			String neighbors = in.next();
+			
+			String nextLine = in.next();
+			if (this.initializeItem(tileNumber, nextLine)) nextLine = in.next();
+			
+			String neighbors = nextLine;
 			this.initializeTerrain(tileNumber, terrain);
 			this.initializeNeighbors(tileNumber, neighbors);
 		}
@@ -79,6 +85,22 @@ public class Load {
 		for (int i = 0; i <= numberOfTiles; i++) {
 			this.allTiles[i] = new Tile();
 		}
+	}
+	
+	private boolean initializeItem(String tileNumber, String item) {
+		String type = item.substring(0, item.indexOf("="));
+		if (!type.equals("Item")) return false;
+		int index = this.parseTileNumber(tileNumber);
+		Tile tile = this.getTile(index);
+		item = item.substring(item.indexOf("=") + 1);
+		Item tileableItem = this.parseItem(item);
+		tile.addTileable(tileableItem);
+		return true;
+	}
+	
+	private Item parseItem(String item) {
+		if (item.equals("Potion")) return new Potion();
+		return null;
 	}
 	
 	private void initializeTerrain(String tileNumber, String tileTerrain) {

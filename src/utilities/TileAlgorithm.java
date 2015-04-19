@@ -365,8 +365,10 @@ public class TileAlgorithm {
 				Tile neighbor = current.getTile().getNeighbor(direction);
 				if (neighbor != null && !visited.contains(neighbor)) {
 					visited.add(neighbor);
-					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, current.getPath());
-					neighborDT.addDirection(direction);
+					List<Direction> tempPath = new ArrayList<Direction>();
+					for (Direction dir : current.getPath()) tempPath.add(dir);
+					tempPath.add(direction);
+					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, tempPath);
 					queue.add(neighborDT);
 				}
 			}

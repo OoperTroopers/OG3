@@ -1,7 +1,9 @@
 package model.entities;
 
+import view.modelview.tileable.entities.MountView;
 import controller.ControllerAvatar;
 import model.equipmentmanagers.MountEquipmentManager;
+import model.map.Tile;
 import model.occupations.MountOccupation;
 import model.statistics.MountStatistics;
 
@@ -14,6 +16,10 @@ public class Mount extends NPC {
 		super(new MountOccupation(), new MountEquipmentManager(), new MountStatistics(), true);
 		this.avatar = null;
 		this.controller = null;
+	}
+	
+	public Mount(Tile tile) {
+		super(tile, new MountView());
 	}
 	
 	public void mount(Avatar avatar){

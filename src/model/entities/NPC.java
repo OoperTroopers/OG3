@@ -23,8 +23,14 @@ public class NPC extends Entity {
 		this.aggroList = new ArrayList<Entity>();
 	}
 	
-	public NPC(TileableView entityView) {
-		super(entityView);
+	public NPC(Tile tile) {
+		super(tile, new NPCView());
+		this.hostile = true;
+		this.aggroList = new ArrayList<Entity>();
+	}
+	
+	public NPC(Tile tile, TileableView entityView) {
+		super(tile, entityView);
 		this.hostile = true;
 		this.aggroList = new ArrayList<Entity>();
 	}

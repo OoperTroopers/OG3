@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import utilities.TileAlgorithm;
+import utilities.TileAlgorithm.Direction;
 import view.modelview.tileable.entities.AvatarView;
 import view.view.ActiveGameViewport;
 import view.view.ExtendedStatsViewport;
@@ -102,7 +103,7 @@ public class Avatar extends Entity {
     }
     
     private void updateMemTile(Tile t){
-        myJournal.addMemTile(t);
+        //t.getTileView().
     }
 
 	@Override
@@ -131,6 +132,17 @@ public class Avatar extends Entity {
 			//call go to main method
 		}
 	}
+	/*
+	@Override
+	protected void move(Direction direction) {
+		Tile myTile = this.getTile();
+		myTile.removeTileable(this);
+		myTile = myTile.getNeighbor(direction);
+		update(myTile);
+		ActiveGameViewport.getInstance().activateAvatarTile();
+		myTile.addTileable(this);
+		onMove();
+	}*/
 	
 	public void interact(Tileable tileable) {
 		tileable.acceptAvatar(this);

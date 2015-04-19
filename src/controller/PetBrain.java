@@ -34,6 +34,7 @@ public class PetBrain extends Brain{
         hivemind = HiveMind.getInstance();
         hivemind.addRunnable(this, 500);
         isFollowing = true;
+        System.out.println("PETTTTTTTT");
 	}
 	
 	public void acceptMaster(Avatar a){
@@ -48,11 +49,9 @@ public class PetBrain extends Brain{
 				isFollowing = true;
 			}
 			else if(distanceToOwner == 1){
-				isFollowing = true;
+				isFollowing = false;
 			}
 			if(isFollowing){
-				System.out.println("PET:");//perform();
-				System.out.println("Desired Direction: " + pet.follow());
 				directionAbilities.get(pet.follow()).perform();//perform();
 			}
 			else{
@@ -77,6 +76,7 @@ public class PetBrain extends Brain{
     }
 
 	public void setDefaultAbilityKeys() {
+		
 		ExplicitAbility moveNorth = new MoveNorthAbility(pet);
     	ExplicitAbility moveNorthwest = new MoveNorthwestAbility(pet);
     	ExplicitAbility moveNortheast = new MoveNortheastAbility(pet);
@@ -97,6 +97,8 @@ public class PetBrain extends Brain{
     	directionAbilities.put(Direction.SOUTH, moveSouth); 
     	directionAbilities.put(Direction.SOUTHWEST, moveSouthwest); 
     	directionAbilities.put(Direction.SOUTHEAST, moveSoutheast);
+    	
+    	
 
 	}
 }

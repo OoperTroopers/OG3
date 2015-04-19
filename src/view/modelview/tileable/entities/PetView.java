@@ -8,14 +8,14 @@ import javax.imageio.ImageIO;
 
 import view.tools.ImagePaths;
 
-public class NPCView extends EntityView {
+public class PetView extends NPCView{
 	BufferedImage image;
 	
-	public NPCView() {
-		try { image = ImageIO.read(new File(ImagePaths.NPC));} 
+	public PetView() {
+		try { image = ImageIO.read(new File(ImagePaths.PET));} 
 		catch (IOException e) {}	
 	}
-
+	
 	@Override
 	public BufferedImage getImage() {
 		return image;

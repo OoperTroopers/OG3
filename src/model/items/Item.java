@@ -1,5 +1,6 @@
 package model.items;
 
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.map.Location;
 import model.map.Tileable;
@@ -62,5 +63,9 @@ public abstract class Item implements Tileable{
 	
 	public void removeFromView(TileView tileView) {
 		tileView.remove(itemView);
+	}
+	
+	public void acceptAvatar(Avatar avatar) {
+		this.touch(avatar);
 	}
 }

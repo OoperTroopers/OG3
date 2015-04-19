@@ -7,6 +7,8 @@ package model.map;
 
 import java.awt.Image;
 
+import model.entities.Avatar;
+
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 
@@ -38,4 +40,5 @@ public abstract class Terrain implements Tileable {
 	}
 	
 	public void removeFromView(TileView tileView) {}
+	public void acceptAvatar(Avatar avatar) {}
 }

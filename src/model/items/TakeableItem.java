@@ -30,5 +30,7 @@ public abstract class TakeableItem extends Item {
 	
 	public void touch(Entity entity) {
 		entity.addItemToInventory(this);
+		entity.getTile().removeTileable(this);
+		System.out.println("TOUCHED");
 	}
 }

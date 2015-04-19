@@ -8,7 +8,7 @@ import model.map.Tile;
 public class DamagingOneShotItem extends OneShotItem {
 
 	public DamagingOneShotItem() {
-		super(new DamagingOneShotItemView());
+		super(new DamagingOneShotItemView(), new DamageEffect());
 	}
 	
 	@Override

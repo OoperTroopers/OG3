@@ -2,6 +2,7 @@ package model.map;
 
 import view.modelview.tile.TileView;
 import model.effects.Effect;
+import model.entities.Avatar;
 
 /**
  * The Tileable interface defines all of the requirements an object must meet in
@@ -34,4 +35,5 @@ public interface Tileable {
 
 	public void sendToView(TileView tileView);
 	public void removeFromView(TileView tileView);
+	public void acceptAvatar(Avatar avatar);
 }

@@ -7,6 +7,7 @@ import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
 import model.map.MovementCapabilities;
 import model.map.Tile;
+import model.map.Tileable;
 import model.occupations.Occupation;
 import model.statistics.Statistics;
 
@@ -86,10 +87,21 @@ public class Avatar extends Entity {
     @Override
     public void onMove(){
     	
+    	ArrayList<Tileable> tileables = getTile().getTileables();
+    	Tileable[] arrayTileables = new Tileable[tileables.size()];
+    	for (int i = 0; i < tileables.size(); i++) arrayTileables[i] = tileables.get(i);
+    	for (Tileable tileable : arrayTileables) {
+    		this.interact(tileable);
+    	}
+    	
+    	System.out.println("STATISTICS!!!");
+    	System.out.println(this.getStats());
+    	
     	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
+    	
     }
     
     private void updateMemTile(Tile t){
@@ -112,4 +124,10 @@ public class Avatar extends Entity {
 		controlAvatar.update(this, tile);
 		ActiveGameViewport.getInstance().setAvatarTile(tile);	
 	}
+	
+	public void interact(Tileable tileable) {
+		tileable.acceptAvatar(this);
+	}
+	
+	public void acceptAvatar(Avatar avatar) {}
 }

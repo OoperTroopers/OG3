@@ -12,6 +12,7 @@ public class Inventory {
 	}
 	
 	public void addToInventory(TakeableItem item) {
+		System.out.println("ITEM HAS BEEN ADDED!");
 		inventory.add(item);
 	}
 	

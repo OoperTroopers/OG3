@@ -122,6 +122,16 @@ public class Avatar extends Entity {
 		ActiveGameViewport.getInstance().setAvatarTile(tile);	
 	}
 	
+	protected void respawn() {
+		getStats().loseLife();
+		if(getStats().getLivesLeft() > 0) {
+			getStats().setCurrentHealthMax();
+			getStats().setCurrentManaMax();
+		} else {
+			//call go to main method
+		}
+	}
+	
 	public void interact(Tileable tileable) {
 		tileable.acceptAvatar(this);
 	}

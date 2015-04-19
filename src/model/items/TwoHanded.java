@@ -6,7 +6,6 @@ import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
 import model.inventory.Inventory;
-import model.map.Tile;
 import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 

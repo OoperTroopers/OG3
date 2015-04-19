@@ -19,6 +19,12 @@ public class Pet extends NPC {
 		owner = null;
 	}
 	
+	@Override
+	public void acceptAvatar(Avatar a){
+		owner = a;
+		//brain;
+	}
+	
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {
 		super(o, em, s, h);
 		owner = null;

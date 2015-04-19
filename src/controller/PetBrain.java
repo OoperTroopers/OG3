@@ -10,6 +10,7 @@ import model.abilities.movement.MoveNorthwestAbility;
 import model.abilities.movement.MoveSouthAbility;
 import model.abilities.movement.MoveSoutheastAbility;
 import model.abilities.movement.MoveSouthwestAbility;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.entities.Pet;
 import model.map.Tile;
@@ -20,11 +21,17 @@ public class PetBrain extends Brain{
 	private Pet pet;
     private HashMap<Direction, ExplicitAbility> directionAbilities;
 
+    private HiveMind hivemind;
+    private Avatar master;
 	
 	public PetBrain(Pet pet){
 		this.pet = pet;
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
+        hivemind = HiveMind.getInstance();
+        hivemind.addRunnable(this, 500);
 	}
+	
+	
 
 	@Override
 	public void run() {

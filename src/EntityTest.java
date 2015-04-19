@@ -7,7 +7,8 @@ import model.map.Tile;
 import model.occupations.*;
 
 public class EntityTest {
-	public static void main(String[] args) {Load lo = new Load();
+	public static void main(String[] args) {
+		Load lo = new Load();
 		try{
 			lo.read(FilePaths.DEFAULT);}
 		catch(Exception e) {}

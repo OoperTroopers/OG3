@@ -55,10 +55,6 @@ public class PetBrain extends Brain{
     	}
     }
 
-	public void setOwner(Avatar a){
-		master = a;
-	}
-	
 	public void setDefaultAbilityKeys() {
 		ExplicitAbility moveNorth = new MoveNorthAbility(pet);
     	ExplicitAbility moveNorthwest = new MoveNorthwestAbility(pet);

@@ -22,7 +22,7 @@ public class Pet extends NPC {
 	@Override
 	public void acceptAvatar(Avatar a){
 		owner = a;
-		brain.setOwner(a);
+		//brain;
 	}
 	
 	public Pet(Occupation o, EquipmentManager em, Statistics s, boolean h) {

@@ -8,9 +8,9 @@ public abstract class OneShotItem extends Item {
 
 	private Effect effect;
 	
-	public OneShotItem(TileableView tileableView) {
+	public OneShotItem(TileableView tileableView, Effect effect) {
 		super(tileableView);
-		// this.effect = effect;
+		this.effect = effect;
 	}
 	
 	@Override

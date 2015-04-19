@@ -61,6 +61,6 @@ public abstract class Item implements Tileable{
 	}
 	
 	public void removeFromView(TileView tileView) {
-		
+		tileView.remove(itemView);
 	}
 }

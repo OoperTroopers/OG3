@@ -33,4 +33,9 @@ public class View extends JPanel {
 	public void stylize() {
 		this.setBackground(Color.black);
 	}
+
+	public void addViewport(Viewport viewport, String borderLayout) {
+		this.add(viewport, borderLayout);
+		viewport.visit(viewportStack);
+	}
 }

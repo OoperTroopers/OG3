@@ -6,6 +6,8 @@ public class Constants {
 	public static final int VIEW_HEIGHT = 600;
 	public static final int VIEW_WIDTH = 800;
 	
+	private static int SCREEN_SIZE = 0;
+	
 	public static final int GAME_VIEW_HEIGHT = 800;
 	public static final int GAME_VIEW_WIDTH = 600;
 
@@ -22,4 +24,5 @@ public class Constants {
 	public static final int MAP_X_ORIGIN = 10;
 	public static final int MAP_Y_ORIGIN = 10;
 
+	public void changeScreenSize(int s) { SCREEN_SIZE = s; }
 }

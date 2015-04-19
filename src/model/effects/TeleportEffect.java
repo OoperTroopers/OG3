@@ -7,7 +7,7 @@ import model.map.Tile;
 public class TeleportEffect {
 	public void visit(Entity entity, Tile newTile) {
 		entity.getTile().removeTileable(entity);
-		//entity.setTile(newTile);
+		entity.setTile(newTile);
 		entity.update(newTile);
 		ActiveGameViewport.getInstance().activateAvatarTile();
 		newTile.addTileable(entity);

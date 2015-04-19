@@ -1,5 +1,6 @@
 package view.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 
 import controller.RunGame;
 import model.entities.Avatar;
@@ -53,14 +55,8 @@ public class ActiveGameViewport extends Viewport {
 			new ActiveGameViewport();
 
 	public ActiveGameViewport() {
-		this.setPreferredSize(new Dimension(Constants.GAME_VIEW_HEIGHT,Constants.GAME_VIEW_WIDTH));
-		this.setBackground(new Color(44,62,80));
-		
-		// add other viewports
-		// this.add(heartsViewport);
-		// this.add(simpleStatsViewport);
-		
-                
+		this.setPreferredSize(ViewFrame.getInstance().getSize());
+		this.setBackground(new Color(44,62,80));                
                 
 		// get beginning tile
 		try {load.read(FilePaths.DEFAULT);} 
@@ -85,58 +81,61 @@ public class ActiveGameViewport extends Viewport {
 		return activeGameViewport;
 	}
 
+	// --------------
+	// THE ACTUAL PAINT FUNCTION
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		Point p;
 		List<Tile> tiles = TileAlgorithm.getAllTiles(currentTile);
 		
-		Tile start = this.currentTile;
-		
-		System.out.println("START TILE = " + start);
-		
+		drawMap(g, tiles);
+		drawMiniMap(g, tiles);
+	}
+	// ----------------
+	
+	public void drawMap(Graphics g, List<Tile> tiles) {
+		Tile start = currentTile;
 		Point pixels = TileAlgorithm.toPixel(start);
+		
 		int dx = this.getWidth() / 2 - pixels.x;
 		int dy = this.getHeight() / 2 - pixels.y;
 		
+		Point p;
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
 			TileView tileView = t.getTileView();
 			if(tileView.hasBeenSeen()){
-				//for (TileableView tv : tileView.getList()){
-					//BufferedImage image = tv.getImage();
-					//int age = tileView.getAge();
-					if (!this.isScrolling()) tileView.incrementAge();
-					
-					/*float scaleFactor = 1.0f - (float)age/100.0f;
-					if(scaleFactor<0.5f){
-						scaleFactor = 0.5f;
-					}
-					*/
-					//scaleFactor = 1.0f;
-					//float scaleFactor = .9f;
-					//RescaleOp op = new RescaleOp(scaleFactor, 0, null);
-					//image = op.filter(image, image);
-					g.drawImage(tileView.getImage(), p.x + dx, p.y + dy, 
-						Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
-					
-
-				//}
+				if (!this.isScrolling()) tileView.incrementAge();
+				g.drawImage(tileView.getImage(), p.x + dx, p.y + dy, 
+					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 			}
-			
 		}
+	}
+	
+	public void drawMiniMap(Graphics g, List<Tile> tiles) {
+		Tile start = currentTile;
+		Point p, pixels = TileAlgorithm.toPixel(start);
 		
-		// g.setColor(Color.DARK_GRAY);
+		int dx = this.getWidth() / 2 - pixels.x;
+		int dy = this.getHeight() / 2 - pixels.y;
+		
+		// draw box
 		g.setColor(new Color(241,196,15,100));
-		int xStart = Constants.VIEW_WIDTH - (Constants.GAME_VIEW_WIDTH / 10) - 90;
+		int xStart = ViewFrame.getInstance().getWidth() - 160;
+			// FIX THIS. LATER.
+			// LAW OF DEMETER :'(
+		
+		
 		g.fillRect(xStart, 0, Constants.GAME_VIEW_WIDTH / 10 + 90, Constants.GAME_VIEW_HEIGHT / 10 + 85);
+		
+		// draw map
 		for (Tile t : tiles) {
 			p = TileAlgorithm.toPixel(t);
 			TileView miniTileView = t.getTileView();
 			if(miniTileView.hasBeenSeen()){
-					if (!this.isScrolling()) miniTileView.incrementAge();
-					g.drawImage(miniTileView.getImage(), (p.x / 10) + xStart + 15, (p.y / 10) + 10, 
-						Constants.MINI_TILE_HEIGHT, Constants.MINI_TILE_WIDTH, null);
+				if (!this.isScrolling()) miniTileView.incrementAge();
+				g.drawImage(miniTileView.getImage(), (p.x / 10) + xStart + 15, (p.y / 10) + 10, 
+					Constants.MINI_TILE_HEIGHT, Constants.MINI_TILE_WIDTH, null);
 			}
 		}
 	}

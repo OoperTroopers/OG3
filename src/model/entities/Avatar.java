@@ -1,5 +1,6 @@
 package model.entities;
 
+import controller.AvatarBrain;
 import controller.ControllerAvatar;
 import model.abilities.ExplicitAbility;
 import model.effects.Effect;
@@ -24,9 +25,13 @@ import view.view.ExtendedStatsViewport;
 
 public class Avatar extends Entity {
 	
+	
+	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
 
+	private AvatarBrain myBrain;
+	
 	public Avatar(){
 		super();
 		this.controlAvatar = new ControllerAvatar(this);
@@ -48,7 +53,8 @@ public class Avatar extends Entity {
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
-		onMove();
+		myBrain = new AvatarBrain(this);
+		//onMove();
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){
@@ -87,6 +93,7 @@ public class Avatar extends Entity {
     
     @Override
     public void onMove(){
+    	ActiveGameViewport.getInstance().activateAvatarTile();
     	
     	ArrayList<Tileable> tileables = getTile().getTileables();
     	Tileable[] arrayTileables = new Tileable[tileables.size()];
@@ -94,12 +101,16 @@ public class Avatar extends Entity {
     	for (Tileable tileable : arrayTileables) {
     		this.interact(tileable);
     	}
+    	refreshView();
     	
+    	
+    }
+    
+    public void refreshView(){
     	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
-    	
     }
     
     private void updateMemTile(Tile t){
@@ -121,6 +132,9 @@ public class Avatar extends Entity {
 	public void update(Tile tile) {
 		controlAvatar.update(this, tile);
 		ActiveGameViewport.getInstance().setAvatarTile(tile);	
+		ActiveGameViewport.getInstance().activateAvatarTile();	
+		//myBrain.hasMoved();
+		
 	}
 	
 	protected void respawn() {

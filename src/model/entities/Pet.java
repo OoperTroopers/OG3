@@ -15,8 +15,8 @@ public class Pet extends NPC {
 	private PetBrain brain = new PetBrain(this);
 	
 	public Pet(Tile myTile){
-		super(new PetView());
-		this.setTile(myTile);
+		super(myTile,new PetView());
+		//this.setTile(myTile);
 		owner = null;
 	}
 	
@@ -58,10 +58,10 @@ public class Pet extends NPC {
 	public Direction follow(){
 		return TileAlgorithm.getBestDirectionToAvatar(getTile(), owner.getTile());
 	}
-	
+	/*
 	public void move(Direction direction){
 		
-	}
+	}*/
 	
 	public int distanceToOwner(){
 		return TileAlgorithm.distance(owner.getTile(), this.getTile());

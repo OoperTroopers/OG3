@@ -32,9 +32,9 @@ public class PetBrain extends Brain{
         setDefaultAbilityKeys();
         
         hivemind = HiveMind.getInstance();
-        hivemind.addRunnable(this, 500);
+        hivemind.addRunnable(this, 300);
         isFollowing = true;
-        System.out.println("PETTTTTTTT");
+       
 	}
 	
 	public void acceptMaster(Avatar a){
@@ -43,9 +43,10 @@ public class PetBrain extends Brain{
 
 	@Override
 	public void run() {
+		 //System.out.println("PETTTTTTTT");
 		if(master != null){
-			int distanceToOwner =pet.distanceToOwner();
-			if( distanceToOwner > 3){
+			int distanceToOwner = pet.distanceToOwner();
+			if( distanceToOwner > 2){
 				isFollowing = true;
 			}
 			else if(distanceToOwner == 1){
@@ -55,9 +56,12 @@ public class PetBrain extends Brain{
 				directionAbilities.get(pet.follow()).perform();//perform();
 			}
 			else{
-				for(Direction direction : Direction.values() ){
-					directionAbilities.get(direction).perform();
+				Direction myDirection = pet.follow();
+				while(myDirection == pet.follow()){
+					int index = (int)(6*Math.random());
+					myDirection = Direction.values()[index];
 				}
+				directionAbilities.get(myDirection).perform();
 				updateMovements(pet.getTile());
 			}
 		}

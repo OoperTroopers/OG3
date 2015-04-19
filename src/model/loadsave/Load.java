@@ -3,26 +3,10 @@ package model.loadsave;
 import java.io.*;
 import java.util.*;
 
-import model.areaeffect.AreaEffect;
-import model.areaeffect.HealDamageAreaEffect;
-import model.areaeffect.InstantDeathAreaEffect;
-import model.areaeffect.LevelUpAreaEffect;
-import model.areaeffect.TakeDamageAreaEffect;
-import model.areaeffect.TeleportAreaEffect;
-import model.areaeffect.TrapAreaEffect;
-import model.entities.Entity;
-import model.entities.Mount;
-import model.entities.NPC;
-import model.entities.Pet;
-import model.entities.Shopkeeper;
-import model.items.Item;
-import model.items.Potion;
-import model.map.GrassTerrain;
-import model.map.MountainTerrain;
-import model.map.RiverTerrain;
-import model.map.Terrain;
-import model.map.Tile;
-import model.map.WaterTerrain;
+import model.areaeffect.*;
+import model.entities.*;
+import model.items.*;
+import model.map.*;
 import utilities.TileAlgorithm;
 import utilities.TileAlgorithm.Direction;
 
@@ -114,6 +98,10 @@ public class Load {
 	
 	private Item parseItem(String item) {
 		if (item.equals("Potion")) return new Potion();
+		if (item.equals("HealOS")) return new HealingOneShotItem();
+		if (item.equals("DamageOS")) return new DamagingOneShotItem();
+		if (item.equals("TreasureChest")) return new TreasureChest();
+		if (item.equals("Door")) return new Door();
 		return null;
 	}
 	
@@ -133,7 +121,7 @@ public class Load {
 		if (areaEffect.equals("Damage")) return new TakeDamageAreaEffect();
 		if (areaEffect.equals("Death")) return new InstantDeathAreaEffect();
 		if (areaEffect.equals("Level")) return new LevelUpAreaEffect();
-		if (areaEffect.equals("Teleport")) return new TeleportAreaEffect();
+		if (areaEffect.equals("Teleport")) return new TeleportAreaEffect(this.allTiles[550]);
 		if (areaEffect.equals("Trap")) return new TrapAreaEffect();
 		return null;
 	}

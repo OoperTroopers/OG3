@@ -94,9 +94,6 @@ public class Avatar extends Entity {
     		this.interact(tileable);
     	}
     	
-    	System.out.println("STATISTICS!!!");
-    	System.out.println(this.getStats());
-    	
     	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
     	for(Tile t: tiles){
     		t.updateTileView();

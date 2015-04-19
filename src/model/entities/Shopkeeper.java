@@ -1,5 +1,6 @@
 package model.entities;
 
+import view.modelview.tileable.entities.ShopkeeperView;
 import model.inventory.Shop;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
@@ -10,7 +11,7 @@ import model.statistics.Statistics;
 public class Shopkeeper extends NPC {
 	// constructor for Shopkeeper
 	public Shopkeeper() {
-		super();
+		super(new ShopkeeperView());
 	}
 	
 	public Shopkeeper(Occupation o, EquipmentManager em, Statistics s) {

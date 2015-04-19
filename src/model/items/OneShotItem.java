@@ -16,6 +16,8 @@ public abstract class OneShotItem extends Item {
 	@Override
 	public void touch(Entity entity) {
 		effect.visit(entity);
+		entity.getTile().removeTileable(this);
+		System.out.println("ONE SHOT ITEM TOUCHED");
 	}
 	
 	@Override

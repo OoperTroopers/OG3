@@ -3,16 +3,19 @@ package model.areaeffect;
 import model.effects.Effect;
 import model.effects.TeleportEffect;
 import model.entities.Entity;
+import model.map.Tile;
 import view.modelview.areaeffect.TeleportAreaEffectView;
 import view.modelview.tile.TileView;
 
 public class TeleportAreaEffect extends AreaEffect {
 	private static TeleportAreaEffectView teleportAreaEffectView = new TeleportAreaEffectView();
 	private TeleportEffect effect;
+	private Tile destination;
 	
-	public TeleportAreaEffect() {
+	public TeleportAreaEffect(Tile destination) {
 		super(teleportAreaEffectView);
 		this.effect = new TeleportEffect();
+		this.destination = destination;
 	}
 
 	@Override
@@ -32,6 +35,6 @@ public class TeleportAreaEffect extends AreaEffect {
 	}
 	
 	public void activate(Entity entity) {
-		effect.visit(entity, null);
+		effect.visit(entity, destination);
 	}
 }

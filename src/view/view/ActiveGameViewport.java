@@ -93,6 +93,8 @@ public class ActiveGameViewport extends Viewport {
 		
 		Tile start = this.currentTile;
 		
+		System.out.println("START TILE = " + start);
+		
 		Point pixels = TileAlgorithm.toPixel(start);
 		int dx = this.getWidth() / 2 - pixels.x;
 		int dy = this.getHeight() / 2 - pixels.y;

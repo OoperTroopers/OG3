@@ -25,6 +25,7 @@ import view.tools.Constants;
 public class ActiveGameViewport extends Viewport {
 	
 	Tile currentTile;
+	Tile scrollableTile;
 	// static HeartsViewport heartsViewport = HeartsViewport.getInstance();
 	// static SimpleStatsViewport simpleStatsViewport = SimpleStatsViewport.getInstance();
 	
@@ -47,6 +48,7 @@ public class ActiveGameViewport extends Viewport {
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
+		scrollableTile = currentTile;
 		
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
@@ -93,9 +95,20 @@ public class ActiveGameViewport extends Viewport {
 	
 	public void setAvatarTile(Tile tile) {
 		this.currentTile = tile;
+		setScrollableTile(tile);
 	}
 	
 	public Tile getAvatarTile() {
 		return this.currentTile;
 	}
+	
+	public void setScrollableTile(Tile tile) {
+		this.scrollableTile = tile;
+	}
+	
+	public Tile getScrollableTile() {
+		return this.scrollableTile;
+	}
+	
+	
 }

@@ -4,14 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.border.Border;
 
 import view.tools.Constants;
 import view.tools.ImagePaths;
@@ -66,7 +63,7 @@ public class MainMenuViewport extends Viewport {
 		g.setFont( new Font("DialogInput", Font.BOLD, 20) );
 		g.drawString(Text.newGameButton, 70, 420);
 		g.drawString(Text.loadGameButton, 70, 490);
-		g.drawString(Text.ExitGameButton, 70, 560);
+		g.drawString(Text.exitGameButton, 70, 560);
 	}
 	
 }

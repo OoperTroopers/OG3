@@ -17,7 +17,7 @@ public class ViewportStack {
 		if (activeGameViewport != null)  	System.out.println("Active Game Viewport");
 		if (heartsViewport != null)  		System.out.println("Hearts Viewport");
 		if (simpleStatsViewport != null)  	System.out.println("Simple Stats Viewport");
-		if (pauseMenuViewport != null)  	System.out.println("Main Menu Viewport");
+		if (pauseMenuViewport != null)  	System.out.println("Pause Menu Viewport");
 	}
 	
 	public static ViewportStack getInstance() {
@@ -26,9 +26,9 @@ public class ViewportStack {
 		
 	public void add(MainMenuViewport v) {		mainMenuViewport = v;		}
 	public void add(ActiveGameViewport v) {		activeGameViewport = v;	}
-	public void add(HeartsViewport v) {			heartsViewport = v;			}
+	public void add(HeartsViewport v) {		heartsViewport = v;			}
 	public void add(SimpleStatsViewport v) {	simpleStatsViewport = v;	}
-	public void add(PauseMenuViewport v) {		pauseMenuViewport = v;			}
+	public void add(PauseMenuViewport v) {          pauseMenuViewport = v;			}
 	
 	public Viewport getMainMenuViewport() {		return mainMenuViewport;		}
 	public Viewport getActiveGameViewport() {	return activeGameViewport;	}

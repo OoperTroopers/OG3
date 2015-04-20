@@ -11,10 +11,10 @@ import model.statistics.EquippableStatistics;
 
 public class Chest extends Armor {
 	public Chest() {
-		super(new ChestView());
+		super("Chest", new ChestView());
 	}
 	public Chest(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Chest", description, id, value, es);
 	}
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipChest();

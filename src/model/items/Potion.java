@@ -11,11 +11,11 @@ public class Potion extends TakeableItem implements Usable{
 	private HealEffect healEffect;
 	
 	public Potion() {
-		super(new PotionView());
+		super("Potion", new PotionView());
 		healEffect = new HealEffect();
 	}
 	public Potion(String name, String description, String id, int value) {
-		super(name, description, id, value);
+		super("Potion", description, id, value);
 		healEffect = new HealEffect();
 	}
 	

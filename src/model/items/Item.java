@@ -21,6 +21,13 @@ public abstract class Item implements Tileable{
 		this.itemView = itemView;
 	}
 	
+	public Item(String name, TileableView itemView) {
+		this.name = name;
+		this.description = "Test Description";
+		this.id = "12345";
+		this.itemView = itemView;
+	}
+	
 	public Item(String name, String description, String id) {
 		this.name = name;
 		this.description = description;

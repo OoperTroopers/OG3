@@ -13,10 +13,10 @@ import model.statistics.EquippableStatistics;
 
 public class Staff extends Weapon {
 	public Staff() {
-		super(new StaffView());
+		super("Staff", new StaffView());
 	}
 	public Staff(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Staff", description, id, value, es);
 	}
 
 	@Override

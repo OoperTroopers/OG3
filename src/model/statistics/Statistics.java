@@ -1,5 +1,7 @@
 package model.statistics;
 
+import view.view.ActiveGameViewport;
+
 public abstract class Statistics {
 	private PrimaryStatistics primaryStats;
 	private DerivedStatistics derivedStats;
@@ -57,14 +59,17 @@ public abstract class Statistics {
 	public void heal(int health) {
 		currentHealth += health;
 		currentHealth = Math.min(currentHealth, derivedStats.getMaxHealth());
+		// if (currentHealth <= -1 && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	
 	public void wound(int damage) {
 		currentHealth -= damage;
+		// if (currentHealth <= -1  && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	
 	public void loseLife() {
 		primaryStats.loseLife();
+		if (currentHealth <= 0 && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	public void gainNewLife() {
 		primaryStats.gainNewLife();
@@ -83,6 +88,7 @@ public abstract class Statistics {
 	public PrimaryStatistics getPrimaryStats() {
 		return primaryStats;
 	}
+		
 	public void setPrimaryStats(PrimaryStatistics primaryStats) {
 		this.primaryStats = primaryStats;
 	}
@@ -127,5 +133,18 @@ public abstract class Statistics {
 	}
 	public void setAssignableAbilityPoints(int assignableAbilityPoints) {
 		this.assignableAbilityPoints = assignableAbilityPoints;
+	}
+	
+	public void notifyGameView() {
+		ActiveGameViewport.getInstance().updateStats(this);
+	}
+
+	public String toString() {
+		return "Current Gold: "+currentGold+
+				"\nCurrent Health: "+currentHealth+
+				"\nCurrent Mana: "+currentMana+
+				"\nCurrent Experience: "+currentExperience+
+				"\nCurrent Level: "+currentLevel+
+				"\nAbility Points: "+assignableAbilityPoints;
 	}
 }

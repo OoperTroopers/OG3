@@ -20,9 +20,14 @@ import javax.swing.JFrame;
 import controller.RunGame;
 import model.entities.Avatar;
 import model.entities.Entity;
+import model.inventory.Inventory;
 import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
+import model.statistics.DerivedStatistics;
+import model.statistics.PrimaryStatistics;
+import model.statistics.SmasherStatistics;
+import model.statistics.Statistics;
 import utilities.TileAlgorithm;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
@@ -50,6 +55,12 @@ public class ActiveGameViewport extends Viewport {
 	Tile avatarTile;
 	boolean scrolling = false;
 	int livesLeft = 3;
+	PrimaryStatistics primaries;
+	DerivedStatistics deriveds;
+	Statistics stats;
+		// LOD
+	
+	Inventory inventory;
 	
 	Load load = new Load();
 	
@@ -68,6 +79,11 @@ public class ActiveGameViewport extends Viewport {
 		scrollableTile = currentTile;
 		
 		Entity avatar = new Avatar(currentTile);
+		primaries = avatar.getStats().getPrimaryStats();
+		deriveds = avatar.getStats().getDerivedStats();
+		stats = avatar.getStats();
+		inventory = avatar.getInventory();
+		
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
 		this.setFocusable(true);
 	}
@@ -92,9 +108,37 @@ public class ActiveGameViewport extends Viewport {
 		drawMiniMap(g, tiles);
 		drawLivesLeft(g);
 		drawSimpleStats(g);
+		drawInventory(g);
 	}
 	// ----------------
 	
+	private void drawInventory(Graphics g) {
+		Color c = Color.WHITE;
+		int x = Constants.getScreenWidth() - Constants.GAME_VIEW_WIDTH / 10 - 155;
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 - 55;
+		
+		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);
+		
+		x += 5;
+		int newY = y + 15;
+		
+		String[] items = inventory.toString().split("\n");
+		g.setColor(Color.BLACK);
+		g.drawString("INVENTORY", x, newY);
+		newY += 10;
+		int counter = 0;
+		for (String s : items) {
+			newY += 15;
+			g.drawString(s, x, newY);
+			counter ++;
+			if (counter == 5) {
+				newY = y + 25;
+				x += 60;
+			}
+		}
+	}
+
 	public void drawMap(Graphics g, List<Tile> tiles) {
 		Tile start = currentTile;
 		Point pixels = TileAlgorithm.toPixel(start);
@@ -169,25 +213,43 @@ public class ActiveGameViewport extends Viewport {
 	public void drawSimpleStats(Graphics g) {
 		Color c = Color.WHITE;
 		int x = 10;
-		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 10;
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 - 55;
 		
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
-		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10), Constants.GAME_VIEW_HEIGHT / 15);
+		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);
 		
 		x += 5;
-		y += 15;
+		int newY = y + 15;
 		
-		String[] stats = {
-			"HEALTH: 10",
-			"MANA:    5",
-			"LEVEL:    2"
-		};
-		
+		String[] primary = primaries.toString().split("\n");
+		String[] derived = deriveds.toString().split("\n");
+		String[] stat = stats.toString().split("\n");
 		g.setColor(Color.BLACK);
-		for (String s : stats) {
-			g.drawString(s, x, y);
-			y += 15;
+		g.drawString("STATS", x, newY);
+		newY += 10;
+		for (String s : stat) {
+			newY += 15;
+			g.drawString(s, x, newY);
 		}
+		
+		x += 150;
+		newY = y + 15;
+		g.drawString("PRIMARY STATS", x, newY);
+		newY += 10;
+		for (String s : primary) {
+			newY += 15;
+			g.drawString(s, x, newY);
+		}
+		
+		x += 130;
+		newY = y + 15;
+		g.drawString("DERIVED STATS", x, newY);
+		newY += 10;
+		for (String s : derived) {
+			newY += 15;
+			g.drawString(s, x, newY);
+		}
+		
 	}
 	
 	
@@ -228,6 +290,22 @@ public class ActiveGameViewport extends Viewport {
 	
 	public boolean isScrolling() {
 		return this.scrolling;
+	}
+
+	public void updatePrimaries(PrimaryStatistics primaries) {
+		this.primaries = primaries;
+	}
+
+	public void updateDeriveds(DerivedStatistics deriveds) {
+		this.deriveds = deriveds;
+	}
+
+	public void updateStats(Statistics stats) {
+		this.stats = stats;
+	}
+	
+	public void updateInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 	
 	

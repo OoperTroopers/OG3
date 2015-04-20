@@ -10,10 +10,10 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class Saddle extends Armor {
 	public Saddle() {
-		super(new SaddleView());
+		super("Saddle", new SaddleView());
 	}
 	public Saddle(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Saddle", description, id, value, es);
 	}
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipSaddle();

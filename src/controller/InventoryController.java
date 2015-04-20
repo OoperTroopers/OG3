@@ -8,7 +8,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
+
 import model.entities.Avatar;
 import model.inventory.Inventory;
 import model.items.Item;
@@ -31,9 +33,9 @@ public class InventoryController extends Controller {
         this.avatar = avatar;
         Inventory inv = avatar.getInventory();
         itemButtons = new ArrayList<ItemButton>();
-        for (Item i : inv.getInventory()) {
+        for (TakeableItem i : inv.getInventory()) {
             ItemButton ib = new ItemButton(i);
-            ib.addActionListener(new GenericButtonListener(i));
+            ib.addActionListener(new GenericButtonListener(i, avatar, this, ib));
             ib.setSize(50, 50);
             itemButtons.add(ib);
         }
@@ -41,6 +43,20 @@ public class InventoryController extends Controller {
         view = new InventoryViewport(new BackListener(), itemButtons);
     }
     
+    public void reload() {
+        view = null;
+        
+    	Inventory inv = avatar.getInventory();
+        itemButtons = new ArrayList<ItemButton>();
+        for (TakeableItem i : inv.getInventory()) {
+            ItemButton ib = new ItemButton(i);
+            ib.addActionListener(new GenericButtonListener(i, avatar, this, ib));
+            ib.setSize(50, 50);
+            itemButtons.add(ib);
+        }
+        
+        view = new InventoryViewport(new BackListener(), itemButtons);
+    }
     private class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -51,15 +67,25 @@ public class InventoryController extends Controller {
     
     private class GenericButtonListener implements ActionListener {
 
-        private Item i;
+        private TakeableItem i;
+        private Avatar avatar;
+        private InventoryController inventoryController;
+        ItemButton ib;
         
-        public GenericButtonListener(Item i) {
+        public GenericButtonListener(TakeableItem i, Avatar avatar, 
+        		InventoryController inventoryController, ItemButton ib) {
             this.i = i;
+            this.avatar = avatar;
+            this.inventoryController = inventoryController;
+            this.ib = ib;
         }
                 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(i.getName() + " button clicked");
+            // System.out.println(i.getName() + " button clicked");
+        	i.getClickedByAvatar(avatar);
+        	inventoryController.reload();
+        	ib.setIcon(null);
         }
         
     }

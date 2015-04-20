@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.ChestView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tileable;
@@ -35,5 +36,10 @@ public class Chest extends Armor {
 	@Override
 	public Tileable clone() {
 		return new Chest();
+	}
+	
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

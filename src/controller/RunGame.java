@@ -1,39 +1,25 @@
 package controller;
 
+import javax.swing.SwingUtilities;
 
-import model.abilities.movement.*;
+import view.view.ActiveGameViewport;
+import view.view.ViewFrame;
 
-import model.entities.Avatar;
-
-import javax.swing.*;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-
-public class RunGame extends JPanel {
+public class RunGame {
+	public static void main(String[] args) {
+                RunGame game = new RunGame();
+	}
 	
-    public RunGame(){
-        Avatar avatar = new Avatar();
-       // addAvatarKeyBinding(avatar.getKeyBinding());
-        setFocusable(true);
-    }
-    
-    public RunGame(Avatar avatar){
-       // addAvatarKeyBinding(avatar.getKeyBinding());
-        setFocusable(true);
-        start();
-    }
-    
-    public static void main(String args[]){
-    	
-    }
-    
-    public void start() {
-    	JFrame frame = new JFrame("Controller Example");
-        frame.add(this);
-        frame.setSize(200, 200);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    
+	public RunGame() {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run(){ createAndShowGui(); }
+		});
+	}
+	
+	public static void createAndShowGui() {
+		// ViewFrame vf = ViewFrame.getInstance();
+		// vf.initialize();
+		GameController gameController = GameController.getInstance();
+		// gameController.swapViews(new GameController());
+	}
 }

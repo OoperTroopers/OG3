@@ -1,6 +1,7 @@
 package model.items;
 
 import view.modelview.tileable.TileableView;
+import model.entities.Avatar;
 import model.entities.Entity;
 
 public abstract class TakeableItem extends Item {
@@ -42,4 +43,6 @@ public abstract class TakeableItem extends Item {
 		entity.getTile().removeTileable(this);
 		System.out.println("TAKEABLE ITEM TOUCHED");
 	}
+	
+	public abstract void getClickedByAvatar(Avatar avatar);
 }

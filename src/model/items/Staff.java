@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.StaffView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
@@ -45,5 +46,10 @@ public class Staff extends Weapon {
 	
 	public String toString() {
 		return "Item=Staff";
+	}
+	
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

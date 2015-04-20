@@ -5,11 +5,25 @@ import controller.AvatarController;
 import model.abilities.ExplicitAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SmasherEquipmentManager;
+import model.items.Armor;
+import model.items.Arms;
+import model.items.Brawl;
+import model.items.Chest;
+import model.items.Helmet;
+import model.items.Item;
+import model.items.Legs;
+import model.items.OneHanded;
+import model.items.Ranged;
+import model.items.Staff;
+import model.items.TwoHanded;
+import model.items.Usable;
 import model.map.Journal;
 import model.map.MovementCapabilities;
 import model.map.Tile;
 import model.map.Tileable;
 import model.occupations.Occupation;
+import model.occupations.SmasherOccupation;
 import model.statistics.Statistics;
 
 import java.awt.List;
@@ -30,6 +44,8 @@ public class Avatar extends Entity {
 	private Mount mount;
 	private AvatarBrain myBrain;
 	private int radiusOfVision;
+	private Occupation occupation;
+	private EquipmentManager equipManager;
 	
 	public Avatar(){
 		super();
@@ -37,6 +53,9 @@ public class Avatar extends Entity {
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
+		occupation = new SmasherOccupation();
+		equipManager = new SmasherEquipmentManager();
+		
 		onMove();
 	}
 	
@@ -46,6 +65,8 @@ public class Avatar extends Entity {
 		this.controlAvatar = new AvatarController(this);
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
+		occupation = o;
+		equipManager = em;
 		onMove();
 	}
 	
@@ -55,6 +76,8 @@ public class Avatar extends Entity {
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
+		occupation = new SmasherOccupation();
+		equipManager = new SmasherEquipmentManager();
 		myBrain = new AvatarBrain(this);
 	}
 	
@@ -64,6 +87,9 @@ public class Avatar extends Entity {
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
+		this.occupation = occupation;
+		equipManager = occupation.createEquipmentManager();
+
 		myBrain = new AvatarBrain(this);
 	}
 
@@ -216,4 +242,44 @@ public class Avatar extends Entity {
 	public String toString() {
 		return "Entity=Avatar";
 	}
+
+	public void fromInventory(Arms armsItem) {
+		equipManager.equipArms(armsItem);
+	}
+	
+	public void fromInventory(Chest chestItem) {
+		equipManager.equipChest(chestItem);
+	}
+	
+	public void fromInventory(Helmet helmetItem) {
+		equipManager.equipHelmet(helmetItem);
+	}
+	
+	public void fromInventory(Legs legsItem) {
+		equipManager.equipLegs(legsItem);
+	}
+	
+	public void fromInventory(Usable usable) {
+		usable.use(this);
+	}
+
+	public void fromInventory(Ranged ranged) {
+		equipManager.equipRangedWeapon(ranged);
+	}
+
+	public void fromInventory(TwoHanded twoHanded) {
+		equipManager.equipTwoHandedWeapon(twoHanded);
+	}
+
+	public void fromInventory(OneHanded oneHanded) {
+		equipManager.equipOneHandedWeapon(oneHanded);
+	}
+
+	public void fromInventory(Brawl brawl) {}
+
+	public void fromInventory(Armor armor) {
+		//equipManager.equipArms(armor);
+	}
+
+	public void fromInventory(Staff staff) {}
 }

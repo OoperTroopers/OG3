@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.OneHandedView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
@@ -11,7 +12,7 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class OneHanded extends Weapon {
 	public OneHanded() {
-		super(new OneHandedView());
+		super("Sword", new OneHandedView());
 	}
 	
 	public OneHanded(String name, String description, String id, int value, EquippableStatistics es) {
@@ -39,5 +40,10 @@ public class OneHanded extends Weapon {
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipOneHandedWeapon();
 		inventory.addToInventory(this);
+	}
+
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

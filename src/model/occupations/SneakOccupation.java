@@ -8,6 +8,7 @@ import model.statistics.Statistics;
 
 public class SneakOccupation extends Occupation {
 	
+	
 	public SneakOccupation() {
 		super();
 		setAbilities();

@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.ArmsView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
@@ -40,5 +41,10 @@ public class Arms extends Armor {
 	
 	public String toString() {
 		return "Item=Arms";
+	}
+
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

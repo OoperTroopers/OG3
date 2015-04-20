@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.BrawlView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.equipmentmanagers.SmasherEquipmentManager;
@@ -42,5 +43,9 @@ public class Brawl extends Weapon {
 	
 	public String toString() {
 		return "Item=Brawl";
+	}
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

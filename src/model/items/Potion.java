@@ -3,6 +3,7 @@ package model.items;
 import view.modelview.tileable.items.PotionView;
 import model.effects.Effect;
 import model.effects.HealEffect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
@@ -36,5 +37,10 @@ public class Potion extends TakeableItem implements Usable{
 	
 	public String toString() {
 		return "Item=Potion";
+	}
+	
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		this.use(avatar);
 	}
 }

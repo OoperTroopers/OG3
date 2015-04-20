@@ -6,6 +6,7 @@ import model.abilities.ImplicitAbility;
 import model.equipmentmanagers.*;
 import model.occupations.*;
 import model.statistics.*;
+import model.items.Item;
 import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
@@ -14,6 +15,7 @@ import view.modelview.tileable.entities.EntityView;
 import model.effects.*;
 
 import java.util.ArrayList;
+
 import model.map.Moveable;
 import model.map.MovementCapabilities;
 import model.map.Tileable;
@@ -333,4 +335,5 @@ public abstract class Entity implements Tileable, Moveable {
 	public abstract void interact(Tileable tileable);	
 	public abstract void acceptAvatar(Avatar avatar);
 	public void acceptAvatarInteraction(Avatar avatar) {}
+	// public abstract void fromInventory(Item i);
 }

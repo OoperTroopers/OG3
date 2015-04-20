@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.TileableView;
 import model.statistics.EquippableStatistics;
+import model.entities.Avatar;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
 
@@ -32,5 +33,10 @@ public abstract class Armor extends TakeableItem implements Equippable {
 	
 	public void setEquipStats(EquippableStatistics es) {
 		this.equipStats = es;
+	}
+	
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

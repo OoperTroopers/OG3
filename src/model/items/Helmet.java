@@ -2,6 +2,7 @@ package model.items;
 
 import view.modelview.tileable.items.HelmetView;
 import model.effects.Effect;
+import model.entities.Avatar;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
@@ -37,5 +38,10 @@ public class Helmet extends Armor {
 	@Override
 	public Tileable clone() {
 		return new Helmet();
+	}
+
+	@Override
+	public void getClickedByAvatar(Avatar avatar) {
+		avatar.fromInventory(this);
 	}
 }

@@ -80,4 +80,6 @@ public abstract class Item implements Tileable {
         public TileableView getItemView() {
             return this.itemView;
         }
+        
+    // public abstract void getClickedByAvatar(Avatar avatar);
 }

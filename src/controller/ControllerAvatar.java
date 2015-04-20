@@ -3,7 +3,6 @@ package controller;
 import model.abilities.Ability;
 import model.abilities.ExplicitAbility;
 import model.abilities.InteractAbility;
-import model.abilities.MountAbility;
 import model.abilities.movement.MoveNorthAbility;
 import model.abilities.movement.MoveNortheastAbility;
 import model.abilities.movement.MoveNorthwestAbility;

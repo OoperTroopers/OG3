@@ -2,7 +2,6 @@ package model.entities;
 
 import controller.ControllerAvatar;
 import model.abilities.ExplicitAbility;
-import model.abilities.UnMountAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
@@ -150,7 +149,6 @@ public class Avatar extends Entity {
 	public void acceptMount(Mount mount) {
 		this.mount = mount;
 		this.setMount(mount);
-		this.addAbility(new UnMountAbility(' '));
 	}
 	
 	public void removeMount() {

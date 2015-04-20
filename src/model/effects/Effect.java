@@ -16,6 +16,7 @@ import model.areaeffect.*;
 public abstract class Effect {
 	public void visit(Entity entity) { }
 	public void visit(Avatar avatar) { }
+	public void visit(Mount mount) {}
 	public void visit(NPC npc) { }
 	public void visit(Item item) { }
 	public void visit(AreaEffect areaEffect) { }

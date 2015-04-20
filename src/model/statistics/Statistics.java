@@ -59,17 +59,14 @@ public abstract class Statistics {
 	public void heal(int health) {
 		currentHealth += health;
 		currentHealth = Math.min(currentHealth, derivedStats.getMaxHealth());
-		// if (currentHealth <= -1 && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	
 	public void wound(int damage) {
 		currentHealth -= damage;
-		// if (currentHealth <= -1  && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	
 	public void loseLife() {
 		primaryStats.loseLife();
-		if (currentHealth <= 0 && primaryStats.getLivesLeft() <= 0) System.exit(0);
 	}
 	public void gainNewLife() {
 		primaryStats.gainNewLife();

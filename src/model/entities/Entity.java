@@ -11,6 +11,7 @@ import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.EntityView;
+import model.effects.Fireball;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -103,7 +104,7 @@ public abstract class Entity implements Tileable, Moveable {
 	public void setMount(Mount mount) { this.mount = mount; }
 
 	public void heal(int amount) {
-		this.stats.heal(amount);
+		stats.heal(amount);
 	}
 
 	public void receiveDamage(int damage) {
@@ -113,6 +114,7 @@ public abstract class Entity implements Tileable, Moveable {
 		if(stats.getCurrentHealth() <= 0) {
 			respawn();
 		}
+		System.out.println("Mount: ouch");
 	}
 
 	protected void respawn() {
@@ -121,12 +123,14 @@ public abstract class Entity implements Tileable, Moveable {
 			stats.setCurrentHealthMax();
 			stats.setCurrentManaMax();
 		} else {
-			myTile.removeTileable(this);
+			getTile().removeTileable(this);
 		}
 	}
 
 	public int sendDamage() {
 		int damage = stats.getOffensiveRating();
+		Tile neigh = myTile.getNeighbor(direction);
+		neigh.affectAllTileables(new Fireball());
 		return damage;
 	}
 

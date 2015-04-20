@@ -1,6 +1,7 @@
 package model.entities;
 
 import view.modelview.tileable.entities.PetView;
+import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Tile;
 import model.occupations.Occupation;
@@ -42,6 +43,17 @@ public class Pet extends NPC {
 		super(o, em, s, h);
 		this.owner = owner;
 		this.brain.setDefaultAbilityKeys();
+	}
+	public void acceptEffect(Effect e) {
+		e.visit(this);
+	}
+	public void receiveDamage(int damage) {
+		damage -= getStats().getDefensiveRating();
+		damage = Math.max(0, damage);
+		getStats().wound(damage);
+		if(getStats().getCurrentHealth() <= 0) {
+			respawn();
+		}
 	}
 	
 	public Avatar getOwner() {

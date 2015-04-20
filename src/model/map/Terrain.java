@@ -41,4 +41,5 @@ public abstract class Terrain implements Tileable {
 	
 	public void removeFromView(TileView tileView) {}
 	public void acceptAvatar(Avatar avatar) {}
+	public void acceptAvatarInteraction(Avatar avatar) {}
 }

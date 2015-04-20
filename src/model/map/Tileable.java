@@ -36,4 +36,6 @@ public interface Tileable {
 	public void sendToView(TileView tileView);
 	public void removeFromView(TileView tileView);
 	public void acceptAvatar(Avatar avatar);
+
+	void acceptAvatarInteraction(Avatar avatar);
 }

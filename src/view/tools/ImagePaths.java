@@ -14,7 +14,7 @@ public class ImagePaths {
     public static final String AVATAR = IMG_DIR + "Sprite-can.png";
     public static final String NPC = IMG_DIR + "NPC_Cat.png";
     public static final String SHOPKEEPER = IMG_DIR + "shopkeeper_cat.jpg";
-    public static final String MOUNT = IMG_DIR + "car.png";
+    public static final String MOUNT = IMG_DIR + "mount.png";
     public static final String PET = IMG_DIR + "pet.png";
     
     //OneShotItem sprites

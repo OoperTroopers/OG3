@@ -2,6 +2,7 @@ package model.entities;
 
 import controller.ControllerAvatar;
 import model.abilities.ExplicitAbility;
+import model.abilities.UnMountAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
 import model.map.Journal;
@@ -16,6 +17,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import utilities.TileAlgorithm;
+import utilities.TileAlgorithm.Direction;
 import view.modelview.tileable.entities.AvatarView;
 import view.view.ActiveGameViewport;
 import view.view.ExtendedStatsViewport;
@@ -25,12 +27,15 @@ public class Avatar extends Entity {
 	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
-
+	private Mount mount;
+	private int radiusOfVision;
+	
 	public Avatar(){
 		super();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		onMove();
 	}
 	
@@ -39,6 +44,7 @@ public class Avatar extends Entity {
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		onMove();
 	}
 	
@@ -47,6 +53,7 @@ public class Avatar extends Entity {
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		onMove();
 	}
 
@@ -56,13 +63,11 @@ public class Avatar extends Entity {
     
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -94,11 +99,19 @@ public class Avatar extends Entity {
     		this.interact(tileable);
     	}
     	
-    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
+    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.radiusOfVision);
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
     	
+    }
+    
+    public void increaseRadiusOfVision(int amount) {
+    	this.radiusOfVision += amount;
+    }
+    
+    public void decreaseRadiusOfVision(int amount) {
+    	this.radiusOfVision = Math.max(0, this.radiusOfVision - amount);
     }
     
     private void updateMemTile(Tile t){
@@ -107,7 +120,6 @@ public class Avatar extends Entity {
 
 	@Override
 	public MovementCapabilities getMovementCapabilities() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -133,5 +145,21 @@ public class Avatar extends Entity {
 	}
 	public void setcontrolAvatar(ControllerAvatar controlAvatar) {
 		this.controlAvatar = controlAvatar;
+	}
+	
+	public void acceptMount(Mount mount) {
+		this.mount = mount;
+		this.setMount(mount);
+		this.addAbility(new UnMountAbility(' '));
+	}
+	
+	public void removeMount() {
+		System.out.println("removes mount");
+		this.mount.unmount();
+		this.setMount(null);
+	}
+	
+	public boolean mounted() {
+		return this.mount == null ? false : true;
 	}
 }

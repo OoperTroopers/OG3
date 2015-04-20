@@ -19,6 +19,7 @@ import model.map.Tile;
 import view.view.ActiveGameViewport;
 public abstract class Entity implements Tileable, Moveable {
 	
+	private Mount mount;
 	private Tile myTile;
 	private MovementCapabilities myMovement;
 	
@@ -86,6 +87,8 @@ public abstract class Entity implements Tileable, Moveable {
 	 */
 	public abstract Entity clone();
 
+	public Mount getMount() { return mount; }
+	public void setMount(Mount mount) { this.mount = mount; }
 
 	public void heal(int amount) {
 		this.stats.heal(amount);
@@ -223,10 +226,12 @@ public abstract class Entity implements Tileable, Moveable {
 	 */
 	private void move(Direction direction) {
 		myTile.removeTileable(this);
+		if (getMount() != null) myTile.removeTileable(mount);
 		myTile = myTile.getNeighbor(direction);
 		update(myTile);
 		ActiveGameViewport.getInstance().activateAvatarTile();
 		myTile.addTileable(this);
+		if (getMount() != null) myTile.addTileable(mount);
 		onMove();
 	}
 	
@@ -289,4 +294,5 @@ public abstract class Entity implements Tileable, Moveable {
 	
 	public abstract void interact(Tileable tileable);	
 	public abstract void acceptAvatar(Avatar avatar);
+	public void acceptAvatarInteraction(Avatar avatar) {}
 }

@@ -68,4 +68,6 @@ public abstract class Item implements Tileable{
 	public void acceptAvatar(Avatar avatar) {
 		this.touch(avatar);
 	}
+	
+	public void acceptAvatarInteraction(Avatar avatar) {}
 }

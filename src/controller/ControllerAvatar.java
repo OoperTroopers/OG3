@@ -2,6 +2,8 @@ package controller;
 
 import model.abilities.Ability;
 import model.abilities.ExplicitAbility;
+import model.abilities.InteractAbility;
+import model.abilities.MountAbility;
 import model.abilities.movement.MoveNorthAbility;
 import model.abilities.movement.MoveNortheastAbility;
 import model.abilities.movement.MoveNorthwestAbility;
@@ -30,18 +32,18 @@ import utilities.TileAlgorithm.Direction;
  */
 public class ControllerAvatar {
 
-	private Entity avatar;
+	private Avatar avatar;
     private ArrayList<KeyListener> kbList;
     private HashMap<Direction, ExplicitAbility> directionAbilities;
 
-    public ControllerAvatar(Entity avatar){
+    public ControllerAvatar(Avatar avatar){
        	super();
        	this.avatar = avatar;
         kbList = new ArrayList<KeyListener>();
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
     }
     
-    public ControllerAvatar(Entity avatar, ArrayList<KeyListener> kbList) {
+    public ControllerAvatar(Avatar avatar, ArrayList<KeyListener> kbList) {
     	super();
     	this.avatar = avatar;
     	this.kbList = kbList;
@@ -63,6 +65,9 @@ public class ControllerAvatar {
     	ExplicitAbility scrollableMoveSoutheast = new ScrollableMoveSoutheastAbility('l');
     	ExplicitAbility scrollableMoveSouthwest = new ScrollableMoveSouthwestAbility('j');
     	
+    	// mounting
+    	ExplicitAbility interactAbility = new InteractAbility(avatar, ' ');
+    	
     	avatar.addAbility(moveNorth);
     	avatar.addAbility(moveNorthwest);
     	avatar.addAbility(moveNortheast);
@@ -77,6 +82,8 @@ public class ControllerAvatar {
     	avatar.addAbility(scrollableMoveSoutheast);
     	avatar.addAbility(scrollableMoveSouthwest);
     	
+    	avatar.addAbility(interactAbility);
+    	
     	directionAbilities.put(Direction.NORTH, moveNorth); 
     	directionAbilities.put(Direction.NORTHWEST, moveNorthwest); 
     	directionAbilities.put(Direction.NORTHEAST, moveNortheast); 
@@ -88,7 +95,7 @@ public class ControllerAvatar {
     public void addToKLSet(KeyBinding keyBinding){
         kbList.add(keyBinding);
     }
-
+    
     public ArrayList<KeyListener> getKbList(){
         return kbList;
     }

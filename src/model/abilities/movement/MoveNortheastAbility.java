@@ -25,7 +25,6 @@ public class MoveNortheastAbility extends ExplicitAbility {
     	if (this.isActivated()) {
 	        entity.moveNortheast();
 	        entity.setDirection(5);
-	        System.out.println("I AM MOVING NORTHEAST");
     	}
     }
 

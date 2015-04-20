@@ -24,7 +24,6 @@ public abstract class AreaEffect implements Tileable {
 	}
 	
 	public abstract void activate(Entity entity);
-	public void acceptAvatar(Avatar avatar) {
-		this.activate(avatar);
-	}
+	public void acceptAvatar(Avatar avatar) { this.activate(avatar); }
+	public void acceptAvatarInteraction(Avatar avatar) {}
 }

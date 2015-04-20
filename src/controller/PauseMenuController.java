@@ -19,7 +19,7 @@ public class PauseMenuController extends Controller {
     
     private Viewport view;
     private Avatar avatar;
-    
+
     public PauseMenuController(Avatar avatar) {
         view = new PauseMenuViewport(new BackListener(), new InventoryListener(), new StatsListener(), new ExitGameListener());
         this.avatar = avatar;

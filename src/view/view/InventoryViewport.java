@@ -46,8 +46,8 @@ public class InventoryViewport extends Viewport {
     }
     
     public void update() {
+        //fill the interesting buttons that can equip and use items
         if (!itemButtons.isEmpty()) {
-            //fill the interesting buttons that can equip and use items
             for (ItemButton i : itemButtons) {
                 i.setToolTipText(i.getToolTipText());
                 i.setOpaque(false);
@@ -58,16 +58,14 @@ public class InventoryViewport extends Viewport {
                 i.setIcon(icon);
                 inventoryPanel.add(i);
             }
-            //fill out the rest of the grid with blank buttons that don't do anything
-            for (int j = 0; j < 50 - itemButtons.size(); ++j) {
-                JButton jbutton = new JButton();
-                jbutton.setText("");
-                jbutton.setBorder(new MatteBorder(2, 2, 1, 1, Color.BLACK));
-                jbutton.setOpaque(false);
-                inventoryPanel.add(jbutton);
-            }
-        } else {
-            System.out.println("ITEM BUTTONS IS EMPTY");
+        }
+        //fill out the rest of the grid with blank buttons that don't do anything
+        for (int j = 0; j < 50 - itemButtons.size(); ++j) {
+            JButton jbutton = new JButton();
+            jbutton.setText("");
+            jbutton.setBorder(new MatteBorder(2, 2, 1, 1, Color.BLACK));
+            jbutton.setOpaque(false);
+            inventoryPanel.add(jbutton);
         }
         inventoryPanel.repaint();
     }

@@ -44,9 +44,9 @@ public class Load {
 			String terrain = in.next();
 			
 			String nextLine = in.next();
+			if (this.initializeEntity(tileNumber, nextLine)) nextLine = in.next();
 			if (this.initializeItem(tileNumber, nextLine)) nextLine = in.next();
 			if (this.initializeAreaEffect(tileNumber, nextLine)) nextLine = in.next();
-			if (this.initializeEntity(tileNumber, nextLine)) nextLine = in.next();
 			
 			String neighbors = nextLine;
 			this.initializeTerrain(tileNumber, terrain);

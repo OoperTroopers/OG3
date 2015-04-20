@@ -290,6 +290,7 @@ public class ExtendedStatsViewport extends Viewport {
         levelLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 4, 4, new java.awt.Color(0, 0, 0)));
         levelLabel.setOpaque(true);
 
+        backButton.setBackground(new java.awt.Color(255, 255, 255));
         backButton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         backButton.setText("Back");
         backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 1, 1, new java.awt.Color(0, 0, 0)));

@@ -9,7 +9,7 @@ public abstract class OneShotItem extends Item {
 	private Effect effect;
 	
 	public OneShotItem(TileableView tileableView, Effect effect) {
-		super(tileableView);
+		super("OneHanded", tileableView);
 		this.effect = effect;
 	}
 	

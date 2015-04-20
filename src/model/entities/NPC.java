@@ -64,8 +64,7 @@ public class NPC extends Entity {
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
 
 	@Override

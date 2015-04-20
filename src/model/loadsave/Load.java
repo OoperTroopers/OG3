@@ -169,7 +169,7 @@ public class Load {
 	
 	private Entity parseEntity(String entity, Tile tile) {
 		if (entity.equals("Shopkeeper")) return new Shopkeeper(tile);
-		if (entity.equals("NPC")) return new NPC();
+		if (entity.equals("NPC")) return new NPC(tile);
 		if (entity.equals("Pet")) return new Pet(tile);
 		if (entity.equals("Mount")) return new Mount(tile);
 		return null;

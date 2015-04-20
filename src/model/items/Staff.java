@@ -36,14 +36,14 @@ public class Staff extends Weapon {
 	}
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
-		((SummonerEquipmentManager)em).unequipStaff();
-		((SummonerEquipmentManager)em).equipStaff(this);
+		em.unequipStaff();
+		em.equipStaff(this);
 		inventory.removeFromInventory(this);
 		
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory inventory) {
-		((SummonerEquipmentManager)em).unequipStaff();
+		em.unequipStaff();
 		inventory.addToInventory(this);
 	}
 	@Override

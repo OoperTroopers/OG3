@@ -88,17 +88,20 @@ public class NPC extends Entity {
 	//@Override
 	//public void update(Entity entity, Tile tile) {}
 
-	public void update(Tile tile) {}
+	// public void update(Tile tile) {}
 
 	@Override
-	public void onMove() {
-		// TODO Auto-generated method stub
-		
+	public void onMove() {		
 	}
 	
 	public void interact(Tileable tileable) {}
 	
 	public void acceptAvatar(Avatar avatar) {
 		System.out.println("Interact with Avatar");
+	}
+
+	@Override
+	public void update(Tile tile) {
+		System.out.println("Update in NPC called");
 	}
 }

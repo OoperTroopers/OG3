@@ -24,7 +24,6 @@ public class ScrollableMoveSouthAbility extends ExplicitAbility {
         	ActiveGameViewport.getInstance().setScrollableTile(current);
         	ActiveGameViewport.getInstance().activateScrollableTile();   
         	ActiveGameViewport.getInstance().repaint();
-            System.out.println("SCROLLABLE MOVING SOUTH");
         }
     }
 

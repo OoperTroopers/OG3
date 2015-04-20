@@ -29,14 +29,14 @@ public class OneHanded extends Weapon {
 	}
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
-		((SmasherEquipmentManager)em).unequipOneHandedWeapon();
-		((SmasherEquipmentManager)em).equipOneHandedWeapon(this);
+		em.unequipOneHandedWeapon();
+		em.equipOneHandedWeapon(this);
 		inventory.removeFromInventory(this);
 		
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory inventory) {
-		((SmasherEquipmentManager)em).unequipOneHandedWeapon();
+		em.unequipOneHandedWeapon();
 		inventory.addToInventory(this);
 	}
 }

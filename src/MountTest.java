@@ -1,3 +1,4 @@
+import view.modelview.tileable.entities.MountView;
 import model.entities.Avatar;
 import model.entities.Mount;
 import model.loadsave.FilePaths;
@@ -15,7 +16,7 @@ public class MountTest {
 		Avatar smasher = new Avatar(bTile);
 		Mount mount = new Mount();
 		mount.setTile(smasher.getTile());
-		mount.mount(smasher);
+		// mount.mount(smasher);
 		smasher.moveSouth();
 	}
 }

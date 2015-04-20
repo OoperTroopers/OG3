@@ -27,6 +27,7 @@ public class Avatar extends Entity {
 	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
+	private Mount mount;
 	private AvatarBrain myBrain;
 	private int radiusOfVision;
 	
@@ -55,7 +56,6 @@ public class Avatar extends Entity {
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
 		myBrain = new AvatarBrain(this);
-		//onMove();
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){
@@ -64,13 +64,11 @@ public class Avatar extends Entity {
     
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean isTraversable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -94,7 +92,7 @@ public class Avatar extends Entity {
     
     @Override
     public void onMove(){
-    	ActiveGameViewport.getInstance().activateAvatarTile();
+    	// ActiveGameViewport.getInstance().activateAvatarTile();
     	
     	ArrayList<Tileable> tileables = getTile().getTileables();
     	Tileable[] arrayTileables = new Tileable[tileables.size()];
@@ -102,8 +100,8 @@ public class Avatar extends Entity {
     	for (Tileable tileable : arrayTileables) {
     		this.interact(tileable);
     	}
-    	refreshView();
     	
+    	refreshView();
     	
     }
     
@@ -112,6 +110,7 @@ public class Avatar extends Entity {
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
+    	
     }
     
     public void increaseRadiusOfVision(int amount) {
@@ -128,7 +127,6 @@ public class Avatar extends Entity {
 
 	@Override
 	public MovementCapabilities getMovementCapabilities() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
@@ -178,5 +176,20 @@ public class Avatar extends Entity {
 	}
 	public void setcontrolAvatar(ControllerAvatar controlAvatar) {
 		this.controlAvatar = controlAvatar;
+	}
+	
+	public void acceptMount(Mount mount) {
+		this.mount = mount;
+		this.setMount(mount);
+	}
+	
+	public void removeMount() {
+		System.out.println("removes mount");
+		this.mount.unmount();
+		this.setMount(null);
+	}
+	
+	public boolean mounted() {
+		return this.mount == null ? false : true;
 	}
 }

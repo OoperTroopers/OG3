@@ -70,8 +70,6 @@ public class ActiveGameViewport extends Viewport {
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
 		this.setFocusable(true);
-		
-		
 	}
 	
 	@Override

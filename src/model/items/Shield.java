@@ -17,12 +17,12 @@ public class Shield extends Armor {
 	public Shield(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
-	public void equip(SmasherEquipmentManager em, Inventory inventory) {
+	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipShield();
 		em.equipShield(this);
 		inventory.removeFromInventory(this);
 	}
-	public void unequip(SmasherEquipmentManager em, Inventory inventory) {
+	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipShield();
 		inventory.addToInventory(this);
 	}
@@ -36,15 +36,5 @@ public class Shield extends Armor {
 	public Tileable clone() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
 	}
 }

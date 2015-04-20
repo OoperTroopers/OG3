@@ -38,7 +38,6 @@ public abstract class ExplicitAbility extends Ability {
 	}
 	
 	public void perform() {
-		System.out.println("ALLAHU ACKBAR");
 	}
 	
 	public void attachToController(ControllerAvatar controlAvatar) {

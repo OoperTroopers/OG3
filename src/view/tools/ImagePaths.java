@@ -4,6 +4,11 @@ public class ImagePaths {
     //initial directory
     public static final String IMG_DIR = "res/img/";
     
+    //character sprites
+    public static final String SUMMONER = IMG_DIR + "summoner.png";
+    public static final String SMASHER = IMG_DIR + "smasher.png";
+    public static final String SNEAK = IMG_DIR + "sneak.png";
+    
     //terrain sprites
     public static final String GRASS_TERRAIN = IMG_DIR + "grass_terrain.png";
     public static final String WATER_TERRAIN = IMG_DIR + "water_terrain.png";

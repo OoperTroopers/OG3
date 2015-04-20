@@ -1,8 +1,6 @@
 package controller;
 
 import javax.swing.JFrame;
-
-import view.view.ViewFrame;
 import view.view.Viewport;
 
 public class GameController {
@@ -19,5 +17,13 @@ public class GameController {
 		this.frame.add(this.activeViewport);
 		this.frame.setVisible(true);
 	}
+        
+        public void swapViews(Controller c) {
+            Viewport view = c.getViewport();
+            this.frame.remove(activeViewport);
+            activeViewport = view;
+            activeController = c;
+            this.frame.add(activeViewport);
+        }
 
 }

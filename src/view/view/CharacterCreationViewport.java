@@ -60,6 +60,7 @@ public class CharacterCreationViewport extends Viewport {
         jPanel3 = new javax.swing.JPanel();
         smasherButton = new javax.swing.JButton();
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(500, 500));
 
         smasherPictureLabel.setBackground(new java.awt.Color(0, 0, 0));
@@ -119,6 +120,7 @@ public class CharacterCreationViewport extends Viewport {
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 2, 4, 4, new java.awt.Color(0, 0, 0)));
 
+        summonerButton.setBackground(new java.awt.Color(0, 255, 255));
         summonerButton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         summonerButton.setText("Summoner");
         summonerButton.setOpaque(false);
@@ -137,6 +139,7 @@ public class CharacterCreationViewport extends Viewport {
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 2, 4, 2, new java.awt.Color(0, 0, 0)));
 
+        sneakButton.setBackground(new java.awt.Color(255, 255, 0));
         sneakButton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         sneakButton.setText("Sneak");
         sneakButton.setOpaque(false);
@@ -155,6 +158,7 @@ public class CharacterCreationViewport extends Viewport {
         jPanel3.setBackground(new java.awt.Color(255, 0, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 2, new java.awt.Color(0, 0, 0)));
 
+        smasherButton.setBackground(new java.awt.Color(255, 0, 0));
         smasherButton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         smasherButton.setText("Smasher");
         smasherButton.setOpaque(false);

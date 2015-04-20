@@ -5,10 +5,17 @@
  */
 package view.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import view.tools.Constants;
+import javax.swing.border.MatteBorder;
 
 /**+
  *
@@ -16,33 +23,53 @@ import view.tools.Constants;
  */
 public class InventoryViewport extends Viewport {
     
-    public static InventoryViewport inventoryViewport = new InventoryViewport();
+    private ActionListener backButtonListener;
+    private ArrayList<ItemButton> itemButtons;
+    
     /**
      * Creates new form InventoryViewport
      */
-    public InventoryViewport() {
+    public InventoryViewport(ActionListener backButtonListener,  
+                             ArrayList<ItemButton> itemButtons) {
         initComponents();
-        this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
-        
-        int buttonWidth = inventoryPanel.getWidth() / 5;
-        int buttonHeight = inventoryPanel.getHeight() / 10;
-        for (int i = 0; ++i < 5;) {
-            JButton newButton = new JButton();
-            newButton.setOpaque(false);
-            newButton.setPreferredSize(new Dimension(buttonWidth, buttonHeight));
-            newButton.setToolTipText("Click to Equip");
-            //newButton.setIcon();
-            inventoryPanel.getLayout().addLayoutComponent("itemButton", newButton);
-        }
+        this.itemButtons = itemButtons;
+        this.backButtonListener = backButtonListener;
+        backButton.addActionListener(backButtonListener);
+        GridLayout gridlayout = new GridLayout(10, 5, 0, 0);
+        inventoryPanel.setLayout(gridlayout);
+        update();
     } 
     
     @Override
     public void visit(ViewportStack viewportStack) {
-        ViewportStack.add(inventoryViewport);
+        ViewportStack.add(this);
     }
     
-    public static InventoryViewport getInstance() {
-        return inventoryViewport;
+    public void update() {
+        if (!itemButtons.isEmpty()) {
+            //fill the interesting buttons that can equip and use items
+            for (ItemButton i : itemButtons) {
+                i.setToolTipText(i.getToolTipText());
+                i.setOpaque(false);
+                i.setBorder(new MatteBorder(2, 2, 1, 1, Color.BLACK));
+                BufferedImage img = i.getImage();
+                Image newImg = img.getScaledInstance(i.getWidth(), i.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(newImg);
+                i.setIcon(icon);
+                inventoryPanel.add(i);
+            }
+            //fill out the rest of the grid with blank buttons that don't do anything
+            for (int j = 0; j < 50 - itemButtons.size(); ++j) {
+                JButton jbutton = new JButton();
+                jbutton.setText("");
+                jbutton.setBorder(new MatteBorder(2, 2, 1, 1, Color.BLACK));
+                jbutton.setOpaque(false);
+                inventoryPanel.add(jbutton);
+            }
+        } else {
+            System.out.println("ITEM BUTTONS IS EMPTY");
+        }
+        inventoryPanel.repaint();
     }
 
     /**
@@ -54,11 +81,32 @@ public class InventoryViewport extends Viewport {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        equippedInventoryPanel = new javax.swing.JPanel();
         simpleStatsPanel = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        equippedInventoryPanel = new javax.swing.JPanel();
         inventoryPanel = new javax.swing.JPanel();
 
-        setPreferredSize(new Dimension(Constants.GAME_VIEW_WIDTH, Constants.GAME_VIEW_HEIGHT));
+        setMaximumSize(new java.awt.Dimension(1366, 762));
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+
+        simpleStatsPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 4, 4, new java.awt.Color(0, 0, 0)));
+
+        backButton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        backButton.setText("Back");
+
+        javax.swing.GroupLayout simpleStatsPanelLayout = new javax.swing.GroupLayout(simpleStatsPanel);
+        simpleStatsPanel.setLayout(simpleStatsPanelLayout);
+        simpleStatsPanelLayout.setHorizontalGroup(
+            simpleStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(backButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+        );
+        simpleStatsPanelLayout.setVerticalGroup(
+            simpleStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, simpleStatsPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+        );
 
         equippedInventoryPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 2, 2, 4, new java.awt.Color(0, 0, 0)));
 
@@ -66,41 +114,40 @@ public class InventoryViewport extends Viewport {
         equippedInventoryPanel.setLayout(equippedInventoryPanelLayout);
         equippedInventoryPanelLayout.setHorizontalGroup(
             equippedInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         equippedInventoryPanelLayout.setVerticalGroup(
             equippedInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
+        );
+
+        inventoryPanel.setBackground(new java.awt.Color(153, 153, 153));
+        inventoryPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 2, new java.awt.Color(0, 0, 0)));
+        inventoryPanel.setMaximumSize(new java.awt.Dimension(400, 600));
+        inventoryPanel.setPreferredSize(new java.awt.Dimension(400, 600));
+
+        javax.swing.GroupLayout inventoryPanelLayout = new javax.swing.GroupLayout(inventoryPanel);
+        inventoryPanel.setLayout(inventoryPanelLayout);
+        inventoryPanelLayout.setHorizontalGroup(
+            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 381, Short.MAX_VALUE)
+        );
+        inventoryPanelLayout.setVerticalGroup(
+            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        simpleStatsPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 4, 4, new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout simpleStatsPanelLayout = new javax.swing.GroupLayout(simpleStatsPanel);
-        simpleStatsPanel.setLayout(simpleStatsPanelLayout);
-        simpleStatsPanelLayout.setHorizontalGroup(
-            simpleStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 244, Short.MAX_VALUE)
-        );
-        simpleStatsPanelLayout.setVerticalGroup(
-            simpleStatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        inventoryPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 2, new java.awt.Color(0, 0, 0)));
-        inventoryPanel.setPreferredSize(new java.awt.Dimension(400, 600));
-        inventoryPanel.setLayout(new java.awt.GridLayout(10, 5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(inventoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(equippedInventoryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(simpleStatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(equippedInventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(simpleStatsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,6 +161,7 @@ public class InventoryViewport extends Viewport {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JPanel equippedInventoryPanel;
     private javax.swing.JPanel inventoryPanel;
     private javax.swing.JPanel simpleStatsPanel;

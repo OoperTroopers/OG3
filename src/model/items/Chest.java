@@ -2,10 +2,8 @@ package model.items;
 
 import view.modelview.tileable.items.ChestView;
 import model.effects.Effect;
-import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
 import model.inventory.Inventory;
-import model.map.Tile;
 import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 

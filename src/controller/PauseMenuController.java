@@ -7,6 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.entities.Avatar;
 import view.view.PauseMenuViewport;
 import view.view.Viewport;
 
@@ -17,9 +18,11 @@ import view.view.Viewport;
 public class PauseMenuController extends Controller {
     
     private Viewport view;
+    private Avatar avatar;
     
-    public PauseMenuController() {
-        view = new PauseMenuViewport(new BackListener());
+    public PauseMenuController(Avatar avatar) {
+        view = new PauseMenuViewport(new BackListener(), new InventoryListener(), new StatsListener(), new ExitGameListener());
+        this.avatar = avatar;
     }
     
     private class BackListener implements ActionListener {
@@ -35,7 +38,8 @@ public class PauseMenuController extends Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
+            GameController.getInstance().swapViews(new StatsController(avatar.getStats()));
         }    
     }
     
@@ -45,6 +49,24 @@ public class PauseMenuController extends Controller {
         public void actionPerformed(ActionEvent e) {
             
         }    
+    }
+    
+    private class InventoryListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
+            GameController.getInstance().swapViews(new InventoryController(avatar));
+        }       
+    }
+    
+    private class ExitGameListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            GameController.getInstance().swapViews(new MainMenuController());
+        }
+        
     }
     
 

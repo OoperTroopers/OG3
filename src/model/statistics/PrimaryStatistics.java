@@ -111,12 +111,12 @@ public class PrimaryStatistics {
 	}
 	
 	public String toString() {
-		return	"Strength: "+strength+
-				"\nHardiness: "+hardiness+
-				"\nAgility: "+agility+
-				"\nIntellect: "+intellect+
-				"\nLivesLeft: "+livesLeft+
-				"\nMovement: "+movement;
+		return	"Strength: " + strength +
+			"\nHardiness: " + hardiness +
+			"\nAgility: " + agility +
+			"\nIntellect: " + intellect+
+			"\nLivesLeft: " + livesLeft +
+			"\nMovement: " + movement;
 	}
 	public void notifyGameView() {
 		ActiveGameViewport.getInstance().updatePrimaries(this);

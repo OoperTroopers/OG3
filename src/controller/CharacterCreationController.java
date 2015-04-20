@@ -23,31 +23,31 @@ public class CharacterCreationController extends Controller {
 	}
 	
 	public class SmasherListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Load loadObject = new Load();
-			try {
-				loadObject.read(FilePaths.DEFAULT);
-			} catch (Exception ex) {}
-			Tile startingTile = loadObject.getBeginningTile();
-			Avatar avatar = new Avatar(startingTile, new SmasherOccupation());
-			GameController.getInstance().swapViews(new AvatarController(avatar));
-			System.out.println("CREATED SMASHER");
-		}		
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Load loadObject = new Load();
+                try {
+                        loadObject.read(FilePaths.DEFAULT);
+                } catch (Exception ex) {}
+                Tile startingTile = loadObject.getBeginningTile();
+                Avatar avatar = new Avatar(startingTile, new SmasherOccupation());
+                GameController.getInstance().swapViews(new AvatarController(avatar));
+                System.out.println("CREATED SMASHER");
+            }		
 	}
 	
 	public class SneakListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Load loadObject = new Load();
-			try {
-				loadObject.read(FilePaths.DEFAULT);
-			} catch (Exception ex) {}
-			Tile startingTile = loadObject.getBeginningTile();
-			Avatar avatar = new Avatar(startingTile, new SneakOccupation());
-			GameController.getInstance().swapViews(new AvatarController(avatar));
-			System.out.println("CREATED SNEAK");
-		}		
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Load loadObject = new Load();
+                try {
+                        loadObject.read(FilePaths.DEFAULT);
+                } catch (Exception ex) {}
+                Tile startingTile = loadObject.getBeginningTile();
+                Avatar avatar = new Avatar(startingTile, new SneakOccupation());
+                GameController.getInstance().swapViews(new AvatarController(avatar));
+                System.out.println("CREATED SNEAK");
+            }		
 	}
 	
 	public class SummonerListener implements ActionListener {

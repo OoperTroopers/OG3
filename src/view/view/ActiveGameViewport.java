@@ -1,8 +1,6 @@
 package view.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -15,9 +13,9 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import controller.KeyBinding;
 import controller.GameController;
 import controller.PauseMenuController;
-import controller.KeyBinding;
 import model.entities.Avatar;
 import model.entities.Entity;
 import model.inventory.Inventory;
@@ -65,39 +63,43 @@ public class ActiveGameViewport extends Viewport {
 		
 		Entity avatar = new Avatar(currentTile);
 		System.out.println("about to get primaries");
-		primaries = avatar.getStats().getPrimaryStats();
-		deriveds = avatar.getStats().getDerivedStats();
-		stats = avatar.getStats();
+                stats = avatar.getStats();
+		primaries = stats.getPrimaryStats();
+		deriveds = stats.getDerivedStats();
+		
 		inventory = avatar.getInventory();
 		
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
-		this.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == e.VK_P) {
-					GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
-					GameController.getInstance().swapViews(new PauseMenuController());
-					
-				}
-				
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+		this.addKeyListener(new PauseListener((Avatar)avatar));
 		this.setFocusable(true);
 	}
+        
+        private class PauseListener implements KeyListener {
+            
+            private Avatar avatar;
+            
+            public PauseListener(Avatar avatar) {
+                this.avatar = avatar;
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == e.VK_P) {
+                    GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
+                    GameController.getInstance().swapViews(new PauseMenuController(avatar));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //
+            }
+        }
 	
 	@Override
 	public void visit(ViewportStack viewportStack) {

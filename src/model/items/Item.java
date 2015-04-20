@@ -2,13 +2,12 @@ package model.items;
 
 import model.entities.Avatar;
 import model.entities.Entity;
-import model.map.Location;
 import model.map.Tileable;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 
 
-public abstract class Item implements Tileable{	
+public abstract class Item implements Tileable {	
 	private String name;
 	private String description;
 	private String id;
@@ -77,4 +76,8 @@ public abstract class Item implements Tileable{
 	}
 	
 	public void acceptAvatarInteraction(Avatar avatar) {}
+        
+        public TileableView getItemView() {
+            return this.itemView;
+        }
 }

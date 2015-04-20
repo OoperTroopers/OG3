@@ -19,7 +19,7 @@ public class CharacterCreationController extends Controller {
 	private Viewport view;
 	
 	public CharacterCreationController() {
-		this.view = new CharacterCreationViewport();
+		this.view = new CharacterCreationViewport(new SmasherListener(), new SneakListener(), new SummonerListener());
 	}
 	
 	public class SmasherListener implements ActionListener {
@@ -31,6 +31,7 @@ public class CharacterCreationController extends Controller {
 			} catch (Exception ex) {}
 			Tile startingTile = loadObject.getBeginningTile();
 			Avatar avatar = new Avatar(startingTile, new SmasherOccupation());
+			GameController.getInstance().swapViews(new AvatarController(avatar));
 			System.out.println("CREATED SMASHER");
 		}		
 	}
@@ -44,6 +45,7 @@ public class CharacterCreationController extends Controller {
 			} catch (Exception ex) {}
 			Tile startingTile = loadObject.getBeginningTile();
 			Avatar avatar = new Avatar(startingTile, new SneakOccupation());
+			GameController.getInstance().swapViews(new AvatarController(avatar));
 			System.out.println("CREATED SNEAK");
 		}		
 	}
@@ -57,6 +59,7 @@ public class CharacterCreationController extends Controller {
 			} catch (Exception ex) {}
 			Tile startingTile = loadObject.getBeginningTile();
 			Avatar avatar = new Avatar(startingTile, new SummonerOccupation());
+			GameController.getInstance().swapViews(new AvatarController(avatar));
 			System.out.println("CREATED SUMMONER");
 		}		
 	}

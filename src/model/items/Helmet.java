@@ -13,26 +13,29 @@ public class Helmet extends Armor {
 	public Helmet() {
 		super("Helmet", new HelmetView());
 	}
+	
 	public Helmet(String name, String description, String id, int value, EquippableStatistics es) {
 		super("Helmet", description, id, value, es);
 	}
+	
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipHelmet();
 		em.equipHelmet(this);
 		inventory.removeFromInventory(this);
 	}
+	
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipHelmet();
 		inventory.addToInventory(this);
 	}
+	
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Helmet();
 	}
 }

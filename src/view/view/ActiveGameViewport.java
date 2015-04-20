@@ -72,6 +72,7 @@ public class ActiveGameViewport extends Viewport {
 		this.setBackground(new Color(44,62,80));                
                 
 		// get beginning tile
+		
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
@@ -79,12 +80,14 @@ public class ActiveGameViewport extends Viewport {
 		scrollableTile = currentTile;
 		
 		Entity avatar = new Avatar(currentTile);
+		System.out.println("about to get primaries");
 		primaries = avatar.getStats().getPrimaryStats();
 		deriveds = avatar.getStats().getDerivedStats();
 		stats = avatar.getStats();
 		inventory = avatar.getInventory();
 		
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
+		
 		this.setFocusable(true);
 	}
 	
@@ -113,9 +116,12 @@ public class ActiveGameViewport extends Viewport {
 	// ----------------
 	
 	private void drawInventory(Graphics g) {
+		System.out.println("inventory");
 		Color c = Color.WHITE;
-		int x = Constants.getScreenWidth() - Constants.GAME_VIEW_WIDTH / 10 - 155;
-		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 - 55;
+		int x = Constants.getScreenWidth() - Constants.GAME_VIEW_WIDTH / 10 + 840;
+		System.out.println("x is "+x);
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 620;
+		System.out.println("y is "+y);
 		
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
 		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);
@@ -167,7 +173,7 @@ public class ActiveGameViewport extends Viewport {
 		
 		// draw box
 		g.setColor(new Color(241,196,15,100));
-		int xStart = ViewFrame.getInstance().getWidth() - 160;
+		int xStart = ViewFrame.getInstance().getWidth() + 1100;
 			// FIX THIS. LATER.
 			// LAW OF DEMETER :'(
 		
@@ -206,14 +212,14 @@ public class ActiveGameViewport extends Viewport {
 			g.drawString("LIVES", 20, 35);
 		}
 		
-		g.drawString(" x " + livesLeft, 45, 35);
+		g.drawString(" x " + primaries.getLivesLeft(), 45, 35);
 		
 	}
 	
 	public void drawSimpleStats(Graphics g) {
 		Color c = Color.WHITE;
 		int x = 10;
-		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 - 55;
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 625;
 		
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
 		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);

@@ -13,20 +13,21 @@ public class OneHanded extends Weapon {
 	public OneHanded() {
 		super(new OneHandedView());
 	}
+	
 	public OneHanded(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
 	
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new OneHanded();
 	}
+	
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipOneHandedWeapon();

@@ -14,19 +14,21 @@ public class Ranged extends Weapon {
 	public Ranged() {
 		super("Ranged", new RangedView());
 	}
+	
 	public Ranged(String name, String description, String id, int value, EquippableStatistics es) {
 		super("Ranged", description, id, value, es);
 	}
+	
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Ranged();
 	}
+	
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipRangedWeapon();

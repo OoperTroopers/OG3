@@ -21,4 +21,8 @@ public class HealingOneShotItem extends OneShotItem {
 	public Item clone() {
 		return new HealingOneShotItem();
 	}	
+	
+	public String toString() {
+		return "Item=HealingOS";
+	}
 }

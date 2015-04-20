@@ -13,14 +13,17 @@ public class Legs extends Armor {
 	public Legs() {
 		super("Legs", new LegsView());
 	}
+	
 	public Legs(String name, String description, String id, int value, EquippableStatistics es) {
 		super("Legs", description, id, value, es);
 	}
+	
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipLegs();
 		em.equipLegs(this);
 		inventory.removeFromInventory(this);
 	}
+	
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipLegs();
 		inventory.addToInventory(this);
@@ -28,12 +31,11 @@ public class Legs extends Armor {
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Legs();
 	}
 }

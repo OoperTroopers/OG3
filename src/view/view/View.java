@@ -35,7 +35,8 @@ public class View extends JPanel {
 	}
 
 	public void addViewport(Viewport viewport, String borderLayout) {
-		this.add(viewport, borderLayout);
+		System.out.println("~~~~\nAdd viewport");
+		this.add(viewport);
 		viewport.visit(viewportStack);
 	}
 }

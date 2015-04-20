@@ -23,4 +23,8 @@ public class Icicle extends TimedItem {
 	public boolean isTraversable() {
 		return true;
 	}
+	
+	public String toString() {
+		return "Item=Icicle";
+	}
 }

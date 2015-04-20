@@ -25,25 +25,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import utilities.TileAlgorithm.Direction;
+import view.view.ActiveGameViewport;
+import view.view.Viewport;
 
 /**
  * Created by Adam on 4/13/2015.
  */
-public class ControllerAvatar {
+public class AvatarController extends Controller {
 
     private Avatar avatar;
     private ArrayList<KeyListener> kbList;
     private HashMap<Direction, ExplicitAbility> directionAbilities;
+    private Viewport view;
 
-    public ControllerAvatar(Avatar avatar){
-       	super();
+    public AvatarController(Avatar avatar){
+       	this.view = ActiveGameViewport.getInstance();
        	this.avatar = avatar;
         kbList = new ArrayList<KeyListener>();
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
         //this.statsController = new StatsController(avatar.getStats());
     }
     
-    public ControllerAvatar(Avatar avatar, ArrayList<KeyListener> kbList) {
+    public AvatarController(Avatar avatar, ArrayList<KeyListener> kbList) {
     	super();
     	this.avatar = avatar;
     	this.kbList = kbList;
@@ -115,4 +118,9 @@ public class ControllerAvatar {
     		}
     	}
     }
+
+	@Override
+	public Viewport getViewport() {
+		return this.view;
+	}
 }

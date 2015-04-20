@@ -17,9 +17,9 @@ public class InitializeGame {
 	}
 	
 	public static void createAndShowGui() {
-		ViewFrame vf = ViewFrame.getInstance();
-		vf.initialize();
-		// GameController gameController = GameController.getInstance();
+		// ViewFrame vf = ViewFrame.getInstance();
+		// vf.initialize();
+		GameController gameController = GameController.getInstance();
 		// gameController.swapViews(new GameController());
 	}
 }

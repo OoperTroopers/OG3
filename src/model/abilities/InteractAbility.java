@@ -2,7 +2,7 @@ package model.abilities;
 
 import java.util.List;
 
-import controller.ControllerAvatar;
+import controller.AvatarController;
 import controller.KeyBinding;
 import model.entities.Avatar;
 import model.entities.Entity;
@@ -45,7 +45,7 @@ public class InteractAbility extends ExplicitAbility {
 	} 
 	 
 	@Override
-	public void attachToController(ControllerAvatar controlAvatar) {
+	public void attachToController(AvatarController controlAvatar) {
 	     controlAvatar.addToKLSet(keyBinding);
 	}
 }

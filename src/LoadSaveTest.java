@@ -18,7 +18,7 @@ public class LoadSaveTest {
 		System.out.print("File to read from: ");
 		String fileName = in.next();
 		loadObject.read(fileName);
-		
+		/*
 		// get the starting Tile
 		Tile beginningTile = loadObject.getBeginningTile();
 		
@@ -26,5 +26,6 @@ public class LoadSaveTest {
 		System.out.print("File to write to: ");
 		fileName = in.next();
 		saveObject.write(fileName, beginningTile);
+		*/
 	}
 }

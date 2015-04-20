@@ -2,7 +2,7 @@ package model.abilities.movement;
 
 import utilities.TileAlgorithm.Direction;
 import view.view.ActiveGameViewport;
-import controller.ControllerAvatar;
+import controller.AvatarController;
 import controller.KeyBinding;
 import model.abilities.ExplicitAbility;
 import model.entities.Entity;
@@ -30,7 +30,7 @@ public class MoveSouthwestAbility extends ExplicitAbility {
     }
 
     @Override
-    public void attachToController(ControllerAvatar controlAvatar) {
+    public void attachToController(AvatarController controlAvatar) {
         controlAvatar.addToKLSet(keyBinding);
     }
 }

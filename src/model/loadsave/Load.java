@@ -81,7 +81,7 @@ public class Load {
 	private void initializeTileArray(int numberOfTiles) {
 		this.allTiles = new Tile[numberOfTiles + 1];
 		for (int i = 0; i <= numberOfTiles; i++) {
-			this.allTiles[i] = new Tile();
+			this.allTiles[i] = new Tile(i);
 		}
 	}
 	

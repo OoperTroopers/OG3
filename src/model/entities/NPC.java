@@ -105,4 +105,8 @@ public class NPC extends Entity {
 	public void update(Tile tile) {
 		System.out.println("Update in NPC called");
 	}
+	
+	public String toString() {
+		return "Entity=NPC";
+	}
 }

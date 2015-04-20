@@ -19,14 +19,14 @@ public class Brawl extends Weapon {
 	
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Brawl();
 	}
+	
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipBareHandedWeapon();
@@ -38,5 +38,9 @@ public class Brawl extends Weapon {
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipBareHandedWeapon();
 		inventory.addToInventory(this);
+	}
+	
+	public String toString() {
+		return "Item=Brawl";
 	}
 }

@@ -12,14 +12,17 @@ public class Saddle extends Armor {
 	public Saddle() {
 		super("Saddle", new SaddleView());
 	}
+	
 	public Saddle(String name, String description, String id, int value, EquippableStatistics es) {
 		super("Saddle", description, id, value, es);
 	}
+	
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipSaddle();
 		em.equipSaddle(this);
 		inventory.removeFromInventory(this);
 	}
+	
 	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipSaddle();
 		inventory.addToInventory(this);
@@ -27,12 +30,15 @@ public class Saddle extends Armor {
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Saddle();
+	}
+	
+	public String toString() {
+		return "Item=Saddle";
 	}
 }

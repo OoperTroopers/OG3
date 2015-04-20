@@ -39,12 +39,13 @@ public class Tile {
     
     LinkedList<Entity> observers;
     
-    public Tile() {
+    public Tile(int i) {
     	this.location = new Location(-200, -200, -200);
     	this.neighbors = new HashMap<Direction, Tile>();
     	tileView = new TileView();
     	tileables = new ArrayList<Tileable>();
     	this.addTileable(new GrassTerrain());
+    	//System.out.println(i + " AGV --> " + ActiveGameViewport.getInstance());
     }
     
     public Tile(int x, int y, int z) {

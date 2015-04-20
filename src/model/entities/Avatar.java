@@ -1,7 +1,7 @@
 package model.entities;
 
 import controller.AvatarBrain;
-import controller.ControllerAvatar;
+import controller.AvatarController;
 import model.abilities.ExplicitAbility;
 import model.effects.Effect;
 import model.equipmentmanagers.EquipmentManager;
@@ -26,14 +26,14 @@ import view.view.ExtendedStatsViewport;
 public class Avatar extends Entity {
 	
     private Journal myJournal;
-	private ControllerAvatar controlAvatar;
+	private AvatarController controlAvatar;
 	private Mount mount;
 	private AvatarBrain myBrain;
 	private int radiusOfVision;
 	
 	public Avatar(){
 		super();
-		this.controlAvatar = new ControllerAvatar(this);
+		this.controlAvatar = new AvatarController(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
@@ -43,7 +43,7 @@ public class Avatar extends Entity {
 	public Avatar(Occupation o, EquipmentManager em, Statistics s, Tile tile) {
 		super(o, em, s, tile, new AvatarView());
 		//this.location = new Location();
-		this.controlAvatar = new ControllerAvatar(this);
+		this.controlAvatar = new AvatarController(this);
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
 		onMove();
@@ -51,7 +51,7 @@ public class Avatar extends Entity {
 	
 	public Avatar(Tile tile) {
 		super(tile, new AvatarView());
-		this.controlAvatar = new ControllerAvatar(this);
+		this.controlAvatar = new AvatarController(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
@@ -60,7 +60,7 @@ public class Avatar extends Entity {
 	
 	public Avatar(Tile tile, Occupation occupation) {
 		super(tile, new AvatarView());
-		this.controlAvatar = new ControllerAvatar(this);
+		this.controlAvatar = new AvatarController(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
@@ -180,10 +180,10 @@ public class Avatar extends Entity {
 	
 	public void acceptAvatar(Avatar avatar) {}
 	
-	public ControllerAvatar getControlAvatar() {
+	public AvatarController getControlAvatar() {
 		return controlAvatar;
 	}
-	public void setcontrolAvatar(ControllerAvatar controlAvatar) {
+	public void setcontrolAvatar(AvatarController controlAvatar) {
 		this.controlAvatar = controlAvatar;
 	}
 	
@@ -202,7 +202,7 @@ public class Avatar extends Entity {
 		return this.mount == null ? false : true;
 	}
 	
-	public void updateDirection() {
-		
+	public String toString() {
+		return "Entity=Avatar";
 	}
 }

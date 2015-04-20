@@ -6,6 +6,7 @@
 package model.map;
 
 import model.effects.Effect;
+import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.terrain.GrassTerrainView;
 
@@ -16,7 +17,7 @@ import view.modelview.tileable.terrain.GrassTerrainView;
 public class GrassTerrain extends Terrain {
     
     static GrassTerrainView view = new GrassTerrainView();
-
+    
     public GrassTerrain() {
     	super(view);
     }

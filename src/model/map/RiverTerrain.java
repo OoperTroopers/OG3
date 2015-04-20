@@ -5,7 +5,12 @@
  */
 package model.map;
 
+import controller.GameTimer;
 import model.effects.Effect;
+import model.effects.RiverEffect;
+import model.entities.Avatar;
+import model.entities.Entity;
+import utilities.TileAlgorithm.Direction;
 import view.modelview.tileable.terrain.RiverTerrainView;
 
 /**
@@ -14,9 +19,17 @@ import view.modelview.tileable.terrain.RiverTerrainView;
  */
 public class RiverTerrain extends Terrain {
     static RiverTerrainView view = new RiverTerrainView();
+    Direction direction;
+    GameTimer untilEffect;
 
     public RiverTerrain() {
     	super(view);
+    	this.direction = Direction.SOUTH;
+    }
+    
+    public RiverTerrain(Direction direction) {
+    	super(view);
+    	this.direction = direction;
     }
     
     @Override
@@ -40,7 +53,13 @@ public class RiverTerrain extends Terrain {
 
     @Override
     public boolean isTraversable() {
-        return false;
+        return true;
+    }
+    
+    @Override
+    public void acceptAvatar(Avatar avatar) {
+    	untilEffect = GameTimer.getInstance();
+    	untilEffect.addRunnable(new RiverEffect(direction, avatar), 1000);
     }
     
 }

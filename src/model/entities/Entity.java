@@ -240,7 +240,7 @@ public abstract class Entity implements Tileable, Moveable {
             get called should be done before you call these. i.e. the controller should
             know whether or not it's legal to move the Entity.
 	 */
-	protected void move(Direction direction) {
+	public void move(Direction direction) {
 		myTile.removeTileable(this);
 		if (getMount() != null) myTile.removeTileable(mount);
 		this.entityView.updateImage(direction);

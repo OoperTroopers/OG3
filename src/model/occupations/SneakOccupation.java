@@ -1,6 +1,10 @@
 package model.occupations;
 
 import model.abilities.*;
+import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SneakEquipmentManager;
+import model.statistics.SneakStatistics;
+import model.statistics.Statistics;
 
 public class SneakOccupation extends Occupation {
 	
@@ -29,5 +33,18 @@ public class SneakOccupation extends Occupation {
 	}
 	public int getRangedAbilityLevel() {
 		return getAbilityList().get(6).getAbilityLevel();
+	}
+
+
+	@Override
+	public EquipmentManager createEquipmentManager() {
+		Statistics stats = this.createStatistics();
+		return new SneakEquipmentManager(stats.getDerivedStats(), this);
+	}
+
+
+	@Override
+	public Statistics createStatistics() {
+		return new SneakStatistics();
 	}
 }

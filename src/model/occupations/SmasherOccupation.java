@@ -1,6 +1,10 @@
 package model.occupations;
 
 import model.abilities.*;
+import model.equipmentmanagers.EquipmentManager;
+import model.equipmentmanagers.SmasherEquipmentManager;
+import model.statistics.SmasherStatistics;
+import model.statistics.Statistics;
 
 public class SmasherOccupation extends Occupation {
 	//private SmasherSkillManager skillManager;
@@ -25,5 +29,15 @@ public class SmasherOccupation extends Occupation {
 	}
 	public int getBrawlAbilityLevel() {
 		return getAbilityList().get(5).getAbilityLevel();
+	}
+
+	@Override
+	public EquipmentManager createEquipmentManager() {
+		Statistics stats = this.createStatistics();
+		return new SmasherEquipmentManager(stats.getDerivedStats(), this);
+	}
+	
+	public Statistics createStatistics() {
+		return new SmasherStatistics();
 	}
 }

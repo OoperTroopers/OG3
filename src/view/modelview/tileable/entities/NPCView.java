@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import utilities.TileAlgorithm.Direction;
 import view.tools.ImagePaths;
 
 public class NPCView extends EntityView {
@@ -20,5 +21,9 @@ public class NPCView extends EntityView {
 	@Override
 	public BufferedImage getImage() {
 		return image;
+	}
+	
+	public void updateImage(Direction direction) {
+		
 	}
 }

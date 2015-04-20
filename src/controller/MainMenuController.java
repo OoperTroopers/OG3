@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +14,10 @@ public class MainMenuController extends Controller {
 		this.view = new MainMenuViewport(new NewGameListener(), new LoadGameListener(), new ExitGameListener());
 	}
 	
+	public ActionListener getNewGameListener() {
+		return new NewGameListener();
+	}
+	
 	public Viewport getViewport() {
 		return this.view;
 	}
@@ -22,7 +25,8 @@ public class MainMenuController extends Controller {
 	public class NewGameListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("NEW GAME");			
+			System.out.println("NEW GAME");		
+			GameController.getInstance().swapViews(new CharacterCreationController());
 		}		
 	}
 	

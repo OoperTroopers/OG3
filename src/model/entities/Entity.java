@@ -29,7 +29,7 @@ public abstract class Entity implements Tileable, Moveable {
 	private EquipmentManager equipmentManager;
 	private Occupation occupation;
 	private Statistics stats;
-	private int direction;
+	private Direction direction;
 
 	// generic constructor creates Smasher as base class
 	public Entity() {
@@ -37,7 +37,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.stats = new SmasherStatistics();
 		this.occupation = new SmasherOccupation();
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
-		this.direction = 8;
+		this.direction = Direction.SOUTH;
 	}
 	
 	public Entity(TileableView entityView) {
@@ -46,7 +46,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.occupation = new SmasherOccupation();
 		this.entityView = entityView;
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
-		this.direction = 8;
+		this.direction = Direction.SOUTH;
 	}
 
 	public Entity(Tile tile, TileableView entityView) {
@@ -54,7 +54,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.stats = new SmasherStatistics();
 		this.occupation = new SmasherOccupation();
 		this.equipmentManager = new SmasherEquipmentManager(stats.getDerivedStats(), occupation);
-		this.direction = 8;
+		this.direction = Direction.SOUTH;
 		this.myTile = tile;
 		this.entityView = entityView;
 		this.myTile.addTileable(this);
@@ -65,7 +65,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.equipmentManager = em;
 		this.occupation = o;
 		this.stats = s;
-		this.direction = 8;
+		this.direction = Direction.SOUTH;
 	}
 
 	// constructor for Entity with specific occupation. 
@@ -75,7 +75,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.equipmentManager = em;
 		this.occupation = o;
 		this.stats = s;
-		this.direction = 8;
+		this.direction = Direction.SOUTH;
 		this.myTile = tile;
 		this.entityView = entityView;
 		this.myTile.addTileable(this);
@@ -207,11 +207,11 @@ public abstract class Entity implements Tileable, Moveable {
 		this.stats = stats;
 	}
 
-	public int getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 
-	public void setDirection(int direction) {
+	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
 

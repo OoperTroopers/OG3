@@ -50,10 +50,10 @@ public class ViewFrame extends JFrame {
 	public static ViewFrame getInstance() { return viewFrame; }
 	public void initialize() {
 
-            // ViewportStack.add(MainMenuViewport.getInstance());
+            //ViewportStack.add();
             // ViewportStack.add(SimpleStatsViewport.getInstance());
             ViewportStack.add(ActiveGameViewport.getInstance());
-            
+            // ViewportStack.add(ExtendedStatsViewport.getInstance());
             // ViewportStack.add(PauseMenuViewport.getInstance());
             addViewport(ViewportStack.top(), BorderLayout.CENTER);
 	}

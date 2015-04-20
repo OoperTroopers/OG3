@@ -5,7 +5,7 @@ import view.view.ViewFrame;
 
 public class InitializeGame {
 	public static void main(String[] args) {
-		InitializeGame game = new InitializeGame();
+                InitializeGame game = new InitializeGame();
 	}
 	
 	public InitializeGame() {
@@ -15,7 +15,8 @@ public class InitializeGame {
 	}
 	
 	public static void createAndShowGui() {
-		ViewFrame vf = ViewFrame.getInstance();
-		vf.initialize();
+		//ViewFrame vf = ViewFrame.getInstance();
+		//vf.initialize();
+		GameController gameController = new GameController();
 	}
 }

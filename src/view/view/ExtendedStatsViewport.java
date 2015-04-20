@@ -5,10 +5,8 @@
  */
 package view.view;
 
-import java.awt.Dimension;
-import java.util.Observer;
+import model.entities.Avatar;
 import model.statistics.Statistics;
-import view.tools.Constants;
 
 /**
  *
@@ -19,12 +17,18 @@ public class ExtendedStatsViewport extends Viewport {
     public static ExtendedStatsViewport extendedStatsViewport = new ExtendedStatsViewport();
     
     private static Statistics stats;
+    
+    private Avatar avatar = new Avatar();
     /**
      * Creates new form ExtendedStatsViewport
      */
     public ExtendedStatsViewport() {
         initComponents();
-        this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
+        stats = avatar.getStats();
+        if (stats != null) {
+            updateLabels();
+        }
+        //this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
     }
     
     @Override
@@ -38,6 +42,26 @@ public class ExtendedStatsViewport extends Viewport {
     
     public static void updateStatistics(Statistics statistics) {
         stats = statistics;
+    }
+    
+    private void updateLabels() {
+        healthLabel.setText(" " + stats.getCurrentHealth() + "/" + stats.getDerivedStats().getMaxHealth());
+        manaLabel.setText(" " + stats.getCurrentMana() + "/" + stats.getDerivedStats().getMaxMana());
+        livesLeftLabel.setText(" " + stats.getLivesLeft());
+        
+        strengthLabel.setText(" " + stats.getPrimaryStats().getStrength());
+        agilityLabel.setText(" " + stats.getPrimaryStats().getAgility());
+        intellectLabel.setText(" " + stats.getPrimaryStats().getIntellect());
+        hardinessLabel.setText(" " + stats.getPrimaryStats().getHardiness());
+        movementLabel.setText(" " + stats.getPrimaryStats().getMovement());
+        
+        offenseLabel.setText(" " + stats.getOffensiveRating());
+        defenseLabel.setText(" " + stats.getDefensiveRating());
+        armorLabel.setText(" " + stats.getArmorRating());
+        
+        goldLabel.setText(" " + stats.getCurrentGold());
+        experienceLabel.setText(" " + stats.getCurrentExperience());
+        levelLabel.setText(" " + stats.getCurrentLevel());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +91,7 @@ public class ExtendedStatsViewport extends Viewport {
         jLabel17 = new javax.swing.JLabel();
         offenseLabel = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        defenceLabel = new javax.swing.JLabel();
+        defenseLabel = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         armorLabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -90,7 +114,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         healthLabel.setBackground(new java.awt.Color(255, 0, 0));
         healthLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        healthLabel.setText(" <Number>");
+        healthLabel.setText(" 0");
         healthLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         healthLabel.setOpaque(true);
 
@@ -103,7 +127,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         manaLabel.setBackground(new java.awt.Color(255, 0, 0));
         manaLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        manaLabel.setText(" <Number>");
+        manaLabel.setText(" 0");
         manaLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         manaLabel.setOpaque(true);
 
@@ -116,7 +140,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         livesLeftLabel.setBackground(new java.awt.Color(255, 0, 0));
         livesLeftLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        livesLeftLabel.setText(" <Number>");
+        livesLeftLabel.setText(" 0");
         livesLeftLabel.setToolTipText("");
         livesLeftLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 4, new java.awt.Color(0, 0, 0)));
         livesLeftLabel.setOpaque(true);
@@ -130,7 +154,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         strengthLabel.setBackground(new java.awt.Color(255, 255, 0));
         strengthLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        strengthLabel.setText(" <Number>");
+        strengthLabel.setText(" 0");
         strengthLabel.setToolTipText("");
         strengthLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         strengthLabel.setOpaque(true);
@@ -144,7 +168,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         agilityLabel.setBackground(new java.awt.Color(255, 255, 0));
         agilityLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        agilityLabel.setText(" <Number>");
+        agilityLabel.setText(" 0");
         agilityLabel.setToolTipText("");
         agilityLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         agilityLabel.setOpaque(true);
@@ -158,7 +182,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         intellectLabel.setBackground(new java.awt.Color(255, 255, 0));
         intellectLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        intellectLabel.setText(" <Number>");
+        intellectLabel.setText(" 0");
         intellectLabel.setToolTipText("");
         intellectLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         intellectLabel.setOpaque(true);
@@ -172,7 +196,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         hardinessLabel.setBackground(new java.awt.Color(255, 255, 0));
         hardinessLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        hardinessLabel.setText(" <Number>");
+        hardinessLabel.setText(" 0");
         hardinessLabel.setToolTipText("");
         hardinessLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         hardinessLabel.setOpaque(true);
@@ -186,7 +210,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         movementLabel.setBackground(new java.awt.Color(255, 255, 0));
         movementLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        movementLabel.setText(" <Number>");
+        movementLabel.setText(" 0");
         movementLabel.setToolTipText("");
         movementLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 4, new java.awt.Color(0, 0, 0)));
         movementLabel.setOpaque(true);
@@ -200,7 +224,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         offenseLabel.setBackground(new java.awt.Color(0, 255, 0));
         offenseLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        offenseLabel.setText(" <Number>");
+        offenseLabel.setText(" 0");
         offenseLabel.setToolTipText("");
         offenseLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         offenseLabel.setOpaque(true);
@@ -212,12 +236,12 @@ public class ExtendedStatsViewport extends Viewport {
         jLabel19.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 4, 1, 1, new java.awt.Color(0, 0, 0)));
         jLabel19.setOpaque(true);
 
-        defenceLabel.setBackground(new java.awt.Color(0, 255, 0));
-        defenceLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        defenceLabel.setText(" <Number>");
-        defenceLabel.setToolTipText("");
-        defenceLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
-        defenceLabel.setOpaque(true);
+        defenseLabel.setBackground(new java.awt.Color(0, 255, 0));
+        defenseLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        defenseLabel.setText(" 0");
+        defenseLabel.setToolTipText("");
+        defenseLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
+        defenseLabel.setOpaque(true);
 
         jLabel21.setBackground(new java.awt.Color(0, 255, 0));
         jLabel21.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
@@ -228,7 +252,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         armorLabel.setBackground(new java.awt.Color(0, 255, 0));
         armorLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        armorLabel.setText(" <Number>");
+        armorLabel.setText(" 0");
         armorLabel.setToolTipText("");
         armorLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 3, 4, new java.awt.Color(0, 0, 0)));
         armorLabel.setOpaque(true);
@@ -242,7 +266,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         goldLabel.setBackground(new java.awt.Color(0, 255, 255));
         goldLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        goldLabel.setText(" <Number>");
+        goldLabel.setText(" 0");
         goldLabel.setToolTipText("");
         goldLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         goldLabel.setOpaque(true);
@@ -256,7 +280,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         experienceLabel.setBackground(new java.awt.Color(0, 255, 255));
         experienceLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        experienceLabel.setText(" <Number>");
+        experienceLabel.setText(" 0");
         experienceLabel.setToolTipText("");
         experienceLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 4, new java.awt.Color(0, 0, 0)));
         experienceLabel.setOpaque(true);
@@ -270,7 +294,7 @@ public class ExtendedStatsViewport extends Viewport {
 
         levelLabel.setBackground(new java.awt.Color(0, 255, 255));
         levelLabel.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        levelLabel.setText(" <Number>");
+        levelLabel.setText(" 0");
         levelLabel.setToolTipText("");
         levelLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 4, 4, new java.awt.Color(0, 0, 0)));
         levelLabel.setOpaque(true);
@@ -294,69 +318,67 @@ public class ExtendedStatsViewport extends Viewport {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(healthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(manaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(livesLeftLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(strengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(agilityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(intellectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(hardinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(movementLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(offenseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(defenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(armorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(goldLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(experienceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(129, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(healthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(manaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(livesLeftLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(strengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(agilityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(intellectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(hardinessLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(movementLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(offenseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(defenseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(armorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(goldLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(experienceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -394,7 +416,7 @@ public class ExtendedStatsViewport extends Viewport {
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(defenceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(defenseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(armorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -424,7 +446,7 @@ public class ExtendedStatsViewport extends Viewport {
     private javax.swing.JLabel agilityLabel;
     private javax.swing.JLabel armorLabel;
     private javax.swing.JButton backButton;
-    private javax.swing.JLabel defenceLabel;
+    private javax.swing.JLabel defenseLabel;
     private javax.swing.JLabel experienceLabel;
     private javax.swing.JLabel goldLabel;
     private javax.swing.JLabel hardinessLabel;

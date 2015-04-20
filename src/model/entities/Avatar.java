@@ -25,13 +25,11 @@ import view.view.ExtendedStatsViewport;
 
 public class Avatar extends Entity {
 	
-	
-	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
 	private Mount mount;
-	private int radiusOfVision;
 	private AvatarBrain myBrain;
+	private int radiusOfVision;
 	
 	public Avatar(){
 		super();
@@ -57,7 +55,6 @@ public class Avatar extends Entity {
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
-		onMove();
 		myBrain = new AvatarBrain(this);
 	}
 
@@ -109,7 +106,7 @@ public class Avatar extends Entity {
     }
     
     public void refreshView(){
-    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
+    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.radiusOfVision);
     	for(Tile t: tiles){
     		t.updateTileView();
     	}

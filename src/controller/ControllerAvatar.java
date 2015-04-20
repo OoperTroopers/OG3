@@ -31,7 +31,7 @@ import utilities.TileAlgorithm.Direction;
  */
 public class ControllerAvatar {
 
-	private Avatar avatar;
+    private Avatar avatar;
     private ArrayList<KeyListener> kbList;
     private HashMap<Direction, ExplicitAbility> directionAbilities;
 
@@ -40,6 +40,7 @@ public class ControllerAvatar {
        	this.avatar = avatar;
         kbList = new ArrayList<KeyListener>();
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
+        //this.statsController = new StatsController(avatar.getStats());
     }
     
     public ControllerAvatar(Avatar avatar, ArrayList<KeyListener> kbList) {
@@ -47,6 +48,7 @@ public class ControllerAvatar {
     	this.avatar = avatar;
     	this.kbList = kbList;
     	this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
+        //this.statsController = new StatsController(avatar.getStats());
     }
    
     public void setDefaultAbilityKeys() {

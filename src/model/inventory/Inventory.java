@@ -30,7 +30,6 @@ public class Inventory {
 	}
 	
 	public boolean itemInInventory(TakeableItem item) {
-		boolean exists = inventory.contains(item);
-		return exists;
+		return inventory.contains(item);
 	}
 }

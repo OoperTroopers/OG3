@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import view.tools.ImagePaths;
 
-public class StaffView extends WeaponView{
+public class StaffView extends WeaponView {
 
 	BufferedImage image;
 	

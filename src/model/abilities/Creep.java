@@ -16,7 +16,6 @@ public class Creep extends ExplicitAbility {
 	}
 	
 	public void perform(Entity entity) {
-		System.out.println("ALLAHU ACKBAR");
 		//reduce visibility by enemies
 		getEffect().visit(entity);
 	}

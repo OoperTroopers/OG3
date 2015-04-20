@@ -93,6 +93,12 @@ public class Avatar extends Entity {
 	public void setMyJournal(Journal myJournal) {
 		this.myJournal = myJournal;
 	}
+
+
+
+	public void updateKeyBinding(ExplicitAbility ability, Direction direction){
+		controlAvatar.updateKeyBinding(ability, direction);
+	}
     
     
     public void notifyOfTileChange(Tile t){
@@ -144,6 +150,11 @@ public class Avatar extends Entity {
 		ability.attachToController(controlAvatar);
 	}
 
+	public void removeAbility(ExplicitAbility ability) {
+		this.getOccupation().removeAbility(ability);
+		ability.removeFromController(controlAvatar);
+	}
+
 	@Override
 	public void update(Tile tile) {
 		controlAvatar.update(this, tile);
@@ -159,7 +170,7 @@ public class Avatar extends Entity {
 			getStats().setCurrentHealthMax();
 			getStats().setCurrentManaMax();
 		} else {
-			//call go to main method
+			System.exit(0);
 		}
 	}
 	/*

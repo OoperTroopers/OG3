@@ -75,7 +75,7 @@ public class Mount extends NPC {
 	@Override 
 	public void update(Tile tile) {
 		System.out.println("update in mount called");
-		//ActiveGameViewport.getInstance().setAvatarTile(tile);
+		ActiveGameViewport.getInstance().setAvatarTile(tile);
 	}
 	
 	@Override

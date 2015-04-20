@@ -8,20 +8,16 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 
-import controller.AvatarController;
 import controller.GameController;
 import controller.PauseMenuController;
-import controller.RunGame;
+import controller.KeyBinding;
 import model.entities.Avatar;
 import model.entities.Entity;
 import model.inventory.Inventory;
@@ -30,11 +26,9 @@ import model.loadsave.Load;
 import model.map.Tile;
 import model.statistics.DerivedStatistics;
 import model.statistics.PrimaryStatistics;
-import model.statistics.SmasherStatistics;
 import model.statistics.Statistics;
 import utilities.TileAlgorithm;
 import view.modelview.tile.TileView;
-import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 
@@ -280,6 +274,16 @@ public class ActiveGameViewport extends Viewport {
             addKeyListener(kbList.get(i));
         }
     }
+
+	public void addSingleAvatarKeyBinding(KeyBinding keyBinding){
+		addKeyListener(keyBinding);
+	}
+
+	public void removeSingleAvatarKeyBinding(KeyBinding keyBinding){
+		removeKeyListener(keyBinding);
+	}
+
+
 	
 	public void activateAvatarTile() {
 		this.currentTile = avatarTile;

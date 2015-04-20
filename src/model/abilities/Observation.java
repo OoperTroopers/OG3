@@ -14,7 +14,6 @@ public class Observation extends ExplicitAbility {
 	}
 	
 	public void perform() {
-		System.out.println("ALLAHU ACKBAR");
 		//Do ping
 	}
 }

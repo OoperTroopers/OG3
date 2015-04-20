@@ -17,7 +17,6 @@ public class Enchantment extends ExplicitAbility {
 	}
 	
 	public void perform(Entity entity) {
-		System.out.println("ALLAHU ACKBAR");
 		getEffect().visit(entity);
 	}
 }

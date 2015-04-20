@@ -39,6 +39,10 @@ public abstract class ExplicitAbility extends Ability {
 	
 	public void perform() {
 	}
+
+	public void removeFromController(AvatarController controllerAvatar){
+		controllerAvatar.removeFromKLSet(keyBinding);
+	}
 	
 	public void attachToController(AvatarController controlAvatar) {
 		controlAvatar.addToKLSet(keyBinding);

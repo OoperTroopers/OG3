@@ -2,6 +2,8 @@ package model.occupations;
 
 import java.util.ArrayList;
 import model.abilities.*;
+import model.equipmentmanagers.EquipmentManager;
+import model.statistics.Statistics;
 
 public abstract class Occupation {
 	private ArrayList<Ability> abilityList;
@@ -44,4 +46,7 @@ public abstract class Occupation {
 	public void addAbility(Ability ability) {
 		this.abilityList.add(ability);
 	}
+	
+	public abstract EquipmentManager createEquipmentManager();
+	public abstract Statistics createStatistics();
 }

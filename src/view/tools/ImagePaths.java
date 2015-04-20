@@ -11,7 +11,12 @@ public class ImagePaths {
     public static final String RIVER_TERRAIN = IMG_DIR + "river_terrain.gif";
  
     //Entity sprites
-    public static final String AVATAR = IMG_DIR + "Sprite-can.png";
+    public static final String AVATAR_SOUTH = IMG_DIR + "avatar_south.png";
+    public static final String AVATAR_SOUTHEAST = IMG_DIR + "avatar_southeast.png";
+    public static final String AVATAR_SOUTHWEST = IMG_DIR + "avatar_southwest.png";
+    public static final String AVATAR_NORTH = IMG_DIR + "avatar_north.png";
+    public static final String AVATAR_NORTHEAST = IMG_DIR + "avatar_northeast.png";
+    public static final String AVATAR_NORTHWEST = IMG_DIR + "avatar_northwest.png";
     public static final String NPC = IMG_DIR + "NPC_Cat.png";
     public static final String SHOPKEEPER = IMG_DIR + "shopkeeper_cat.jpg";
     public static final String MOUNT = IMG_DIR + "car.png";

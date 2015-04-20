@@ -10,6 +10,7 @@ import model.items.TakeableItem;
 import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
+import view.modelview.tileable.entities.EntityView;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -23,7 +24,7 @@ public abstract class Entity implements Tileable, Moveable {
 	private Tile myTile;
 	private MovementCapabilities myMovement;
 	
-	private TileableView entityView;
+	private EntityView entityView;
 
 	private Inventory inventory;
 	private EquipmentManager equipmentManager;
@@ -40,7 +41,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.direction = Direction.SOUTH;
 	}
 	
-	public Entity(TileableView entityView) {
+	public Entity(EntityView entityView) {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
 		this.occupation = new SmasherOccupation();
@@ -49,7 +50,7 @@ public abstract class Entity implements Tileable, Moveable {
 		this.direction = Direction.SOUTH;
 	}
 
-	public Entity(Tile tile, TileableView entityView) {
+	public Entity(Tile tile, EntityView entityView) {
 		this.inventory = new Inventory();
 		this.stats = new SmasherStatistics();
 		this.occupation = new SmasherOccupation();
@@ -57,6 +58,17 @@ public abstract class Entity implements Tileable, Moveable {
 		this.direction = Direction.SOUTH;
 		this.myTile = tile;
 		this.entityView = entityView;
+		this.myTile.addTileable(this);
+	}
+	
+	public Entity(Tile tile, EntityView entityView, Occupation occupation) {
+		this.myTile = tile;
+		this.entityView = entityView;
+		this.occupation = occupation;
+		this.equipmentManager = occupation.createEquipmentManager();
+		this.stats = occupation.createStatistics();
+		this.inventory = new Inventory();
+		this.direction = Direction.SOUTH;
 		this.myTile.addTileable(this);
 	}
 	
@@ -70,7 +82,7 @@ public abstract class Entity implements Tileable, Moveable {
 
 	// constructor for Entity with specific occupation. 
 	//needs refactor to account for equipment manager needing derived stats
-	public Entity(Occupation o, EquipmentManager em, Statistics s, Tile tile, TileableView entityView) {
+	public Entity(Occupation o, EquipmentManager em, Statistics s, Tile tile, EntityView entityView) {
 		this.inventory = new Inventory();
 		this.equipmentManager = em;
 		this.occupation = o;
@@ -227,6 +239,7 @@ public abstract class Entity implements Tileable, Moveable {
 	protected void move(Direction direction) {
 		myTile.removeTileable(this);
 		if (getMount() != null) myTile.removeTileable(mount);
+		this.entityView.updateImage(direction);
 		myTile = myTile.getNeighbor(direction);
 		update(myTile);
 		

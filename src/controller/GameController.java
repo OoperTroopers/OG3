@@ -19,5 +19,13 @@ public class GameController {
 		this.frame.add(this.activeViewport);
 		this.frame.setVisible(true);
 	}
+	
+	public void swapViews(Controller c) {
+		Viewport v = c.getViewport();
+		this.frame.remove(activeViewport);
+		activeViewport = v;
+		activeController = c;
+		this.frame.add(activeViewport);
+	}
 
 }

@@ -15,6 +15,10 @@ public class MainMenuController extends Controller {
 		this.view = new MainMenuViewport(new NewGameListener(), new LoadGameListener(), new ExitGameListener());
 	}
 	
+	public ActionListener getNewGameListener() {
+		return new NewGameListener();
+	}
+	
 	public Viewport getViewport() {
 		return this.view;
 	}

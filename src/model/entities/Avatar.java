@@ -57,6 +57,15 @@ public class Avatar extends Entity {
 		this.radiusOfVision = 3;
 		myBrain = new AvatarBrain(this);
 	}
+	
+	public Avatar(Tile tile, Occupation occupation) {
+		super(tile, new AvatarView());
+		this.controlAvatar = new ControllerAvatar(this);
+		this.controlAvatar.setDefaultAbilityKeys();
+		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
+		myBrain = new AvatarBrain(this);
+	}
 
 	public ArrayList<KeyListener> getKeyBinding(){
 		return controlAvatar.getKbList();
@@ -191,5 +200,9 @@ public class Avatar extends Entity {
 	
 	public boolean mounted() {
 		return this.mount == null ? false : true;
+	}
+	
+	public void updateDirection() {
+		
 	}
 }

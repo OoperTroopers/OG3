@@ -11,6 +11,7 @@ import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.EntityView;
+import model.effects.*;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -103,7 +104,7 @@ public abstract class Entity implements Tileable, Moveable {
 	public void setMount(Mount mount) { this.mount = mount; }
 
 	public void heal(int amount) {
-		this.stats.heal(amount);
+		stats.heal(amount);
 	}
 
 	public void receiveDamage(int damage) {
@@ -121,12 +122,32 @@ public abstract class Entity implements Tileable, Moveable {
 			stats.setCurrentHealthMax();
 			stats.setCurrentManaMax();
 		} else {
-			myTile.removeTileable(this);
+			getTile().removeTileable(this);
 		}
 	}
 
+	public void bind() {
+		System.out.println("Heal");
+		heal(20);
+	}
+	public void sendHeal() {
+		Tile neigh = myTile.getNeighbor(direction);
+		neigh.affectAllTileables(new HealEffect());
+	}
+	
 	public int sendDamage() {
 		int damage = stats.getOffensiveRating();
+		Tile neigh = myTile.getNeighbor(direction);
+		neigh.affectAllTileables(new DamageEffect(damage));
+		return damage;
+	}
+	public int sendDamageRanged() {
+		int damage = stats.getOffensiveRating();
+		Tile range = myTile.getNeighbor(direction);
+		for(int i = 0; i < 5; i++) {
+			range.affectAllTileables(new DamageEffect(damage));
+			range = range.getNeighbor(direction);
+		}
 		return damage;
 	}
 
@@ -236,7 +257,7 @@ public abstract class Entity implements Tileable, Moveable {
             get called should be done before you call these. i.e. the controller should
             know whether or not it's legal to move the Entity.
 	 */
-	protected void move(Direction direction) {
+	public void move(Direction direction) {
 		myTile.removeTileable(this);
 		if (getMount() != null) myTile.removeTileable(mount);
 		this.entityView.updateImage(direction);
@@ -287,6 +308,10 @@ public abstract class Entity implements Tileable, Moveable {
 	
 	public void addAbility(ImplicitAbility ability){
 		occupation.addAbility(ability);
+	}
+
+	public void removeAbility(ImplicitAbility ability){
+		occupation.removeAbility(ability);
 	}
 	
 	public void addAbility(ExplicitAbility ability) {

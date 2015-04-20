@@ -14,6 +14,11 @@ public abstract class Weapon extends TakeableItem implements Equippable{
 		this.equipStats = new EquippableStatistics();
 	}
 	
+	public Weapon(String name, TileableView tileableView) {
+		super(name, tileableView);
+		this.equipStats = new EquippableStatistics();
+	}
+	
 	public Weapon(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value);
 		this.equipStats = es;	

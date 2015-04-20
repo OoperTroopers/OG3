@@ -16,7 +16,6 @@ public class Pickpocket extends ExplicitAbility {
 	}
 	
 	public void perform(Entity entity) {
-		System.out.println("ALLAHU ACKBAR");
 		//access entity inventory and steal
 		getEffect().visit(entity);
 	}

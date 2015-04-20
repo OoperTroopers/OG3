@@ -1,35 +1,32 @@
 package view.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.RescaleOp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 
-import controller.AvatarController;
+import controller.KeyBinding;
 import controller.GameController;
 import controller.PauseMenuController;
-import controller.RunGame;
 import model.entities.Avatar;
 import model.entities.Entity;
+import model.inventory.Inventory;
 import model.loadsave.FilePaths;
 import model.loadsave.Load;
 import model.map.Tile;
+import model.statistics.DerivedStatistics;
+import model.statistics.PrimaryStatistics;
+import model.statistics.Statistics;
 import utilities.TileAlgorithm;
 import view.modelview.tile.TileView;
-import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 
@@ -40,6 +37,12 @@ public class ActiveGameViewport extends Viewport {
 	Tile avatarTile;
 	boolean scrolling = false;
 	int livesLeft = 3;
+	PrimaryStatistics primaries;
+	DerivedStatistics deriveds;
+	Statistics stats;
+		// LOD
+	
+	Inventory inventory;
 	
 	Load load = new Load();
 	
@@ -59,33 +62,44 @@ public class ActiveGameViewport extends Viewport {
 		scrollableTile = currentTile;
 		
 		Entity avatar = new Avatar(currentTile);
+		System.out.println("about to get primaries");
+                stats = avatar.getStats();
+		primaries = stats.getPrimaryStats();
+		deriveds = stats.getDerivedStats();
+		
+		inventory = avatar.getInventory();
+		
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
-		this.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == e.VK_P) {
-					GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
-					GameController.getInstance().swapViews(new PauseMenuController());
-				}
-				
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
+		this.addKeyListener(new PauseListener((Avatar)avatar));
 		this.setFocusable(true);
 	}
+        
+        private class PauseListener implements KeyListener {
+            
+            private Avatar avatar;
+            
+            public PauseListener(Avatar avatar) {
+                this.avatar = avatar;
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                //
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == e.VK_P) {
+                    GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
+                    GameController.getInstance().swapViews(new PauseMenuController(avatar));
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //
+            }
+        }
 	
 	@Override
 	public void visit(ViewportStack viewportStack) {
@@ -107,9 +121,40 @@ public class ActiveGameViewport extends Viewport {
 		drawMiniMap(g, tiles);
 		drawLivesLeft(g);
 		drawSimpleStats(g);
+		drawInventory(g);
 	}
 	// ----------------
 	
+	private void drawInventory(Graphics g) {
+		System.out.println("inventory");
+		Color c = Color.WHITE;
+		int x = Constants.getScreenWidth() - Constants.GAME_VIEW_WIDTH / 10 + 840;
+		System.out.println("x is "+x);
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 620;
+		System.out.println("y is "+y);
+		
+		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
+		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);
+		
+		x += 5;
+		int newY = y + 15;
+		
+		String[] items = inventory.toString().split("\n");
+		g.setColor(Color.BLACK);
+		g.drawString("INVENTORY", x, newY);
+		newY += 10;
+		int counter = 0;
+		for (String s : items) {
+			newY += 15;
+			g.drawString(s, x, newY);
+			counter ++;
+			if (counter == 5) {
+				newY = y + 25;
+				x += 60;
+			}
+		}
+	}
+
 	public void drawMap(Graphics g, List<Tile> tiles) {
 		Tile start = currentTile;
 		Point pixels = TileAlgorithm.toPixel(start);
@@ -138,7 +183,7 @@ public class ActiveGameViewport extends Viewport {
 		
 		// draw box
 		g.setColor(new Color(241,196,15,100));
-		int xStart = ViewFrame.getInstance().getWidth() - 160;
+		int xStart = ViewFrame.getInstance().getWidth() + 1100;
 			// FIX THIS. LATER.
 			// LAW OF DEMETER :'(
 		
@@ -177,32 +222,50 @@ public class ActiveGameViewport extends Viewport {
 			g.drawString("LIVES", 20, 35);
 		}
 		
-		g.drawString(" x " + livesLeft, 45, 35);
+		g.drawString(" x " + primaries.getLivesLeft(), 45, 35);
 		
 	}
 	
 	public void drawSimpleStats(Graphics g) {
 		Color c = Color.WHITE;
 		int x = 10;
-		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 10;
+		int y = Constants.getScreenHeight() - Constants.GAME_VIEW_HEIGHT / 10 + 625;
 		
 		g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 100));
-		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10), Constants.GAME_VIEW_HEIGHT / 15);
+		g.fillRect(x, y, 2 * (Constants.GAME_VIEW_WIDTH / 10) + 340, Constants.GAME_VIEW_HEIGHT / 15 + 70);
 		
 		x += 5;
-		y += 15;
+		int newY = y + 15;
 		
-		String[] stats = {
-			"HEALTH: 10",
-			"MANA:    5",
-			"LEVEL:    2"
-		};
-		
+		String[] primary = primaries.toString().split("\n");
+		String[] derived = deriveds.toString().split("\n");
+		String[] stat = stats.toString().split("\n");
 		g.setColor(Color.BLACK);
-		for (String s : stats) {
-			g.drawString(s, x, y);
-			y += 15;
+		g.drawString("STATS", x, newY);
+		newY += 10;
+		for (String s : stat) {
+			newY += 15;
+			g.drawString(s, x, newY);
 		}
+		
+		x += 150;
+		newY = y + 15;
+		g.drawString("PRIMARY STATS", x, newY);
+		newY += 10;
+		for (String s : primary) {
+			newY += 15;
+			g.drawString(s, x, newY);
+		}
+		
+		x += 130;
+		newY = y + 15;
+		g.drawString("DERIVED STATS", x, newY);
+		newY += 10;
+		for (String s : derived) {
+			newY += 15;
+			g.drawString(s, x, newY);
+		}
+		
 	}
 	
 	
@@ -213,6 +276,16 @@ public class ActiveGameViewport extends Viewport {
             addKeyListener(kbList.get(i));
         }
     }
+
+	public void addSingleAvatarKeyBinding(KeyBinding keyBinding){
+		addKeyListener(keyBinding);
+	}
+
+	public void removeSingleAvatarKeyBinding(KeyBinding keyBinding){
+		removeKeyListener(keyBinding);
+	}
+
+
 	
 	public void activateAvatarTile() {
 		this.currentTile = avatarTile;
@@ -243,6 +316,22 @@ public class ActiveGameViewport extends Viewport {
 	
 	public boolean isScrolling() {
 		return this.scrolling;
+	}
+
+	public void updatePrimaries(PrimaryStatistics primaries) {
+		this.primaries = primaries;
+	}
+
+	public void updateDeriveds(DerivedStatistics deriveds) {
+		this.deriveds = deriveds;
+	}
+
+	public void updateStats(Statistics stats) {
+		this.stats = stats;
+	}
+	
+	public void updateInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 	
 	

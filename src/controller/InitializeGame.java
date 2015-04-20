@@ -1,6 +1,8 @@
 package controller;
 
 import javax.swing.SwingUtilities;
+
+import view.view.ActiveGameViewport;
 import view.view.ViewFrame;
 
 public class InitializeGame {
@@ -15,8 +17,9 @@ public class InitializeGame {
 	}
 	
 	public static void createAndShowGui() {
-		//ViewFrame vf = ViewFrame.getInstance();
-		//vf.initialize();
+		// ViewFrame vf = ViewFrame.getInstance();
+		// vf.initialize();
 		GameController gameController = GameController.getInstance();
+		// gameController.swapViews(new GameController());
 	}
 }

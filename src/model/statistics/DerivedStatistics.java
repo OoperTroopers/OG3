@@ -1,5 +1,7 @@
 package model.statistics;
 
+import view.view.ActiveGameViewport;
+
 public class DerivedStatistics {
 	private int offensiveRating;
 	private int defensiveRating;
@@ -35,24 +37,29 @@ public class DerivedStatistics {
 		armorRating += primaryStats.getHardiness() + 2 * level;
 		maxHealth += primaryStats.getHardiness() + 5 * level;
 		maxMana += primaryStats.getIntellect() + 5 * level;
+		notifyGameView();
 	}
 	
 	public void addEquippable(EquippableStatistics equippableStats){
 		this.offensiveRating += equippableStats.getDamageValue();
 		this.armorRating += equippableStats.getArmorValue();
+		notifyGameView();
 	}
 	
 	public void removeEquippable(EquippableStatistics equippableStats){
 		this.offensiveRating -= equippableStats.getDamageValue();
 		this.armorRating -= equippableStats.getArmorValue();
+		notifyGameView();
 	}
 	
 	public void addAbilityLevel(int abilityLevel) {
 		offensiveRating += abilityLevel;
+		notifyGameView();
 	}
 	
 	public void removeAbilityLevel(int abilityLevel) {
 		offensiveRating -= abilityLevel;
+		notifyGameView();
 	}
 	
 	public int getOffensiveRating() {
@@ -61,6 +68,7 @@ public class DerivedStatistics {
 
 	public void setOffensiveRating(int offensiveRating) {
 		this.offensiveRating = offensiveRating;
+		notifyGameView();
 	}
 
 	public int getDefensiveRating() {
@@ -69,6 +77,7 @@ public class DerivedStatistics {
 
 	public void setDefensiveRating(int defensiveRating) {
 		this.defensiveRating = defensiveRating;
+		notifyGameView();
 	}
 
 	public int getArmorRating() {
@@ -77,6 +86,7 @@ public class DerivedStatistics {
 
 	public void setArmorRating(int armorRating) {
 		this.armorRating = armorRating;
+		notifyGameView();
 	}
 
 	public int getMaxHealth() {
@@ -85,6 +95,7 @@ public class DerivedStatistics {
 
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
+		notifyGameView();
 	}
 
 	public int getMaxMana() {
@@ -93,5 +104,18 @@ public class DerivedStatistics {
 
 	public void setMaxMana(int maxMana) {
 		this.maxMana = maxMana;
+		notifyGameView();
+	}
+	
+	public String toString() {
+		return 	"Offensive Rating: "+offensiveRating+
+				"\nDefensiveRating: "+defensiveRating+
+				"\nArmor Rating: "+ armorRating+
+				"\nMax Health: "+maxHealth+
+				"\nMax Mana: "+maxMana;
+	}
+	
+	public void notifyGameView() {
+		ActiveGameViewport.getInstance().updateDeriveds(this);
 	}
 }

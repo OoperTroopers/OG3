@@ -17,6 +17,7 @@ public class GameController {
 	public GameController() {
 		this.frame = new JFrame();
 		this.frame.setExtendedState(this.frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.activeController = new MainMenuController();
 		this.activeViewport = this.activeController.getViewport();
 		this.frame.add(this.activeViewport);

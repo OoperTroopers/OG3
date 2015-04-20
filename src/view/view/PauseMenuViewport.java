@@ -26,13 +26,19 @@ public class PauseMenuViewport extends Viewport {
     /**
      * Creates new form PauseMenuViewport
      */
-    public PauseMenuViewport(ActionListener backButtonListener, ActionListener exitButtonListener) {
-    	this.backButtonListener = backButtonListener;    
-    	this.exitButtonListener = exitButtonListener;
+    public PauseMenuViewport(ActionListener backButtonListener, 
+                             ActionListener inventoryButtonListener,
+                             ActionListener statsButtonListener, 
+                             ActionListener exitButtonListener) {
+    	this.statsButtonListener = statsButtonListener;  
+        this.inventoryButtonListener = inventoryButtonListener;
+        this.backButtonListener = backButtonListener;
+        this.exitButtonListener = exitButtonListener;
         initComponents();
-    	this.backButton.addActionListener(this.backButtonListener);
-    	this.exitButton.addActionListener(this.exitButtonListener);
-        //this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
+    	this.statsButton.addActionListener(statsButtonListener);
+        this.inventoryButton.addActionListener(inventoryButtonListener);
+        this.backButton.addActionListener(backButtonListener);
+        this.exitButton.addActionListener(exitButtonListener);
     }
     
     public PauseMenuViewport(ActionListener backButtonListener,
@@ -264,7 +270,25 @@ public class PauseMenuViewport extends Viewport {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        //ScreenNavigation.backButtonHandler();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryButtonActionPerformed
+        //ScreenNavigation.genericButtonHandler(InventoryViewport.getInstance());
+    }//GEN-LAST:event_inventoryButtonActionPerformed
+
+    private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
+        //ScreenNavigation.genericButtonHandler(ExtendedStatsViewport.getInstance());
+    }//GEN-LAST:event_statsButtonActionPerformed
+
+    private void saveGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameButtonActionPerformed
+        //ScreenNavigation.genericButtonHandler(SaveGameViewport.getInstance());
+    }//GEN-LAST:event_saveGameButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        //ScreenNavigation.exitToMainMenuButtonHandler();
+    }//GEN-LAST:event_exitButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

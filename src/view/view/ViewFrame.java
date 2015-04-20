@@ -49,13 +49,13 @@ public class ViewFrame extends JFrame {
 	
 	public static ViewFrame getInstance() { return viewFrame; }
 	public void initialize() {
-
             // ViewportStack.add(MainMenuViewport.getInstance());
             // ViewportStack.add(SimpleStatsViewport.getInstance());
            ViewportStack.add(ActiveGameViewport.getInstance());
+           if (ActiveGameViewport.getInstance() == null) System.out.println("null");
             // ViewportStack.add(ExtendedStatsViewport.getInstance());
             // ViewportStack.add(PauseMenuViewport.getInstance());
-            addViewport(ViewportStack.top(), BorderLayout.CENTER);
+            addViewport(ActiveGameViewport.getInstance());
 	}
 	
 	public int getWidth() { return (int)this.getSize().getWidth(); }

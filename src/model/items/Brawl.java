@@ -11,10 +11,10 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class Brawl extends Weapon {
 	public Brawl() {
-		super(new BrawlView());
+		super("Brawl", new BrawlView());
 	}
 	public Brawl(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Brawl", description, id, value, es);
 	}
 	
 	@Override

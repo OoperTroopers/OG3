@@ -7,6 +7,7 @@ import view.modelview.tileable.entities.MountView;
 import view.view.ActiveGameViewport;
 import view.modelview.tileable.entities.MountView;
 import controller.AvatarController;
+import model.effects.Effect;
 import model.equipmentmanagers.MountEquipmentManager;
 import model.map.Tile;
 import model.occupations.MountOccupation;
@@ -16,8 +17,9 @@ public class Mount extends NPC {
 	private Avatar avatar;
 	private MountView mountView;
 	
-	public Mount(){
+	public Mount(Tile tile){
 		super(new MountOccupation(), new MountEquipmentManager(), new MountStatistics(), true);
+		setTile(tile);
 		this.mountView = new MountView();
 	}
 	
@@ -29,9 +31,6 @@ public class Mount extends NPC {
 	@Override
 	public void acceptAvatar(Avatar avatar) {}
 
-	public Mount(Tile tile) {
-		super(tile, new MountView());
-	}
 	
 	public void mount(Avatar avatar){
 		this.avatar = avatar;
@@ -51,6 +50,15 @@ public class Mount extends NPC {
 		// tile.updateTileView();
 	}
 	
+	public void receiveDamage(int damage) {
+		damage -= getStats().getDefensiveRating();
+		damage = Math.max(0, damage);
+		getStats().wound(damage);
+		if(getStats().getCurrentHealth() <= 0) {
+			respawn();
+		}
+	}
+	
 	public void unmount(){
 		this.avatar.decreaseRadiusOfVision(2);
 		avatar = null;
@@ -67,7 +75,7 @@ public class Mount extends NPC {
 	@Override 
 	public void update(Tile tile) {
 		System.out.println("update in mount called");
-		//ActiveGameViewport.getInstance().setAvatarTile(tile);
+		ActiveGameViewport.getInstance().setAvatarTile(tile);
 	}
 	
 	@Override
@@ -77,5 +85,9 @@ public class Mount extends NPC {
 	
 	public String toString() {
 		return "Entity=Mount";
+	}
+	
+	public void acceptEffect(Effect e) {
+		e.visit(this);
 	}
 }

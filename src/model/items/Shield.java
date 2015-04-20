@@ -12,11 +12,11 @@ import model.statistics.EquippableStatistics;
 
 public class Shield extends Armor {
 	public Shield() {
-		super(new ShieldView());
+		super("Shield", new ShieldView());
 	}
 	
 	public Shield(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Shield", description, id, value, es);
 	}
 	
 	public void equip(EquipmentManager em, Inventory inventory) {

@@ -169,9 +169,9 @@ public class Load {
 	
 	private Entity parseEntity(String entity, Tile tile) {
 		if (entity.equals("Shopkeeper")) return new Shopkeeper(tile);
-		if (entity.equals("NPC")) return new NPC();
+		if (entity.equals("NPC")) return new NPC(tile);
 		if (entity.equals("Pet")) return new Pet(tile);
-		if (entity.equals("Mount")) return new Mount();
+		if (entity.equals("Mount")) return new Mount(tile);
 		return null;
 	}
 	
@@ -227,7 +227,18 @@ public class Load {
 		if (t == 'M') return new MountainTerrain();
 		if (t == 'G') return new GrassTerrain();
 		if (t == 'W') return new WaterTerrain();
-		if (t == 'R') return new RiverTerrain();
+		if (t == 'R') { // next part is the direction
+			String direction = terrain.substring(1);
+			Direction d = Direction.SOUTH;
+			if (direction.equals("N")) 			d = Direction.NORTH;
+			else if (direction.equals("NW")) 	d = Direction.NORTHWEST;
+			else if (direction.equals("NE")) 	d = Direction.NORTHEAST;
+			else if (direction.equals("S")) 	d = Direction.SOUTH;
+			else if (direction.equals("SE")) 	d = Direction.SOUTHEAST;
+			else if (direction.equals("SW")) 	d = Direction.SOUTHWEST;
+			
+			return new RiverTerrain(d);
+		}
 		return null;
 	}
 	

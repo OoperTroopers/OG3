@@ -11,6 +11,11 @@ public abstract class TakeableItem extends Item {
 		this.value = 20;
 	}
 	
+	public TakeableItem(String name, TileableView itemView) {
+		super(name, itemView);
+		this.value = 20;
+	}
+	
 	public TakeableItem(String name, String description, String id, int value) {
 		super(name, description, id);
 		this.value = value;

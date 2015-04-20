@@ -4,6 +4,8 @@ import model.items.TakeableItem;
 
 import java.util.ArrayList;
 
+import view.view.ActiveGameViewport;
+
 public class Inventory {
 	private ArrayList<TakeableItem> inventory;
 	
@@ -14,15 +16,17 @@ public class Inventory {
 	public void addToInventory(TakeableItem item) {
 		System.out.println("ITEM HAS BEEN ADDED!");
 		inventory.add(item);
+		notifyGameView();
 	}
 	
 	public void dropFromInventory(TakeableItem item) {
 		inventory.remove(item);
-		//place in hashmap at location
+		notifyGameView();
 	}
 	
 	public void removeFromInventory(TakeableItem item) {
 		inventory.remove(item);
+		notifyGameView();
 	}
 	
 	public ArrayList<TakeableItem> getInventory(){
@@ -34,12 +38,13 @@ public class Inventory {
 	}
 	
 	public String toString() {
-		String res = "";
-		int size = this.inventory.size();
-		res += "Inventory=" + size;
-		for (TakeableItem item : this.inventory) {
-			res += item.toString() + "\n";
-		}
-		return res;
+		String s = "";
+		for (TakeableItem takeableItem : inventory)
+			s += takeableItem.getName() + "\n";
+		return s;
+	}
+	
+	public void notifyGameView() {
+		ActiveGameViewport.getInstance().updateInventory(this);
 	}
 }

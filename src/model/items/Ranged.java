@@ -12,11 +12,11 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class Ranged extends Weapon {
 	public Ranged() {
-		super(new RangedView());
+		super("Ranged", new RangedView());
 	}
 	
 	public Ranged(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Ranged", description, id, value, es);
 	}
 	
 	@Override

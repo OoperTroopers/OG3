@@ -11,11 +11,11 @@ import model.statistics.EquippableStatistics;
 
 public class Helmet extends Armor {
 	public Helmet() {
-		super(new HelmetView());
+		super("Helmet", new HelmetView());
 	}
 	
 	public Helmet(String name, String description, String id, int value, EquippableStatistics es) {
-		super(name, description, id, value, es);
+		super("Helmet", description, id, value, es);
 	}
 	
 	public void equip(EquipmentManager em, Inventory inventory) {

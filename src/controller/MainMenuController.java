@@ -25,7 +25,7 @@ public class MainMenuController extends Controller {
 	public class NewGameListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("NEW GAME");		
+			//System.out.println("NEW GAME");		
 			GameController.getInstance().swapViews(new CharacterCreationController());
 		}		
 	}

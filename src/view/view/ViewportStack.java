@@ -8,7 +8,7 @@ public class ViewportStack {
         private static ArrayList<Viewport> stack;
         
         public ViewportStack() {
-            stack = new ArrayList(1);
+            stack = new ArrayList<Viewport>();
 	}
         
         public static boolean pop() {
@@ -18,7 +18,11 @@ public class ViewportStack {
         }
         
         public static Viewport top() {
-            if (stack.isEmpty()) return null;
+            if (stack.isEmpty()) {
+            	System.out.println("is empty");
+            	return null;
+            }
+            if (stack.get(stack.size()-1) == null) System.out.println("is null");
             return stack.get(stack.size() - 1);
         }
         
@@ -27,7 +31,10 @@ public class ViewportStack {
         }
         
         public static void add(Viewport v) {
+        	System.out.println("adding viewport");
+        	if (v == null) System.out.println("VIEWPORT IS NULL");
             stack.add(v);
+            System.out.println("Stack size is "+stack.size());
         }
         
         public static int size() {

@@ -10,11 +10,10 @@ import model.entities.Entity;
 
 public class MoveNortheastAbility extends ExplicitAbility {
     private Entity entity;
-    private KeyBinding keyBinding;
 
     public MoveNortheastAbility(Entity entity, char keyToBind){
         this.entity = entity;
-        this.keyBinding = new KeyBinding(keyToBind, this);
+        setKeyBinding( new KeyBinding(keyToBind, this));
     }
     
     public MoveNortheastAbility(Entity entity){
@@ -31,7 +30,8 @@ public class MoveNortheastAbility extends ExplicitAbility {
     }
 
     @Override
+
     public void attachToController(AvatarController controlAvatar) {
-        controlAvatar.addToKLSet(keyBinding);
+        controlAvatar.addToKLSet(getKeyBinding());
     }
 }

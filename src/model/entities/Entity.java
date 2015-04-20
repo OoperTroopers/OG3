@@ -301,6 +301,10 @@ public abstract class Entity implements Tileable, Moveable {
 	public void addAbility(ImplicitAbility ability){
 		occupation.addAbility(ability);
 	}
+
+	public void removeAbility(ImplicitAbility ability){
+		occupation.removeAbility(ability);
+	}
 	
 	public void addAbility(ExplicitAbility ability) {
 		occupation.addAbility(ability);

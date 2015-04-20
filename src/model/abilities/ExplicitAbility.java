@@ -1,7 +1,7 @@
 package model.abilities;
 
 import controller.KeyBinding;
-import controller.ControllerAvatar;
+import controller.AvatarController;
 import model.effects.Effect;
 
 public abstract class ExplicitAbility extends Ability {
@@ -40,7 +40,7 @@ public abstract class ExplicitAbility extends Ability {
 	public void perform() {
 	}
 	
-	public void attachToController(ControllerAvatar controlAvatar) {
+	public void attachToController(AvatarController controlAvatar) {
 		controlAvatar.addToKLSet(keyBinding);
 	}
 	public KeyBinding getKeyBinding() {

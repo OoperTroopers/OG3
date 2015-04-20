@@ -52,7 +52,7 @@ public class ViewFrame extends JFrame {
 
             // ViewportStack.add(MainMenuViewport.getInstance());
             // ViewportStack.add(SimpleStatsViewport.getInstance());
-            // ViewportStack.add(ActiveGameViewport.getInstance());
+            ViewportStack.add(ActiveGameViewport.getInstance());
             // ViewportStack.add(ExtendedStatsViewport.getInstance());
             // ViewportStack.add(PauseMenuViewport.getInstance());
             addViewport(ViewportStack.top(), BorderLayout.CENTER);

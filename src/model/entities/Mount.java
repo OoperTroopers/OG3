@@ -6,7 +6,7 @@ import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.MountView;
 import view.view.ActiveGameViewport;
 import view.modelview.tileable.entities.MountView;
-import controller.ControllerAvatar;
+import controller.AvatarController;
 import model.equipmentmanagers.MountEquipmentManager;
 import model.map.Tile;
 import model.occupations.MountOccupation;
@@ -67,11 +67,15 @@ public class Mount extends NPC {
 	@Override 
 	public void update(Tile tile) {
 		System.out.println("update in mount called");
-		ActiveGameViewport.getInstance().setAvatarTile(tile);
+		//ActiveGameViewport.getInstance().setAvatarTile(tile);
 	}
 	
 	@Override
 	public boolean isTraversable() { return true; }
 
 	public void updatePosition(Tile tile) {}
+	
+	public String toString() {
+		return "Entity=Mount";
+	}
 }

@@ -15,25 +15,21 @@ public class Staff extends Weapon {
 	public Staff() {
 		super(new StaffView());
 	}
+	
 	public Staff(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
+	
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Staff();
 	}
-	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipStaff();
@@ -46,9 +42,8 @@ public class Staff extends Weapon {
 		em.unequipStaff();
 		inventory.addToInventory(this);
 	}
-	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
-		
+	
+	public String toString() {
+		return "Item=Staff";
 	}
 }

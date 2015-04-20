@@ -41,5 +41,9 @@ public class Door extends InteractiveItem {
 	public Tileable clone() {
 		return new Door();
 	}
+	
+	public String toString() {
+		return "Item=Door";
+	}
 
 }

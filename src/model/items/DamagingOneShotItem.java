@@ -20,4 +20,8 @@ public class DamagingOneShotItem extends OneShotItem {
 	public Item clone() {
 		return new DamagingOneShotItem();
 	}	
+	
+	public String toString() {
+		return "Item=DamagingOS";
+	}
 }

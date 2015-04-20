@@ -26,13 +26,15 @@ public class Potion extends TakeableItem implements Usable{
 
 	@Override
 	public void acceptEffect(Effect e) {
-		// TODO Auto-generated method stub
-		
+		e.visit(this);
 	}
 
 	@Override
 	public Tileable clone() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Potion();
+	}
+	
+	public String toString() {
+		return "Item=Potion";
 	}
 }

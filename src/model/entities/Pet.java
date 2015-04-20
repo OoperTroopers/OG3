@@ -73,4 +73,8 @@ public class Pet extends NPC {
 		brain.updateMovements(tile);
 	//	ActiveGameViewport.getInstance().setAvatarTile(tile);	
 	}
+	
+	public String toString() {
+		return "Entity=Pet";
+	}
 }

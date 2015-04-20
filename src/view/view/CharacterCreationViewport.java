@@ -5,6 +5,8 @@
  */
 package view.view;
 
+import java.awt.event.ActionListener;
+
 import view.tools.Text;
 
 /**
@@ -13,11 +15,25 @@ import view.tools.Text;
  */
 public class CharacterCreationViewport extends Viewport {
 
+	private ActionListener smasherListener;
+	private ActionListener sneakListener;
+	private ActionListener summonerListener;
+	
     /**
      * Creates new form CharacterCreationViewport
      */
-    public CharacterCreationViewport() {
-        initComponents();
+    public CharacterCreationViewport(ActionListener smasherListener, ActionListener sneakListener, ActionListener summonerListener) {
+        this.smasherListener = smasherListener;
+        this.sneakListener = sneakListener;
+        this.summonerListener = summonerListener;
+    	initComponents();
+    	setListeners();
+    }
+    
+    private void setListeners() {
+        smasherButton.addActionListener(smasherListener);
+        sneakButton.addActionListener(sneakListener);
+        summonerButton.addActionListener(summonerListener);
     }
 
     /**
@@ -180,6 +196,7 @@ public class CharacterCreationViewport extends Viewport {
     private javax.swing.JLabel summonerLabel;
     private javax.swing.JLabel summonerPictureLabel;
     // End of variables declaration//GEN-END:variables
+    
 	@Override
 	void visit(ViewportStack viewportStack) {
 		// TODO Auto-generated method stub

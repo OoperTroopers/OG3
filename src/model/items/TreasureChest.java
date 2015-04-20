@@ -61,5 +61,9 @@ public class TreasureChest extends InteractiveItem {
 	private void setActivated() {
 		this.chestHasBeenOpened = true;
 	}
+	
+	public String toString() {
+		return "Item=TreasureChest";
+	}
 
 }

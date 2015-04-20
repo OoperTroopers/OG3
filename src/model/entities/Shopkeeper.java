@@ -35,4 +35,8 @@ public class Shopkeeper extends NPC {
 		int change = shop.openShop();
 		avatar.setGold(change);
 	}	
+	
+	public String toString() {
+		return "Entity=Shopkeeper";
+	}
 }

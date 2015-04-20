@@ -32,4 +32,14 @@ public class Inventory {
 	public boolean itemInInventory(TakeableItem item) {
 		return inventory.contains(item);
 	}
+	
+	public String toString() {
+		String res = "";
+		int size = this.inventory.size();
+		res += "Inventory=" + size;
+		for (TakeableItem item : this.inventory) {
+			res += item.toString() + "\n";
+		}
+		return res;
+	}
 }

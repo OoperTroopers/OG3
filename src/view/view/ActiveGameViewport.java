@@ -61,6 +61,7 @@ public class ActiveGameViewport extends Viewport {
 		this.setBackground(new Color(44,62,80));                
                 
 		// get beginning tile
+		
 		try {load.read(FilePaths.DEFAULT);} 
 		catch (IOException e) {e.printStackTrace();}
 		currentTile = load.getBeginningTile();
@@ -69,6 +70,7 @@ public class ActiveGameViewport extends Viewport {
 		
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
+		
 		this.setFocusable(true);
 	}
 	

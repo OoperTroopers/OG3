@@ -1,8 +1,6 @@
 package controller;
 
 import javax.swing.JFrame;
-
-import view.view.ViewFrame;
 import view.view.Viewport;
 
 public class GameController {
@@ -27,5 +25,4 @@ public class GameController {
 		activeController = c;
 		this.frame.add(activeViewport);
 	}
-
 }

@@ -1,5 +1,6 @@
 package model.entities;
 
+import controller.AvatarBrain;
 import controller.ControllerAvatar;
 import model.abilities.ExplicitAbility;
 import model.effects.Effect;
@@ -24,10 +25,13 @@ import view.view.ExtendedStatsViewport;
 
 public class Avatar extends Entity {
 	
+	
+	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
 	private Mount mount;
 	private int radiusOfVision;
+	private AvatarBrain myBrain;
 	
 	public Avatar(){
 		super();
@@ -54,6 +58,7 @@ public class Avatar extends Entity {
 		this.myJournal = new Journal();
 		this.radiusOfVision = 3;
 		onMove();
+		myBrain = new AvatarBrain(this);
 	}
 
 	public ArrayList<KeyListener> getKeyBinding(){
@@ -90,6 +95,7 @@ public class Avatar extends Entity {
     
     @Override
     public void onMove(){
+    	// ActiveGameViewport.getInstance().activateAvatarTile();
     	
     	ArrayList<Tileable> tileables = getTile().getTileables();
     	Tileable[] arrayTileables = new Tileable[tileables.size()];
@@ -98,7 +104,12 @@ public class Avatar extends Entity {
     		this.interact(tileable);
     	}
     	
-    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.radiusOfVision);
+    	refreshView();
+    	
+    }
+    
+    public void refreshView(){
+    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
@@ -114,7 +125,7 @@ public class Avatar extends Entity {
     }
     
     private void updateMemTile(Tile t){
-        myJournal.addMemTile(t);
+        //t.getTileView().
     }
 
 	@Override
@@ -131,7 +142,31 @@ public class Avatar extends Entity {
 	public void update(Tile tile) {
 		controlAvatar.update(this, tile);
 		ActiveGameViewport.getInstance().setAvatarTile(tile);	
+		ActiveGameViewport.getInstance().activateAvatarTile();	
+		//myBrain.hasMoved();
+		
 	}
+	
+	protected void respawn() {
+		getStats().loseLife();
+		if(getStats().getLivesLeft() > 0) {
+			getStats().setCurrentHealthMax();
+			getStats().setCurrentManaMax();
+		} else {
+			//call go to main method
+		}
+	}
+	/*
+	@Override
+	protected void move(Direction direction) {
+		Tile myTile = this.getTile();
+		myTile.removeTileable(this);
+		myTile = myTile.getNeighbor(direction);
+		update(myTile);
+		ActiveGameViewport.getInstance().activateAvatarTile();
+		myTile.addTileable(this);
+		onMove();
+	}*/
 	
 	public void interact(Tileable tileable) {
 		tileable.acceptAvatar(this);

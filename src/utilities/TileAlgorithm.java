@@ -317,6 +317,11 @@ public class TileAlgorithm {
 		return tiles;
 	}
 	
+	/**
+	 * Calculate the number of Tiles in the map using BFS
+	 * @param start Tile that the BFS is starting from
+	 * @return	    number of Tiles in the map
+	 */
 	public static int getNumberOfTiles(Tile start) {
 		Queue<Tile> queue = new LinkedList<Tile>();
 		HashSet<Tile> visited = new HashSet<Tile>();
@@ -338,6 +343,12 @@ public class TileAlgorithm {
 		return visited.size();
 	}
 	
+	/**
+	 * Gets the Direction that an NPC should move in order to minimize the distance to the Avatar
+	 * @param npc    Tile the NPC is currently located on
+	 * @param avatar Tile the Avatar is currently located on
+	 * @return		 Direction that the NPC should travel to get to the Avatar
+	 */
 	public static Direction getBestDirectionToAvatar(Tile npc, Tile avatar) {
 		Queue<DistanceTile> queue = new LinkedList<DistanceTile>();
 		HashSet<Tile> visited = new HashSet<Tile>();
@@ -354,8 +365,11 @@ public class TileAlgorithm {
 				Tile neighbor = current.getTile().getNeighbor(direction);
 				if (neighbor != null && !visited.contains(neighbor)) {
 					visited.add(neighbor);
-					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, current.getPath());
-					neighborDT.addDirection(direction);
+					List<Direction> tempPath = new ArrayList<Direction>();
+					for (Direction dir : current.getPath()) tempPath.add(dir);
+					tempPath.add(direction);
+					DistanceTile neighborDT = new DistanceTile(neighbor, current.getDistance() + 1, tempPath);
+					queue.add(neighborDT);
 				}
 			}
 		}
@@ -381,7 +395,11 @@ public class TileAlgorithm {
 		return bestDirection;
 	}
 	
-
+	/**
+	 * Used to paint the Tiles to the screen by converting their Location to pixels
+	 * @param tile Tile that we are converting to pixels
+	 * @return	   Point that contains an {x, y} coordinate of the pixel to print at
+	 */
 	public static Point toPixel(Tile tile) {
 		double size = Constants.TILE_SIZE;
 		int x = (int) (size * 3.0 / 2.0 * tile.getX());

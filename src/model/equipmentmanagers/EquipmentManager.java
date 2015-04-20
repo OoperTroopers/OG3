@@ -130,4 +130,26 @@ public abstract class EquipmentManager {
 	public void setCurrentSkill(String currentSkill) {
 		this.currentSkill = currentSkill;
 	}
+	
+	public Saddle getSaddle() { return null; }
+	public Shield getShield() { return null; }
+	public OneHanded getOneHandedWeapon() { return null; }
+	public TwoHanded getTwoHandedWeapon() { return null; }
+	public Brawl getBrawlWeapon() { return null; }
+	public Staff getStaff() { return null; }
+	public Ranged getRangedWeapon() { return null; }
+	public void equipSaddle(Saddle saddle) {}
+	public void equipShield(Shield shield) {}
+	public void equipOneHandedWeapon(OneHanded oneHanded) {}
+	public void equipTwoHandedWeapon(TwoHanded twoHanded) {}
+	public void equipBareHandedWeapon(Brawl bareHanded) {}
+	public void equipStaff(Staff staff) {}
+	public void equipRangedWeapon(Ranged ranged) {}
+	public void unequipSaddle() {}
+	public void unequipShield() {}
+	public void unequipOneHandedWeapon() {}
+	public void unequipTwoHandedWeapon() {}
+	public void unequipBareHandedWeapon() {}
+	public void unequipStaff() {}
+	public void unequipRangedWeapon() {}
 }

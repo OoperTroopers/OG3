@@ -23,30 +23,54 @@ public class PetBrain extends Brain{
 
     private HiveMind hivemind;
     private Avatar master;
+    
+    private boolean isFollowing;
 	
 	public PetBrain(Pet pet){
 		this.pet = pet;
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
+        setDefaultAbilityKeys();
+        
         hivemind = HiveMind.getInstance();
-        hivemind.addRunnable(this, 500);
+        hivemind.addRunnable(this, 300);
+        isFollowing = true;
+       
 	}
 	
-	
+	public void acceptMaster(Avatar a){
+		master = a;
+	}
 
 	@Override
 	public void run() {
-		while(true){
-			for(Direction direction : Direction.values() ){
-				directionAbilities.get(direction).perform();
+		 //System.out.println("PETTTTTTTT");
+		if(master != null){
+			int distanceToOwner = pet.distanceToOwner();
+			if( distanceToOwner > 2){
+				isFollowing = true;
 			}
-			updateMovements(pet.getTile());
+			else if(distanceToOwner == 1){
+				isFollowing = false;
+			}
+			if(isFollowing){
+				directionAbilities.get(pet.follow()).perform();//perform();
+			}
+			else{
+				Direction myDirection = pet.follow();
+				while(myDirection == pet.follow()){
+					int index = (int)(6*Math.random());
+					myDirection = Direction.values()[index];
+				}
+				directionAbilities.get(myDirection).perform();
+				updateMovements(pet.getTile());
+			}
 		}
 	}
 	
 	public void updateMovements(Tile tile) {
     	for (Direction direction : Direction.values()) {
-    		boolean flag = false;
-    		if(direction == pet.follow()) flag = true;
+    		boolean flag = true;
+    		//if(direction == pet.follow()) flag = true;
     		if (flag) {
     			directionAbilities.get(direction).activate();
     		} else {
@@ -56,6 +80,7 @@ public class PetBrain extends Brain{
     }
 
 	public void setDefaultAbilityKeys() {
+		
 		ExplicitAbility moveNorth = new MoveNorthAbility(pet);
     	ExplicitAbility moveNorthwest = new MoveNorthwestAbility(pet);
     	ExplicitAbility moveNortheast = new MoveNortheastAbility(pet);
@@ -76,6 +101,8 @@ public class PetBrain extends Brain{
     	directionAbilities.put(Direction.SOUTH, moveSouth); 
     	directionAbilities.put(Direction.SOUTHWEST, moveSouthwest); 
     	directionAbilities.put(Direction.SOUTHEAST, moveSoutheast);
+    	
+    	
 
 	}
 }

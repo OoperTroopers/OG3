@@ -25,7 +25,7 @@ public class  HiveMind {
 	}
 	
 	public void addRunnable(TimerTask t, int timeInMilliseconds){
-		timer.schedule(t, timeInMilliseconds);
+		//timer.schedule(t, timeInMilliseconds);
 		timer.scheduleAtFixedRate(t, 0, timeInMilliseconds);
 	}
 	

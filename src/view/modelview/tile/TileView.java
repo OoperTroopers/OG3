@@ -5,11 +5,14 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 
-public class TileView {
+public class TileView{
 	private int age;
 	private boolean hasBeenSeen;
 	private ArrayList<TileableView> tileableViews;
@@ -51,12 +54,17 @@ public class TileView {
 		// paint both images, preserving the alpha channels
 		Graphics g = combined.getGraphics();
 		
-		for(TileableView tv: tileableViews){
+		TileableView tv2[] = new TileableView[tileableViews.size()];
+		tileableViews.toArray( tv2);
+		
+		
+		for(TileableView tv: tv2){
 			g.drawImage(tv.getImage(), 0, 0, 
 					Constants.TILE_HEIGHT, Constants.TILE_WIDTH, null);
 			
 			//g.drawImage(tv.getImage(),0,0,null);
 		}
+		
 
 		myImage = combined;
 	}
@@ -68,8 +76,7 @@ public class TileView {
 	public void incrementAge(){
 		age++;
 		if(age % 5 == 0){
-			darken();
-			
+			darken();			
 		}
 		
 	}

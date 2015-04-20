@@ -13,7 +13,7 @@ public class ShopTest {
 		lo.read(FilePaths.DEFAULT);}
 		catch(Exception e) {}
 		Tile bTile = lo.getBeginningTile();
-		Shopkeeper shopkeep = new Shopkeeper();
+		Shopkeeper shopkeep = new Shopkeeper(bTile);
 		Avatar avatar = new Avatar(bTile);
 		avatar.setGold(100);
 		Helmet helm = new Helmet("Helm", "helm", "1234", 20, new EquippableStatistics());

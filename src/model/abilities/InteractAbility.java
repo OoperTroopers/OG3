@@ -21,7 +21,6 @@ public class InteractAbility extends ExplicitAbility {
 		super();
 		setName("Interact Ability");
 		keyBinding = new KeyBinding(keyToBind, this);
-		System.out.println("Interact Ability initialized");
 	}
 	
 	public InteractAbility(Avatar avatar, char keyToBind) {
@@ -29,14 +28,10 @@ public class InteractAbility extends ExplicitAbility {
 		setName("Interact Ability");
 		keyBinding = new KeyBinding(keyToBind, this);
 		this.avatar = avatar;
-		System.out.println("Interact Ability initialized");
-
 	}
 	
 	 @Override
 	 public void perform() {
-		 System.out.println("Interact ability called");
-		 
 		 boolean mounted = avatar.mounted() ? true : false;
 		 
 		 Tile tile = avatar.getTile();

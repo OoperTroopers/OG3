@@ -14,7 +14,7 @@ public class ImagePaths {
     public static final String AVATAR = IMG_DIR + "Sprite-can.png";
     public static final String NPC = IMG_DIR + "NPC_Cat.png";
     public static final String SHOPKEEPER = IMG_DIR + "shopkeeper_cat.jpg";
-    public static final String MOUNT = IMG_DIR + "mount.png";
+    public static final String MOUNT = IMG_DIR + "car.png";
     public static final String PET = IMG_DIR + "pet.png";
     
     //OneShotItem sprites
@@ -29,8 +29,8 @@ public class ImagePaths {
     public static final String POTION = IMG_DIR + "potion.png";
 
     //Weapon sprites
-    public static final String TWO_HANDED = IMG_DIR + "two_handed.jpg";
-    public static final String ONE_HANDED = IMG_DIR + "one_handed.jpg";
+    public static final String TWO_HANDED = IMG_DIR + "two_handed.png";
+    public static final String ONE_HANDED = IMG_DIR + "one_handed.png";
     public static final String BOW = IMG_DIR + "bow.png";
     public static final String STAFF = IMG_DIR + "staff.png";
     public static final String BRAWL = IMG_DIR + "boxing_gloves.png";

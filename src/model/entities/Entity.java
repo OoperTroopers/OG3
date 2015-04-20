@@ -224,12 +224,12 @@ public abstract class Entity implements Tileable, Moveable {
             get called should be done before you call these. i.e. the controller should
             know whether or not it's legal to move the Entity.
 	 */
-	private void move(Direction direction) {
+	protected void move(Direction direction) {
 		myTile.removeTileable(this);
 		if (getMount() != null) myTile.removeTileable(mount);
 		myTile = myTile.getNeighbor(direction);
 		update(myTile);
-		ActiveGameViewport.getInstance().activateAvatarTile();
+		
 		myTile.addTileable(this);
 		if (getMount() != null) myTile.addTileable(mount);
 		onMove();

@@ -34,14 +34,4 @@ public class Arms extends Armor {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public boolean isTraversable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public void touch(Entity entity) {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -5,6 +5,7 @@ import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.MountView;
 import view.view.ActiveGameViewport;
+import view.modelview.tileable.entities.MountView;
 import controller.ControllerAvatar;
 import model.equipmentmanagers.MountEquipmentManager;
 import model.map.Tile;
@@ -26,11 +27,16 @@ public class Mount extends NPC {
 	}
 	
 	@Override
-	public void acceptAvatar(Avatar avatar) {	
-		/*if (this.avatar != null) return;
+	public void acceptAvatar(Avatar avatar) {}
+
+	public Mount(Tile tile) {
+		super(tile, new MountView());
+	}
+	
+	public void mount(Avatar avatar){
 		this.avatar = avatar;
 		this.avatar.increaseRadiusOfVision(2);
-		avatar.acceptMount(this);*/
+		avatar.acceptMount(this);
 	}
 	
 	@Override

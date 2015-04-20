@@ -102,6 +102,25 @@ public class Load {
 		if (item.equals("DamageOS")) return new DamagingOneShotItem();
 		if (item.equals("TreasureChest")) return new TreasureChest();
 		if (item.equals("Door")) return new Door();
+		return this.parseArmor(item);
+	}
+	
+	private Item parseArmor(String item) {
+		if (item.equals("Arms")) return new Arms();		
+		if (item.equals("Chest")) return new Chest();
+		if (item.equals("Helmet")) return new Helmet();
+		if (item.equals("Legs")) return new Legs();		
+		if (item.equals("Saddle")) return new Saddle();
+		if (item.equals("Shield")) return new Shield();	
+		return this.parseWeapon(item);
+	}
+	
+	private Item parseWeapon(String item) {
+		if (item.equals("Brawl")) return new Brawl();
+		if (item.equals("OneHanded")) return new OneHanded();
+		if (item.equals("Ranged")) return new Ranged();
+		if (item.equals("Staff")) return new Staff();
+		if (item.equals("TwoHanded")) return new TwoHanded();
 		return null;
 	}
 	
@@ -121,8 +140,8 @@ public class Load {
 		if (areaEffect.equals("Damage")) return new TakeDamageAreaEffect();
 		if (areaEffect.equals("Death")) return new InstantDeathAreaEffect();
 		if (areaEffect.equals("Level")) return new LevelUpAreaEffect();
-		if (areaEffect.indexOf("Teleport") >= 0) return this.createTeleport(areaEffect);
 		if (areaEffect.equals("Trap")) return new TrapAreaEffect();
+		if (areaEffect.indexOf("Teleport") >= 0) return this.createTeleport(areaEffect);
 		return null;
 	}
 	
@@ -138,15 +157,15 @@ public class Load {
 		int index = this.parseTileNumber(tileNumber);
 		Tile tile = this.getTile(index);
 		entity = entity.substring(entity.indexOf("=") + 1);
-		Entity tileableEntity = this.parseEntity(entity);
+		Entity tileableEntity = this.parseEntity(entity, tile);
 		tile.addTileable(tileableEntity);
 		return true;
 	}
 	
-	private Entity parseEntity(String entity) {
-		if (entity.equals("Shopkeeper")) return new Shopkeeper();
+	private Entity parseEntity(String entity, Tile tile) {
+		if (entity.equals("Shopkeeper")) return new Shopkeeper(tile);
 		if (entity.equals("NPC")) return new NPC();
-		if (entity.equals("Pet")) return new Pet();
+		if (entity.equals("Pet")) return new Pet(tile);
 		if (entity.equals("Mount")) return new Mount();
 		return null;
 	}

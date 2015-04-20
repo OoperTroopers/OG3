@@ -28,6 +28,10 @@ public abstract class TakeableItem extends Item {
 		return true;
 	}
 	
+	public boolean isTraversable() {
+		return true;
+	}
+	
 	public void touch(Entity entity) {
 		entity.addItemToInventory(this);
 		entity.getTile().removeTileable(this);

@@ -11,7 +11,7 @@ import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.EntityView;
-import model.effects.DamageEffect;
+import model.effects.*;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -114,7 +114,6 @@ public abstract class Entity implements Tileable, Moveable {
 		if(stats.getCurrentHealth() <= 0) {
 			respawn();
 		}
-		System.out.println("Mount: ouch");
 	}
 
 	protected void respawn() {
@@ -127,6 +126,15 @@ public abstract class Entity implements Tileable, Moveable {
 		}
 	}
 
+	public void bind() {
+		System.out.println("Heal");
+		heal(20);
+	}
+	public void sendHeal() {
+		Tile neigh = myTile.getNeighbor(direction);
+		neigh.affectAllTileables(new HealEffect());
+	}
+	
 	public int sendDamage() {
 		int damage = stats.getOffensiveRating();
 		Tile neigh = myTile.getNeighbor(direction);

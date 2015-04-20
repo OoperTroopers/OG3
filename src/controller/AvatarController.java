@@ -1,10 +1,6 @@
 package controller;
 
-import model.abilities.Ability;
-import model.abilities.AttackAbility;
-import model.abilities.ExplicitAbility;
-import model.abilities.InteractAbility;
-import model.abilities.Bane;
+import model.abilities.*;
 import model.abilities.movement.MoveNorthAbility;
 import model.abilities.movement.MoveNortheastAbility;
 import model.abilities.movement.MoveNorthwestAbility;
@@ -75,6 +71,8 @@ public class AvatarController extends Controller {
     	ExplicitAbility scrollableMoveSouthwest = new ScrollableMoveSouthwestAbility('j');
     	ExplicitAbility attackAbility = new AttackAbility(avatar, '1');
     	ExplicitAbility bane = new Bane(avatar, '2');
+    	ExplicitAbility bindWounds = new BindWounds(avatar, '3');
+    	ExplicitAbility boon = new Boon(avatar, '4');
     	
     	// mounting
     	ExplicitAbility interactAbility = new InteractAbility(avatar, ' ');
@@ -96,6 +94,8 @@ public class AvatarController extends Controller {
     	avatar.addAbility(interactAbility);
     	avatar.addAbility(attackAbility);
     	avatar.addAbility(bane);
+    	avatar.addAbility(bindWounds);
+    	avatar.addAbility(boon);
     	
     	directionAbilities.put(Direction.NORTH, moveNorth); 
     	directionAbilities.put(Direction.NORTHWEST, moveNorthwest); 

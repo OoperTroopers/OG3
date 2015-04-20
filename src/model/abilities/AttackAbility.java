@@ -28,6 +28,5 @@ public class AttackAbility extends ExplicitAbility {
 	
 	public void perform() {
 		a.sendDamage();
-		System.out.println("ALLAHU ACKBAR");
 	}
 }

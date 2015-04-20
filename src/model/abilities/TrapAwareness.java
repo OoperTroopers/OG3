@@ -13,7 +13,6 @@ public class TrapAwareness extends ExplicitAbility {
 		//setEffect(effect);
 	}
 	public void perform() {
-		System.out.println("ALLAHU ACKBAR");
 		//ping
 	}
 }

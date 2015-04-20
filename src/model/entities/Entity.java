@@ -11,7 +11,7 @@ import utilities.TileAlgorithm.Direction;
 import view.modelview.tile.TileView;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.EntityView;
-import model.effects.Fireball;
+import model.effects.DamageEffect;
 
 import java.util.ArrayList;
 import model.map.Moveable;
@@ -130,7 +130,7 @@ public abstract class Entity implements Tileable, Moveable {
 	public int sendDamage() {
 		int damage = stats.getOffensiveRating();
 		Tile neigh = myTile.getNeighbor(direction);
-		neigh.affectAllTileables(new Fireball());
+		neigh.affectAllTileables(new DamageEffect(damage));
 		return damage;
 	}
 

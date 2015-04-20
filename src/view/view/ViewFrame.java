@@ -12,7 +12,7 @@ public class ViewFrame extends JFrame {
 	
 	static ViewFrame viewFrame = new ViewFrame();
 	public ViewFrame() {
-            
+            /*
             view = View.getInstance();
 
             ViewFrame frame = this;
@@ -31,7 +31,7 @@ public class ViewFrame extends JFrame {
             view.stylize();
 
             this.add(view);
-
+            */
 	}
         
         public void refresh() {
@@ -52,7 +52,7 @@ public class ViewFrame extends JFrame {
 
             // ViewportStack.add(MainMenuViewport.getInstance());
             // ViewportStack.add(SimpleStatsViewport.getInstance());
-            ViewportStack.add(ActiveGameViewport.getInstance());
+           ViewportStack.add(ActiveGameViewport.getInstance());
             // ViewportStack.add(ExtendedStatsViewport.getInstance());
             // ViewportStack.add(PauseMenuViewport.getInstance());
             addViewport(ViewportStack.top(), BorderLayout.CENTER);

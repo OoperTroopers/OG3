@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.RescaleOp;
@@ -17,6 +18,9 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
+import controller.AvatarController;
+import controller.GameController;
+import controller.PauseMenuController;
 import controller.RunGame;
 import model.entities.Avatar;
 import model.entities.Entity;
@@ -29,21 +33,7 @@ import view.modelview.tileable.TileableView;
 import view.tools.Constants;
 import view.tools.ImagePaths;
 
-@SuppressWarnings("serial")
 public class ActiveGameViewport extends Viewport {
-	
-	// note for tomorrow (and adam)....
-	//
-	// the activeGameViewport has way too much logic in it! this should
-	// mainly be in controller. for instance, this one. absolutely this one.
-	// i think the best course of action might be to have corresponding
-	// "controller" classes for every view. each of these has a reference to its view.
-	//
-	// for example, "ActiveGameController" would have the functionality for
-	// creating the map and for instantiating an avatar. then it feeds both these things into 
-	// the constructor of "ActiveGameViewport." 
-	//
-	// - danny
 	
 	Tile currentTile;
 	Tile scrollableTile;
@@ -70,7 +60,31 @@ public class ActiveGameViewport extends Viewport {
 		
 		Entity avatar = new Avatar(currentTile);
 		this.addAvatarKeyBinding(((Avatar) avatar).getKeyBinding());
-		
+		this.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == e.VK_P) {
+					GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
+					GameController.getInstance().swapViews(new PauseMenuController());
+					
+				}
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		this.setFocusable(true);
 	}
 	

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import view.modelview.tileable.TileableView;
 import view.modelview.tileable.entities.EntityView;
 import view.modelview.tileable.entities.NPCView;
-
+import view.view.ActiveGameViewport;
 import model.effects.Effect;
 import model.map.MovementCapabilities;
 import model.map.Tile;
@@ -103,6 +103,7 @@ public class NPC extends Entity {
 	@Override
 	public void update(Tile tile) {
 		System.out.println("Update in NPC called");
+		ActiveGameViewport.getInstance().setAvatarTile(tile);
 	}
 	
 	public String toString() {

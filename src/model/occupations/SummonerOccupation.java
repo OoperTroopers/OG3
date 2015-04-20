@@ -14,7 +14,7 @@ public class SummonerOccupation extends Occupation {
 	}
 		
 	private void setAbilities() {
-		getAbilityList().add(new Bane());
+		//getAbilityList().add(new Bane());
 		getAbilityList().add(new Boon());
 		getAbilityList().add(new Enchantment());
 		getAbilityList().add(new StaffAbility());

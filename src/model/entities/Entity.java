@@ -133,6 +133,15 @@ public abstract class Entity implements Tileable, Moveable {
 		neigh.affectAllTileables(new DamageEffect(damage));
 		return damage;
 	}
+	public int sendDamageRanged() {
+		int damage = stats.getOffensiveRating();
+		Tile range = myTile.getNeighbor(direction);
+		for(int i = 0; i < 5; i++) {
+			range.affectAllTileables(new DamageEffect(damage));
+			range = range.getNeighbor(direction);
+		}
+		return damage;
+	}
 
 	/*public void changeLocation(int q, int r) {
 		location.setQ(q);

@@ -159,7 +159,7 @@ public class Avatar extends Entity {
 			getStats().setCurrentHealthMax();
 			getStats().setCurrentManaMax();
 		} else {
-			//call go to main method
+			System.exit(0);
 		}
 	}
 	/*

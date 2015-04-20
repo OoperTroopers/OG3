@@ -3,10 +3,14 @@ package model.abilities;
 import model.effects.Effect;
 import model.effects.Fireball;
 import model.entities.Entity;
+import model.entities.Avatar;
 
 public class Bane extends ExplicitAbility {
-	public Bane() {
-		super();
+	
+	private Avatar a;
+	public Bane(Avatar a, char keyToBind) {
+		super(keyToBind);
+		this.a = a;
 		setName("Bane");
 		setEffect(new Fireball());
 	}
@@ -17,8 +21,7 @@ public class Bane extends ExplicitAbility {
 		setEffect(effect);
 	}
 	
-	public void perform(Entity entity) {
-		System.out.println("ALLAHU ACKBAR");
-		getEffect().visit(entity);
+	public void perform() {
+		a.sendDamageRanged();
 	}
 }

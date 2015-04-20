@@ -4,6 +4,7 @@ import model.abilities.Ability;
 import model.abilities.AttackAbility;
 import model.abilities.ExplicitAbility;
 import model.abilities.InteractAbility;
+import model.abilities.Bane;
 import model.abilities.movement.MoveNorthAbility;
 import model.abilities.movement.MoveNortheastAbility;
 import model.abilities.movement.MoveNorthwestAbility;
@@ -73,6 +74,7 @@ public class AvatarController extends Controller {
     	ExplicitAbility scrollableMoveSoutheast = new ScrollableMoveSoutheastAbility('l');
     	ExplicitAbility scrollableMoveSouthwest = new ScrollableMoveSouthwestAbility('j');
     	ExplicitAbility attackAbility = new AttackAbility(avatar, '1');
+    	ExplicitAbility bane = new Bane(avatar, '2');
     	
     	// mounting
     	ExplicitAbility interactAbility = new InteractAbility(avatar, ' ');
@@ -93,6 +95,7 @@ public class AvatarController extends Controller {
     	
     	avatar.addAbility(interactAbility);
     	avatar.addAbility(attackAbility);
+    	avatar.addAbility(bane);
     	
     	directionAbilities.put(Direction.NORTH, moveNorth); 
     	directionAbilities.put(Direction.NORTHWEST, moveNorthwest); 

@@ -93,6 +93,12 @@ public class Avatar extends Entity {
 	public void setMyJournal(Journal myJournal) {
 		this.myJournal = myJournal;
 	}
+
+
+
+	public void updateKeyBinding(ExplicitAbility ability, Direction direction){
+		controlAvatar.updateKeyBinding(ability, direction);
+	}
     
     
     public void notifyOfTileChange(Tile t){
@@ -142,6 +148,11 @@ public class Avatar extends Entity {
 	public void addAbility(ExplicitAbility ability) {
 		this.getOccupation().addAbility(ability);
 		ability.attachToController(controlAvatar);
+	}
+
+	public void removeAbility(ExplicitAbility ability) {
+		this.getOccupation().removeAbility(ability);
+		ability.removeFromController(controlAvatar);
 	}
 
 	@Override

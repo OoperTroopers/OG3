@@ -46,7 +46,11 @@ public abstract class Occupation {
 	public void addAbility(Ability ability) {
 		this.abilityList.add(ability);
 	}
-	
+
 	public abstract EquipmentManager createEquipmentManager();
 	public abstract Statistics createStatistics();
+
+	public void removeAbility(Ability ability){
+		this.abilityList.remove(ability);
+	}
 }

@@ -11,6 +11,7 @@ import model.occupations.SmasherOccupation;
 import model.occupations.SneakOccupation;
 import model.occupations.SummonerOccupation;
 
+import view.view.CharacterCreationViewport;
 import view.view.Viewport;
 
 public class CharacterCreationController extends Controller {
@@ -18,7 +19,7 @@ public class CharacterCreationController extends Controller {
 	private Viewport view;
 	
 	public CharacterCreationController() {
-		
+		this.view = new CharacterCreationViewport();
 	}
 	
 	public class SmasherListener implements ActionListener {

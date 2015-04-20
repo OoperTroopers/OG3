@@ -9,6 +9,8 @@ public class GameController {
 	private Controller activeController;
 	private JFrame frame;
 	
+	public static GameController gameController = new GameController();
+	
 	public GameController() {
 		this.frame = new JFrame();
 		this.frame.setExtendedState(this.frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -16,6 +18,10 @@ public class GameController {
 		this.activeViewport = this.activeController.getViewport();
 		this.frame.add(this.activeViewport);
 		this.frame.setVisible(true);
+	}
+	
+	public static GameController getInstance() {
+		return gameController;
 	}
 	
 	public void swapViews(Controller c) {

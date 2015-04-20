@@ -25,6 +25,7 @@ public class Pet extends NPC {
 		owner = a;
 		//brain;
 		brain.acceptMaster(a);
+		this.getTile().removeTileable(this);
 	}
 	
 	@Override

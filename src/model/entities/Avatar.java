@@ -25,18 +25,17 @@ import view.view.ExtendedStatsViewport;
 
 public class Avatar extends Entity {
 	
-	
-	
     private Journal myJournal;
 	private ControllerAvatar controlAvatar;
-
 	private AvatarBrain myBrain;
+	private int radiusOfVision;
 	
 	public Avatar(){
 		super();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		onMove();
 	}
 	
@@ -45,6 +44,7 @@ public class Avatar extends Entity {
 		//this.location = new Location();
 		this.controlAvatar = new ControllerAvatar(this);
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		onMove();
 	}
 	
@@ -53,6 +53,7 @@ public class Avatar extends Entity {
 		this.controlAvatar = new ControllerAvatar(this);
 		this.controlAvatar.setDefaultAbilityKeys();
 		this.myJournal = new Journal();
+		this.radiusOfVision = 3;
 		myBrain = new AvatarBrain(this);
 		//onMove();
 	}
@@ -107,10 +108,18 @@ public class Avatar extends Entity {
     }
     
     public void refreshView(){
-    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.getObservationAbilityLevel());
+    	java.util.List<Tile> tiles = TileAlgorithm.getAllTilesWithinRadius(getTile(), this.radiusOfVision);
     	for(Tile t: tiles){
     		t.updateTileView();
     	}
+    }
+    
+    public void increaseRadiusOfVision(int amount) {
+    	this.radiusOfVision += amount;
+    }
+    
+    public void decreaseRadiusOfVision(int amount) {
+    	this.radiusOfVision = Math.max(0, this.radiusOfVision - amount);
     }
     
     private void updateMemTile(Tile t){

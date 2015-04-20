@@ -1,5 +1,6 @@
 package model.abilities.movement;
 
+import utilities.TileAlgorithm.Direction;
 import view.view.ActiveGameViewport;
 import controller.ControllerAvatar;
 import controller.KeyBinding;
@@ -24,7 +25,7 @@ public class MoveSouthwestAbility extends ExplicitAbility {
     public void perform() {
         if (this.isActivated()) {
         	entity.moveSouthwest();
-        	entity.setDirection(2);
+        	entity.setDirection(Direction.SOUTHWEST);
         }
     }
 

@@ -29,14 +29,14 @@ public class Brawl extends Weapon {
 	}
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
-		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
-		((SmasherEquipmentManager)em).equipBareHandedWeapon(this);
+		em.unequipBareHandedWeapon();
+		em.equipBareHandedWeapon(this);
 		inventory.removeFromInventory(this);
 		
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory inventory) {
-		((SmasherEquipmentManager)em).unequipBareHandedWeapon();
+		em.unequipBareHandedWeapon();
 		inventory.addToInventory(this);
 	}
 }

@@ -4,7 +4,6 @@ import view.modelview.tileable.items.SaddleView;
 import model.effects.Effect;
 import model.entities.Entity;
 import model.equipmentmanagers.EquipmentManager;
-import model.equipmentmanagers.MountEquipmentManager;
 import model.inventory.Inventory;
 import model.map.Tile;
 import model.map.Tileable;
@@ -16,12 +15,12 @@ public class Saddle extends Armor {
 	public Saddle(String name, String description, String id, int value, EquippableStatistics es) {
 		super(name, description, id, value, es);
 	}
-	public void equip(MountEquipmentManager em, Inventory inventory) {
+	public void equip(EquipmentManager em, Inventory inventory) {
 		em.unequipSaddle();
 		em.equipSaddle(this);
 		inventory.removeFromInventory(this);
 	}
-	public void unequip(MountEquipmentManager em, Inventory inventory) {
+	public void unequip(EquipmentManager em, Inventory inventory) {
 		em.unequipSaddle();
 		inventory.addToInventory(this);
 	}
@@ -35,15 +34,5 @@ public class Saddle extends Armor {
 	public Tileable clone() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	@Override
-	public void equip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void unequip(EquipmentManager em, Inventory i) {
-		// TODO Auto-generated method stub
-		
 	}
 }

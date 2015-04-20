@@ -29,14 +29,14 @@ public class Ranged extends Weapon {
 	}
 	@Override
 	public void equip(EquipmentManager em, Inventory inventory) {
-		((SneakEquipmentManager)em).unequipRangedWeapon();
-		((SneakEquipmentManager)em).equipRangedWeapon(this);
+		em.unequipRangedWeapon();
+		em.equipRangedWeapon(this);
 		inventory.removeFromInventory(this);
 		
 	}
 	@Override
 	public void unequip(EquipmentManager em, Inventory inventory) {
-		((SneakEquipmentManager)em).unequipRangedWeapon();
+		em.unequipRangedWeapon();
 		inventory.addToInventory(this);
 	}
 }

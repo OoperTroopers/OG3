@@ -17,6 +17,11 @@ public class Mount extends NPC {
 	private Avatar avatar;
 	private MountView mountView;
 	
+	public Mount(){
+		super(new MountOccupation(), new MountEquipmentManager(), new MountStatistics(), true);
+		this.mountView = new MountView();
+	}
+	
 	public Mount(MountView mountView) {
 		super(new MountOccupation(), new MountEquipmentManager(), new MountStatistics(), true);
 		this.mountView = mountView;
@@ -27,10 +32,6 @@ public class Mount extends NPC {
 
 	public Mount(Tile tile) {
 		super(tile, new MountView());
-		setOccupation(new MountOccupation());		
-		setStats(new MountStatistics());
-		setEquipmentManager(new MountEquipmentManager());
-
 	}
 	
 	public void mount(Avatar avatar){

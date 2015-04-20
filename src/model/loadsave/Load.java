@@ -171,7 +171,7 @@ public class Load {
 		if (entity.equals("Shopkeeper")) return new Shopkeeper(tile);
 		if (entity.equals("NPC")) return new NPC();
 		if (entity.equals("Pet")) return new Pet(tile);
-		if (entity.equals("Mount")) return new Mount(tile);
+		if (entity.equals("Mount")) return new Mount();
 		return null;
 	}
 	

@@ -6,9 +6,8 @@
 package view.view;
 
 import controller.ScreenNavigation;
-import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import view.tools.Constants;
 import view.tools.ImagePaths;
 import view.tools.Text;
 
@@ -18,22 +17,49 @@ import view.tools.Text;
  */
 public class PauseMenuViewport extends Viewport {
     
-    public static PauseMenuViewport pauseMenuViewport = new PauseMenuViewport();
+    private ActionListener backButtonListener;
+    private ActionListener inventoryButtonListener;
+    private ActionListener statsButtonListener;
+    private ActionListener saveGameButtonListener;
+    private ActionListener exitButtonListener;
+   
     /**
-     * Creates new form PauseMenuViewport2
+     * Creates new form PauseMenuViewport
      */
-    public PauseMenuViewport() {
+    public PauseMenuViewport(ActionListener backButtonListener) {
+    	this.backButtonListener = backButtonListener;    
         initComponents();
-        this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
+    	this.backButton.addActionListener(backButtonListener);
+        //this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
+    }
+    
+    public PauseMenuViewport(ActionListener backButtonListener,
+                             ActionListener inventoryButtonListener,
+                             ActionListener statsButtonListener,
+                             ActionListener saveGameButtonListener,
+                             ActionListener exitButtonListener) {
+        this.backButtonListener = backButtonListener;
+        this.inventoryButtonListener = inventoryButtonListener;
+        this.saveGameButtonListener = saveGameButtonListener;
+        this.exitButtonListener = exitButtonListener;
+        this.statsButtonListener = statsButtonListener;
+        
+        initComponents();
+        
+        setListeners();
     }
     
     @Override
     public void visit(ViewportStack viewportStack) {
-        viewportStack.add(this);
+        ViewportStack.add(this);
     }
     
-    public static PauseMenuViewport getInstance() {
-        return pauseMenuViewport;
+    private void setListeners() {
+        backButton.addActionListener(backButtonListener);
+        inventoryButton.addActionListener(inventoryButtonListener);
+        saveGameButton.addActionListener(saveGameButtonListener);
+        statsButton.addActionListener(statsButtonListener);
+        exitButton.addActionListener(exitButtonListener);
     }
     
     /**
@@ -297,5 +323,7 @@ public class PauseMenuViewport extends Viewport {
     private javax.swing.JButton statsButton;
     private javax.swing.JPanel statsButtonPanel;
     // End of variables declaration//GEN-END:variables
+
+    
 
 }

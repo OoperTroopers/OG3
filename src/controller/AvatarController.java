@@ -20,6 +20,9 @@ import model.entities.Entity;
 import model.map.Tile;
 import model.map.Tileable;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;

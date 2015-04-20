@@ -1,10 +1,13 @@
 package controller;
 
+import java.util.Stack;
+
 import javax.swing.JFrame;
 import view.view.Viewport;
 
 public class GameController {
 
+	private Stack<Controller> stack;
 	private Viewport activeViewport;
 	private Controller activeController;
 	private JFrame frame;
@@ -18,6 +21,7 @@ public class GameController {
 		this.activeViewport = this.activeController.getViewport();
 		this.frame.add(this.activeViewport);
 		this.frame.setVisible(true);
+		stack = new Stack<Controller>();
 	}
 	
 	public static GameController getInstance() {
@@ -33,5 +37,17 @@ public class GameController {
 		this.frame.add(activeViewport);
 		this.frame.setVisible(true);
 		
+	}
+	
+	public void addToStack(Controller controller) {
+		this.stack.push(controller);
+	}
+	
+	public Controller removeFromStack() {
+		return this.stack.pop();
+	}
+	
+	public Controller getActiveController() {
+		return this.activeController;
 	}
 }

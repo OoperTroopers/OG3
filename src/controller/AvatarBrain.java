@@ -9,7 +9,7 @@ public class AvatarBrain extends Brain{
 	
 	public AvatarBrain(Avatar a){
 		myAvatar = a;
-		HiveMind.getInstance().addRunnable(this, 10);
+		GameTimer.getInstance().addRunnable(this, 10);
 	}
 	
 	

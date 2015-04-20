@@ -1,32 +1,44 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import model.entities.NPC;
 
-public class  HiveMind {
-	private static HiveMind me;
-	
+public class  GameTimer {
+	private static GameTimer me;
 	
 	private Timer timer;
 	private ArrayList<Brain> brains;
 	
-	public HiveMind(){
+	public GameTimer(){
 		timer = new Timer();
 	}
 	
-	public static HiveMind getInstance(){
+	public static GameTimer getInstance(){
 		if(me == null){
-			me = new HiveMind();
+			me = new GameTimer();
 		}
 		return me;
 	}
 	
 	public void addRunnable(TimerTask t, int timeInMilliseconds){
 		//timer.schedule(t, timeInMilliseconds);
+		//  this is one time
+		
 		timer.scheduleAtFixedRate(t, 0, timeInMilliseconds);
+		//  this is repeatedly
 	}
+	
+	
+	
+	// things that might use GameTimer....
+	// 
+	// 1. npc movement
+	// 2. projectiles
+	// 3. poison effects
+	//
 	
 }

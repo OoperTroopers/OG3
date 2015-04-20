@@ -21,7 +21,7 @@ public class PetBrain extends Brain{
 	private Pet pet;
     private HashMap<Direction, ExplicitAbility> directionAbilities;
 
-    private HiveMind hivemind;
+    private GameTimer hivemind;
     private Avatar master;
     
     private boolean isFollowing;
@@ -31,7 +31,7 @@ public class PetBrain extends Brain{
         this.directionAbilities = new HashMap<Direction, ExplicitAbility>();
         setDefaultAbilityKeys();
         
-        hivemind = HiveMind.getInstance();
+        hivemind = GameTimer.getInstance();
         hivemind.addRunnable(this, 300);
         isFollowing = true;
        

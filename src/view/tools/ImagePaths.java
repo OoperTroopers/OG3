@@ -14,12 +14,16 @@ public class ImagePaths {
     public static final String AVATAR = IMG_DIR + "Sprite-can.png";
     public static final String NPC = IMG_DIR + "NPC_Cat.png";
     public static final String SHOPKEEPER = IMG_DIR + "shopkeeper_cat.jpg";
-    public static final String MOUNT = IMG_DIR + "car.png";
+    public static final String MOUNT = IMG_DIR + "mount.png";
     public static final String PET = IMG_DIR + "pet.png";
     
     //OneShotItem sprites
     public static final String DAMAGING_ONE_SHOT_ITEM = IMG_DIR + "redX.png";
     public static final String HEALING_ONE_SHOT_ITEM = IMG_DIR + "green_plus.png";
+    
+    
+    // timed items
+    public static final String ICICLE_TIMED_ITEM = IMG_DIR + "icicle.png"; 
     
     //InteractiveItem sprites
     public static final String DOOR = IMG_DIR + "door.png";

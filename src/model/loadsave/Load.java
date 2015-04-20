@@ -92,6 +92,7 @@ public class Load {
 		Tile tile = this.getTile(index);
 		item = item.substring(item.indexOf("=") + 1);
 		Item tileableItem = this.parseItem(item);
+		// if (tileableItem instanceof Icicle) System.out.println(tileNumber); 
 		tile.addTileable(tileableItem);
 		return true;
 	}
@@ -102,6 +103,10 @@ public class Load {
 		if (item.equals("DamageOS")) return new DamagingOneShotItem();
 		if (item.equals("TreasureChest")) return new TreasureChest();
 		if (item.equals("Door")) return new Door();
+		if (item.equals("Icicle")) {
+			// System.out.print ("Icicle is at ");
+			return new Icicle();
+		}
 		return this.parseArmor(item);
 	}
 	

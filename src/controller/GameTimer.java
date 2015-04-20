@@ -1,11 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import model.entities.NPC;
 
 public class  GameTimer {
 	private static GameTimer me;
@@ -25,11 +22,11 @@ public class  GameTimer {
 	}
 	
 	public void addRunnable(TimerTask t, int timeInMilliseconds){
-		//timer.schedule(t, timeInMilliseconds);
-		//  this is one time
+		// timer.schedule(t, timeInMilliseconds);
+		// this is one time
 		
 		timer.scheduleAtFixedRate(t, 0, timeInMilliseconds);
-		//  this is repeatedly
+		// this is repeatedly
 	}
 	
 	

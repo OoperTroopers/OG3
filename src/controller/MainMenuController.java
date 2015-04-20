@@ -40,7 +40,7 @@ public class MainMenuController extends Controller {
 	public class ExitGameListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("EXIT GAME");			
+			System.exit(0);			
 		}		
 	}
 }

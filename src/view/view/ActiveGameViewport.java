@@ -67,7 +67,6 @@ public class ActiveGameViewport extends Viewport {
 				if (e.getKeyCode() == e.VK_P) {
 					GameController.getInstance().addToStack(GameController.getInstance().getActiveController());
 					GameController.getInstance().swapViews(new PauseMenuController());
-					
 				}
 				
 			}

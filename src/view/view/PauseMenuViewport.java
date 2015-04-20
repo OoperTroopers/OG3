@@ -26,10 +26,12 @@ public class PauseMenuViewport extends Viewport {
     /**
      * Creates new form PauseMenuViewport
      */
-    public PauseMenuViewport(ActionListener backButtonListener) {
+    public PauseMenuViewport(ActionListener backButtonListener, ActionListener exitButtonListener) {
     	this.backButtonListener = backButtonListener;    
+    	this.exitButtonListener = exitButtonListener;
         initComponents();
-    	this.backButton.addActionListener(backButtonListener);
+    	this.backButton.addActionListener(this.backButtonListener);
+    	this.exitButton.addActionListener(this.exitButtonListener);
         //this.setPreferredSize(new Dimension(Constants.VIEW_WIDTH, Constants.VIEW_HEIGHT));
     }
     
@@ -96,11 +98,6 @@ public class PauseMenuViewport extends Viewport {
         inventoryButton.setText(Text.inventoryButton);
         inventoryButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 2, 2, new java.awt.Color(0, 0, 0)));
         inventoryButton.setOpaque(false);
-        inventoryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inventoryButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout inventoryButtonPanelLayout = new javax.swing.GroupLayout(inventoryButtonPanel);
         inventoryButtonPanel.setLayout(inventoryButtonPanelLayout);
@@ -132,11 +129,6 @@ public class PauseMenuViewport extends Viewport {
         backButton.setFont(new java.awt.Font("DialogInput", 1, 20)); // NOI18N
         backButton.setText(Text.backButton);
         backButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 2, 2, new java.awt.Color(0, 0, 0)));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout backButtonPanelLayout = new javax.swing.GroupLayout(backButtonPanel);
         backButtonPanel.setLayout(backButtonPanelLayout);
@@ -161,11 +153,6 @@ public class PauseMenuViewport extends Viewport {
         exitButton.setFont(new java.awt.Font("DialogInput", 1, 20)); // NOI18N
         exitButton.setText(Text.exitGameButton);
         exitButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 2, 2, new java.awt.Color(0, 0, 0)));
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout exitButtonPanelLayout = new javax.swing.GroupLayout(exitButtonPanel);
         exitButtonPanel.setLayout(exitButtonPanelLayout);
@@ -186,11 +173,6 @@ public class PauseMenuViewport extends Viewport {
         statsButton.setFont(new java.awt.Font("DialogInput", 1, 20)); // NOI18N
         statsButton.setText(Text.statsButton);
         statsButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 2, 2, new java.awt.Color(0, 0, 0)));
-        statsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statsButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout statsButtonPanelLayout = new javax.swing.GroupLayout(statsButtonPanel);
         statsButtonPanel.setLayout(statsButtonPanelLayout);
@@ -209,11 +191,6 @@ public class PauseMenuViewport extends Viewport {
         saveGameButton.setFont(new java.awt.Font("DialogInput", 1, 20)); // NOI18N
         saveGameButton.setText(Text.saveGameButton);
         saveGameButton.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 2, 2, new java.awt.Color(0, 0, 0)));
-        saveGameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveGameButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout saveGamePanelLayout = new javax.swing.GroupLayout(saveGamePanel);
         saveGamePanel.setLayout(saveGamePanelLayout);
@@ -287,25 +264,7 @@ public class PauseMenuViewport extends Viewport {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        ScreenNavigation.backButtonHandler();
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryButtonActionPerformed
-        ScreenNavigation.genericButtonHandler(InventoryViewport.getInstance());
-    }//GEN-LAST:event_inventoryButtonActionPerformed
-
-    private void statsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsButtonActionPerformed
-        ScreenNavigation.genericButtonHandler(ExtendedStatsViewport.getInstance());
-    }//GEN-LAST:event_statsButtonActionPerformed
-
-    private void saveGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameButtonActionPerformed
-        //ScreenNavigation.genericButtonHandler(SaveGameViewport.getInstance());
-    }//GEN-LAST:event_saveGameButtonActionPerformed
-
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        ScreenNavigation.exitToMainMenuButtonHandler();
-    }//GEN-LAST:event_exitButtonActionPerformed
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -19,7 +19,16 @@ public class PauseMenuController extends Controller {
     private Viewport view;
     
     public PauseMenuController() {
-        view = new PauseMenuViewport(new BackListener());
+        view = new PauseMenuViewport(new BackListener(), new ExitListener());
+    }
+    
+    private class ExitListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			GameController.getInstance().swapViews(new MainMenuController());
+		}
+    	
     }
     
     private class BackListener implements ActionListener {

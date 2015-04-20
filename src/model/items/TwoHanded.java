@@ -11,7 +11,7 @@ import model.statistics.EquippableStatistics;
 
 public class TwoHanded extends Weapon {
 	public TwoHanded() {
-		super(new TwoHandedView());
+		super("TwoHanded", new TwoHandedView());
 	}
 	
 	public TwoHanded(String name, String description, String id, int value, EquippableStatistics es) {

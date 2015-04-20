@@ -11,7 +11,7 @@ import model.map.Tileable;
 import model.statistics.EquippableStatistics;
 public class OneHanded extends Weapon {
 	public OneHanded() {
-		super(new OneHandedView());
+		super("OneHanded", new OneHandedView());
 	}
 	
 	public OneHanded(String name, String description, String id, int value, EquippableStatistics es) {

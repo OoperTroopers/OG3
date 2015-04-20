@@ -30,15 +30,19 @@ public abstract class Statistics {
 	}
 	public void decreaseExperience(int experience) {
 		currentExperience -= experience;
+		notifyGameView();
 	}
 	public void recieveGold(int gold) {
 		currentGold += gold;
+		notifyGameView();
 	}
 	public void spendGold(int gold) {
 		currentGold -= gold;
+		notifyGameView();
 	}
 	public void incrementLevel() {
 		++currentLevel;
+		notifyGameView();
 	}
 	public void increaseAssignableAbilityPoints(int points) {
 		assignableAbilityPoints += points;
@@ -59,23 +63,29 @@ public abstract class Statistics {
 	public void heal(int health) {
 		currentHealth += health;
 		currentHealth = Math.min(currentHealth, derivedStats.getMaxHealth());
+		notifyGameView();
 	}
 	
 	public void wound(int damage) {
 		currentHealth -= damage;
+		notifyGameView();
 	}
 	
 	public void loseLife() {
 		primaryStats.loseLife();
+		notifyGameView();
 	}
 	public void gainNewLife() {
 		primaryStats.gainNewLife();
+		notifyGameView();
 	}
 	public void setCurrentHealthMax(){
 		currentHealth = derivedStats.getMaxHealth();
+		notifyGameView();
 	}
 	public void setCurrentManaMax() {
 		currentMana = derivedStats.getMaxMana();
+		notifyGameView();
 	}
 	
 	public int getLivesLeft() {

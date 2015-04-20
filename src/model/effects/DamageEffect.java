@@ -7,7 +7,9 @@ import model.entities.NPC;
 public class DamageEffect extends Effect {
 	private int damage;
 	
-	public DamageEffect(){}
+	public DamageEffect(){
+		this.damage = 10;
+	}
 	
 	public DamageEffect(int damage) {
 		this.damage = damage;
